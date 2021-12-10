@@ -3,8 +3,8 @@ import Header from "./components/Header/Header";
 import Login from "./routes/Login/Login";
 import Home from "./routes/Home/Home";
 import NotFound from "./routes/NotFound/NotFound";
-import { NotificationContainer } from "react-notifications";
-import "react-notifications/lib/notifications.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 function App() {
@@ -17,7 +17,17 @@ function App() {
         <Route path="/404" component={NotFound} />
         <Redirect to="/404" />
       </Switch>
-      <NotificationContainer />
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </section>
   );
 }
