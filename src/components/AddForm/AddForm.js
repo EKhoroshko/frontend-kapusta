@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import Select from "react-select";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import css from "./AddForm.module.css";
 
 function AddForm() {
+  const [calendar, setCalendar] = useState(new Date());
+
+  const options = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+  ];
+
   const clearForm = () => {
     console.log("я должна чистить формы");
   };
@@ -8,16 +20,20 @@ function AddForm() {
   return (
     <div>
       <form>
-        <div>
-          <input type="date" />
+        <div className={css.flex}>
+          <p className={css.box}>
+            <DatePicker
+              dateFormat="dd/MM/yyyy"
+              shouldCloseOnSelect={false}
+              selected={calendar}
+              onChange={(date) => setCalendar(date)}
+              //стилизуется только с этим классом !! ВАЖНО !!! Тут все что можно с ним сделать
+              // https://reactdatepicker.com/#example-custom-calendar-class-name
+              className={css.red}
+            />
+          </p>
           <input type="text" />
-          <select name="select">
-            <option value="value1">Значение 1</option>
-            <option value="value2" selected>
-              Значение 2
-            </option>
-            <option value="value3">Значение 3</option>
-          </select>
+          <Select options={options} className={css.select} />
           <input type="text" />
         </div>
         <ul>
