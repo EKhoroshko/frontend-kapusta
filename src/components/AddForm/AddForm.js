@@ -7,6 +7,7 @@ import css from "./AddForm.module.css";
 function AddForm() {
   const [calendar, setCalendar] = useState(new Date());
   const [select, setSelect] = useState("");
+  console.log(select); /// это временно для деплоя при работе можно удалить
 
   const options = [
     { value: "chocolate", label: "Chocolate" },
