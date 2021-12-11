@@ -11,7 +11,7 @@ const transactionState = {
 
 const transactionSlice = createSlice({
   name: "transaction",
-  transactionState,
+  initialState: transactionState,
   extraReducers: {},
 });
 export default transactionSlice.reducer;
