@@ -6,6 +6,7 @@ import css from "./AddForm.module.css";
 
 function AddForm() {
   const [calendar, setCalendar] = useState(new Date());
+  const [select, setSelect] = useState("");
 
   const options = [
     { value: "chocolate", label: "Chocolate" },
@@ -24,7 +25,7 @@ function AddForm() {
           <p className={css.box}>
             <DatePicker
               dateFormat="dd/MM/yyyy"
-              shouldCloseOnSelect={false}
+              //shouldCloseOnSelect={false}
               selected={calendar}
               onChange={(date) => setCalendar(date)}
               //стилизуется только с этим классом !! ВАЖНО !!! Тут все что можно с ним сделать
@@ -33,7 +34,11 @@ function AddForm() {
             />
           </p>
           <input type="text" />
-          <Select options={options} className={css.select} />
+          <Select
+            options={options}
+            className={css.select}
+            onChange={(options) => setSelect(options.label)}
+          />
           <input type="text" />
         </div>
         <ul>
