@@ -1,35 +1,39 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { register, logIn, logOut, currentUser } from "./auth-operations";
-const initialState = {
-  user: { name: "", email: "" },
+import { register, logIn, logOut, currentUser } from "./operations";
+const authState = {
+  name: "",
+  email: "",
   token: null,
   isLoggedIn: false,
+  id: null,
 };
 
 const authSlice = createSlice({
   name: "auth",
-  initialState,
+  authState,
   extraReducers: {
-    [register.fulfilled](state, { payload }) {
-      state.user = payload.user;
+    [register.fulfilled]() {
+      toast.success(
+        `Вы успешно зарегистрированы. Пожалуйста ,введите свои данные для входа.`,
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
+    },
+    [logIn.fulfilled](state, { payload }) {
+      state.name = payload.name;
+      state.email = payload.email;
       state.token = payload.token;
       state.isLoggedIn = true;
-      toast.success(`Welcome, dear: ${state.user.name}`, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    },
-    [logIn.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLoggedIn = true;
-      toast.success(`Welcome, dear: ${state.user.name}`, {
+      state.id = payload.id;
+      toast.success(`Добро пожаловать: ${state.name}`, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -40,7 +44,7 @@ const authSlice = createSlice({
       });
     },
     [logOut.fulfilled](state) {
-      toast.info(`Good luck, ${state.user.name} `, {
+      toast.info(`Всего доброго, ${state.name} `, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -49,14 +53,18 @@ const authSlice = createSlice({
         draggable: true,
         progress: undefined,
       });
-      state.user = { name: "", email: "" };
+      state.name = "";
+      state.email = "";
       state.token = null;
+      state.id = null;
       state.isLoggedIn = false;
     },
-    [currentUser.fulfilled](state, action) {
-      state.user = action.payload;
+    [currentUser.fulfilled](state, { payload }) {
+      state.name = payload.name;
+      state.email = payload.email;
+      state.id = payload.id;
       state.isLoggedIn = true;
-      toast.success(`Nice to see you  ${state.user.name}`, {
+      toast.success(`Рады Вас видеть  ${state.name}`, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,

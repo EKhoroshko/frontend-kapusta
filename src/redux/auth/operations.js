@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-axios.defaults.baseURL = "";
+axios.defaults.baseURL = "https://back-kapusta.herokuapp.com/api/";
 
 const token = {
   set(token) {
@@ -15,8 +15,7 @@ const token = {
 };
 const register = createAsyncThunk("auth/register", async (regInfo) => {
   try {
-    const { data } = await axios.post("users/register", regInfo);
-    token.set(data.token);
+    const { data } = await axios.post("auth/users/register", regInfo);
     return data;
   } catch (error) {
     return toast.error("This user already exists", {
@@ -33,9 +32,9 @@ const register = createAsyncThunk("auth/register", async (regInfo) => {
 
 const logIn = createAsyncThunk("auth/login", async (loginInfo) => {
   try {
-    const response = await axios.post("users/login", loginInfo);
-    token.set(response.data.token);
-    return response.data;
+    const { data } = await axios.post("auth/users/login", loginInfo);
+    token.set(data.token);
+    return data;
   } catch (error) {
     return toast.error("Incorrect data entered", {
       position: "top-center",
@@ -74,7 +73,7 @@ const currentUser = createAsyncThunk("auth/refresh", async (_, thunkAPI) => {
   }
   token.set(persistToken);
   try {
-    const { data } = await axios.get("/users/current");
+    const { data } = await axios.get("auth/users/currentUser");
     console.log(data);
     return data;
   } catch (error) {
