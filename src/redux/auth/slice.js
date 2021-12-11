@@ -11,7 +11,7 @@ const authState = {
 
 const authSlice = createSlice({
   name: "auth",
-  authState,
+  initialState: authState,
   extraReducers: {
     [register.fulfilled]() {
       toast.success(
