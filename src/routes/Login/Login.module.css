@@ -1,0 +1,194 @@
+.loginPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 320px;
+  height: 800px;
+  margin: 0 auto;
+  padding-top: 86px;
+  background-color: rgb(196, 238, 224, 0.3); /* transparent */
+}
+
+.titleBox {
+  width: 183px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.title {
+  margin: 0px 0px 4px 0px;
+  font-size: 2.875rem;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.title span::after {
+  content: "\0024";
+  font-size: 2.25rem;
+  font-weight: 900;
+}
+
+.titleDescription {
+  max-width: fit-content;
+  margin: 0 auto;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 0.9375rem;
+  text-transform: uppercase;
+  color: #52555f;
+}
+
+.formBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  height: 525px;
+  padding-top: 41px;
+  border-radius: 30px;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  background-color: #fff;
+}
+
+.descriptionA {
+  width: 212px;
+  margin: 0px 0px 36px 0px;
+  text-align: center;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.625rem;
+  line-height: 0.7325rem;
+  color: #52555f;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 122px;
+  height: 40px;
+  margin-bottom: 30px;
+  border: transparent;
+  border-radius: 26px;
+  box-shadow: 1px 2px 3px rgba(170, 178, 197, 0.4);
+  background-color: #f6f7fb;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1rem;
+  color: #000;
+  cursor: pointer;
+  outline: none;
+}
+
+.button span::before {
+  content: url(../../icons/google-symbol.svg);
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+}
+
+.descriptionB {
+  width: 242px;
+  margin: 0px 0px 26px 0px;
+  text-align: center;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.625rem;
+  line-height: 0.7325rem;
+  color: #52555f;
+}
+
+@media screen and (min-width: 768px) {
+  .loginPage {
+    width: 768px;
+    height: 1024px;
+  }
+
+  .titleBox {
+    width: 306px;
+    margin-bottom: 53px;
+  }
+
+  .title {
+    margin: 0px 0px 8px 0px;
+    font-size: 4rem;
+  }
+
+  .title span::after {
+    content: "\0024";
+    font-size: 2.9375rem;
+  }
+
+  .titleDescription {
+    font-size: 1rem;
+    line-height: 1.125rem;
+  }
+
+  .formBox {
+    width: 436px;
+    height: 535px;
+    padding-top: 54px;
+  }
+
+  .descriptionA {
+    width: 256px;
+    margin: 0px 0px 20px 0px;
+    font-size: 0.75rem;
+    line-height: 0.875rem;
+  }
+
+  .descriptionB {
+    width: 256px;
+    margin: 0px 0px 22px 0px;
+    font-size: 0.75rem;
+    line-height: 0.875rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .loginPage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 1280px;
+    height: 850px;
+  }
+
+  .titleBox {
+    width: 377px;
+    margin: 0px;
+  }
+
+  .title {
+    margin: 0px 0px 4px 0px;
+    font-size: 6.375rem;
+    line-height: 7.5rem;
+  }
+
+  .title span::after {
+    content: "\0024";
+    font-size: 4.875rem;
+  }
+
+  .titleDescription {
+    font-size: 1.5rem;
+    line-height: 1.625rem;
+  }
+
+  .formBox {
+    padding-top: 52px;
+  }
+
+  .descriptionA {
+    width: 258px;
+    text-align: left;
+  }
+
+  .descriptionB {
+    width: 258px;
+    text-align: left;
+  }
+}
