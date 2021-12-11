@@ -5,6 +5,7 @@ import Home from "./routes/Home/Home";
 import NotFound from "./routes/NotFound/NotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Summary from "./routes/Summary/Summary";
 import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/home" component={Home} />
+        <Route path="/summary" component={Summary} />
         <Route path="/404" component={NotFound} />
         <Redirect to="/404" />
       </Switch>
