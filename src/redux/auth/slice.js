@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { register, logIn, logOut, currentUser } from "./operations";
-const authState = {
+const initialState = {
   name: "",
   email: "",
   token: null,
@@ -11,9 +11,9 @@ const authState = {
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: authState,
+  initialState,
   extraReducers: {
-    [register.fulfilled]() {
+    [register.fulfilled](_, { payload }) {
       toast.success(
         `Вы успешно зарегистрированы. Пожалуйста ,введите свои данные для входа.`,
         {
@@ -26,6 +26,7 @@ const authSlice = createSlice({
           progress: undefined,
         }
       );
+      return payload;
     },
     [logIn.fulfilled](state, { payload }) {
       state.name = payload.name;
@@ -62,6 +63,7 @@ const authSlice = createSlice({
     [currentUser.fulfilled](state, { payload }) {
       state.name = payload.name;
       state.email = payload.email;
+      state.token = payload.token;
       state.id = payload.id;
       state.isLoggedIn = true;
       toast.success(`Рады Вас видеть  ${state.name}`, {

@@ -1,5 +1,5 @@
 import { Route, Switch, Redirect } from "react-router-dom";
-import Header from "./components/Header/Header";
+import Header from "./components/Header/Header.jsx";
 import Login from "./routes/Login/Login";
 import Home from "./routes/Home/Home";
 import NotFound from "./routes/NotFound/NotFound";
