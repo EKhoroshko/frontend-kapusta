@@ -16,7 +16,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/home" component={Home} />
-        <PrivateRoute path="/summary" component={Summary} />
+        <Route path="/summary" component={Summary} />
         <Route path="/404" component={NotFound} />
         <Redirect to="/404" />
       </Switch>
