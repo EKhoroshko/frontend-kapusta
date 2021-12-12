@@ -1,12 +1,16 @@
 .listContainer {
   width: 760px;
-  height: 382px;
+  max-height: 382px;
   margin-top: 60px;
   border-radius: 20px 20px 0 0;
   outline: 2px solid #f5f6fb;
 }
 
 @media screen and (min-width: 768px) {
+  .mobileWrap {
+    display: none;
+  }
+
   .listContainer {
     margin: 0 auto;
     width: 605px;
@@ -19,8 +23,12 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .mobileWrapper {
+    display: none;
+  }
+
   .listContainer {
-    margin: 0;
+    /* margin: 0; */
     width: 760px;
     overflow: visible;
   }
@@ -32,7 +40,6 @@
 
 .table {
   text-align: center;
-
   border-radius: 20px 20px 0 0;
   overflow: hidden;
   border-collapse: collapse;
@@ -56,7 +63,7 @@
 
 .tr {
   height: 40px;
-  border-bottom: 2px solid #f5f6fb;
+  /* border-bottom: 2px solid #f5f6fb; */
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -67,6 +74,117 @@
 }
 
 .deleteBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid transparent;
+  border-radius: 50%;
   background-color: transparent;
-  border: none;
+}
+.deleteBtn:hover {
+  background-color: #f5f6fb;
+}
+
+@media screen and (max-width: 767px) {
+  .listContainer {
+    display: none;
+  }
+
+  .mobileWrap {
+    min-height: calc(100vh - 422px);
+
+    margin-bottom: 10px;
+  }
+
+  .mobileWrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 282px;
+    max-height: 200px;
+    margin: 0 auto;
+    font-style: normal;
+    font-weight: 700;
+    overflow: scroll;
+    font-size: 12px;
+    line-height: 14px;
+    align-items: center;
+    letter-spacing: 0.04em;
+    color: #52555f;
+  }
+
+  .mobileList {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-family: Roboto;
+  }
+
+  .mobileList2 {
+    width: 99%;
+    border-bottom: 2px solid #f5f6fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .mobileListWrap {
+    white-space: pre-wrap;
+    max-width: 150px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .textDescMob {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em;
+    color: #52555f;
+    max-width: 52.5vw;
+    overflow: hidden;
+  }
+
+  .descWrap {
+    display: flex;
+    flex-direction: row;
+    margin-top: 8px;
+  }
+
+  .dateMob {
+    width: 44px;
+    height: 7px;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 9px;
+    margin: 0;
+  }
+
+  .categoryMob {
+    width: 82px;
+    height: 7px;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 9px;
+    margin: 0 0 0 20px;
+  }
+
+  .btnWrapper {
+    width: 18px;
+    height: 18px;
+    margin-left: 20px;
+  }
+
+  .deleteBtn {
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background-color: transparent;
+  }
+
+  .deleteBtn:hover {
+    background-color: #F5F6FB;
+  }
 }

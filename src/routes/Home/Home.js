@@ -9,6 +9,7 @@ import {
 import Incomes from "../../components/Incomes/Incomes";
 import Casts from "../../components/Casts/Casts";
 
+
 function Home() {
   const match = useRouteMatch();
   const history = useHistory();
