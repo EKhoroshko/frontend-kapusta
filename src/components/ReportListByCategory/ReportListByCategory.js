@@ -5,8 +5,8 @@ const ReportListByCategory = () => {
   return (
     <div>
       <ul>
-        <li key={}>
-          <button type='button' onClick={}>
+        <li key="тут id елемента">
+          <button type="button" onClick={() => {}}>
             <ReportItemByCategory />
           </button>
         </li>

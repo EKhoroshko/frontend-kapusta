@@ -2,6 +2,11 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 import ArrowGoBack from "../../components/ArrowGoBack/ArrowGoBack";
+import ReportListByCategory from "../../components/ReportListByCategory";
+import DetailsBalance from "../../components/DetailsBalance";
+import ReportListChart from "../../components/ReportListChart";
+
+// import style from "./Summary.module.css";
 
 function Summary() {
   const history = useHistory();
@@ -21,7 +26,7 @@ function Summary() {
           <li> arrow + period</li>
         </ul>
       </div>
-      <ul>
+      {/* <ul>
         <li> Расходы: сумма</li>
         <li> Доходы: сумма </li>
       </ul>
@@ -32,7 +37,10 @@ function Summary() {
           <span>картинка</span>
           <p>Категория</p>
         </li>
-      </ul>
+      </ul> */}
+      <DetailsBalance />
+      <ReportListByCategory />
+      <ReportListChart chartData={100} />
     </div>
   );
 }

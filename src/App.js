@@ -5,7 +5,7 @@ import Home from "./routes/Home/Home";
 import Casts from "./components/Casts/Casts";
 import Incomes from "./components/Incomes/Incomes";
 import NotFound from "./routes/NotFound/NotFound";
-import Loader from "./components/Loader/Loader"
+import Loader from "./components/Loader/Loader";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Summary from "./routes/Summary/Summary";
