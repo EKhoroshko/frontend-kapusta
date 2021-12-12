@@ -23,7 +23,7 @@ function AddForm() {
     <div>
       <form>
         <div className={css.flex}>
-          <p className={css.box}>
+          <div className={css.box}>
             <DatePicker
               dateFormat="dd/MM/yyyy"
               //shouldCloseOnSelect={false}
@@ -33,7 +33,7 @@ function AddForm() {
               // https://reactdatepicker.com/#example-custom-calendar-class-name
               className={css.red}
             />
-          </p>
+          </div>
           <input type="text" />
           <Select
             options={options}
