@@ -1,4 +1,19 @@
 .container {
-  /* padding-left: 19px;
-  padding-right: 19px; */
+  padding-left: 19px;
+  padding-right: 19px;
+}
+/* .info {
+  
+} */
+@media screen and (min-width: 768px) {
+  .container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    padding-left: 110px;
+    padding-right: 110px;
+  }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Bar, HorizontalBar } from "react-chartjs-2";
+// import { Bar } from "react-chartjs-2";
 
 import styles from "./ReportListChart.module.css";
 
@@ -7,7 +7,7 @@ const ReportListChart = ({ chartData }) => {
   return (
     <div className={styles.container}>
       {/* якщо мобілка зробити через ширину екрану &&*/}
-      <HorizontalBar
+      {/* <HorizontalBar
         data={chartData}
         options={{
           legend: {
@@ -16,9 +16,9 @@ const ReportListChart = ({ chartData }) => {
         }}
         height={600}
         width={300}
-      />
+      /> */}
       {/* {інші зробити через &&} */}
-      <Bar data={chartData} options={{}} />
+      {/* <Bar data={chartData} options={{}} /> */}
     </div>
   );
 };
