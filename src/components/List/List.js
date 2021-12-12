@@ -1,6 +1,6 @@
 import React from "react";
 
-import Svodka from "../Svodka/Svodka";
+// import Svodka from "../Svodka/Svodka";
 import MobileList from "./MobileList";
 import s from "./List.module.css";
 
@@ -40,7 +40,7 @@ function List() {
       </table>
      
     </div>
-    <Svodka />
+    {/* <Svodka /> */}
     </div>
     <div className={s.mobileWrap}>
         <div className={s.listWrap}>
