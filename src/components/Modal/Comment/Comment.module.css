@@ -45,6 +45,7 @@
   .box {
     position: absolute;
     z-index: 2;
+    top: 13%;
     right: 43%;
     width: 292px;
   }

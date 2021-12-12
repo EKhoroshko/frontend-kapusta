@@ -10,7 +10,7 @@ import { useHistory } from "react-router-dom";
 function AddForm() {
   const history = useHistory();
   const [calendar, setCalendar] = useState(new Date());
-  const [select, setSelect] = useState("");
+  const [select, setSelect] = useState(null);
   const [descriptoin, setDescriptoin] = useState("");
   console.log(select); /// это временно для деплоя при работе можно удалить
 
@@ -19,6 +19,21 @@ function AddForm() {
     { value: "strawberry", label: "Strawberry" },
     { value: "vanilla", label: "Vanilla" },
   ];
+
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      color: state.isSelected ? "yellow" : "black",
+      backgroundColor: state.isSelected ? "green" : "white",
+    }),
+    control: (provided) => ({
+      ...provided,
+      borderRadius: "0px",
+      borderBottomRightRadius: "16px",
+      border: "2px solid #ffffff",
+      backgroundColor: "transparent",
+    }),
+  };
 
   const CheckDescription = (e) => {
     setDescriptoin(e.currentTarget.value);
@@ -44,11 +59,8 @@ function AddForm() {
               <div className={css.box}>
                 <DatePicker
                   dateFormat="dd/MM/yyyy"
-                  //shouldCloseOnSelect={false}
                   selected={calendar}
                   onChange={(date) => setCalendar(date)}
-                  //стилизуется только с этим классом !! ВАЖНО !!! Тут все что можно с ним сделать
-                  // https://reactdatepicker.com/#example-custom-calendar-class-name
                   className={css.red}
                 />
               </div>
@@ -60,6 +72,7 @@ function AddForm() {
                 onChange={CheckDescription}
               />
               <Select
+                styles={customStyles}
                 options={options}
                 className={css.select}
                 onChange={(options) => setSelect(options.label)}
