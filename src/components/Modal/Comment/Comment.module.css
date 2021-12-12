@@ -1,0 +1,43 @@
+.box {
+  position: absolute;
+  z-index: 2;
+  top: 26%;
+  width: 282px;
+}
+
+.polygon {
+  width: 30px;
+  height: 16px;
+  margin-left: 70px;
+  background: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.wraper {
+  padding: 41px 25px 31px;
+  background: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
+  border-radius: 30px;
+}
+
+.text1 {
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.text2 {
+  font-size: 12px;
+  line-height: 16px;
+  color: #ffffff;
+}
+
+@media screen and (min-width: 768px) {
+  .box {
+    position: absolute;
+    z-index: 2;
+    top: 13%;
+    right: 40%;
+    width: 282px;
+  }
+}
