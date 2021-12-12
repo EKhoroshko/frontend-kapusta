@@ -15,6 +15,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import css from "./Home.module.css";
 
+
 function Home() {
   const [balanse, setBalanse] = useState("");
   const [startDate, setStartDate] = useState(new Date());
