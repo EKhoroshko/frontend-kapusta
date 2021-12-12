@@ -35,9 +35,17 @@
 @media screen and (min-width: 768px) {
   .box {
     position: absolute;
-    z-index: 2;
     top: 13%;
     right: 40%;
     width: 282px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .box {
+    position: absolute;
+    z-index: 2;
+    right: 43%;
+    width: 292px;
   }
 }
