@@ -5,7 +5,6 @@ import List from "../List/List";
 function Casts() {
   return (
     <div>
-      Casts
       <AddForm />
       <List />
     </div>

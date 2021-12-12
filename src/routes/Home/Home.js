@@ -87,10 +87,24 @@ function Home() {
           </button>
         </NavLink>
       </div>
+
+      <div className={css.boxLinkMin}>
+        <NavLink className={css.link} to={"/casts"}>
+          <button className={css.btn} type="button">
+            Расходы
+          </button>
+        </NavLink>
+        <NavLink className={css.link} to={"/incomes"}>
+          <button className={css.btn} type="button">
+            Доход
+          </button>
+        </NavLink>
+      </div>
+
       <div className={css.casts}>
         <Switch>
           <Route path={`${match.url}/casts`}>
-            <Casts className={css.casts} />
+            <Casts />
           </Route>
           <Route path={`${match.url}/incomes`}>
             <Incomes />
