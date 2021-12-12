@@ -1,0 +1,12 @@
+.flex {
+  display: flex;
+}
+
+.select {
+  width: 300px;
+}
+
+.red {
+  width: 300px;
+  padding: 15px;
+}
