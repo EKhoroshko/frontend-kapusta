@@ -7,7 +7,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Summary from "./routes/Summary/Summary";
 import "./App.css";
-import PrivateRoute from "./components/PrivateRoutes/PrivateRoutes";
 
 function App() {
   return (
