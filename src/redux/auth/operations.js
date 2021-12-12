@@ -73,8 +73,7 @@ const currentUser = createAsyncThunk("auth/refresh", async (_, thunkAPI) => {
   }
   token.set(persistToken);
   try {
-    const { data } = await axios.get("auth/users/currentUser");
-    console.log(data);
+    const { data } = await axios.get("auth/users/current");
     return data;
   } catch (error) {
     return toast.error("User is not defined", {
