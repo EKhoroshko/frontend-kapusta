@@ -1,0 +1,28 @@
+.container {
+  width: 134px;
+  height: 39px;
+}
+.text {
+  font-family: "Roboto", sans-serif;
+  width: 103px;
+  height: 14px;
+  color: 52555f;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.NavButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.CurrentPeriod {
+  font-family: "Roboto", sans-serif;
+  width: fit-content;
+  height: 20px;
+  color: 000000;
+  font-size: 14px;
+  font-weight: 700;
+  font-style: normal;
+}
