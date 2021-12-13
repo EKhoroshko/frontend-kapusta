@@ -7,17 +7,14 @@ import {
   useHistory,
 } from "react-router-dom";
 import { ReactComponent as Diagramma } from "../../assets/images/summary.svg";
-import { ReactComponent as Calendar } from "../../assets/images/calendar.svg";
+import Calendar from "../../components/Calendar/Calendar";
 import Comment from "../../components/Modal/Comment/Comment";
 import Incomes from "../../components/Incomes/Incomes";
 import Casts from "../../components/Casts/Casts";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import css from "./Home.module.css";
 
 function Home() {
-  const [balanse, setBalanse] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
+  const [balanse, setBalanse] = useState(5);
   const match = useRouteMatch();
   const history = useHistory();
   console.log(balanse);
@@ -63,13 +60,7 @@ function Home() {
               </form>
             </div>
             <div className={css.flex}>
-              <Calendar className={css.date} />
-              <DatePicker
-                dateFormat="dd.MM.yyyy"
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-                className={css.red}
-              />
+              <Calendar />
             </div>
           </div>
         </div>
@@ -101,7 +92,7 @@ function Home() {
         </NavLink>
       </div>
 
-      <div className={css.casts}>
+      <div className={css.route}>
         <Switch>
           <Route path={`${match.url}/casts`}>
             <Casts />

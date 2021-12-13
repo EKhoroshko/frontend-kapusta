@@ -1,7 +1,7 @@
 .box {
   position: absolute;
   z-index: 2;
-  top: 26%;
+  top: 210px;
   width: 282px;
 }
 
@@ -35,9 +35,10 @@
 @media screen and (min-width: 768px) {
   .box {
     position: absolute;
-    top: 13%;
-    right: 40%;
-    width: 282px;
+    top: 130px;
+    right: 42%;
+    min-width: 282px;
+    z-index: 10;
   }
 }
 
@@ -45,7 +46,7 @@
   .box {
     position: absolute;
     z-index: 2;
-    top: 13%;
+    top: 82px;
     right: 43%;
     width: 292px;
   }

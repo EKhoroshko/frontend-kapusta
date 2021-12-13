@@ -1,41 +1,33 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Select from "react-select";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import Calendar from "../Calendar/Calendar";
+import customStyles from "../../helpers/Select/SelectOption.js";
+import options from "../../helpers/Select/SelectList.js";
+import { ReactComponent as Calculator } from "../../assets/images/calculator.svg";
 import { ReactComponent as Arrow } from "../../assets/images/arrowLeft.svg";
+import Button from "../Button/Button";
 import List from "../List/List";
 import css from "./AddForm.module.css";
-import { useHistory } from "react-router-dom";
 
 function AddForm() {
   const history = useHistory();
-  const [calendar, setCalendar] = useState(new Date());
   const [select, setSelect] = useState(null);
   const [descriptoin, setDescriptoin] = useState("");
-  console.log(select); /// это временно для деплоя при работе можно удалить
+  const [price, setPrice] = useState("");
 
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
-
-  const customStyles = {
-    option: (provided, state) => ({
-      ...provided,
-      color: state.isSelected ? "yellow" : "black",
-      backgroundColor: state.isSelected ? "green" : "white",
-    }),
-    control: (provided) => ({
-      ...provided,
-      borderRadius: "0px",
-      borderBottomRightRadius: "16px",
-      border: "2px solid #ffffff",
-      backgroundColor: "transparent",
-    }),
+  const writePrice = (e) => {
+    e.preventDefault();
+    console.log(price);
+    console.log(descriptoin);
+    console.log(select);
   };
 
-  const CheckDescription = (e) => {
+  const checkPrise = (e) => {
+    setPrice(e.currentTarget.value);
+  };
+
+  const checkDescription = (e) => {
     setDescriptoin(e.currentTarget.value);
   };
 
@@ -54,22 +46,17 @@ function AddForm() {
           <button className={css.back} type="button" onClick={goBack}>
             <Arrow className={css.arrow} />
           </button>
-          <form className={css.form}>
+          <form className={css.form} onSubmit={writePrice}>
             <div className={css.flex}>
               <div className={css.box}>
-                <DatePicker
-                  dateFormat="dd/MM/yyyy"
-                  selected={calendar}
-                  onChange={(date) => setCalendar(date)}
-                  className={css.red}
-                />
+                <Calendar />
               </div>
               <input
                 type="text"
                 className={css.descr}
                 placeholder="Описание товара"
                 value={descriptoin}
-                onChange={CheckDescription}
+                onChange={checkDescription}
               />
               <Select
                 styles={customStyles}
@@ -77,22 +64,34 @@ function AddForm() {
                 className={css.select}
                 onChange={(options) => setSelect(options.label)}
               />
-              <input type="text" />
+              <div className={css.formPrice}>
+                <input
+                  className={css.inputPrice}
+                  type="text"
+                  autoComplete="off"
+                  placeholder="00.00 UAH"
+                  value={price}
+                  onChange={checkPrise}
+                />
+                <button className={css.btnPrice}>
+                  <Calculator className={css.calculator} />
+                </button>
+              </div>
             </div>
-            <ul>
-              <li>
-                <button type="submit"> ввод</button>
+            <ul className={css.list}>
+              <li className={css.item}>
+                <Button type="submit" text="ввод" onSubmit={writePrice} />
               </li>
               <li>
-                <button type="button" onClick={clearForm}>
-                  очистить
-                </button>
+                <Button type="button" text="очистить" onClick={clearForm} />
               </li>
             </ul>
           </form>
         </div>
       </div>
-      <List />
+      <div className={css.listTranzaktion}>
+        <List />
+      </div>
     </div>
   );
 }

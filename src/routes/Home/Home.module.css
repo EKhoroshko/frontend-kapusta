@@ -1,6 +1,5 @@
 .section {
-  position: relative;
-  height: calc(100vh - 50px);
+  height: 100vh;
   width: 320px;
   margin: 0 auto;
 }
@@ -106,19 +105,7 @@
 }
 
 .flex {
-  display: flex;
-}
-
-.date {
-  width: 25px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-.red {
-  width: 104px;
-  background-color: transparent;
-  border: none;
+  margin: 0 auto;
 }
 
 .boxLink {
@@ -159,14 +146,9 @@
 
 @media screen and (min-width: 768px) {
   .section {
-    position: relative;
     height: 100vh;
     width: 768px;
     margin: 0 auto;
-  }
-
-  .boxLinkMin {
-    display: none;
   }
 
   .imgBack {
@@ -179,21 +161,18 @@
     margin: 0 auto;
   }
 
+  .flex {
+    display: none;
+  }
+
   .box {
     display: flex;
     flex-direction: row-reverse;
     align-content: center;
     align-items: center;
     padding-top: 40px;
+    padding-left: 82px;
     padding-bottom: 58px;
-  }
-
-  .date {
-    display: none;
-  }
-
-  .red {
-    display: none;
   }
 
   .balance {
@@ -223,10 +202,15 @@
     border-radius: 16px;
   }
 
+  .boxLinkMin {
+    display: none;
+  }
+
   .boxLink {
     position: relative;
-    bottom: 63%;
-    left: 7%;
+    bottom: 70%;
+    left: 8%;
+    z-index: 2;
     display: flex;
     justify-content: flex-start;
   }
@@ -241,6 +225,13 @@
   .btn:focus {
     color: #ff751d;
     background-color: #fafbfd;
+  }
+
+  .route {
+    position: relative;
+    bottom: 72%;
+    left: 8%;
+    z-index: 3;
   }
 }
 
@@ -287,11 +278,5 @@
   .btn {
     width: 138px;
     padding: 15px 20px;
-  }
-
-  .casts {
-    position: absolute;
-    bottom: 44%;
-    left: 110px;
   }
 }

@@ -39,19 +39,82 @@
   padding-left: 5px;
   border: 2px solid #ffffff;
   box-sizing: border-box;
+  text-align: center;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   background-color: transparent;
 }
 
 .descr::placeholder {
+  text-align: left;
+  padding-left: 20px;
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.02em;
   color: #c7ccdc;
 }
 
-.red {
+.descr:focus,
+.descr:hover {
+  border: 2px solid #ff751d;
+  outline: none;
+}
+
+.box {
+  display: none;
+}
+
+.select {
+  margin-bottom: 30px;
+}
+
+.formPrice {
+  display: flex;
+  margin: 0 auto;
+  width: 183px;
+}
+
+.inputPrice {
+  width: 105px;
+  padding: 12px 17px 12px 10px;
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  text-align: right;
+  border-radius: 22px 0px 0px 22px;
+  background-color: transparent;
+}
+
+.inputPrice::placeholder {
+  text-align: end;
+}
+
+.btnPrice {
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 0px 22px 22px 0px;
+  background-color: transparent;
+  padding: 0px;
+}
+
+.calculator {
+  padding: 12px 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.list {
+  position: relative;
+  top: 83px;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+}
+
+.item {
+  margin-right: 15px;
+}
+
+.listTranzaktion {
   display: none;
 }
 
@@ -59,4 +122,102 @@
   .back {
     display: none;
   }
+
+  .wraper {
+    width: 665px;
+    background-color: #ffffff;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    border-radius: 0px 30px 30px 30px;
+  }
+
+  .conteiner {
+    padding: 28px 0px 0px 0px;
+  }
+
+  .imgBack {
+    background-image: none;
+  }
+
+  .form {
+    margin-top: 0px;
+  }
+
+  .flex {
+    flex-direction: row;
+    align-items: baseline;
+    margin-bottom: 30px;
+  }
+
+  .box {
+    display: block;
+    height: 40px;
+    margin-left: 31px;
+  }
+
+  .select {
+    margin-bottom: 0px;
+    width: 171px;
+    border: 2px solid #f5f6fb;
+  }
+
+  .formPrice {
+    display: flex;
+    margin-left: 0px;
+    border: 2px solid #f5f6fb;
+    border-radius: 0px 16px 16px 0px;
+    width: 104px;
+  }
+
+  .inputPrice {
+    padding: 0px 0px 0px 5px;
+    width: 70px;
+    box-sizing: border-box;
+    text-align: start;
+    background-color: transparent;
+    border-radius: 0px 22px 22px 0px;
+  }
+
+  .inputPrice:focus,
+  .inputPrice:hover {
+    border: none;
+    outline: none;
+  }
+
+  .formPrice:focus,
+  .formPrice:hover {
+    border: 2px solid #ff751d;
+    outline: none;
+  }
+
+  .calculator {
+    padding: 11px 0px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .descr {
+    padding: 15px 0px;
+    padding-left: 5px;
+    border-radius: 22px 0px 0px 0px;
+    border: 2px solid #f5f6fb;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: transparent;
+  }
+
+  .list {
+    position: static;
+    justify-content: center;
+    padding: 0px;
+    margin: 0px;
+    padding-bottom: 480px;
+    display: flex;
+  }
+
+  .listTranzaktion {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1280px) {
 }
