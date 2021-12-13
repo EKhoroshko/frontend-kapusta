@@ -2,14 +2,13 @@ import s from "./LoginForm.module.css";
 import Button from "../Button/Button";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { register, logIn } from "../../redux/auth/operations";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const [mail, setMail] = useState("");
   const [pass, setPass] = useState("");
   const [type, setType] = useState("");
-
-  console.log(type);
 
   const waitCheck = (e) => {
     const { name, value } = e.currentTarget;
@@ -27,10 +26,32 @@ const LoginForm = () => {
       mail,
       pass,
     };
-    console.log("type", user);
+    submitUser(user);
     setMail("");
     setPass("");
     setType("");
+  };
+
+  const submitUser = async ({ email, password, type }) => {
+    const options = {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    };
+    switch (type) {
+      case "Регистрация":
+        return await dispatch(register(), options).then((response) =>
+          response.json()
+        );
+      case "Войти":
+        return await dispatch(logIn(), options).then((response) =>
+          response.json()
+        );
+      default:
+        return "I cannot login user";
+    }
   };
 
   const checkType = (e) => {

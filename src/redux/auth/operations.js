@@ -87,4 +87,5 @@ const currentUser = createAsyncThunk("auth/refresh", async (_, thunkAPI) => {
     });
   }
 });
+
 export { register, logIn, logOut, currentUser };
