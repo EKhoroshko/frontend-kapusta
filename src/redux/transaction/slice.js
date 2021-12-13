@@ -1,17 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-const transactionState = {
-  category: "",
-  description: "",
-  date: "",
-  month: null,
-  year: null,
-  sum: 0,
-  transactionType: "",
+const initialState = {
+  balance: 0,
+  income: [],
+  cost: [],
 };
 
 const transactionSlice = createSlice({
-  name: "transaction",
-  initialState: transactionState,
+  name: "transactions",
+  initialState,
   extraReducers: {},
 });
 export default transactionSlice.reducer;

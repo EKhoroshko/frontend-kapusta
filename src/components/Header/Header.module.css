@@ -1,0 +1,60 @@
+.container {
+  margin: 0 auto;
+  max-width: 1300px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+
+  letter-spacing: 0.04em;
+
+  color: #52555f;
+}
+.header {
+  padding: 10px 0;
+  background-color: #ffffff;
+}
+.user__menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.first__letter {
+  width: 32px;
+  height: 32px;
+  background-color: #f5f6fa;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+.symbol {
+  color: #000000;
+}
+.user__name {
+  padding: 10px 15px;
+  margin-right: 15px;
+  border-right: 1px solid #e0e5eb;
+}
+.logout {
+  border-color: transparent;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.logout__text {
+  text-decoration-line: underline;
+}
+
+.logout:hover .logout__text,
+.logout:focus .logout__text {
+  color: orange;
+}

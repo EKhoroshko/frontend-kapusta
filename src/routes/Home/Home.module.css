@@ -1,0 +1,321 @@
+.section {
+  height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.imgBack {
+  background-image: url("../../assets/images/back.png");
+  background-repeat: no-repeat;
+  background-size: 100% 282px;
+}
+
+.container {
+  padding-left: 19px;
+  padding-right: 19px;
+  margin: 0 auto;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 42px;
+}
+
+.sum {
+  display: flex;
+  align-items: center;
+  border: none;
+  margin-bottom: 40px;
+  background-color: transparent;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: right;
+  letter-spacing: 0.04em;
+  color: rgba(82, 85, 95, 0.7);
+}
+
+.diagramma {
+  width: 24px;
+  height: 24px;
+  margin-left: 15px;
+}
+
+.text {
+  text-align: center;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  color: rgba(82, 85, 95, 0.7);
+}
+
+.wraper {
+  width: 248px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.add {
+  max-width: 124px;
+  padding: 12px 17px 12px 3px;
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 22px 0px 0px 22px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: right;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.add:focus {
+  outline-color: #ff751d;
+}
+
+.btnAdd {
+  width: 124px;
+  padding: 12px 6px 12px 17px;
+  border: 2px solid #ffffff;
+  background-color: transparent;
+  box-sizing: border-box;
+  border-radius: 0px 22px 22px 0px;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(82, 85, 95, 0.7);
+}
+
+.btnAdd:hover,
+.btnAdd:focus {
+  color: #ffffff;
+  background: #ff751d;
+}
+
+.flex {
+  margin: 0 auto;
+}
+
+.boxLink {
+  display: none;
+}
+
+.boxLinkMin {
+  margin: 0 auto;
+  width: 282px;
+  display: flex;
+  justify-content: center;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.btn {
+  width: 159px;
+  padding: 22px 30px;
+  background-color: #f5f6fb;
+  border: none;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #ff751d;
+  color: #ffffff;
+}
+
+.mobile {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.descktop {
+  display: none;
+}
+
+.route {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    height: 100vh;
+    width: 100%;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .imgBack {
+    background-size: 100vw 100%;
+    height: 583px;
+  }
+
+  .container {
+    width: 665px;
+    padding-left: 51px;
+    padding-right: 52px;
+  }
+
+  .flex {
+    display: none;
+  }
+
+  .box {
+    display: flex;
+    flex-direction: row-reverse;
+    align-content: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-left: 82px;
+    padding-bottom: 58px;
+  }
+
+  .balance {
+    display: flex;
+    align-items: baseline;
+  }
+
+  .text {
+    text-align: right;
+    margin-right: 21px;
+  }
+
+  .wraper {
+    width: 100%;
+  }
+
+  .add {
+    border: 2px solid #ffffff;
+    box-sizing: border-box;
+    border-radius: 16px;
+  }
+
+  .btnAdd {
+    margin-left: 15px;
+    border: 2px solid #ffffff;
+    box-sizing: border-box;
+    border-radius: 16px;
+  }
+
+  .boxLinkMin {
+    display: none;
+  }
+
+  .boxLink {
+    position: absolute;
+    bottom: 70%;
+    left: 50%;
+    margin-left: -300px;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .btn {
+    width: 138px;
+    background-color: #fafbfd;
+    border-radius: 20px;
+  }
+
+  .btn:hover,
+  .btn:focus {
+    color: #ff751d;
+    background-color: #fafbfd;
+  }
+
+  .route {
+    display: block;
+    position: absolute;
+    top: 245px;
+    left: 50%;
+    z-index: 3;
+    margin-left: -300px;
+  }
+
+  .descktop {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .container {
+    width: 1060px;
+    padding-left: 110px;
+    padding-right: 110px;
+    margin: 0 auto;
+  }
+
+  .imgBack {
+    background-size: 100vw 100%;
+  }
+
+  .box {
+    padding-top: 40px;
+    padding-bottom: 0px;
+    margin-bottom: 48px;
+    justify-content: flex-start;
+  }
+
+  .sum {
+    margin-bottom: 0px;
+    margin-left: 205px;
+  }
+
+  .text {
+    margin-bottom: 0px;
+  }
+
+  .wraper {
+    margin-bottom: 0px;
+  }
+
+  .boxLink {
+    position: absolute;
+    left: 50%;
+    margin-left: -550px;
+    bottom: 80%;
+  }
+
+  .btn {
+    width: 138px;
+    padding: 15px 20px;
+  }
+
+  .route {
+    position: absolute;
+    top: 165px;
+    left: 50%;
+    margin-left: -550px;
+    z-index: 3;
+  }
+}
