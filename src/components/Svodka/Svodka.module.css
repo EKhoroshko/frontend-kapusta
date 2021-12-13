@@ -1,0 +1,71 @@
+@media screen and (min-width: 768px) {
+  .svodka {
+    display: block;
+    width: 230px;
+    /* height: 278px; */
+    overflow: hidden;
+    border-radius: 0 0 20px 0;
+    margin-left: 20px;
+  }
+
+  .svodkaHistory {
+    width: 230px;
+    background-color: #f5f6fb;
+    border-collapse: collapse;
+    text-transform: uppercase;
+  }
+
+  .svodkaHeader {
+    font-weight: 700;
+    font-size: 12px;
+    font: Roboto;
+    text-align: center;
+    border-bottom: 2px solid #ffffff;
+  }
+
+  .month {
+    padding-left: 20px;
+    color: #52555f;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .sum {
+    text-align: right;
+    padding-right: 20px;
+    color: #52555f;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .tr {
+    padding: 5px;
+    height: 40px;
+    font-weight: 400;
+    border-bottom: 2px solid #ffffff;
+  }
+
+  .empty {
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .svodka {
+    position: relative;
+    display: block;
+    width: 230px;
+    height: 278px;
+    overflow: hidden;
+    border-radius: 20px 20px 20px 0;
+  }
+}
