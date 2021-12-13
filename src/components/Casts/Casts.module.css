@@ -2,9 +2,10 @@
   display: none;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .list {
     display: flex;
+    flex-direction: column;
     position: relative;
     bottom: 650px;
     padding: 0px 30px;

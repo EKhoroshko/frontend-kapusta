@@ -7,7 +7,9 @@ import options from "../../helpers/Select/SelectList.js";
 import { ReactComponent as Calculator } from "../../assets/images/calculator.svg";
 import { ReactComponent as Arrow } from "../../assets/images/arrowLeft.svg";
 import Button from "../Button/Button";
-import List from "../List/List";
+// import List from "../List/List";
+// import Svodka from "../Svodka/Svodka";
+
 import css from "./AddForm.module.css";
 
 function AddForm() {
@@ -90,7 +92,8 @@ function AddForm() {
         </div>
       </div>
       <div className={css.listTranzaktion}>
-        <List />
+        {/* <List /> */}
+        {/* <Svodka /> */}
       </div>
     </div>
   );

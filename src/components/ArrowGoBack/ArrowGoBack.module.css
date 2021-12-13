@@ -1,0 +1,33 @@
+@media screen and (max-width: 767px) {
+  .arrowText {
+    display: none;
+  }
+}
+
+.GoBack {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.link {
+  display: flex;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: rgba(82, 85, 95, 0.7);
+}
+
+@media screen and (max-width: 1279px) {
+  .GoBack {
+    margin-right: auto;
+  }
+}
+
+.arrowText {
+  margin-left: 18px;
+}
