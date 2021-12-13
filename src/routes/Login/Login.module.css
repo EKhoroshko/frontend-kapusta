@@ -1,12 +1,46 @@
+.wrapper {
+  position: relative;
+  background-color: #f5f6fb;
+}
+
+.bgImg {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 342px;
+  z-index: 98;
+}
+
+.kapustaImg {
+  position: absolute;
+  width: 83px;
+  height: 89px;
+  top: 730px;
+  left: 60px;
+  background-image: url(../../assets/images/iconKap1.svg);
+  z-index: 97;
+}
+
+.kapustaImg2 {
+  position: absolute;
+  width: 83px;
+  height: 89px;
+  top: 100px;
+  left: 260px;
+  background-image: url(../../assets/images/iconKap1.svg);
+  z-index: 98;
+}
+
 .loginPage {
+  position: absolute;
+  z-index: 99;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 320px;
   height: 800px;
   margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
   padding-top: 86px;
-  background-color: rgb(196, 238, 224, 0.3); /* transparent */
 }
 
 .titleBox {
@@ -83,7 +117,7 @@
 }
 
 .button span::before {
-  content: url(../../icons/google-symbol.svg);
+  content: url(../../assets/images/google-symbol.svg);
   display: inline-flex;
   width: 18px;
   height: 18px;
@@ -102,6 +136,26 @@
 }
 
 @media screen and (min-width: 768px) {
+  .kapustaImg {
+    width: 183px;
+    height: 142px;
+    top: 860px;
+    left: 100px;
+    background-image: url(../../assets/images/iconKap2.svg);
+  }
+
+  .kapustaImg2 {
+    width: 720px;
+    height: 232px;
+    top: 30px;
+    left: 30px;
+    background-image: url(../../assets/images/imgKap.png);
+  }
+
+  .bgImg {
+    height: 582px;
+  }
+
   .loginPage {
     width: 768px;
     height: 1024px;
@@ -149,6 +203,26 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .kapustaImg {
+    width: 183px;
+    height: 142px;
+    top: 680px;
+    left: 180px;
+    background-image: url(../../assets/images/iconKap2.svg);
+  }
+
+  .kapustaImg2 {
+    width: 1280px;
+    height: 232px;
+    top: 0px;
+    left: 0px;
+    background-image: url(../../assets/images/imgKap.png);
+  }
+
+  .bgImg {
+    height: 662px;
+  }
+
   .loginPage {
     display: flex;
     flex-direction: row;
