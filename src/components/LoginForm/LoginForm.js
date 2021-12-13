@@ -10,6 +10,8 @@ const LoginForm = () => {
   const [password, setPass] = useState("");
   const [type, setType] = useState("");
 
+  console.log(type);
+
   const waitCheck = (e) => {
     const { name, value } = e.currentTarget;
     if (name === "email") {
@@ -22,7 +24,7 @@ const LoginForm = () => {
   const handlSubmit = (e) => {
     e.preventDefault();
     const user = {
-      type: type ? "Войти" : "Регистрация",
+      type: type,
       email,
       password,
     };
