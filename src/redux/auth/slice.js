@@ -3,8 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 //import { register, logIn, logOut, currentUser } from "./operations";
 const initialState = {
   isLoading: true,
-  data: {},
+  name: "",
+  email: "",
   isLoggedIn: false,
+  token: null,
   error: null,
 };
 
@@ -21,11 +23,11 @@ const authSlice = createSlice({
       isLoading: false,
       data: actions.payload,
     }),
-    userRegisterReject: (state, action) => ({
+    userRegisterReject: (state, actions) => ({
       ...state,
       isLoading: false,
       data: {},
-      error: action.payload,
+      error: actions.payload,
     }),
     userClearError: (state) => ({
       ...state,
@@ -39,7 +41,7 @@ export const {
   userRegisterResolve,
   userRegisterReject,
   userClearError,
-} = authSlice.reducer;
+} = authSlice.actions;
 
 export default authSlice.reducer;
 

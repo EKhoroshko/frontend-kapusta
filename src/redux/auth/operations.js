@@ -100,14 +100,14 @@ const registration = (user) => async (dispatch) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(user),
+    body: JSON.stringify(...user),
   };
-  dispatch(userRegister());
+  //dispatch(userRegister());
   try {
     const response = await fetch(
       "https://back-kapusta.herokuapp.com/api/auth/users/register",
       options
-    ).then((response) => response.json());
+    ).then((response) => console.log(response));
     if (response.hasOwnProperty("errors")) {
       return toast.error("This user already exists", {
         position: "top-center",
@@ -177,11 +177,11 @@ export const submitUser = async (user) => {
     body: JSON.stringify(user),
   };
 
-  switch (user.type) {
-    case "Регистрация":
-      return registration(options);
-    case "Войти":
-      return loginUser(options);
+  switch (user.value) {
+    case "РЕГИСТРАЦИЯ":
+      return await registration(options);
+    case "ВОЙТИ":
+      return await loginUser(options);
     default:
       return "I cannot login user";
   }
