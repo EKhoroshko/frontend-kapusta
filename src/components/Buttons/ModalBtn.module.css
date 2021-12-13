@@ -1,0 +1,23 @@
+.modalBtn {
+  padding: 0 auto;
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  width: 125px;
+  height: 44px;
+  color: #52555f;
+  background-color: #ffffff;
+  border: 2px solid #f5f6fb;
+  box-sizing: border-box;
+  border-radius: 16px;
+  outline: none;
+}
+
+.modalBtn:hover,
+.modalBtn:focus {
+  background-color: #ff751d;
+  color: #ffffff;
+  border-color: #ff751d;
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+}

@@ -4,84 +4,7 @@
   margin-top: 60px;
   border-radius: 20px 20px 0 0;
   outline: 2px solid #f5f6fb;
-}
-
-@media screen and (min-width: 768px) {
-  .mobileWrap {
-    display: none;
-  }
-
-  .listContainer {
-    margin: 0 auto;
-    width: 605px;
-    overflow: scroll;
-  }
-
-  .table {
-    width: 605px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .mobileWrapper {
-    display: none;
-  }
-
-  .listContainer {
-    /* margin: 0; */
-    width: 760px;
-    overflow: visible;
-  }
-
-  .table {
-    width: 760px;
-  }
-}
-
-.table {
-  text-align: center;
-  border-radius: 20px 20px 0 0;
-  overflow: hidden;
-  border-collapse: collapse;
-}
-
-.headerTable {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: #000000;
-  background-color: #f5f6fb;
-}
-
-.tableTh {
-  height: 40px;
-  padding: 5px;
-}
-
-.tr {
-  height: 40px;
-  /* border-bottom: 2px solid #f5f6fb; */
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: 0.04em;
-  color: #52555f;
-}
-
-.deleteBtn {
-  width: 32px;
-  height: 32px;
-  border: 1px solid transparent;
-  border-radius: 50%;
-  background-color: transparent;
-}
-.deleteBtn:hover {
-  background-color: #f5f6fb;
+  display: block;
 }
 
 @media screen and (max-width: 767px) {
@@ -90,17 +13,19 @@
   }
 
   .mobileWrap {
-    min-height: calc(100vh - 422px);
-
     margin-bottom: 10px;
+    height: 100%;
+    position: relative;
+    width: 320px;
+    margin: 0 auto;
   }
 
   .mobileWrap {
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
     width: 282px;
     max-height: 200px;
-    margin: 0 auto;
+    margin: 0 auto; */
     font-style: normal;
     font-weight: 700;
     overflow: scroll;
@@ -112,7 +37,7 @@
   }
 
   .mobileList {
-    width: 100%;
+    /* width: 100%; */
     padding: 0;
     margin: 0;
     list-style: none;
@@ -120,13 +45,12 @@
   }
 
   .mobileList2 {
-    width: 99%;
-    border-bottom: 2px solid #f5f6fb;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    justify-content: space-between;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+
+    border-bottom: 2px solid #f5f6fb;
   }
 
   .mobileListWrap {
@@ -173,8 +97,8 @@
   }
 
   .btnWrapper {
-    width: 18px;
-    height: 18px;
+    width: 32px;
+    height: 32px;
     margin-left: 20px;
   }
 
@@ -185,6 +109,82 @@
   }
 
   .deleteBtn:hover {
-    background-color: #F5F6FB;
+    background-color: #f5f6fb;
   }
+}
+
+@media screen and (min-width: 768px) {
+  .mobileWrap {
+    display: none;
+  }
+
+  .listContainer {
+    margin: 0 auto;
+    width: 605px;
+    overflow: scroll;
+  }
+
+  .table {
+    width: 605px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .mobileWrapper {
+    display: none;
+  }
+
+  .listContainer {
+    width: 760px;
+    overflow: visible;
+  }
+
+  .table {
+    width: 760px;
+  }
+}
+
+.table {
+  text-align: center;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  border-collapse: collapse;
+}
+
+.headerTable {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+  background-color: #f5f6fb;
+}
+
+.tableTh {
+  height: 40px;
+  padding: 5px;
+}
+
+.tr {
+  height: 40px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #52555f;
+}
+
+.deleteBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background-color: transparent;
+}
+.deleteBtn:hover {
+  background-color: #f5f6fb;
 }
