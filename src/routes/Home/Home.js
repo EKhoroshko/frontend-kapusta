@@ -26,9 +26,7 @@ function Home() {
   };
 
   const checkBalance = (e) => {
-    if (Number(e.currentTarget.value)) {
-      setBalanse(e.currentTarget.value);
-    }
+    setBalanse(e.currentTarget.value);
   };
 
   const addBalance = (e) => {
