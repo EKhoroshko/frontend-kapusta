@@ -6,7 +6,8 @@
   .list {
     display: flex;
     position: relative;
-    bottom: 440px;
+    bottom: 650px;
+    left: 50px;
     padding: 0px 30px;
   }
 }
@@ -16,6 +17,7 @@
     display: flex;
     position: relative;
     bottom: 440px;
+    left: 115px;
     padding: 0px 20px;
   }
 }
