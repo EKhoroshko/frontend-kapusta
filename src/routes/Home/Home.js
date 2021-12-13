@@ -16,7 +16,7 @@ import Casts from "../../components/Casts/Casts";
 import css from "./Home.module.css";
 
 function Home() {
-  const [balanse, setBalanse] = useState(5);
+  const [balanse, setBalanse] = useState("");
   const match = useRouteMatch();
   const history = useHistory();
   console.log(balanse);

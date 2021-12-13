@@ -220,4 +220,46 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .wraper {
+    width: 1060px;
+    height: 579px;
+  }
+
+  .select {
+    width: 188px;
+  }
+
+  .flex {
+    margin-bottom: 0px;
+  }
+
+  .box {
+    margin-left: 20px;
+  }
+
+  .formPrice {
+    width: 126px;
+  }
+
+  .descr {
+    width: 265px;
+  }
+
+  .form {
+    display: flex;
+    align-items: center;
+    padding-bottom: 59px;
+  }
+
+  .list {
+    position: static;
+    margin: 0px;
+    padding: 0px;
+    margin-left: 27px;
+    margin-right: 20px;
+  }
+
+  .item {
+    margin-right: 10px;
+  }
 }

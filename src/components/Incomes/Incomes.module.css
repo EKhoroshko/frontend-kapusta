@@ -10,3 +10,9 @@
     padding: 0px 30px;
   }
 }
+
+@media screen and (min-width: 1280px) {
+  .list {
+    padding: 0px 20px;
+  }
+}
