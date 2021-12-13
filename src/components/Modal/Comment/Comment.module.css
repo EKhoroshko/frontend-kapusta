@@ -45,9 +45,9 @@
 @media screen and (min-width: 1280px) {
   .box {
     position: absolute;
-    z-index: 2;
+    z-index: 10;
     top: 82px;
-    right: 43%;
+    right: 37%;
     width: 292px;
   }
 }

@@ -10,12 +10,13 @@ import { ReactComponent as Diagramma } from "../../assets/images/summary.svg";
 import Calendar from "../../components/Calendar/Calendar";
 import Comment from "../../components/Modal/Comment/Comment";
 import Incomes from "../../components/Incomes/Incomes";
+import MobileList from "../../components/List/MobileList";
+import List from "../../components/List/List";
 import Casts from "../../components/Casts/Casts";
 import css from "./Home.module.css";
 
-
 function Home() {
-  const [balanse, setBalanse] = useState(5);
+  const [balanse, setBalanse] = useState("");
   const match = useRouteMatch();
   const history = useHistory();
   console.log(balanse);
@@ -25,9 +26,7 @@ function Home() {
   };
 
   const checkBalance = (e) => {
-    if (Number(e.currentTarget.value)) {
-      setBalanse(e.currentTarget.value);
-    }
+    setBalanse(e.currentTarget.value);
   };
 
   const addBalance = (e) => {
@@ -91,6 +90,13 @@ function Home() {
             Доход
           </button>
         </NavLink>
+      </div>
+
+      <div className={css.mobile}>
+        <MobileList />
+      </div>
+      <div className={css.descktop}>
+        <List />
       </div>
 
       <div className={css.route}>

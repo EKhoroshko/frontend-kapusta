@@ -1,4 +1,21 @@
 .list {
-  position: relative;
-  bottom: 440px;
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    display: flex;
+    position: relative;
+    bottom: 440px;
+    padding: 0px 30px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .list {
+    display: flex;
+    position: relative;
+    bottom: 440px;
+    padding: 0px 20px;
+  }
 }

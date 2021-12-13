@@ -109,6 +109,7 @@
     align-items: center;
     letter-spacing: 0.04em;
     color: #52555f;
+    align-content: flex-start;
   }
 
   .mobileList {
@@ -185,6 +186,6 @@
   }
 
   .deleteBtn:hover {
-    background-color: #F5F6FB;
+    background-color: #f5f6fb;
   }
 }
