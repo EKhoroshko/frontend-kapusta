@@ -28,7 +28,6 @@ const Mobile = () => {
       
         <div className={styles.btnWrapper}>
           <button type="button" className={styles.deleteBtn}
-                          className={styles.deleteBtn}
                           onClick={() => {
                             toggleModal();
                           }}>
