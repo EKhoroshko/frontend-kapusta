@@ -44,10 +44,10 @@ class Modal extends Component {
           </div>
           <div className={s.ModalWindowWrap}>
             <div className={s.btnWrapper}>
-              <ModalBtn text={"Да"} btnAction={onSubmit} />
+              <ModalBtn text={"Да"} onClick={onSubmit} />
             </div>
             <div className={s.btnWrapper}>
-              <ModalBtn text={"Нет"} key="2" btnAction={onCancel} />
+              <ModalBtn text={"Нет"} key="2" onClick={onCancel} />
             </div>
           </div>
         </div>
