@@ -36,7 +36,8 @@
   .box {
     position: absolute;
     top: 130px;
-    right: 42%;
+    right: 50%;
+    margin-right: -75px;
     min-width: 282px;
     z-index: 10;
   }
@@ -47,7 +48,8 @@
     position: absolute;
     z-index: 10;
     top: 82px;
-    right: 37%;
+    right: 50%;
+    margin-right: -170px;
     width: 292px;
   }
 }

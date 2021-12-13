@@ -1,6 +1,6 @@
 .wraper {
   height: 100vh;
-  width: 320px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -11,6 +11,7 @@
 }
 
 .conteiner {
+  width: 282px;
   padding-left: 19px;
   padding-right: 19px;
   margin: 0 auto;
@@ -134,7 +135,9 @@
   }
 
   .conteiner {
+    display: flex;
     padding: 28px 0px 0px 0px;
+    margin: 0;
   }
 
   .imgBack {

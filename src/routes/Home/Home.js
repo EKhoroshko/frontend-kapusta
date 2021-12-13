@@ -16,7 +16,7 @@ import Casts from "../../components/Casts/Casts";
 import css from "./Home.module.css";
 
 function Home() {
-  const [balanse, setBalanse] = useState("");
+  const [balanse, setBalanse] = useState(5);
   const match = useRouteMatch();
   const history = useHistory();
   console.log(balanse);
@@ -66,6 +66,13 @@ function Home() {
         </div>
       </div>
 
+      <div className={css.mobile}>
+        <MobileList />
+      </div>
+      <div className={css.descktop}>
+        <List />
+      </div>
+
       <div className={css.boxLink}>
         <NavLink className={css.link} to={`${match.url}/casts`}>
           <button className={css.btn} type="button">
@@ -90,13 +97,6 @@ function Home() {
             Доход
           </button>
         </NavLink>
-      </div>
-
-      <div className={css.mobile}>
-        <MobileList />
-      </div>
-      <div className={css.descktop}>
-        <List />
       </div>
 
       <div className={css.route}>

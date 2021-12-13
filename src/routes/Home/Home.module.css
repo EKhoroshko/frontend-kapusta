@@ -1,13 +1,13 @@
 .section {
   height: 100vh;
-  width: 320px;
+  width: 100%;
   margin: 0 auto;
 }
 
 .imgBack {
   background-image: url("../../assets/images/back.png");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% 282px;
 }
 
 .container {
@@ -113,10 +113,10 @@
 }
 
 .boxLinkMin {
-  position: absolute;
-  bottom: 0;
+  margin: 0 auto;
+  width: 282px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .link {
@@ -146,17 +146,22 @@
 
 .mobile {
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .descktop {
   display: none;
 }
 
+.route {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   .section {
     height: 100vh;
-    width: 768px;
-    margin: 0 auto;
+    width: 100%;
   }
 
   .mobile {
@@ -164,14 +169,14 @@
   }
 
   .imgBack {
-    background-size: 100% 100%;
+    background-size: 100vw 100%;
     height: 583px;
   }
 
   .container {
+    width: 665px;
     padding-left: 51px;
     padding-right: 52px;
-    margin: 0 auto;
   }
 
   .flex {
@@ -220,9 +225,10 @@
   }
 
   .boxLink {
-    position: relative;
-    bottom: 55%;
-    left: 8%;
+    position: absolute;
+    bottom: 70%;
+    left: 50%;
+    margin-left: -300px;
     z-index: 2;
     display: flex;
     justify-content: flex-start;
@@ -241,14 +247,16 @@
   }
 
   .route {
-    position: relative;
-    bottom: 66%;
-    left: 1%;
+    display: block;
+    position: absolute;
+    top: 245px;
+    left: 50%;
     z-index: 3;
+    margin-left: -300px;
   }
 
   .descktop {
-    display: block;
+    display: none;
   }
 }
 
@@ -256,18 +264,19 @@
   .section {
     position: relative;
     height: 100vh;
-    width: 1280px;
+    width: 100%;
     margin: 0 auto;
   }
 
   .container {
+    width: 1060px;
     padding-left: 110px;
     padding-right: 110px;
     margin: 0 auto;
   }
 
   .imgBack {
-    background-size: 100% 100%;
+    background-size: 100vw 100%;
   }
 
   .box {
@@ -291,7 +300,10 @@
   }
 
   .boxLink {
-    bottom: 52%;
+    position: absolute;
+    left: 50%;
+    margin-left: -550px;
+    bottom: 80%;
   }
 
   .btn {
@@ -300,9 +312,10 @@
   }
 
   .route {
-    position: relative;
-    bottom: 62%;
-    left: -0.5%;
+    position: absolute;
+    top: 165px;
+    left: 50%;
+    margin-left: -550px;
     z-index: 3;
   }
 }
