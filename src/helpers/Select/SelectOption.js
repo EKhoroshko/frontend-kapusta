@@ -1,0 +1,60 @@
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    color: state.isSelected ? "#52555F" : "#C7CCDC",
+    backgroundColor: state.isSelected ? "#F5F6FB" : "#FFFFFF",
+    border: "2px solid #F5F6FB",
+    boxSizing: "border-box",
+    boxShadow: "0px 3px 4px rgba(170, 178, 197, 0.4)",
+    paddingLeft: "20px",
+    paddingTop: "15px",
+    paddingBottom: "15px",
+    fontSize: "12px",
+    lineHeight: "14px",
+    letterSpacing: "0.02em",
+  }),
+  control: (provided, state) => ({
+    ...provided,
+    padding: "5px",
+    borderRadius: "0px",
+    border: state.isFocused ? "2px solid #FF751D" : "2px solid #ffffff",
+    boxShadow: state.isFocused ? "2px solid #FF751D" : "2px solid #ffffff",
+    backgroundColor: "transparent",
+  }),
+  indicatorSeparator: (provided) => ({
+    ...provided,
+    display: "none",
+  }),
+  placeholder: (provided) => ({
+    ...provided,
+    paddingLeft: "20px",
+    fontSize: "12px",
+    lineHeight: "14px",
+    letterSpacing: "0.02em",
+    color: "#C7CCDC",
+  }),
+  menu: (provided) => ({
+    ...provided,
+    marginTop: "0px",
+  }),
+  input: (provided) => ({
+    ...provided,
+    paddingLeft: "20px",
+    paddingTop: "2px",
+    paddingBottom: "2px",
+    fontSize: "12px",
+    lineHeight: "14px",
+    letterSpacing: "0.02em",
+    color: "#C7CCDC",
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    paddingLeft: "20px",
+    fontSize: "12px",
+    lineHeight: "14px",
+    letterSpacing: "0.02em",
+    color: "#C7CCDC",
+  }),
+};
+
+export default customStyles;
