@@ -1,12 +1,25 @@
 import React from "react";
-
+import transactionsOperations from "../../redux/transaction/operations";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 // import Svodka from "../Svodka/Svodka";
 import MobileList from "./MobileList";
 import s from "./List.module.css";
+import Modal from "../Modal/ModalWindow/ModalWindow"
 
-import deleteIcon from "../../images/svg/delete.svg";
+
+import deleteIcon from "../../assets/images/delete.svg";
 
 function List() {
+
+  const dispatch = useDispatch();
+
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const toggleModal = (e) => {
+    setModalOpen(!isModalOpen);
+  };
+
   return (
     <>
     <div className={s.mainContainer}>
@@ -31,16 +44,28 @@ function List() {
               <button
                 type="button"
                 className={s.deleteBtn}
+                onClick={() => {
+                  toggleModal();
+                }}
               >
                 <img className={s.icon} src={deleteIcon} alt="Delete icon" />
               </button>
+              {isModalOpen && (
+          <Modal
+            text={"Вы уверены?"}
+            onCancel={toggleModal}
+            onSubmit={() => {
+              dispatch(transactionsOperations.deleteTransaction());
+            }}
+          />
+        )}
             </td>
           </tr>
         </tbody>
       </table>
      
     </div>
-    {/* <Svodka /> */}
+  
     </div>
     <div className={s.mobileWrap}>
         <div className={s.listWrap}>
@@ -52,7 +77,7 @@ function List() {
             </ul>
           </div>
         </div>
-        
+        {/* <Svodka /> */}
         </>
   );
 }
