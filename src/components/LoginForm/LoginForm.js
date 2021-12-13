@@ -2,12 +2,12 @@ import s from "./LoginForm.module.css";
 import Button from "../Button/Button";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { register, logIn } from "../../redux/auth/operations";
+import { submitUser } from "../../redux/auth/operations";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const [mail, setMail] = useState("");
-  const [pass, setPass] = useState("");
+  const [email, setMail] = useState("");
+  const [password, setPass] = useState("");
   const [type, setType] = useState("");
 
   const waitCheck = (e) => {
@@ -23,35 +23,14 @@ const LoginForm = () => {
     e.preventDefault();
     const user = {
       type: type ? "Войти" : "Регистрация",
-      mail,
-      pass,
+      email,
+      password,
     };
-    submitUser(user);
+    console.log(user);
+    //dispatch(submitUser(user));
     setMail("");
     setPass("");
     setType("");
-  };
-
-  const submitUser = async ({ email, password, type }) => {
-    const options = {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    };
-    switch (type) {
-      case "Регистрация":
-        return await dispatch(register(), options).then((response) =>
-          response.json()
-        );
-      case "Войти":
-        return await dispatch(logIn(), options).then((response) =>
-          response.json()
-        );
-      default:
-        return "I cannot login user";
-    }
   };
 
   const checkType = (e) => {
@@ -68,7 +47,7 @@ const LoginForm = () => {
             type="text"
             name="email"
             required
-            value={mail}
+            value={email}
             onChange={waitCheck}
           />
         </label>
@@ -79,7 +58,7 @@ const LoginForm = () => {
             type="password"
             name="password"
             required
-            value={pass}
+            value={password}
             onChange={waitCheck}
             autoComplete="off"
           />
