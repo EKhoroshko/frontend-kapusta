@@ -41,32 +41,12 @@
 
 .formButton {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   width: 265px;
 }
 
 .button {
-  width: 125px;
-  height: 44px;
-  border-radius: 26px;
-  border: transparent;
-  box-shadow: 1px 2px 3px rgba(170, 178, 197, 0.4);
-  background-color: #f5f6fb;
-  font-size: 0.75rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 0.875rem;
-  color: #52555f;
-  text-transform: uppercase;
-  cursor: pointer;
-  outline: none;
-}
-
-.button:not(:last-child) {
   margin-right: 10px;
-  background-color: rgb(255, 117, 29);
-  box-shadow: 1px 2px 3px rgba(255, 117, 29, 0.4);
-  color: #f5f6fb;
 }
 
 @media screen and (min-width: 768px) {
@@ -86,6 +66,6 @@
   .input {
     width: 265px;
     height: 42px;
-    padding: 0px 18px;
+    padding: 0px 10px;
   }
 }
