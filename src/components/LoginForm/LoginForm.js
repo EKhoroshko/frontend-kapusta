@@ -2,7 +2,7 @@ import s from "./LoginForm.module.css";
 import Button from "../Button/Button";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { submitUser } from "../../redux/auth/operations";
+import { registration, loginUser } from "../../redux/auth/operations";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -26,9 +26,7 @@ const LoginForm = () => {
       email,
       password,
     };
-    console.log(user);
-    console.log(dispatch(submitUser(user)));
-    //dispatch(submitUser(user));
+    submitUser(user);
     setMail("");
     setPass("");
     setType("");
@@ -36,6 +34,21 @@ const LoginForm = () => {
 
   const checkType = (e) => {
     setType(e.target.outerText);
+  };
+
+  const submitUser = async ({ value, email, password }) => {
+    const options = {
+      email,
+      password,
+    };
+    switch (value) {
+      case "РЕГИСТРАЦИЯ":
+        return await dispatch(registration(options));
+      case "ВОЙТИ":
+        return await dispatch(loginUser(options));
+      default:
+        return "I cannot login user";
+    }
   };
 
   return (

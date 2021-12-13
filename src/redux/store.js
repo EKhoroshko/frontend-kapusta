@@ -13,6 +13,7 @@ import logger from "redux-logger";
 import authReducer from "./auth/slice";
 import transactionReducer from "./transaction/slice";
 import { configureStore } from "@reduxjs/toolkit";
+
 const persistConfig = {
   key: "auth",
   storage,

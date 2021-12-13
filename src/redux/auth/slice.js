@@ -1,39 +1,71 @@
 import { createSlice } from "@reduxjs/toolkit";
 //import { toast } from "react-toastify";
 //import { register, logIn, logOut, currentUser } from "./operations";
-const initialState = {
-  isLoading: true,
-  name: "",
-  email: "",
-  isLoggedIn: false,
-  token: null,
-  error: null,
-};
 
 const authSlice = createSlice({
   name: "auth",
-  initialState,
+  initialState: {
+    isLoading: true,
+    isLogin: false,
+    token: null,
+    error: null,
+    data: {},
+  },
   reducers: {
-    userRegister: (state) => ({
+    userRegister: (state, _) => ({
       ...state,
       isLoading: true,
     }),
-    userRegisterResolve: (state, actions) => ({
+    userRegisterResolve: (state, { payload }) => ({
+      ...state,
+      data: payload,
+      isLoading: false,
+    }),
+    userRegisterReject: (_, actions) => ({
+      isLoading: false,
+      error: actions.error,
+    }),
+
+    userLogin: (state) => ({
+      ...state,
+      isLoading: true,
+    }),
+    userLoginResolve: (state, { payload }) => ({
       ...state,
       isLoading: false,
-      data: actions.payload,
+      token: payload.token,
+      data: payload,
+      isLogin: true,
     }),
-    userRegisterReject: (state, actions) => ({
+    userLoginReject: (state, action) => ({
       ...state,
       isLoading: false,
       data: {},
-      error: actions.payload,
+      error: action.payload,
     }),
+
     userClearError: (state) => ({
       ...state,
       error: null,
     }),
   },
+
+  userLogOut: (state) => ({
+    ...state,
+    isLoading: true,
+  }),
+  userLogOutResolve: (state, { payload }) => ({
+    ...state,
+    isLoading: false,
+    data: payload,
+    isLogin: false,
+  }),
+  userLogOutReject: (state, { payload }) => ({
+    ...state,
+    isLoading: false,
+    data: {},
+    error: payload,
+  }),
 });
 
 export const {
@@ -41,6 +73,12 @@ export const {
   userRegisterResolve,
   userRegisterReject,
   userClearError,
+  userLogin,
+  userLoginResolve,
+  userLoginReject,
+  userLogOut,
+  userLogOutResolve,
+  userLogOutReject,
 } = authSlice.actions;
 
 export default authSlice.reducer;
