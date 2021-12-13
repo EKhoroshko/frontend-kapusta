@@ -1,11 +1,13 @@
 import React from "react";
 // import { useHistory } from "react-router-dom";
 
-import ArrowGoBack from "../../components/ArrowGoBack/ArrowGoBack";
-import ReportListByCategory from "../../components/ReportListByCategory";
-import DetailsBalance from "../../components/ReportDetailsBalance";
-import ReportListChart from "../../components/ReportListChart";
+// import ArrowGoBack from "../../components/ArrowGoBack/ArrowGoBack";
+// import ReportListByCategory from "../../components/ReportListByCategory";
+// import DetailsBalance from "../../components/ReportDetailsBalance";
+// import ReportListChart from "../../components/ReportListChart";
 import ReportButtonGoBack from "../../components/ReportButtonGoBack";
+import Balance from "../../components/Balance";
+import ReportCurrentPeriod from "../../components/ReportCurrentPeriod";
 
 import style from "./Summary.module.css";
 
@@ -18,22 +20,16 @@ function Summary() {
 
   return (
     <div className={style.container}>
-      <div className={style.info}>
+      <div className={style.menu}>
         <ReportButtonGoBack />
-        {/* <ArrowGoBack onClick={goHome} /> */}
-
-        <div>
-          <p> Баланс:</p>
-          <p> ТУТ БАЛАНС</p>
+        <div className={style.menuGrup}>
+          <Balance />
+          <ReportCurrentPeriod />
         </div>
-        <ul>
-          <li>Текущий период:</li>
-          <li> arrow + period</li>
-        </ul>
       </div>
-      <DetailsBalance />
-      <ReportListByCategory />
-      <ReportListChart />
+      {/* <DetailsBalance /> */}
+      {/* <ReportListByCategory />
+      <ReportListChart /> */}
     </div>
   );
 }
