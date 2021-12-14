@@ -122,12 +122,17 @@
   display: none;
 }
 
+.position {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   .back {
     display: none;
   }
 
   .wraper {
+    height: 626px;
     width: 665px;
     background-color: #ffffff;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
@@ -223,6 +228,11 @@
   .listTranzaktion {
     display: none;
   }
+
+  .position {
+    display: block;
+    position: absolute;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -267,5 +277,13 @@
 
   .item {
     margin-right: 10px;
+  }
+
+  .position {
+    display: block;
+    position: absolute;
+    z-index: 50;
+    top: 105px;
+    left: 780px;
   }
 }

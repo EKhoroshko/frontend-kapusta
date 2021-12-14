@@ -113,10 +113,13 @@
 }
 
 .boxLinkMin {
-  margin: 0 auto;
-  width: 282px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  margin-left: -160px;
+  width: 282px;
 }
 
 .link {
@@ -313,7 +316,7 @@
 
   .route {
     position: absolute;
-    top: 165px;
+    top: 172px;
     left: 50%;
     margin-left: -550px;
     z-index: 3;
