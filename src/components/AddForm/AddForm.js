@@ -8,7 +8,7 @@ import { ReactComponent as Calculator } from "../../assets/images/calculator.svg
 import { ReactComponent as Arrow } from "../../assets/images/arrowLeft.svg";
 import Button from "../Button/Button";
 // import List from "../List/List";
-// import Svodka from "../Svodka/Svodka";
+import Svodka from "../Svodka/Svodka";
 
 import css from "./AddForm.module.css";
 
@@ -91,9 +91,9 @@ function AddForm() {
           </form>
         </div>
       </div>
-      <div className={css.listTranzaktion}>
-        {/* <List /> */}
-        {/* <Svodka /> */}
+      <div className={css.listTranzaktion}></div>
+      <div className={css.position}>
+        <Svodka />
       </div>
     </div>
   );
