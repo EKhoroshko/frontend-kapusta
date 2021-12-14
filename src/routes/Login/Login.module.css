@@ -1,46 +1,43 @@
-.wrapper {
+.section {
+  height: 100vh;
+  width: 320px;
+  margin: 0 auto;
+  background-image: url("../../assets/images/back2.png");
+  background-repeat: no-repeat;
+}
+
+.container {
   position: relative;
-  background-color: #f5f6fb;
-}
-
-.bgImg {
-  position: absolute;
-  display: block;
   width: 100%;
-  height: 342px;
-  z-index: 98;
+  margin: 0 auto;
 }
 
-.kapustaImg {
+.kapImg2 {
   position: absolute;
-  width: 83px;
-  height: 89px;
-  top: 730px;
-  left: 60px;
-  background-image: url(../../assets/images/iconKap1.svg);
-  z-index: 97;
-}
-
-.kapustaImg2 {
-  position: absolute;
-  width: 83px;
-  height: 89px;
   top: 100px;
-  left: 260px;
-  background-image: url(../../assets/images/iconKap1.svg);
-  z-index: 98;
+  left: 265px;
+  width: 54px;
+  height: 89px;
+  background-image: url("../../assets/images/iconKap1.svg");
+  z-index: 1;
+}
+
+.kapImg {
+  position: absolute;
+  top: 780px;
+  left: 60px;
+  width: 83px;
+  height: 89px;
+  background-image: url("../../assets/images/iconKap1.svg");
+  z-index: 1;
 }
 
 .loginPage {
-  position: absolute;
-  z-index: 99;
   display: flex;
-  width: 320px;
-  height: 800px;
   margin: 0 auto;
+  padding-top: 86px;
   flex-direction: column;
   align-items: center;
-  padding-top: 86px;
 }
 
 .titleBox {
@@ -117,7 +114,7 @@
 }
 
 .button span::before {
-  content: url(../../assets/images/google-symbol.svg);
+  content: url("../../assets/images/google-symbol.svg");
   display: inline-flex;
   width: 18px;
   height: 18px;
@@ -135,30 +132,67 @@
   color: #52555f;
 }
 
+.formButton {
+  display: flex;
+  justify-content: center;
+  width: 265px;
+}
+
+.logRegBtn {
+  width: 125px;
+  height: 44px;
+  border-radius: 26px;
+  border: transparent;
+  box-shadow: 1px 2px 3px rgba(170, 178, 197, 0.4);
+  background-color: #f5f6fb;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 0.875rem;
+  color: #52555f;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+}
+
+.logRegBtn:not(:last-child) {
+  margin-right: 10px;
+  background-color: rgb(255, 117, 29);
+  box-shadow: 1px 2px 3px rgba(255, 117, 29, 0.4);
+  color: #f5f6fb;
+}
+
 @media screen and (min-width: 768px) {
-  .kapustaImg {
-    width: 183px;
-    height: 142px;
-    top: 860px;
-    left: 100px;
-    background-image: url(../../assets/images/iconKap2.svg);
+  .section {
+    width: 768px;
   }
 
-  .kapustaImg2 {
+  .kapImg2 {
+    position: relative;
     width: 720px;
     height: 232px;
     top: 30px;
     left: 30px;
-    background-image: url(../../assets/images/imgKap.png);
+    background-image: url("../../assets/images/imgKap.png");
   }
 
-  .bgImg {
-    height: 582px;
+  .kapImg {
+    background-size: 100% 100%;
+    width: 162px;
+    height: 162px;
+    top: 830px;
+    left: 100px;
+    background-image: url("../../assets/images/iconKap2.svg");
   }
 
   .loginPage {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 768px;
     height: 1024px;
+    padding-top: 86px;
+    z-index: 99;
   }
 
   .titleBox {
@@ -203,24 +237,22 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .kapustaImg {
-    width: 183px;
+  .section {
+    width: 1280px;
+  }
+
+  .kapImg2 {
+    width: 1230px;
+    height: 232px;
+    padding-left: 30px;
+    background-image: url("../../assets/images/imgKap.png");
+  }
+
+  .kapImg {
     height: 142px;
     top: 680px;
     left: 180px;
-    background-image: url(../../assets/images/iconKap2.svg);
-  }
-
-  .kapustaImg2 {
-    width: 1280px;
-    height: 232px;
-    top: 0px;
-    left: 0px;
-    background-image: url(../../assets/images/imgKap.png);
-  }
-
-  .bgImg {
-    height: 662px;
+    background-image: url("../../assets/images/iconKap2.svg");
   }
 
   .loginPage {
@@ -229,6 +261,7 @@
     justify-content: space-around;
     width: 1280px;
     height: 850px;
+    padding-top: 26px;
   }
 
   .titleBox {
