@@ -23,8 +23,8 @@ function List() {
         <div className={s.listContainer}>
           <table className={s.table}>
             <thead className={s.headerTable}>
-              <tr className={s.tableTh}>
-                <th classname={s.tableTh}>Дата</th>
+              <tr className={s.tableHeadTr}>
+                <th classname={s.tableTh1}>Дата</th>
                 <th classname={s.tableTh}>Описание</th>
                 <th classname={s.tableTh}>Категория</th>
                 <th classname={s.tableTh}>Сумма</th>
