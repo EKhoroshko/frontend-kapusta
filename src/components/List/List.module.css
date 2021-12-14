@@ -122,7 +122,7 @@
     margin: 0 auto;
     height: 384px;
     width: 605px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
   }
 
   .table {
@@ -138,8 +138,8 @@
   .listContainer {
     height: 384px;
     width: 760px;
-    overflow: visible;
-    overflow: scroll;
+    overflow: hidden;
+    overflow-y: scroll;
   }
 
   .table {
@@ -150,7 +150,7 @@
 .table {
   text-align: center;
   border-radius: 20px 20px 0 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   border-collapse: collapse;
 }
 

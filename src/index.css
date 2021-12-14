@@ -47,3 +47,16 @@ button {
 ul {
   list-style: none;
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  background-color: #f5f6fb;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 6px;
+  border-radius: 2px;
+  background-color: #ff751d;
+  height: 130px;
+}

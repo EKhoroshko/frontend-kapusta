@@ -38,6 +38,7 @@ function List() {
                 <td>category</td>
                 <td>summa</td>
                 <td>
+  
                   <button
                     type="button"
                     className={s.deleteBtn}
@@ -62,6 +63,16 @@ function List() {
                   )}
                 </td>
               </tr>
+               <tr className={s.tr}>25</tr>
+               <tr className={s.tr}>25</tr>
+               <tr className={s.tr}>25</tr>
+               <tr className={s.tr}>25</tr>
+               <tr className={s.tr}>25</tr>
+               <tr className={s.tr}>25</tr>
+               <tr className={s.tr}>25</tr>
+               <tr className={s.tr}>25</tr>
+               <tr className={s.tr}>25</tr>
+
             </tbody>
           </table>
         </div>
