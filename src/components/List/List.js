@@ -24,11 +24,11 @@ function List() {
           <table className={s.table}>
             <thead className={s.headerTable}>
               <tr className={s.tableHeadTr}>
-                <th classname={s.tableTh1}>Дата</th>
-                <th classname={s.tableTh}>Описание</th>
-                <th classname={s.tableTh}>Категория</th>
-                <th classname={s.tableTh}>Сумма</th>
-                <th classname={s.tableTh}></th>
+                <th className={s.tableTh1}>Дата</th>
+                <th className={s.tableTh}>Описание</th>
+                <th className={s.tableTh}>Категория</th>
+                <th className={s.tableTh}>Сумма</th>
+                <th className={s.tableTh}></th>
               </tr>
             </thead>
             <tbody className={s.tableBody}>

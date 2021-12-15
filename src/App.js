@@ -7,9 +7,18 @@ import Loader from "./components/Loader/Loader";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Summary from "./routes/Summary/Summary";
+import { useDispatch } from "react-redux";
+import { updateUserToken } from "./redux/auth/operations";
+import { useEffect } from "react";
 import "./App.css";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(updateUserToken());
+  }, [dispatch]);
+
   return (
     <section>
       <Header />

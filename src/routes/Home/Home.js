@@ -15,7 +15,6 @@ function Home() {
   const [active, setActive] = useState(false);
   const match = useRouteMatch();
   const location = useLocation();
-  console.log(active);
   const history = useHistory();
 
   useEffect(() => {
