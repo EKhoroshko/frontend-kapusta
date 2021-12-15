@@ -71,7 +71,9 @@ export const loginUser =
   };
 
 export const logOut = () => async (dispatch, getState) => {
+  console.log("sdfsdf");
   const token = getToken(getState());
+  console.log(token);
   const options = {
     method: "POST",
     headers: {

@@ -57,6 +57,7 @@ const authSlice = createSlice({
   userLogOutResolve: (state, { payload }) => ({
     ...state,
     isLoading: false,
+    token: null,
     data: payload,
     isLogin: false,
   }),
