@@ -1,0 +1,24 @@
+.list {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    height: 626px;
+    display: flex;
+    position: absolute;
+    z-index: 20;
+    top: 200px;
+    padding: 0px 30px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .list {
+    max-height: 346px;
+    display: flex;
+    flex-direction: row;
+    top: 140px;
+    padding: 0px 20px;
+  }
+}
