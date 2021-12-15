@@ -58,10 +58,10 @@ const LoginForm = () => {
           <p className={s.description}>Электронная почта:</p>
           <input
             className={s.input}
-            type="text"
+            type="email"
             name="email"
-            required
             value={email}
+            required
             onChange={waitCheck}
           />
         </label>
@@ -77,7 +77,6 @@ const LoginForm = () => {
             autoComplete="off"
           />
         </label>
-
         <div className={s.formButton}>
           <Button text="Войти" lassName={s.button} onClick={checkType} />
           <Button text="Регистрация" lassName={s.button} onClick={checkType} />
@@ -85,6 +84,6 @@ const LoginForm = () => {
       </form>
     </div>
   );
-};
+}
 
 export default LoginForm;
