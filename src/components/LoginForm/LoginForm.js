@@ -62,7 +62,6 @@ const LoginForm = () => {
             name="email"
             value={email}
             required
-            value={email}
             onChange={waitCheck}
           />
         </label>
