@@ -1,18 +1,13 @@
 import React, { useState } from "react";
-import {
-  NavLink,
-  Switch,
-  Route,
-  useRouteMatch,
-  useHistory,
-} from "react-router-dom";
+import { NavLink, useRouteMatch, useHistory } from "react-router-dom";
+import MediaQuery from "react-responsive";
 import { ReactComponent as Diagramma } from "../../assets/images/summary.svg";
 import Calendar from "../../components/Calendar/Calendar";
 import Comment from "../../components/Modal/Comment/Comment";
-import Incomes from "../../components/Incomes/Incomes";
 import MobileList from "../../components/List/MobileList";
+import AddForm from "../../components/AddForm/AddForm";
 import List from "../../components/List/List";
-import Casts from "../../components/Casts/Casts";
+import AddFormMobile from "../../components/AddForm/AddFormMobile";
 import css from "./Home.module.css";
 
 function Home() {
@@ -38,6 +33,9 @@ function Home() {
     <section className={css.section}>
       <div className={css.imgBack}>
         <div className={css.container}>
+          <MediaQuery maxWidth={767}>
+            <AddFormMobile />
+          </MediaQuery>
           <div className={css.box}>
             {!balanse && <Comment />}
             <button className={css.sum} type="button" onClick={goSummary}>
@@ -62,18 +60,21 @@ function Home() {
             <div className={css.flex}>
               <Calendar />
             </div>
+            <div className={css.mobile}>
+              <MobileList />
+            </div>
           </div>
         </div>
       </div>
 
-      <div className={css.mobile}>
-        <MobileList />
-      </div>
       <div className={css.descktop}>
-        <List />
+        <AddForm />
+        <div className={css.list}>
+          <List />
+        </div>
       </div>
 
-      <div className={css.boxLink}>
+      <div className={css.boxLinkMin}>
         <NavLink className={css.link} to={`${match.url}/casts`}>
           <button className={css.btn} type="button">
             Расходы
@@ -84,30 +85,6 @@ function Home() {
             Доход
           </button>
         </NavLink>
-      </div>
-
-      <div className={css.boxLinkMin}>
-        <NavLink className={css.link} to={"/casts"}>
-          <button className={css.btn} type="button">
-            Расходы
-          </button>
-        </NavLink>
-        <NavLink className={css.link} to={"/incomes"}>
-          <button className={css.btn} type="button">
-            Доход
-          </button>
-        </NavLink>
-      </div>
-
-      <div className={css.route}>
-        <Switch>
-          <Route path={`${match.url}/casts`}>
-            <Casts />
-          </Route>
-          <Route path={`${match.url}/incomes`}>
-            <Incomes />
-          </Route>
-        </Switch>
       </div>
     </section>
   );

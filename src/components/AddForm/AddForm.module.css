@@ -118,10 +118,6 @@
   margin-right: 15px;
 }
 
-.listTranzaktion {
-  display: none;
-}
-
 .position {
   display: none;
 }
@@ -223,10 +219,6 @@
     margin: 0px;
     padding-bottom: 480px;
     display: flex;
-  }
-
-  .listTranzaktion {
-    display: none;
   }
 
   .position {

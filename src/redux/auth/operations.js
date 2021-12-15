@@ -31,16 +31,32 @@ export const registration =
         "https://back-kapusta.herokuapp.com/api/auth/users/register",
         options
       ).then((response) => response.json());
-      toast.success("Вы успешно зарегистрировались", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      dispatch(userRegisterResolve(response));
+      await console.log(response);
+      if (response.hasOwnProperty("error")) {
+        return toast.error(response.errors, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      } else {
+        toast.success(
+          "Вы успешно зарегистрировались, для подтверждения мы отправили вам письмо",
+          {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }
+        );
+        dispatch(userRegisterResolve(response));
+      }
     } catch (error) {
       dispatch(userRegisterReject(error));
       dispatch(userClearError());
@@ -49,7 +65,7 @@ export const registration =
 
 export const loginUser =
   ({ email, password }) =>
-  async (dispatch, getState) => {
+  async (dispatch) => {
     const options = {
       method: "POST",
       headers: {
@@ -66,12 +82,33 @@ export const loginUser =
       )
         .then((response) => {
           if (response.ok) {
+            console.log(response);
             return response.json();
+          } else {
+            localStorage.removeItem("token");
+            toast.error("error", {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
           }
         })
         .then(({ data }) => {
           dispatch(userLoginResolve(data));
           localStorage.setItem("token", data.token);
+          toast.success("Добро пожаловать!!! Мы вас ждали.", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         });
     } catch (error) {
       dispatch(userLoginReject(error));
@@ -94,6 +131,7 @@ export const logOut = () => async (dispatch, getState) => {
       "https://back-kapusta.herokuapp.com/api/auth/users/logout",
       options
     ).then((response) => response.json());
+    localStorage.removeItem("token");
     dispatch(userLogOutResolve(response));
   } catch (error) {
     dispatch(userLogOutReject(error));

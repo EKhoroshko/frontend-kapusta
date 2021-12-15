@@ -6,7 +6,7 @@ const authSlice = createSlice({
     isLoading: true,
     isLogin: false,
     token: null,
-    error: null,
+    errors: null,
     data: {},
   },
   reducers: {
@@ -21,7 +21,7 @@ const authSlice = createSlice({
     }),
     userRegisterReject: (_, actions) => ({
       isLoading: false,
-      error: actions.error,
+      errors: actions.payload,
     }),
 
     userLogin: (state) => ({
