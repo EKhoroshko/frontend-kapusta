@@ -7,6 +7,10 @@
     padding-left: 50px;
     padding-right: 50px;
   }
+  .menu {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 @media screen and (min-width: 1280px) {
   .container {
@@ -14,17 +18,10 @@
     padding-right: 110px;
   }
 }
-/* .menu {
-  /* display: flex; */
 
 @media screen and (max-width: 767px) {
-  .menuGrup {
-    width: 183px;
+  .menu {
     display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    flex-direction: column;
   }
 }

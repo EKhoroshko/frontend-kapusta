@@ -22,10 +22,8 @@ function Summary() {
     <div className={style.container}>
       <div className={style.menu}>
         <ReportButtonGoBack />
-        <div className={style.menuGrup}>
-          <Balance />
-          <ReportCurrentPeriod />
-        </div>
+        <Balance />
+        <ReportCurrentPeriod />
       </div>
       {/* <DetailsBalance /> */}
       {/* <ReportListByCategory />
