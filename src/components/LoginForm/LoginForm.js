@@ -72,7 +72,6 @@ const LoginForm = () => {
             className={s.input}
             type="password"
             name="password"
-            value={password}
             required
             value={password}
             onChange={waitCheck}
