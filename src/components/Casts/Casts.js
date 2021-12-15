@@ -10,6 +10,9 @@ function Casts() {
       <div className={css.list}>
         <List />
       </div>
+      Casts
+      <AddForm />
+      <List />
     </div>
   );
 }

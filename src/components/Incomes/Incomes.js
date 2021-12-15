@@ -10,6 +10,9 @@ function Incomes() {
       <div className={css.list}>
         <List />
       </div>
+      incomes
+      <AddForm />
+      <List />
     </div>
   );
 }

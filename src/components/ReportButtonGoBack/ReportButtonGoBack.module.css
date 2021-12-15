@@ -1,0 +1,39 @@
+.GoBackButton {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.2;
+  font-weight: 400;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: 0.04em;
+  transition: all 0.2s linear;
+}
+.link {
+  width: 170px;
+  padding: 6px 3px;
+  display: flex;
+  align-items: center;
+  color: #52555f;
+  transition: all 0.2s linear;
+}
+.link:hover {
+  color: #ff751d;
+}
+.goBackIcon {
+  margin-right: 15px;
+}
+
+@media screen and (max-width: 767px) {
+  .title {
+    display: none;
+  }
+  .GoBackButton {
+    width: 24px;
+    margin-top: 15px;
+  }
+}
