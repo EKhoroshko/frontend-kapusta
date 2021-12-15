@@ -7,7 +7,7 @@ import options from "../../helpers/Select/SelectList.js";
 import { ReactComponent as Calculator } from "../../assets/images/calculator.svg";
 import { ReactComponent as Arrow } from "../../assets/images/arrowLeft.svg";
 import Button from "../Button/Button";
-import css from "./AddForm.module.css";
+import css from "./AddFormMobile.module.css";
 
 function AddFormMobile() {
   const history = useHistory();

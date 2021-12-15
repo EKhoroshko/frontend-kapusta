@@ -1,0 +1,111 @@
+.conteiner {
+  width: 282px;
+  padding-left: 19px;
+  padding-right: 19px;
+  margin: 0 auto;
+}
+
+.back {
+  margin-top: 15px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.arrow {
+  width: 18px;
+  height: 12px;
+}
+
+.form {
+  margin-top: 15px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.descr {
+  padding: 15px 0px;
+  padding-left: 5px;
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  text-align: center;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  background-color: transparent;
+}
+
+.descr::placeholder {
+  text-align: left;
+  padding-left: 20px;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  color: #c7ccdc;
+}
+
+.descr:focus,
+.descr:hover {
+  border: 2px solid #ff751d;
+  outline: none;
+}
+
+.box {
+  display: none;
+}
+
+.select {
+  margin-bottom: 30px;
+}
+
+.formPrice {
+  display: flex;
+  margin: 0 auto;
+  width: 183px;
+}
+
+.inputPrice {
+  width: 105px;
+  padding: 12px 17px 12px 10px;
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  text-align: right;
+  border-radius: 22px 0px 0px 22px;
+  background-color: transparent;
+}
+
+.inputPrice::placeholder {
+  text-align: end;
+}
+
+.btnPrice {
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 0px 22px 22px 0px;
+  background-color: transparent;
+  padding: 0px;
+}
+
+.calculator {
+  padding: 12px 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.list {
+  position: relative;
+  top: 83px;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+}
+
+.item {
+  margin-right: 15px;
+}
+
+.descktop {
+  display: none;
+}
