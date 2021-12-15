@@ -1,0 +1,165 @@
+.userAmount {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 282px;
+  height: 85px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  background-color: white;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+}
+
+.userAmount:hover,
+.userAmount:focus {
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.2);
+}
+
+.expensesWrap {
+  width: calc(50% - 1px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.incomeWrap {
+  width: calc(50% - 1px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.expenseText {
+  margin-bottom: 5px;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+
+  color: #52555f;
+}
+
+.expensesTotal {
+  color: red;
+}
+
+.incomeText {
+  margin-bottom: 5px;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+
+  color: #52555f;
+}
+.incomeTotal {
+  color: green;
+}
+
+.Line {
+  margin-right: 0 0;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  height: 75px;
+}
+
+@media screen and (min-width: 767px) {
+  .userAmount {
+    width: 668px;
+    height: 50px;
+    margin: 0 auto 30px;
+  }
+
+  .expensesWrap {
+    flex-direction: row;
+
+    padding-left: 90px;
+  }
+
+  .incomeWrap {
+    flex-direction: row;
+
+    padding-right: 90px;
+  }
+
+  .expenseText {
+    margin-right: 15px;
+    margin-left: 21px;
+  }
+
+  .incomeText {
+    margin-right: 15px;
+    margin-left: 21px;
+  }
+
+  .Line {
+    margin-top: 7px;
+    margin-top: 7px;
+    height: 35px;
+  }
+}
+
+@media screen and (min-width: 1279px) {
+  .userAmount {
+    width: 1060px;
+    height: 50px;
+  }
+
+  .expensesWrap {
+    padding-left: 300px;
+  }
+
+  .incomeWrap {
+    padding-right: 300px;
+  }
+
+  .expenseText {
+    margin-right: 15px;
+    margin-left: 21px;
+  }
+
+  .expenseTotal {
+    color: red;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em;
+  }
+
+  .incomeText {
+    margin-right: 15px;
+    margin-left: 21px;
+  }
+  .incomeTotal {
+    color: green;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em;
+  }
+
+  .Line {
+    margin-right: 0 0;
+
+    height: 35px;
+  }
+}
