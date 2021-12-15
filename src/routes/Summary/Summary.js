@@ -9,6 +9,7 @@ import ReportButtonGoBack from "../../components/ReportButtonGoBack";
 import Balance from "../../components/Balance";
 //import ReportCurrentPeriod from "../../components/ReportCurrentPeriod";
 import Period from "../../components/CurrentPeriod/CurrentPeriod"; // замінила попередню секцію
+// import Diagramm from "../../components/Diagramm/Diagramm";
 
 import style from "./Summary.module.css";
 

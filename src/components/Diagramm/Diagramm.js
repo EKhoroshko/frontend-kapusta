@@ -1,53 +1,47 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
+import { Chart as ChartJS } from "chart.js/auto";
+import { Chart } from "react-chartjs-2";
 //import style from "./Diagram.module.css";
 
-import Panel from "./Panel";
-
-const Chart = ({ chartData }) => {
-  //const { width } = useWindowSize();
-  return <Panel>{<Bar data={chartData} options={{}} />}</Panel>;
+const chartData = {
+  labels: ["January", "February", "March", "April", "May", "June", "July"],
+  datasets: [
+    {
+      label: " График",
+      backgroundColor: "rgba(255,99,132,0.2)",
+      borderColor: "rgba(255,99,132,1)",
+      borderWidth: 1,
+      hoverBackgroundColor: "rgba(255,99,132,0.4)",
+      hoverBorderColor: "rgba(255,99,132,1)",
+      data: [165, 259, 80, 581, 156, 55, 40],
+    },
+  ],
 };
 
-export default Chart;
+const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top",
+    },
+  },
+};
 
-// export default function Diagram() {
-//   const options = {
-//     responsive: true,
-//     plugins: {
-//       legend: {
-//         position: 'top' as const,
-//       }
-//     },
-
-//   };
-//   /// назва продуктів на які розбита діаграма
-//   const labels = ({ children }) => {
-//     return <div className={styles.panel}>{children}</div>;
-//   };
-
-//   const data = {
-//     labels: sortedLables,
-//     datasets: [
-//       {
-//         data: (),
-//         backgroundColor: colorsArray(sortedSum),
-//         borderColor: colorsArray(sortedSum),
-//         borderWidth: 1,
-//         borderRadius: 10,
-//         barThickness: barWidth,
-//         barMargin: 20,
-
-//       }
-//     ],
-//   };
-
-//   return (
-//     <div className={style}>
-//       return (
-
-//       <Bar data={data} height={height} width={320} options={options} />
-
-//     </div>
-//   );
-// }
+function Diagramm() {
+  return (
+    <div>
+      <Bar
+        options={options}
+        data={chartData}
+        width={100}
+        // height={50}
+        // options={{
+        //   responsive: true,
+        //   maintainAspectRatio: false
+        // }}
+      />
+    </div>
+  );
+}
+export default Diagramm;

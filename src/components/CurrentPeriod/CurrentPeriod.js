@@ -7,6 +7,8 @@ import { ReactComponent as VectorRight } from "../../assets/images/vector-right.
 import monthName from "../../helpers/Current-period/months.json";
 import periodStyles from "./Period.module.css";
 
+import Diagramm from "../Diagramm/Diagramm";
+
 // я ще над цим працюю
 export default function Period() {
   const dispatch = useDispatch();
