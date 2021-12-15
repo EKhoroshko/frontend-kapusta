@@ -1,7 +1,6 @@
-//import axios from "axios";
-//import { createAsyncThunk } from "@reduxjs/toolkit";
-//import { toast } from "react-toastify";
-//import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import {
   userRegister,
   userRegisterResolve,
@@ -32,6 +31,15 @@ export const registration =
         "https://back-kapusta.herokuapp.com/api/auth/users/register",
         options
       ).then((response) => response.json());
+      toast.success("Вы успешно зарегистрировались", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       dispatch(userRegisterResolve(response));
     } catch (error) {
       dispatch(userRegisterReject(error));
@@ -41,7 +49,7 @@ export const registration =
 
 export const loginUser =
   ({ email, password }) =>
-  async (dispatch) => {
+  async (dispatch, getState) => {
     const options = {
       method: "POST",
       headers: {
@@ -63,6 +71,7 @@ export const loginUser =
         })
         .then(({ data }) => {
           dispatch(userLoginResolve(data));
+          localStorage.setItem("token", data.token);
         });
     } catch (error) {
       dispatch(userLoginReject(error));
@@ -71,13 +80,11 @@ export const loginUser =
   };
 
 export const logOut = () => async (dispatch, getState) => {
-  console.log("sdfsdf");
   const token = getToken(getState());
   console.log(token);
   const options = {
-    method: "POST",
+    method: "GET",
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   };
@@ -87,7 +94,6 @@ export const logOut = () => async (dispatch, getState) => {
       "https://back-kapusta.herokuapp.com/api/auth/users/logout",
       options
     ).then((response) => response.json());
-    localStorage.removeItem("token");
     dispatch(userLogOutResolve(response));
   } catch (error) {
     dispatch(userLogOutReject(error));
@@ -128,6 +134,4 @@ const currentUser = createAsyncThunk("auth/refresh", async (_, thunkAPI) => {
   }
 });
 
-export { currentUser };
-
-/* */
+export { currentUser };*/

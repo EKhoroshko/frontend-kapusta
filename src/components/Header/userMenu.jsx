@@ -19,7 +19,7 @@ export default function UserMenu() {
       <button
         type="button"
         className={css.logout}
-        onClick={() => dispatch(logOut)}
+        onClick={() => dispatch(logOut())}
       >
         <MediaQuery maxWidth={767}>
           <img src={logout} alt="" width={16} height={16} />
