@@ -9,7 +9,7 @@ function Login() {
   const login = useSelector(getIsLoggedIn);
   const history = useHistory();
 
-  const log = async ({ email, password }) => {
+  /*const log = async ({ email, password }) => {
     const options = {
       method: "POST",
       headers: {
@@ -35,7 +35,7 @@ function Login() {
   log({
     email: "xapoxa14@gmail.com",
     password: "12345678",
-  });
+  });*/
 
   useEffect(() => {
     if (login) {
