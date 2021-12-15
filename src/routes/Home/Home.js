@@ -70,29 +70,27 @@ function Home() {
               <div className={css.mobile}>
                 <MobileList />
               </div>
+              <div className={css.descktop}>
+                <AddForm />
+                <div className={css.list}>
+                  <List />
+                </div>
+              </div>
+              <div className={css.boxLinkMin}>
+                <NavLink className={css.link} to={`${match.url}/casts`}>
+                  <button className={css.btn} type="button">
+                    Расходы
+                  </button>
+                </NavLink>
+                <NavLink className={css.link} to={`${match.url}/incomes`}>
+                  <button className={css.btn} type="button">
+                    Доход
+                  </button>
+                </NavLink>
+              </div>
             </div>
           )}
         </div>
-      </div>
-
-      <div className={css.descktop}>
-        <AddForm />
-        <div className={css.list}>
-          <List />
-        </div>
-      </div>
-
-      <div className={css.boxLinkMin}>
-        <NavLink className={css.link} to={`${match.url}/casts`}>
-          <button className={css.btn} type="button">
-            Расходы
-          </button>
-        </NavLink>
-        <NavLink className={css.link} to={`${match.url}/incomes`}>
-          <button className={css.btn} type="button">
-            Доход
-          </button>
-        </NavLink>
       </div>
     </section>
   );

@@ -1,3 +1,14 @@
+.section {
+  height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.imgBack {
+  background-image: url("../../assets/images/back.png");
+  background-repeat: no-repeat;
+  background-size: 100% 282px;
+}
 .conteiner {
   width: 282px;
   padding-left: 19px;
@@ -106,6 +117,36 @@
   margin-right: 15px;
 }
 
-.descktop {
-  display: none;
+.boxLink {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: flex;
+  flex-direction: row;
+  margin-left: -160px;
+  width: 282px;
+}
+.link {
+  text-decoration: none;
+}
+
+.btn {
+  width: 159px;
+  padding: 22px 30px;
+  background-color: #f5f6fb;
+  border: none;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #ff751d;
+  color: #ffffff;
 }
