@@ -78,12 +78,12 @@ const LoginForm = () => {
           />
         </label>
         <div className={s.formButton}>
-          <Button text="Войти" lassName={s.button} onClick={checkType} />
-          <Button text="Регистрация" lassName={s.button} onClick={checkType} />
+          <Button text="Войти" сlassName={s.button} onClick={checkType} />
+          <Button text="Регистрация" сlassName={s.button} onClick={checkType} />
         </div>
       </form>
     </div>
   );
-}
+};
 
 export default LoginForm;

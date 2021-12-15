@@ -85,7 +85,7 @@ export const logOut = () => async (dispatch, getState) => {
       "https://back-kapusta.herokuapp.com/api/auth/users/logout",
       options
     ).then((response) => response.json());
-    localStorage.removeItem("persist:auth");
+    localStorage.removeItem("token");
     dispatch(userLogOutResolve(response));
   } catch (error) {
     dispatch(userLogOutReject(error));
