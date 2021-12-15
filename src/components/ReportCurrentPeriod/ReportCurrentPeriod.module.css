@@ -1,0 +1,38 @@
+.calendarWrap {
+  width: 138px;
+}
+.calendarText {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: rgba(82, 85, 95, 0.7);
+  margin-bottom: 5px;
+}
+.switchWrap {
+  display: flex;
+  justify-content: space-between;
+}
+.cldrMonth {
+  width: 96px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.calendarBtn {
+  display: block;
+  border: none;
+  background: none;
+  padding: 0;
+}

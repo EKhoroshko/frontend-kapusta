@@ -1,0 +1,30 @@
+.container {
+  padding-left: 19px;
+  padding-right: 19px;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    padding-left: 110px;
+    padding-right: 110px;
+  }
+}
+/* .menu {
+  /* display: flex; */
+
+@media screen and (max-width: 767px) {
+  .menuGrup {
+    width: 183px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
