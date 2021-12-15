@@ -1,56 +1,59 @@
 import s from "./LoginForm.module.css";
+import Button from "../Button/Button";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { register, logIn } from "../../redux/auth/operations";
+import { registration, loginUser } from "../../redux/auth/operations";
 
-function LoginForm() {
+const LoginForm = () => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setMail] = useState("");
+  const [password, setPass] = useState("");
+  const [type, setType] = useState("");
 
-  const [loginActive, setLoginActive] = useState(true);
-  const [registerActive, setRisterActive] = useState(false);
-
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case "email":
-        return setEmail(value);
-      case "password":
-        return setPassword(value);
-      default:
-        return;
+  const waitCheck = (e) => {
+    const { name, value } = e.currentTarget;
+    if (name === "email") {
+      setMail(value);
+    } else {
+      setPass(value);
     }
   };
 
-  const toggleLoginBtn = () => {
-    setLoginActive(true);
-    setRisterActive(false);
-  };
-
-  const toggleRegisterBtn = () => {
-    setLoginActive(false);
-    setRisterActive(true);
-  };
-
-  function handleSubmit(e) {
+  const handlSubmit = (e) => {
     e.preventDefault();
+    const user = {
+      value: type,
+      email,
+      password,
+    };
+    submitUser(user);
+    setMail("");
+    setPass("");
+    setType("");
+  };
 
-    if (loginActive) {
-      dispatch(logIn({ email, password }));
-      setEmail("");
-      setPassword("");
-    }
+  const checkType = (e) => {
+    setType(e.target.outerText);
+  };
 
-    if (registerActive) {
-      dispatch(register({ email, password }));
-      setEmail("");
-      setPassword("");
+  const submitUser = async ({ value, email, password }) => {
+    const options = {
+      email,
+      password,
+    };
+    switch (value) {
+      case "РЕГИСТРАЦИЯ":
+        return await dispatch(registration(options));
+      case "ВОЙТИ":
+        return await dispatch(loginUser(options));
+      default:
+        return "I cannot login user";
     }
-  }
+  };
 
   return (
     <div className={s.wrapper}>
-      <form className={s.form} onSubmit={handleSubmit} autoComplete="off">
+      <form className={s.form} onSubmit={handlSubmit}>
         <label className={s.label}>
           <p className={s.description}>Электронная почта:</p>
           <input
@@ -59,8 +62,8 @@ function LoginForm() {
             name="email"
             value={email}
             required
-            onChange={handleChange}
-            placeholder="@mail"
+            value={email}
+            onChange={waitCheck}
           />
         </label>
         <label className={s.label}>
@@ -71,30 +74,14 @@ function LoginForm() {
             name="password"
             value={password}
             required
-            onChange={handleChange}
-            placeholder="**********"
+            value={password}
+            onChange={waitCheck}
+            autoComplete="off"
           />
         </label>
-
         <div className={s.formButton}>
-          <button
-            className={s.button}
-            type="submit"
-            onClick={toggleLoginBtn}
-            active={loginActive.toString()}
-            name="login"
-          >
-            Войти
-          </button>
-          <button
-            className={s.button}
-            type="submit"
-            onClick={toggleRegisterBtn}
-            active={registerActive.toString()}
-            name="register"
-          >
-            Регистрация
-          </button>
+          <Button text="Войти" lassName={s.button} onClick={checkType} />
+          <Button text="Регистрация" lassName={s.button} onClick={checkType} />
         </div>
       </form>
     </div>

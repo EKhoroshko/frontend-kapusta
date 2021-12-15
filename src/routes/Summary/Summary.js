@@ -1,6 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
+import ArrowGoBack from "../../components/ArrowGoBack/ArrowGoBack";
+
 function Summary() {
   const history = useHistory();
 
@@ -11,9 +13,7 @@ function Summary() {
   return (
     <div>
       <div>
-        <button type="button" onClick={goHome}>
-          <span></span>Вернуться на главную
-        </button>
+        <ArrowGoBack onClick={goHome} />
         <p> Баланс:</p>
         <p> ТУТ БАЛАНС</p>
         <ul>
