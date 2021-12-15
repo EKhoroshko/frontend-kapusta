@@ -6,7 +6,10 @@ const authSlice = createSlice({
     isLoading: true,
     isLogin: false,
     token: null,
+    id: null,
     errors: null,
+    balance: 0,
+    email: "",
     data: {},
   },
   reducers: {
@@ -32,8 +35,10 @@ const authSlice = createSlice({
       ...state,
       isLoading: false,
       token: payload.token,
-      data: payload,
       isLogin: true,
+      balance: payload.balance,
+      email: payload.email,
+      id: payload.id,
     }),
     userLoginReject: (state, action) => ({
       ...state,
@@ -53,11 +58,11 @@ const authSlice = createSlice({
       data: payload,
       isLogin: false,
     }),
-    userLogOutReject: (state, { payload }) => ({
+    userLogOutReject: (state, action) => ({
       ...state,
       isLoading: false,
       data: {},
-      error: payload,
+      error: action,
     }),
 
     updateUser: (state) => ({

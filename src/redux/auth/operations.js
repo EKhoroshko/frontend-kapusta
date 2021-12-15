@@ -85,7 +85,6 @@ export const loginUser =
       )
         .then((response) => {
           if (response.ok) {
-            console.log(response);
             return response.json();
           } else {
             localStorage.removeItem("token");
@@ -155,9 +154,10 @@ export const updateUserToken = () => async (dispatch) => {
       const user = await fetch(
         "https://back-kapusta.herokuapp.com/api/auth/users/current",
         options
-      ).then((response) => response.json());
-      dispatch(updateUserResolve(user, token));
-      console.log(user);
+      )
+        .then((response) => response.json())
+        .then(({ data }) => ({ data, token }));
+      dispatch(updateUserResolve(user));
     } catch (error) {
       dispatch(updateUserReject(error));
       dispatch(userClearError());
