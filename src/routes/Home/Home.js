@@ -88,6 +88,15 @@ function Home() {
                   </button>
                 </NavLink>
               </div>
+
+              <div className={css.boxButton}>
+                <button className={css.btn} type="button">
+                  Расходы
+                </button>
+                <button className={css.btn} type="button">
+                  Доход
+                </button>
+              </div>
             </div>
           )}
         </div>

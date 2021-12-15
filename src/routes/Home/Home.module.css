@@ -153,6 +153,10 @@
   display: none;
 }
 
+.boxButton {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   .section {
     height: 100vh;
@@ -216,6 +220,10 @@
   }
 
   .boxLinkMin {
+    display: none;
+  }
+
+  .boxButton {
     position: absolute;
     top: 199px;
     left: 50%;
@@ -296,6 +304,10 @@
   }
 
   .boxLinkMin {
+    display: none;
+  }
+
+  .boxButton {
     position: absolute;
     left: 50%;
     margin-left: -550px;
