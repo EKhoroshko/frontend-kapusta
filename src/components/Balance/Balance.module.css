@@ -9,6 +9,7 @@
   line-height: 1.17;
   letter-spacing: 0.02em;
   color: rgba(82, 85, 95, 0.7);
+  margin-right: 21px;
 }
 
 .wraper {
@@ -30,6 +31,7 @@
   text-transform: uppercase;
   color: #000000;
   text-align: center;
+  margin-right: 15px;
 }
 
 .add:focus {
