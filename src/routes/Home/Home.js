@@ -74,12 +74,12 @@ function Home() {
       </div>
 
       <div className={css.boxLink}>
-        <NavLink className={css.link} to={`${match.url}/casts`}>
+        <NavLink className={css.link} to={`${match.url}/incomes`}>
           <button className={css.btn} type="button">
             Расходы
           </button>
         </NavLink>
-        <NavLink className={css.link} to={`${match.url}/incomes`}>
+        <NavLink className={css.link} to={`${match.url}/casts`}>
           <button className={css.btn} type="button">
             Доход
           </button>
