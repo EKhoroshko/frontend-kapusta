@@ -12,6 +12,9 @@ import {
   userLogOut,
   userLogOutResolve,
   userLogOutReject,
+  updateUser,
+  updateUserResolve,
+  updateUserReject,
 } from "../auth/slice";
 import { getToken } from "./selectors";
 
@@ -118,7 +121,6 @@ export const loginUser =
 
 export const logOut = () => async (dispatch, getState) => {
   const token = getToken(getState());
-  console.log(token);
   const options = {
     method: "GET",
     headers: {
@@ -139,37 +141,26 @@ export const logOut = () => async (dispatch, getState) => {
   }
 };
 
-/*const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = "";
-  },
+export const updateUserToken = () => async (dispatch) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    dispatch(updateUser());
+    try {
+      const user = await fetch(
+        "https://back-kapusta.herokuapp.com/api/auth/users/current",
+        options
+      ).then((response) => response.json());
+      dispatch(updateUserResolve(user, token));
+      console.log(user);
+    } catch (error) {
+      dispatch(updateUserReject(error));
+      dispatch(userClearError());
+    }
+  }
 };
-
-
-const currentUser = createAsyncThunk("auth/refresh", async (_, thunkAPI) => {
-  const state = thunkAPI.getState();
-  const persistToken = state.auth.token;
-  if (persistToken === null) {
-    return thunkAPI.rejectWithValue();
-  }
-  token.set(persistToken);
-  try {
-    const { data } = await axios.get("auth/users/current");
-    return data;
-  } catch (error) {
-    return toast.error("User is not defined", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  }
-});
-
-export { currentUser };*/

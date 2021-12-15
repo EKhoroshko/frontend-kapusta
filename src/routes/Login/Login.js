@@ -1,8 +1,22 @@
-import React from "react";
-import s from "./Login.module.css";
+import React, { useEffect } from "react";
 import LoginForm from "../../components/LoginForm/LoginForm";
+import { useSelector } from "react-redux";
+import { getIsLoggedIn } from "../../redux/auth/selectors";
+import s from "./Login.module.css";
+import { useHistory } from "react-router-dom";
 
 function Login() {
+  const login = useSelector(getIsLoggedIn);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (login) {
+      setTimeout(() => {
+        history.push("/home");
+      }, 2500);
+    }
+  }, [history, login]);
+
   return (
     <section className={s.section}>
       <div className={s.container}>
