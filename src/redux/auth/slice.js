@@ -7,7 +7,7 @@ const authSlice = createSlice({
     isLogin: false,
     token: null,
     id: null,
-    errors: null,
+    error: {},
     balance: 0,
     email: "",
     data: {},
@@ -24,7 +24,7 @@ const authSlice = createSlice({
     }),
     userRegisterReject: (_, actions) => ({
       isLoading: false,
-      errors: actions.payload,
+      error: actions.payload,
     }),
 
     userLogin: (state) => ({
@@ -43,8 +43,8 @@ const authSlice = createSlice({
     userLoginReject: (state, action) => ({
       ...state,
       isLoading: false,
-      data: {},
-      error: action.payload,
+      data: action,
+      error: action,
     }),
 
     userLogOut: (state) => ({

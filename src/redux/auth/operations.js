@@ -87,8 +87,11 @@ export const loginUser =
           if (response.ok) {
             return response.json();
           } else {
+            if (response.hasOwnProperty("errors")) {
+              console.log(response);
+            }
             localStorage.removeItem("token");
-            toast.error("error", {
+            return toast.error("error", {
               position: "top-right",
               autoClose: 3000,
               hideProgressBar: false,
@@ -113,6 +116,7 @@ export const loginUser =
           });
         });
     } catch (error) {
+      console.log(error);
       dispatch(userLoginReject(error));
       dispatch(userClearError());
     }
