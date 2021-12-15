@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink, useRouteMatch } from "react-router-dom";
 import Select from "react-select";
 import Calendar from "../Calendar/Calendar";
 import customStyles from "../../helpers/Select/SelectOption.js";
@@ -7,12 +7,11 @@ import options from "../../helpers/Select/SelectList.js";
 import { ReactComponent as Calculator } from "../../assets/images/calculator.svg";
 import { ReactComponent as Arrow } from "../../assets/images/arrowLeft.svg";
 import Button from "../Button/Button";
-import Svodka from "../Svodka/Svodka";
+import css from "./AddFormMobile.module.css";
 
-import css from "./AddForm.module.css";
-
-function AddForm() {
+function AddFormMobile() {
   const history = useHistory();
+  const match = useRouteMatch();
   const [select, setSelect] = useState(null);
   const [descriptoin, setDescriptoin] = useState("");
   const [price, setPrice] = useState("");
@@ -41,7 +40,7 @@ function AddForm() {
   };
 
   return (
-    <div className={css.wraper}>
+    <div className={css.section}>
       <div className={css.imgBack}>
         <div className={css.conteiner}>
           <button className={css.back} type="button" onClick={goBack}>
@@ -89,12 +88,22 @@ function AddForm() {
             </ul>
           </form>
         </div>
-      </div>
-      <div className={css.position}>
-        <Svodka />
+
+        <div className={css.boxLink}>
+          <NavLink className={css.link} to={`${match.url}/casts`}>
+            <button className={css.btn} type="button">
+              Расходы
+            </button>
+          </NavLink>
+          <NavLink className={css.link} to={`${match.url}/incomes`}>
+            <button className={css.btn} type="button">
+              Доход
+            </button>
+          </NavLink>
+        </div>
       </div>
     </div>
   );
 }
 
-export default AddForm;
+export default AddFormMobile;

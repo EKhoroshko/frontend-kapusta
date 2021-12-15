@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-//import { toast } from "react-toastify";
-//import { register, logIn, logOut, currentUser } from "./operations";
 
 const authSlice = createSlice({
   name: "auth",
@@ -8,7 +6,7 @@ const authSlice = createSlice({
     isLoading: true,
     isLogin: false,
     token: null,
-    error: null,
+    errors: null,
     data: {},
   },
   reducers: {
@@ -23,7 +21,7 @@ const authSlice = createSlice({
     }),
     userRegisterReject: (_, actions) => ({
       isLoading: false,
-      error: actions.error,
+      errors: actions.payload,
     }),
 
     userLogin: (state) => ({
@@ -44,28 +42,29 @@ const authSlice = createSlice({
       error: action.payload,
     }),
 
+    userLogOut: (state) => ({
+      ...state,
+      isLoading: true,
+    }),
+    userLogOutResolve: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      token: null,
+      data: payload,
+      isLogin: false,
+    }),
+    userLogOutReject: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      data: {},
+      error: payload,
+    }),
+
     userClearError: (state) => ({
       ...state,
       error: null,
     }),
   },
-
-  userLogOut: (state) => ({
-    ...state,
-    isLoading: true,
-  }),
-  userLogOutResolve: (state, { payload }) => ({
-    ...state,
-    isLoading: false,
-    data: payload,
-    isLogin: false,
-  }),
-  userLogOutReject: (state, { payload }) => ({
-    ...state,
-    isLoading: false,
-    data: {},
-    error: payload,
-  }),
 });
 
 export const {
