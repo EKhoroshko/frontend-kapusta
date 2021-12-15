@@ -7,7 +7,8 @@ import React from "react";
 // import ReportListChart from "../../components/ReportListChart";
 import ReportButtonGoBack from "../../components/ReportButtonGoBack";
 import Balance from "../../components/Balance";
-import ReportCurrentPeriod from "../../components/ReportCurrentPeriod";
+//import ReportCurrentPeriod from "../../components/ReportCurrentPeriod";
+import Period from "../../components/CurrentPeriod/CurrentPeriod"; // замінила попередню секцію
 
 import style from "./Summary.module.css";
 
@@ -24,7 +25,7 @@ function Summary() {
         <ReportButtonGoBack />
         <div className={style.menuGrup}>
           <Balance />
-          <ReportCurrentPeriod />
+          <Period />
         </div>
       </div>
       {/* <DetailsBalance /> */}

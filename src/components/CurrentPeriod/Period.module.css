@@ -1,19 +1,24 @@
 .container {
-  width: 134px;
+  width: 138px;
   height: 39px;
-  display: flex;
-  align-items: center;
+  /* display: flex; */
   justify-content: space-between;
+}
+.period {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  padding: 5px, 2.5px;
 }
 .text {
   font-family: "Roboto", sans-serif;
-  width: 103px;
-  height: 14px;
   color: 52555f;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.34;
+  text-align: center;
 }
 
 .NavButton {
@@ -33,4 +38,6 @@
   font-size: 14px;
   font-weight: 700;
   font-style: normal;
+  text-align: center;
+  align-items: center;
 }

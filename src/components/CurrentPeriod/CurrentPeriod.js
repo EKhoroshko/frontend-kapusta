@@ -41,27 +41,29 @@ export default function Period() {
   return (
     <div className={periodStyles.container}>
       <p className={periodStyles.text}>Текущий период:</p>
-      <button
-        type="button"
-        className={periodStyles.NavButton}
-        aria-label="previous"
-        onClick={() => dispatch(handlePrevMonthButtonClick)}
-      >
-        <VectorLeft width="7" height="12" />
-      </button>
+      <div className={periodStyles.period}>
+        <button
+          type="button"
+          className={periodStyles.NavButton}
+          aria-label="previous"
+          onClick={() => dispatch(handlePrevMonthButtonClick)}
+        >
+          <VectorLeft width="7" height="12" />
+        </button>
 
-      <p
-        className={periodStyles.CurrentPeriod}
-      >{`${getMonthName[0].name}${getCurrentYear}`}</p>
+        <p className={periodStyles.CurrentPeriod}>{`${
+          getMonthName[0].name
+        }${" "}${getCurrentYear}`}</p>
 
-      <button
-        type="button"
-        className={periodStyles.NavButton}
-        aria-label="next"
-        onClick={() => dispatch(handleNextMonthButtonClick)}
-      >
-        <VectorRight width="7" height="12" />
-      </button>
+        <button
+          type="button"
+          className={periodStyles.NavButton}
+          aria-label="next"
+          onClick={() => dispatch(handleNextMonthButtonClick)}
+        >
+          <VectorRight width="7" height="12" />
+        </button>
+      </div>
     </div>
   );
 }
