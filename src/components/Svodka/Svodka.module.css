@@ -4,7 +4,7 @@
     width: 230px;
     /* height: 278px; */
     overflow: hidden;
-    border-radius: 0 0 20px 0;
+    border-radius: 20px 20px 20px 0;
     margin-left: 30px;
     margin-top: 33px;
   }
@@ -56,7 +56,7 @@
   }
 
   .empty {
-    height: 300px;
+    height: 231px;
   }
 }
 
