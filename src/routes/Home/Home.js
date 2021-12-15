@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useRouteMatch, useHistory } from "react-router-dom";
-
 import { ReactComponent as Diagramma } from "../../assets/images/summary.svg";
 import Calendar from "../../components/Calendar/Calendar";
 import Comment from "../../components/Modal/Comment/Comment";
