@@ -5,11 +5,30 @@ import { toast } from "react-toastify";
 
 axios.defaults.baseURL = "https://back-kapusta.herokuapp.com/api";
 
-const addTransaction = createAsyncThunk(
+const addTransactionCost = createAsyncThunk(
   "/addTransaction",
-  async (description, type) => {
+  async (description) => {
     try {
-      const { data } = await axios.post(`/transactions/${type}`, description);
+      const { data } = await axios.post("/transactions/costs", description);
+      return data;
+    } catch (error) {
+      toast.warning("Something went wrong", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }
+);
+const addTransactionIncomes = createAsyncThunk(
+  "/addTransactionIncomes",
+  async (description) => {
+    try {
+      const { data } = await axios.post("/transactions/incomes", description);
       return data;
     } catch (error) {
       toast.warning("Something went wrong", {
@@ -48,4 +67,9 @@ const getAllTransactions = createAsyncThunk("/getAllTransactions", async () => {
     return transaction;
   } catch (error) {}
 });
-export { addTransaction, deleteTransaction, getAllTransactions };
+export {
+  addTransactionCost,
+  addTransactionIncomes,
+  deleteTransaction,
+  getAllTransactions,
+};

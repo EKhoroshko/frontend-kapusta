@@ -2,6 +2,7 @@
 //import { createAsyncThunk } from "@reduxjs/toolkit";
 //import { toast } from "react-toastify";
 //import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 import {
   userRegister,
   userRegisterResolve,
@@ -62,7 +63,8 @@ export const loginUser =
           }
         })
         .then(({ data }) => {
-          dispatch(userLoginResolve(data));
+          axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
+          return dispatch(userLoginResolve(data));
         });
     } catch (error) {
       dispatch(userLoginReject(error));
