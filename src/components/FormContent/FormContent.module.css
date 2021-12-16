@@ -1,11 +1,3 @@
-.section {
-  height: 100vh;
-  width: 320px;
-  margin: 0 auto;
-  background-image: url("../../assets/images/back2.png");
-  background-repeat: no-repeat;
-}
-
 .container {
   position: relative;
   width: 100%;
@@ -132,18 +124,7 @@
   color: #52555f;
 }
 
-.formButton {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 265px;
-}
-
 @media screen and (min-width: 768px) {
-  .section {
-    width: 768px;
-  }
-
   .kapImg2 {
     position: relative;
     width: 720px;
@@ -214,10 +195,6 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .section {
-    width: 1280px;
-  }
-
   .kapImg2 {
     width: 1230px;
     height: 232px;
@@ -275,8 +252,4 @@
     width: 258px;
     text-align: left;
   }
-}
-
-.activeLink {
-  display: none;
 }
