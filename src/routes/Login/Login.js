@@ -70,7 +70,6 @@ function Login() {
               Или зайти с помощью e-mail и пароля, предварительно
               зарегистрировавшись:
             </p>
-            <LoginForm />
             <AuthNav />
           </div>
         </div>

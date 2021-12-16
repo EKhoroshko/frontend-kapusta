@@ -1,6 +1,7 @@
 .formButton {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   width: 265px;
 }
 
@@ -29,4 +30,8 @@
 .activeLink {
   background-color: #ff751d;
   color: #ffffff;
+}
+
+.buttonbox {
+  display: flex;
 }
