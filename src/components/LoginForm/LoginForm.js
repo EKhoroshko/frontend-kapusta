@@ -75,6 +75,10 @@ const LoginForm = () => {
           />
         </label>
         {/* <Button text="Войти" className={s.button} onClick={checkType} /> */}
+        <div className={s.formButton}>
+          <Button text="Войти" сlassName={s.button} onClick={checkType} />
+          <Button text="Регистрация" сlassName={s.button} onClick={checkType} />
+        </div>
       </form>
     </div>
   );

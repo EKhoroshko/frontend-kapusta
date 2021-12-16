@@ -8,6 +8,8 @@ import React from "react";
 import ReportButtonGoBack from "../../components/ReportButtonGoBack";
 import Balance from "../../components/Balance";
 import ReportCurrentPeriod from "../../components/ReportCurrentPeriod";
+import CurrentAmount from "../../components/CurrentAmount/CurrentAmount";
+
 
 import style from "./Summary.module.css";
 
@@ -19,17 +21,24 @@ function Summary() {
   // };
 
   return (
+    <div className={style.summaryImageBg}>
+
+    <div className={style.containerImgBg}>
     <div className={style.container}>
       <div className={style.menu}>
         <ReportButtonGoBack />
-        <div className={style.menuGrup}>
-          <Balance />
-          <ReportCurrentPeriod />
-        </div>
+        <Balance />
+        <ReportCurrentPeriod />
       </div>
+      <div >
+          <CurrentAmount />
+          </div>
+
       {/* <DetailsBalance /> */}
       {/* <ReportListByCategory />
       <ReportListChart /> */}
+    </div>
+    </div>
     </div>
   );
 }

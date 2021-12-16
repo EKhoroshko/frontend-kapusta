@@ -108,10 +108,6 @@
   margin: 0 auto;
 }
 
-.boxLink {
-  display: none;
-}
-
 .boxLinkMin {
   position: absolute;
   bottom: 0;
@@ -148,7 +144,7 @@
 }
 
 .mobile {
-  margin-top: 20px;
+  margin-top: 92px;
   display: flex;
   justify-content: center;
 }
@@ -157,7 +153,7 @@
   display: none;
 }
 
-.route {
+.boxButton {
   display: none;
 }
 
@@ -227,9 +223,9 @@
     display: none;
   }
 
-  .boxLink {
+  .boxButton {
     position: absolute;
-    bottom: 70%;
+    top: 199px;
     left: 50%;
     margin-left: -300px;
     z-index: 2;
@@ -249,17 +245,22 @@
     background-color: #fafbfd;
   }
 
-  .route {
+  .descktop {
     display: block;
     position: absolute;
-    top: 245px;
+    top: 239px;
     left: 50%;
     z-index: 3;
     margin-left: -300px;
   }
 
-  .descktop {
-    display: none;
+  .list {
+    height: 626px;
+    display: flex;
+    position: absolute;
+    z-index: 20;
+    top: 200px;
+    padding: 0px 30px;
   }
 }
 
@@ -302,11 +303,15 @@
     margin-bottom: 0px;
   }
 
-  .boxLink {
+  .boxLinkMin {
+    display: none;
+  }
+
+  .boxButton {
     position: absolute;
     left: 50%;
     margin-left: -550px;
-    bottom: 80%;
+    top: 93px;
   }
 
   .btn {
@@ -314,11 +319,19 @@
     padding: 15px 20px;
   }
 
-  .route {
+  .descktop {
     position: absolute;
-    top: 172px;
+    top: 132px;
     left: 50%;
     margin-left: -550px;
     z-index: 3;
+  }
+
+  .list {
+    max-height: 346px;
+    display: flex;
+    flex-direction: row;
+    top: 140px;
+    padding: 0px 20px;
   }
 }

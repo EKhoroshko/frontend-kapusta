@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-//import { toast } from "react-toastify";
-//import { register, logIn, logOut, currentUser } from "./operations";
 
 const authSlice = createSlice({
   name: "auth",
@@ -8,7 +6,10 @@ const authSlice = createSlice({
     isLoading: true,
     isLogin: false,
     token: null,
-    error: null,
+    id: null,
+    error: {},
+    balance: 0,
+    email: "",
     data: {},
   },
   reducers: {
@@ -23,7 +24,7 @@ const authSlice = createSlice({
     }),
     userRegisterReject: (_, actions) => ({
       isLoading: false,
-      error: actions.error,
+      error: actions.payload,
     }),
 
     userLogin: (state) => ({
@@ -34,10 +35,48 @@ const authSlice = createSlice({
       ...state,
       isLoading: false,
       token: payload.token,
+      isLogin: true,
+      balance: payload.balance,
+      email: payload.email,
+      id: payload.id,
+    }),
+    userLoginReject: (state, action) => ({
+      ...state,
+      isLoading: false,
+      data: action,
+      error: action,
+    }),
+
+    userLogOut: (state) => ({
+      ...state,
+      isLoading: true,
+    }),
+    userLogOutResolve: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      token: null,
+      data: payload,
+      isLogin: false,
+    }),
+    userLogOutReject: (state, action) => ({
+      ...state,
+      isLoading: false,
+      data: {},
+      error: action,
+    }),
+
+    updateUser: (state) => ({
+      ...state,
+      isLoading: true,
+    }),
+    updateUserResolve: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      token: payload.token,
       data: payload,
       isLogin: true,
     }),
-    userLoginReject: (state, action) => ({
+    updateUserReject: (state, action) => ({
       ...state,
       isLoading: false,
       data: {},
@@ -49,23 +88,6 @@ const authSlice = createSlice({
       error: null,
     }),
   },
-
-  userLogOut: (state) => ({
-    ...state,
-    isLoading: true,
-  }),
-  userLogOutResolve: (state, { payload }) => ({
-    ...state,
-    isLoading: false,
-    data: payload,
-    isLogin: false,
-  }),
-  userLogOutReject: (state, { payload }) => ({
-    ...state,
-    isLoading: false,
-    data: {},
-    error: payload,
-  }),
 });
 
 export const {
@@ -79,72 +101,9 @@ export const {
   userLogOut,
   userLogOutResolve,
   userLogOutReject,
+  updateUser,
+  updateUserResolve,
+  updateUserReject,
 } = authSlice.actions;
 
 export default authSlice.reducer;
-
-/*extraReducers: {
-    [register.fulfilled](_, { payload }) {
-      toast.success(
-        `Вы успешно зарегистрированы. Пожалуйста ,введите свои данные для входа.`,
-        {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        }
-      );
-      return payload;
-    },
-    [logIn.fulfilled](state, { payload }) {
-      state.name = payload.name;
-      state.email = payload.email;
-      state.token = payload.token;
-      state.isLoggedIn = true;
-      state.id = payload.id;
-      toast.success(`Добро пожаловать: ${state.name}`, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    },
-    [logOut.fulfilled](state) {
-      toast.info(`Всего доброго, ${state.name} `, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      state.name = "";
-      state.email = "";
-      state.token = null;
-      state.id = null;
-      state.isLoggedIn = false;
-    },
-    [currentUser.fulfilled](state, { payload }) {
-      state.name = payload.name;
-      state.email = payload.email;
-      state.token = payload.token;
-      state.id = payload.id;
-      state.isLoggedIn = true;
-      toast.success(`Рады Вас видеть  ${state.name}`, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    },
-  },*/
