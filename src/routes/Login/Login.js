@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import LoginForm from "../../components/LoginForm/LoginForm";
+import AuthNav from "../../components/AuthNav/AuthNav";
 import { useSelector } from "react-redux";
 import { getIsLoggedIn } from "../../redux/auth/selectors";
 import s from "./Login.module.css";
@@ -70,6 +71,7 @@ function Login() {
               зарегистрировавшись:
             </p>
             <LoginForm />
+            <AuthNav />
           </div>
         </div>
       </div>
