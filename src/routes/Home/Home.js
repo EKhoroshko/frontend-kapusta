@@ -8,7 +8,9 @@ import AddForm from "../../components/AddForm/AddForm";
 import List from "../../components/List/List";
 import AddFormMobile from "../../components/AddForm/AddFormMobile";
 import css from "./Home.module.css";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
+import { addTransaction } from "../../redux/transaction/operations";
 
 function Home() {
   const [balanse, setBalanse] = useState(5);
@@ -16,6 +18,7 @@ function Home() {
   const match = useRouteMatch();
   const location = useLocation();
   const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const a = location.pathname !== "/home";
@@ -24,6 +27,10 @@ function Home() {
 
   const goSummary = () => {
     history.push("/summary");
+  };
+
+  const getFormInfo = (value) => {
+    dispatch(addTransaction(value));
   };
 
   const checkBalance = (e) => {
@@ -70,7 +77,7 @@ function Home() {
                 <MobileList />
               </div>
               <div className={css.descktop}>
-                <AddForm />
+                <AddForm onSubmit={getFormInfo} />
                 <div className={css.list}>
                   <List />
                 </div>
