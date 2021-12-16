@@ -3,11 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const authSlice = createSlice({
   name: "auth",
   initialState: {
+    avatarURL: "",
     isLoading: true,
     isLogin: false,
     token: null,
     id: null,
-    error: {},
+    error: null,
     balance: 0,
     email: "",
     data: {},
@@ -39,6 +40,7 @@ const authSlice = createSlice({
       balance: payload.balance,
       email: payload.email,
       id: payload.id,
+      avatarURL: payload.avatarURL,
     }),
     userLoginReject: (state, action) => ({
       ...state,

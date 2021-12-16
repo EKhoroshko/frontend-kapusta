@@ -10,3 +10,4 @@ export const selectUser = (store) => store.auth.data;
 
 export const getToken = (store) => store.auth.token;
 export const getBalance = (store) => store.auth.balance;
+export const getAvatar = (store) => store.auth.avatarURL;
