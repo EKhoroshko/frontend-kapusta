@@ -1,5 +1,5 @@
 import React from "react";
-import transactionsOperations from "../../redux/transaction/operations";
+// import transactionsOperations from "../../redux/transaction/operations";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import MobileList from "./MobileList";
@@ -56,7 +56,7 @@ function List() {
                       text={"Вы уверены?"}
                       onCancel={toggleModal}
                       onSubmit={() => {
-                        dispatch(transactionsOperations.deleteTransaction());
+                        // dispatch(transactionsOperations.deleteTransaction());
                       }}
                     />
                   )}
