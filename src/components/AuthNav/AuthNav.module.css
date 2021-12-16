@@ -1,0 +1,32 @@
+.formButton {
+  display: flex;
+  justify-content: center;
+  width: 265px;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 122px;
+  height: 40px;
+  margin-bottom: 30px;
+  margin-right: 10px;
+  border: transparent;
+  border-radius: 30px;
+  box-shadow: 1px 2px 3px rgba(170, 178, 197, 0.1);
+  background-color: #f6f7fb;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1rem;
+  color: #a6abb9;
+  cursor: pointer;
+  outline: none;
+  /* text-transform: uppercase; */
+}
+
+.activeLink {
+  background-color: #ff751d;
+  color: #ffffff;
+}

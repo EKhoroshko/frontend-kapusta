@@ -1,9 +1,9 @@
 import React from "react";
-import s from "./Login.module.css";
-import LoginForm from "../../components/LoginForm/LoginForm";
+import s from "./Register.module.css";
+import RegistForm from "../../components/RegistForm/RegistForm";
 import AuthNav from "../../components/AuthNav/AuthNav";
 
-function Login() {
+function Register() {
   return (
     <section className={s.section}>
       <div className={s.container}>
@@ -28,7 +28,7 @@ function Login() {
               Или зайти с помощью e-mail и пароля, предварительно
               зарегистрировавшись:
             </p>
-            <LoginForm />
+            <RegistForm />
             <AuthNav />
           </div>
         </div>
@@ -37,4 +37,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
