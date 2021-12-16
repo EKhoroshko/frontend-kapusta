@@ -1,5 +1,5 @@
 import s from "./LoginForm.module.css";
-// import Button from "../Button/Button";
+ import Button from "../Button/Button";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/auth/operations";
@@ -76,8 +76,8 @@ const LoginForm = () => {
         </label>
         {/* <Button text="Войти" className={s.button} onClick={checkType} /> */}
         <div className={s.formButton}>
-          <Button text="Войти" сlassName={s.button} onClick={checkType} />
-          <Button text="Регистрация" сlassName={s.button} onClick={checkType} />
+          <Button text="Войти" сlassName={s.button} />
+          <Button text="Регистрация" сlassName={s.button} />
         </div>
       </form>
     </div>
