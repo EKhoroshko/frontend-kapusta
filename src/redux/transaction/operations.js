@@ -4,6 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 
 axios.defaults.baseURL = "https://back-kapusta.herokuapp.com/api";
+const token = localStorage.getItem("token");
+axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
 const addTransaction = createAsyncThunk(
   "/addTransaction",

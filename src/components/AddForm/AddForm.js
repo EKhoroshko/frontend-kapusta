@@ -19,12 +19,7 @@ function AddForm({ onSubmit }) {
 
   const writePrice = (e) => {
     e.preventDefault();
-    const transaction = {
-      sum: Number(price),
-      category: select,
-      description,
-    };
-    onSubmit(transaction);
+    onSubmit({ price, description, select });
   };
 
   const checkPrise = (e) => {
