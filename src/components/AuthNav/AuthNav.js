@@ -10,7 +10,6 @@ export default function AuthNav({ props }) {
   const [password, setPass] = useState("");
   const [name, setName] = useState("");
   const [isActiv, setIsActiv] = useState(true);
-  console.log(isActiv);
 
   const waitCheck = (e) => {
     const { name, value } = e.currentTarget;
@@ -61,7 +60,7 @@ export default function AuthNav({ props }) {
   };
 
   return (
-    <div className={s.formButton}>
+    <div className={s.wrapper}>
       <form className={s.form} onSubmit={handlSubmit} autoComplete="off">
         {isActiv && (
           <label className={s.label}>

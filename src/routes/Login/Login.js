@@ -1,42 +1,13 @@
 import React, { useEffect } from "react";
-import LoginForm from "../../components/LoginForm/LoginForm";
 import AuthNav from "../../components/AuthNav/AuthNav";
 import { useSelector } from "react-redux";
 import { getIsLoggedIn } from "../../redux/auth/selectors";
-import s from "./Login.module.css";
 import { useHistory } from "react-router-dom";
+import s from "./Login.module.css";
 
 function Login() {
   const login = useSelector(getIsLoggedIn);
   const history = useHistory();
-
-  /*const log = async ({ email, password }) => {
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    };
-
-    try {
-      const resp = await fetch(
-        "https://back-kapusta.herokuapp.com/api/auth/users/login",
-        options
-      ).then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-      });
-      console.log(resp.error);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  log({
-    email: "xapoxa14@gmail.com",
-    password: "12345678",
-  });*/
 
   useEffect(() => {
     if (login) {
