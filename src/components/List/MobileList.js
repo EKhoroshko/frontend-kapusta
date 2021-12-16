@@ -1,12 +1,12 @@
 import styles from "./List.module.css";
 // import transactionsOperations from "../../redux/transaction/operations";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import deleteIcon from "../../assets/images/delete.svg";
 import Modal from "../Modal/ModalWindow/ModalWindow";
 
 const Mobile = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [isModalOpen, setModalOpen] = useState(false);
 

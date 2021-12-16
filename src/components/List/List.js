@@ -1,7 +1,7 @@
 import React from "react";
 // import transactionsOperations from "../../redux/transaction/operations";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import MobileList from "./MobileList";
 import s from "./List.module.css";
 import Modal from "../Modal/ModalWindow/ModalWindow";
@@ -9,7 +9,7 @@ import Modal from "../Modal/ModalWindow/ModalWindow";
 import deleteIcon from "../../assets/images/delete.svg";
 
 function List() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [isModalOpen, setModalOpen] = useState(false);
 
