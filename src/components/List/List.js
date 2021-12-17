@@ -28,14 +28,15 @@ function List({ type }) {
           <table className={s.table}>
             <thead className={s.headerTable}>
               <tr className={s.tableHeadTr}>
-                <th className={s.tableTh1}>Дата</th>
-                <th className={s.tableTh}>Описание</th>
-                <th className={s.tableTh}>Категория</th>
-                <th className={s.tableTh}>Сумма</th>
-                <th className={s.tableTh}></th>
+                <th className={s.tableThDate}>Дата</th>
+                <th className={s.tableThDesc}>Описание</th>
+                <th className={s.tableThCateg}>Категория</th>
+                <th className={s.tableThAmout}>Сумма</th>
+                <th className={s.tableThDel}></th>
               </tr>
             </thead>
             <tbody className={s.tableBody}>
+
               {income &&
                 incomes.map((tr) => {
                   return (

@@ -48,69 +48,6 @@ const Mobile = () => {
         </div>
       </li>
 
-      <li className={styles.mobileList2}>
-        <div className={styles.mobileListWrap}>
-          <p className={styles.textDescMob}>description</p>
-          <div className={styles.descWrap}>
-            <p className={styles.dateMob}>date</p>
-            <p className={styles.categoryMob}>category</p>
-          </div>
-        </div>
-        <p>3333</p>
-
-        <div className={styles.btnWrapper}>
-          <button
-            type="button"
-            className={styles.deleteBtn}
-            onClick={() => {
-              toggleModal();
-            }}
-          >
-            <img className={styles.icon} src={deleteIcon} alt="Delete icon" />
-          </button>
-          {isModalOpen && (
-            <Modal
-              text={"Вы уверены?"}
-              onCancel={toggleModal}
-              onSubmit={() => {
-                // dispatch(transactionsOperations.deleteTransaction());
-              }}
-            />
-          )}
-        </div>
-      </li>
-
-      <li className={styles.mobileList2}>
-        <div className={styles.mobileListWrap}>
-          <p className={styles.textDescMob}>description</p>
-          <div className={styles.descWrap}>
-            <p className={styles.dateMob}>date</p>
-            <p className={styles.categoryMob}>category</p>
-          </div>
-        </div>
-        <p>3333</p>
-
-        <div className={styles.btnWrapper}>
-          <button
-            type="button"
-            className={styles.deleteBtn}
-            onClick={() => {
-              toggleModal();
-            }}
-          >
-            <img className={styles.icon} src={deleteIcon} alt="Delete icon" />
-          </button>
-          {isModalOpen && (
-            <Modal
-              text={"Вы уверены?"}
-              onCancel={toggleModal}
-              onSubmit={() => {
-                // dispatch(transactionsOperations.deleteTransaction());
-              }}
-            />
-          )}
-        </div>
-      </li>
     </div>
   );
 };

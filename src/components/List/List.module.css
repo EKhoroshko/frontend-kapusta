@@ -12,6 +12,7 @@
   }
 
   .mobileWrap {
+    font-family: Roboto, sans-serif;
     display: flex;
     flex-wrap: wrap;
     width: 282px;
@@ -40,11 +41,10 @@
   }
 
   .mobileList {
-    /* width: 100%; */
     padding: 0;
     margin: 0;
     list-style: none;
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
   }
 
   .mobileList2 {
@@ -52,7 +52,6 @@
     justify-content: space-between;
     padding: 10px 20px;
     margin-bottom: 12px;
-
     border-bottom: 2px solid #f5f6fb;
   }
 
@@ -64,6 +63,7 @@
   }
 
   .textDescMob {
+    font-family: Roboto, sans-serif;
     font-weight: bold;
     font-size: 12px;
     line-height: 14px;
@@ -84,6 +84,7 @@
   .dateMob {
     width: 44px;
     height: 7px;
+    font-family: Roboto, sans-serif;
     font-weight: 400;
     font-size: 8px;
     line-height: 9px;
@@ -93,10 +94,20 @@
   .categoryMob {
     width: 82px;
     height: 7px;
+    font-family: Roboto, sans-serif;
     font-weight: 400;
     font-size: 8px;
     line-height: 9px;
     margin: 0 0 0 20px;
+  }
+
+  .amountRed {
+    color: #e7192e;
+    font-weight: bold;
+  }
+  .amountGreen {
+    color: #407946;
+    font-weight: bold;
   }
 
   .btnWrapper {
@@ -140,8 +151,8 @@
     width: 100%;
     height: 38px;
     align-items: center;
-
     border-radius: 20px 20px 0 0;
+    font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 12px;
@@ -155,7 +166,7 @@
   .tableHeadTr {
     background: #f5f6fb;
     border-radius: 20px 20px 0 0;
-    height: 40px;
+    height: 38px;
     font-weight: 700;
     letter-spacing: 0.02em;
     display: flex;
@@ -164,8 +175,28 @@
     color: #000;
   }
 
-  .tableTh {
-    height: 38px;
+  .tableThDate {
+    margin-left: 21px;
+    width: 67px;
+    text-align: left;
+  }
+  .tableThDesc {
+    margin-left: 37px;
+    width: 168px;
+    text-align: left;
+  }
+
+  .tableThCateg {
+    width: 124px;
+    text-align: center;
+  }
+  .tableThAmout {
+    width: 104px;
+    text-align: right;
+  }
+
+  .tableThDel {
+    width: 84px;
   }
 
   .tr {
@@ -182,6 +213,13 @@
     width: 100%;
     border: 2px solid #f5f6fb;
     overflow-y: scroll;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+    color: #52555f;
   }
 
   .tableBody::-webkit-scrollbar {
@@ -194,6 +232,34 @@
     background-color: #fc842d;
     border-radius: 4px;
     height: 15px;
+  }
+
+  .tableDate {
+    padding-left: 20px;
+    text-align: left;
+    width: 84px;
+  }
+
+  .tableDescription {
+    padding-left: 20px;
+    text-align: left;
+    width: 168px;
+  }
+
+  .tableCategory {
+    width: 124px;
+    text-align: center;
+  }
+
+  .tableAmount {
+    /* color: #e7192e; */
+    font-weight: 700;
+    width: 104px;
+    text-align: right;
+  }
+
+  .tableDel {
+    width: 84px;
   }
 
   .deleteBtn {
@@ -216,5 +282,59 @@
   .table {
     width: 760px;
     height: 344px;
+  }
+
+  .tableThDate {
+    margin-left: 20px;
+    width: 84px;
+    text-align: left;
+  }
+  .tableThDesc {
+    margin-left: 20px;
+    width: 124px;
+    text-align: left;
+  }
+
+  .tableThCateg {
+    margin-left: 80px;
+    width: 172px;
+    text-align: left;
+  }
+  .tableThAmout {
+    width: 104px;
+    text-align: right;
+  }
+
+  .tableThDel {
+    width: 136px;
+  }
+
+  .tableDate {
+    padding-left: 20px;
+    text-align: left;
+    width: 84px;
+  }
+
+  .tableDescription {
+    padding-left: 20px;
+    text-align: left;
+    width: 188px;
+  }
+
+  .tableCategory {
+    padding-left: 34px;
+    width: 116px;
+    text-align: left;
+  }
+
+  .tableAmount {
+    /* color: #e7192e; */
+    width: 104px;
+    text-align: right;
+    padding-left: 48px;
+  }
+
+  .tableDel {
+    width: 136px;
   }
 }
