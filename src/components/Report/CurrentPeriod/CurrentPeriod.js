@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getMonth, getYear } from "../../redux/current-period/selectors";
-import { ReactComponent as VectorLeft } from "../../assets/images/vector-left.svg";
-import { ReactComponent as VectorRight } from "../../assets/images/vector-right.svg";
-import MONTHS from "../../helpers/Current-period/months";
+import { getMonth, getYear } from "../../../redux/current-period/selectors";
+import { ReactComponent as VectorLeft } from "../../../assets/images/vector-left.svg";
+import { ReactComponent as VectorRight } from "../../../assets/images/vector-right.svg";
+import MONTHS from "../../../helpers/Current-period/months";
 import periodStyles from "./Period.module.css";
 
 // я ще над цим працюю
