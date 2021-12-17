@@ -6,8 +6,8 @@ import { changeBalance } from "../../redux/auth/operations";
 
 const Balance = () => {
   const oldBalance = useSelector(getBalance);
-  const [balance, setBalance] = useState();
-  const dispatch = useDispatch(oldBalance);
+  const [balance, setBalance] = useState(oldBalance);
+  const dispatch = useDispatch();
 
   const checkBalance = (e) => {
     setBalance(e.currentTarget.value);

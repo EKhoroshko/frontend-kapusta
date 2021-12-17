@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 import {
   userRegister,
@@ -37,6 +38,7 @@ export const registration =
         "https://back-kapusta.herokuapp.com/api/auth/users/register",
         options
       ).then((response) => response.json());
+      await console.log(response);
       if (response.hasOwnProperty("error")) {
         return toast.error(response.errors, {
           position: "top-right",
@@ -105,6 +107,7 @@ export const loginUser =
           }
         })
         .then(({ data }) => {
+          axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
           dispatch(userLoginResolve(data));
           localStorage.setItem("token", data.token);
           toast.success("Добро пожаловать!!! Мы вас ждали.", {
@@ -140,7 +143,7 @@ export const logOut = () => async (dispatch, getState) => {
     ).then((response) => response.statusText);
     localStorage.removeItem("token");
     dispatch(userLogOutResolve(response));
-    toast.success("Были рады вас видеть.Возвращайтесь к нам!", {
+    toast.success("Спасибо за визит, заходите еще!", {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
@@ -171,7 +174,7 @@ export const updateUserToken = () => async (dispatch) => {
         options
       )
         .then((response) => response.json())
-        .then(({ data }) => ({ ...data, token }));
+        .then(({ data }) => ({ data, token }));
       dispatch(updateUserResolve(user));
     } catch (error) {
       dispatch(updateUserReject(error));
