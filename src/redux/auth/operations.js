@@ -2,20 +2,20 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import {
-  userRegister,
+  userRegisterLoading,
   userRegisterResolve,
   userRegisterReject,
   userClearError,
-  userLogin,
+  userLoginLoading,
   userLoginResolve,
   userLoginReject,
-  userLogOut,
+  userLogOutLoading,
   userLogOutResolve,
   userLogOutReject,
-  updateUser,
+  updateUserLoading,
   updateUserResolve,
   updateUserReject,
-  userBalance,
+  userBalanceLoading,
   userBalanceResolve,
   userBalanceReject,
 } from "../auth/slice";
@@ -32,7 +32,7 @@ export const registration =
       body: JSON.stringify({ email, password }),
     };
     try {
-      dispatch(userRegister());
+      dispatch(userRegisterLoading());
       const response = await fetch(
         "https://back-kapusta.herokuapp.com/api/auth/users/register",
         options
@@ -80,7 +80,7 @@ export const loginUser =
       body: JSON.stringify({ email, password }),
     };
 
-    dispatch(userLogin());
+    dispatch(userLoginLoading());
     try {
       return await fetch(
         "https://back-kapusta.herokuapp.com/api/auth/users/login",
@@ -133,7 +133,7 @@ export const logOut = () => async (dispatch, getState) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  dispatch(userLogOut());
+  dispatch(userLogOutLoading());
   try {
     const response = await fetch(
       "https://back-kapusta.herokuapp.com/api/auth/users/logout",
@@ -165,7 +165,7 @@ export const updateUserToken = () => async (dispatch) => {
         Authorization: `Bearer ${token}`,
       },
     };
-    dispatch(updateUser());
+    dispatch(updateUserLoading());
     try {
       const user = await fetch(
         "https://back-kapusta.herokuapp.com/api/auth/users/current",
@@ -193,7 +193,7 @@ export const changeBalance = (value) => async (dispatch, getState) => {
     },
     body: JSON.stringify({ balance: balance }),
   };
-  dispatch(userBalance());
+  dispatch(userBalanceLoading());
   try {
     const newBalance = await fetch(
       `https://back-kapusta.herokuapp.com/api/transactions/${id}`,

@@ -13,14 +13,13 @@ import AddForm from "../../components/AddForm/AddForm";
 import List from "../../components/List/List";
 import AddFormMobile from "../../components/AddForm/AddFormMobile";
 import { useDispatch, useSelector } from "react-redux";
-import { addTransaction } from "../../redux/transaction/operations";
 import { getBalance } from "../../redux/auth/selectors";
 import { changeBalance } from "../../redux/auth/operations";
+import { addTransaction } from "../../redux/transaction/operationT";
 import css from "./Home.module.css";
 
 function Home() {
   const balance = useSelector(getBalance);
-
   const [type, setType] = useState("");
   const [active, setActive] = useState(false);
   const [money, setMoney] = useState(balance);
@@ -38,12 +37,14 @@ function Home() {
     history.push("/summary");
   };
 
-  const updateBalance = (price, type, balance) => {
-    if (type === "cost") {
+  const updateBalance = (price, type) => {
+    if (type === "costs") {
       const newBalanceCost = balance - Number(price);
+      setMoney(newBalanceCost);
       return dispatch(changeBalance(newBalanceCost));
     } else {
       const newBalanceIncoms = balance + Number(price);
+      setMoney(newBalanceIncoms);
       dispatch(changeBalance(newBalanceIncoms));
     }
   };
@@ -56,7 +57,7 @@ function Home() {
       type,
     };
     dispatch(addTransaction(transaction));
-    updateBalance(price, balance, type);
+    updateBalance(price, type);
     // transactions.length(updateBalance( price));
   };
 
@@ -126,14 +127,14 @@ function Home() {
                 <button
                   className={css.btn}
                   type="button"
-                  onClick={() => setType("cost")}
+                  onClick={() => setType("costs")}
                 >
                   Расходы
                 </button>
                 <button
                   className={css.btn}
                   type="button"
-                  onClick={() => setType("income")}
+                  onClick={() => setType("incomes")}
                 >
                   Доход
                 </button>
