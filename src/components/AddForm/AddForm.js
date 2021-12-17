@@ -11,17 +11,15 @@ import Svodka from "../Svodka/Svodka";
 
 import css from "./AddForm.module.css";
 
-function AddForm() {
+function AddForm({ onSubmit }) {
   const history = useHistory();
   const [select, setSelect] = useState(null);
-  const [descriptoin, setDescriptoin] = useState("");
+  const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
 
   const writePrice = (e) => {
     e.preventDefault();
-    console.log(price);
-    console.log(descriptoin);
-    console.log(select);
+    onSubmit({ price, description, select });
   };
 
   const checkPrise = (e) => {
@@ -29,7 +27,7 @@ function AddForm() {
   };
 
   const checkDescription = (e) => {
-    setDescriptoin(e.currentTarget.value);
+    setDescription(e.currentTarget.value);
   };
 
   const clearForm = () => {
@@ -56,7 +54,7 @@ function AddForm() {
                 type="text"
                 className={css.descr}
                 placeholder="Описание товара"
-                value={descriptoin}
+                value={description}
                 onChange={checkDescription}
               />
               <Select

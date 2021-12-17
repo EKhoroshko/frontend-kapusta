@@ -1,6 +1,5 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
 
 import {
   userRegister,
@@ -107,7 +106,7 @@ export const loginUser =
           }
         })
         .then(({ data }) => {
-          axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
+          // axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
           dispatch(userLoginResolve(data));
           localStorage.setItem("token", data.token);
           toast.success("Добро пожаловать!!! Мы вас ждали.", {
