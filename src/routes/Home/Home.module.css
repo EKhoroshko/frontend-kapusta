@@ -12,6 +12,7 @@
 }
 
 .container {
+  height: 100vh;
   position: relative;
   padding-left: 19px;
   padding-right: 19px;
@@ -112,7 +113,7 @@
 
 .boxLinkMin {
   position: absolute;
-  bottom: 0;
+  top: 600px;
   left: 50%;
   display: flex;
   flex-direction: row;
