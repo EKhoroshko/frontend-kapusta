@@ -3,9 +3,8 @@ import React from "react";
 import { useState } from "react";
 // import { useDispatch } from "react-redux";
 import MobileList from "./MobileList";
-import s from "./List.module.css";
 import Modal from "../Modal/ModalWindow/ModalWindow";
-import { getAllTransactions } from "../../redux/transaction/operations";
+import { getAllTransactions } from "../../redux/transaction/operationT";
 import {
   getCosts,
   getIncomes,
@@ -14,13 +13,14 @@ import {
 import deleteIcon from "../../assets/images/delete.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
+import s from "./List.module.css";
 
 function List({ type }) {
   const incomes = useSelector(getIncomes);
   const costs = useSelector(getCosts);
   const transactions = useSelector(getTransactions);
   const [isModalOpen, setModalOpen] = useState(false);
-
+  console.log(transactions);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function List({ type }) {
   const toggleModal = (e) => {
     setModalOpen(!isModalOpen);
   };
-  const cost = costs && type === "cost";
+  const cost = costs && type === "costs";
   const income = incomes && type === "incomes";
 
   const trans = transactions && type === "";

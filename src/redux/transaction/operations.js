@@ -44,10 +44,10 @@ const deleteTransaction = createAsyncThunk("/deleteTransaction", async (id) => {
   }
 });
 
-const getAllTransactions = createAsyncThunk("/getAllTransactions", async () => {
+/*const getAllTransactions = createAsyncThunk("/getAllTransactions", async () => {
   try {
     const { transaction } = await axios.get(`/transactions/all`);
     return transaction;
   } catch (error) {}
-});
-export { addTransaction, deleteTransaction, getAllTransactions };
+});*/
+export { addTransaction, deleteTransaction /* getAllTransactions*/ };

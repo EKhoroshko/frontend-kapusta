@@ -15,7 +15,7 @@ const authSlice = createSlice({
     data: {},
   },
   reducers: {
-    userRegister: (state, _) => ({
+    userRegisterLoading: (state, _) => ({
       ...state,
       isLoading: true,
     }),
@@ -29,7 +29,7 @@ const authSlice = createSlice({
       error: actions.payload,
     }),
 
-    userLogin: (state) => ({
+    userLoginLoading: (state) => ({
       ...state,
       isLoading: true,
     }),
@@ -52,7 +52,7 @@ const authSlice = createSlice({
       error: action,
     }),
 
-    userLogOut: (state) => ({
+    userLogOutLoading: (state) => ({
       ...state,
       isLoading: true,
     }),
@@ -71,7 +71,7 @@ const authSlice = createSlice({
       error: action,
     }),
 
-    updateUser: (state) => ({
+    updateUserLoading: (state) => ({
       ...state,
       isLoading: true,
     }),
@@ -93,13 +93,12 @@ const authSlice = createSlice({
       error: action.payload,
     }),
 
-    userBalance: (state, _) => ({
+    userBalanceLoading: (state, _) => ({
       ...state,
       isLoading: true,
     }),
     userBalanceResolve: (state, { payload }) => ({
       ...state,
-      data: payload,
       balance: payload.balance,
       isLoading: false,
     }),
@@ -116,20 +115,20 @@ const authSlice = createSlice({
 });
 
 export const {
-  userRegister,
+  userRegisterLoading,
   userRegisterResolve,
   userRegisterReject,
   userClearError,
-  userLogin,
+  userLoginLoading,
   userLoginResolve,
   userLoginReject,
-  userLogOut,
+  userLogOutLoading,
   userLogOutResolve,
   userLogOutReject,
-  updateUser,
+  updateUserLoading,
   updateUserResolve,
   updateUserReject,
-  userBalance,
+  userBalanceLoading,
   userBalanceResolve,
   userBalanceReject,
 } = authSlice.actions;
