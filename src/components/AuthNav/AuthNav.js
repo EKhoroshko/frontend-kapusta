@@ -48,7 +48,7 @@ export default function AuthNav({ props }) {
       email,
       password,
     };
-    console.log(options);
+
     switch (isActiv) {
       case true:
         return await dispatch(registration(options));

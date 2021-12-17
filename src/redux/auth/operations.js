@@ -1,6 +1,5 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
 
 import {
   userRegister,
@@ -16,8 +15,11 @@ import {
   updateUser,
   updateUserResolve,
   updateUserReject,
+  userBalance,
+  userBalanceResolve,
+  userBalanceReject,
 } from "../auth/slice";
-import { getToken } from "./selectors";
+import { getToken, getUserId } from "./selectors";
 
 export const registration =
   ({ email, password }) =>
@@ -35,7 +37,6 @@ export const registration =
         "https://back-kapusta.herokuapp.com/api/auth/users/register",
         options
       ).then((response) => response.json());
-      await console.log(response);
       if (response.hasOwnProperty("error")) {
         return toast.error(response.errors, {
           position: "top-right",
@@ -104,7 +105,6 @@ export const loginUser =
           }
         })
         .then(({ data }) => {
-          axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
           dispatch(userLoginResolve(data));
           localStorage.setItem("token", data.token);
           toast.success("Добро пожаловать!!! Мы вас ждали.", {
@@ -137,9 +137,18 @@ export const logOut = () => async (dispatch, getState) => {
     const response = await fetch(
       "https://back-kapusta.herokuapp.com/api/auth/users/logout",
       options
-    ).then((response) => response.json());
+    ).then((response) => response.statusText);
     localStorage.removeItem("token");
     dispatch(userLogOutResolve(response));
+    toast.success("Были рады вас видеть.Возвращайтесь к нам!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   } catch (error) {
     dispatch(userLogOutReject(error));
     dispatch(userClearError());
@@ -162,11 +171,38 @@ export const updateUserToken = () => async (dispatch) => {
         options
       )
         .then((response) => response.json())
-        .then(({ data }) => ({ data, token }));
+        .then(({ data }) => ({ ...data, token }));
       dispatch(updateUserResolve(user));
     } catch (error) {
       dispatch(updateUserReject(error));
       dispatch(userClearError());
     }
+  }
+};
+
+export const changeBalance = (value) => async (dispatch, getState) => {
+  const token = localStorage.getItem("token");
+  const id = getUserId(getState());
+  const number = Number(value);
+  const options = {
+    method: "PATCH",
+    Headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(number),
+  };
+  console.log(options);
+  dispatch(userBalance());
+  try {
+    const newBalance = await fetch(
+      `https://back-kapusta.herokuapp.com/api/transactions/${id}`,
+      options
+    ).then((response) => console.log(response));
+    console.log(newBalance);
+    userBalanceResolve(newBalance);
+  } catch (error) {
+    dispatch(userBalanceReject());
+    dispatch(userClearError());
   }
 };

@@ -9,6 +9,7 @@ const authSlice = createSlice({
     token: null,
     id: null,
     error: null,
+    name: "",
     balance: 0,
     email: "",
     data: {},
@@ -34,6 +35,7 @@ const authSlice = createSlice({
     }),
     userLoginResolve: (state, { payload }) => ({
       ...state,
+      name: payload.userName,
       isLoading: false,
       token: payload.token,
       isLogin: true,
@@ -57,8 +59,9 @@ const authSlice = createSlice({
       ...state,
       isLoading: false,
       token: null,
-      data: payload,
+      data: {},
       isLogin: false,
+      error: payload,
     }),
     userLogOutReject: (state, action) => ({
       ...state,
@@ -75,7 +78,8 @@ const authSlice = createSlice({
       ...state,
       isLoading: false,
       token: payload.token,
-      data: payload,
+      email: payload.email,
+      id: payload.id,
       isLogin: true,
     }),
     updateUserReject: (state, action) => ({
@@ -83,6 +87,20 @@ const authSlice = createSlice({
       isLoading: false,
       data: {},
       error: action.payload,
+    }),
+
+    userBalance: (state, _) => ({
+      ...state,
+      isLoading: true,
+    }),
+    userBalanceResolve: (state, { payload }) => ({
+      ...state,
+      balance: payload.balance,
+      isLoading: false,
+    }),
+    userBalanceReject: (_, actions) => ({
+      isLoading: false,
+      error: actions.payload,
     }),
 
     userClearError: (state) => ({
@@ -106,6 +124,9 @@ export const {
   updateUser,
   updateUserResolve,
   updateUserReject,
+  userBalance,
+  userBalanceResolve,
+  userBalanceReject,
 } = authSlice.actions;
 
 export default authSlice.reducer;
