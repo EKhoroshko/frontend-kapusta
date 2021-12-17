@@ -99,6 +99,7 @@ const authSlice = createSlice({
     }),
     userBalanceResolve: (state, { payload }) => ({
       ...state,
+      data: payload,
       balance: payload.balance,
       isLoading: false,
     }),

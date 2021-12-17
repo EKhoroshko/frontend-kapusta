@@ -175,7 +175,6 @@ export const updateUserToken = () => async (dispatch) => {
       )
         .then((response) => response.json())
         .then(({ data }) => ({ ...data, token }));
-      console.log(user);
       dispatch(updateUserResolve(user));
     } catch (error) {
       dispatch(updateUserReject(error));
@@ -203,7 +202,7 @@ export const changeBalance = (value) => async (dispatch, getState) => {
     const newBalance = await fetch(
       `https://back-kapusta.herokuapp.com/api/transactions/${id}`,
       options
-    ).then((response) => console.log(response));
+    ).then((response) => response.json());
     console.log(newBalance);
     userBalanceResolve(newBalance);
   } catch (error) {
