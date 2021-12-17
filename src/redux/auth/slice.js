@@ -9,7 +9,7 @@ const authSlice = createSlice({
     token: null,
     id: null,
     error: null,
-    name: "",
+    userName: "",
     balance: 0,
     email: "",
     data: {},
@@ -35,7 +35,8 @@ const authSlice = createSlice({
     }),
     userLoginResolve: (state, { payload }) => ({
       ...state,
-      name: payload.userName,
+      data: payload,
+      userName: payload.userName,
       isLoading: false,
       token: payload.token,
       isLogin: true,
@@ -76,10 +77,13 @@ const authSlice = createSlice({
     }),
     updateUserResolve: (state, { payload }) => ({
       ...state,
+      avatarURL: payload.avatarURL,
+      userName: payload.userName,
       isLoading: false,
       token: payload.token,
       email: payload.email,
       id: payload.id,
+      balance: payload.balance,
       isLogin: true,
     }),
     updateUserReject: (state, action) => ({

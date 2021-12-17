@@ -174,7 +174,8 @@ export const updateUserToken = () => async (dispatch) => {
         options
       )
         .then((response) => response.json())
-        .then(({ data }) => ({ data, token }));
+        .then(({ data }) => ({ ...data, token }));
+      console.log(user);
       dispatch(updateUserResolve(user));
     } catch (error) {
       dispatch(updateUserReject(error));
@@ -187,6 +188,7 @@ export const changeBalance = (value) => async (dispatch, getState) => {
   const token = localStorage.getItem("token");
   const id = getUserId(getState());
   const number = Number(value);
+  console.log(`token`, token);
   const options = {
     method: "PATCH",
     Headers: {
