@@ -1,6 +1,5 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
 
 import {
   userRegister,
@@ -107,7 +106,6 @@ export const loginUser =
           }
         })
         .then(({ data }) => {
-          axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
           dispatch(userLoginResolve(data));
           localStorage.setItem("token", data.token);
           toast.success("Добро пожаловать!!! Мы вас ждали.", {
@@ -186,15 +184,14 @@ export const updateUserToken = () => async (dispatch) => {
 export const changeBalance = (value) => async (dispatch, getState) => {
   const token = localStorage.getItem("token");
   const id = getUserId(getState());
-  const number = Number(value);
-  console.log(`token`, token);
+  const balance = Number(value);
   const options = {
     method: "PATCH",
-    Headers: {
+    headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(number),
+    body: JSON.stringify({ balance: balance }),
   };
   console.log(options);
   dispatch(userBalance());
@@ -202,9 +199,12 @@ export const changeBalance = (value) => async (dispatch, getState) => {
     const newBalance = await fetch(
       `https://back-kapusta.herokuapp.com/api/transactions/${id}`,
       options
-    ).then((response) => response.json());
+    )
+      .then((response) => response.json())
+      .then(({ data }) => ({ ...data }))
+      .then(({ result }) => ({ ...result, balance }));
     console.log(newBalance);
-    userBalanceResolve(newBalance);
+    dispatch(userBalanceResolve(newBalance));
   } catch (error) {
     dispatch(userBalanceReject());
     dispatch(userClearError());
