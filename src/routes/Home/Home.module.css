@@ -1,4 +1,5 @@
 .section {
+  position: relative;
   height: 100vh;
   width: 100%;
   margin: 0 auto;
@@ -226,7 +227,7 @@
 
   .boxButton {
     position: absolute;
-    top: 199px;
+    top: 130px;
     left: 50%;
     margin-left: -300px;
     z-index: 2;
@@ -249,7 +250,7 @@
   .descktop {
     display: block;
     position: absolute;
-    top: 239px;
+    top: 170px;
     left: 50%;
     z-index: 3;
     margin-left: -300px;
@@ -337,7 +338,7 @@
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1280px) {
+/*@media screen and (min-width: 768px) and (max-width: 1280px) {
   .imgBackKapusta {
     background-image: url("../../assets/images/Group\ 38.png");
     background-repeat: no-repeat;
@@ -348,15 +349,13 @@
     left: 600px;
   }
 }
-
-@media screen and (min-width: 1280px) {
-  .imgBackKapusta {
-    background-image: url("../../assets/images/imgKap.png");
+.imgBackKapusta {
+    background-image: url("../../assets/images/Group\ 38.png");
     background-repeat: no-repeat;
     position: absolute;
-    top: 700px;
+    top: 1150px;
     width: 100%;
     height: 142px;
-    left: 0px;
+    left: 600px;
   }
-}
+*/
