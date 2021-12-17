@@ -201,7 +201,7 @@ export const changeBalance = (value) => async (dispatch, getState) => {
     )
       .then((response) => response.json())
       .then(({ data }) => ({ ...data }))
-      .then(({ result }) => ({ ...result, balance }));
+      .then(({ result }) => ({ ...result }));
     dispatch(userBalanceResolve(newBalance));
   } catch (error) {
     dispatch(userBalanceReject());
