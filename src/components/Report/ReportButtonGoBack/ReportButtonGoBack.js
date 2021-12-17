@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as BtnGoBack } from "../../assets/images/BtnGoBack.svg";
+import { ReactComponent as BtnGoBack } from "../../../assets/images/BtnGoBack.svg";
 
 import styles from "./ReportButtonGoBack.module.css";
 

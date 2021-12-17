@@ -1,6 +1,5 @@
-
 import s from "./CurrentAmount.module.css";
-import Line from "../../assets/images/line.svg";
+import Line from "../../../assets/images/line.svg";
 
 const CurrentAmount = () => {
   return (

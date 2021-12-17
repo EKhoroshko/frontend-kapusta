@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ReportCurrentPeriod.module.css";
-import { ReactComponent as BtnLeft } from "../../assets/images/BtnLefl.svg";
-import { ReactComponent as BtnRight } from "../../assets/images/BtnRight.svg";
+import { ReactComponent as BtnLeft } from "../../../assets/images/BtnLefl.svg";
+import { ReactComponent as BtnRight } from "../../../assets/images/BtnRight.svg";
 
 const ReportCurrentPeriod = () => {
   return (
