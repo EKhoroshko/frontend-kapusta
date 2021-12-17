@@ -150,6 +150,8 @@
   }
 
   .flex {
+    position: relative;
+    z-index: 25;
     flex-direction: row;
     align-items: baseline;
     margin-bottom: 30px;
