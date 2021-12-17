@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useRouteMatch, useHistory } from "react-router-dom";
+import {
+  NavLink,
+  useRouteMatch,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 import { ReactComponent as Diagramma } from "../../assets/images/summary.svg";
 import Calendar from "../../components/Calendar/Calendar";
 import Comment from "../../components/Modal/Comment/Comment";
@@ -7,33 +12,40 @@ import MobileList from "../../components/List/MobileList";
 import AddForm from "../../components/AddForm/AddForm";
 import List from "../../components/List/List";
 import AddFormMobile from "../../components/AddForm/AddFormMobile";
-import css from "./Home.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import { addTransaction } from "../../redux/transaction/operations";
 import { getBalance } from "../../redux/auth/selectors";
+import { changeBalance } from "../../redux/auth/operations";
+import css from "./Home.module.css";
 
 function Home() {
   const balance = useSelector(getBalance);
 
   const [type, setType] = useState("");
   const [active, setActive] = useState(false);
-  const [money, setMoney] = useState(balance ?? 5);
+  const [money, setMoney] = useState(balance);
   const match = useRouteMatch();
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const a = location.pathname !== "/home";
-    setActive(a);
+    const path = location.pathname !== "/home";
+    setActive(path);
   }, [location.pathname]);
 
-  const handleChangeBalance = (e) => {
-    e.preventDefault();
-  };
   const goSummary = () => {
     history.push("/summary");
+  };
+
+  const updateBalance = (price, type, balance) => {
+    if (type === "cost") {
+      const newBalanceCost = balance - Number(price);
+      return dispatch(changeBalance(newBalanceCost));
+    } else {
+      const newBalanceIncoms = balance + Number(price);
+      dispatch(changeBalance(newBalanceIncoms));
+    }
   };
 
   const getFormInfo = ({ price, description, select }) => {
@@ -44,6 +56,7 @@ function Home() {
       type,
     };
     dispatch(addTransaction(transaction));
+    updateBalance(price, balance, type);
     // transactions.length(updateBalance( price));
   };
 
@@ -53,7 +66,7 @@ function Home() {
 
   const addBalance = (e) => {
     e.preventDefault();
-    console.log(e);
+    dispatch(changeBalance(money));
   };
 
   return (
@@ -79,11 +92,7 @@ function Home() {
                     onChange={checkBalance}
                     value={money}
                   />
-                  <button
-                    className={css.btnAdd}
-                    type="submit"
-                    onSubmit={handleChangeBalance}
-                  >
+                  <button className={css.btnAdd} type="submit">
                     Подтвердить
                   </button>
                 </form>
