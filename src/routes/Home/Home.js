@@ -15,6 +15,7 @@ import { getBalance } from "../../redux/auth/selectors";
 
 function Home() {
   const balance = useSelector(getBalance);
+
   const [type, setType] = useState("");
   const [active, setActive] = useState(false);
   const [money, setMoney] = useState(balance ?? 5);
@@ -43,7 +44,7 @@ function Home() {
       type,
     };
     dispatch(addTransaction(transaction));
-    // dispatch(updateBalance( price));
+    // transactions.length(updateBalance( price));
   };
 
   const checkBalance = (e) => {

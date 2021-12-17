@@ -13,4 +13,4 @@ export const getIncomes = (store) => {
   }
   return cost;
 };
-export const getBalance = (store) => store.transaction.balance;
+export const getTransactions = (store) => store.transaction.allTransaction;
