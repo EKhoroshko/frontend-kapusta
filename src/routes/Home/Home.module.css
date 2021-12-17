@@ -339,24 +339,28 @@
   }
 }
 
-/*@media screen and (min-width: 768px) and (max-width: 1280px) {
+@media screen and (min-width: 768px) and (max-width: 1280px) {
   .imgBackKapusta {
     background-image: url("../../assets/images/Group\ 38.png");
     background-repeat: no-repeat;
     position: absolute;
-    top: 1150px;
+    bottom: 0;
+    right: 0;
+    top: 1000px;
     width: 100%;
     height: 142px;
     left: 600px;
   }
 }
-.imgBackKapusta {
-    background-image: url("../../assets/images/Group\ 38.png");
+
+@media screen and (min-width: 1280px) {
+  .imgBackKapusta {
+    background-image: url("../../assets/images/imgKap.png");
     background-repeat: no-repeat;
     position: absolute;
-    top: 1150px;
+    top: 660px;
     width: 100%;
     height: 142px;
-    left: 600px;
+    left: 0px;
   }
-*/
+}
