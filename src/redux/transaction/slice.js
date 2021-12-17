@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addTransaction, deleteTransaction } from "./operations";
+import {
+  addTransaction,
+  deleteTransaction,
+  getAllTransactions,
+} from "./operations";
 const initialState = {
-  balance: 0,
   allTransactions: [],
 };
 
@@ -10,8 +13,7 @@ const transactionSlice = createSlice({
   initialState,
   extraReducers: {
     [addTransaction.fulfilled](state, { payload }) {
-      state.allTransactions.push(payload);
-      return state;
+      state.allTransactions.push(payload.newTransaction);
     },
     [deleteTransaction.fulfilled](state, { payload }) {
       state.allTransaction = [
@@ -19,6 +21,9 @@ const transactionSlice = createSlice({
           (transaction) => transaction.id !== payload
         ),
       ];
+    },
+    [getAllTransactions.fulfilled](state, { payload }) {
+      state.allTransactions = [payload];
     },
   },
 });

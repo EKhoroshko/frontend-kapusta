@@ -8,26 +8,47 @@ import AddForm from "../../components/AddForm/AddForm";
 import List from "../../components/List/List";
 import AddFormMobile from "../../components/AddForm/AddFormMobile";
 import css from "./Home.module.css";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
+import { addTransaction } from "../../redux/transaction/operations";
+import { getBalance } from "../../redux/auth/selectors";
 
 function Home() {
-  const [balanse, setBalanse] = useState(5);
+  const balance = useSelector(getBalance);
+
+  const [type, setType] = useState("");
   const [active, setActive] = useState(false);
+  const [money, setMoney] = useState(balance ?? 5);
   const match = useRouteMatch();
   const location = useLocation();
   const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const a = location.pathname !== "/home";
     setActive(a);
   }, [location.pathname]);
 
+  const handleChangeBalance = (e) => {
+    e.preventDefault();
+  };
   const goSummary = () => {
     history.push("/summary");
   };
 
+  const getFormInfo = ({ price, description, select }) => {
+    const transaction = {
+      sum: Number(price),
+      category: select,
+      description,
+      type,
+    };
+    dispatch(addTransaction(transaction));
+    // transactions.length(updateBalance( price));
+  };
+
   const checkBalance = (e) => {
-    setBalanse(e.currentTarget.value);
+    setMoney(e.target.value);
   };
 
   const addBalance = (e) => {
@@ -43,7 +64,7 @@ function Home() {
             <AddFormMobile />
           ) : (
             <div className={css.box}>
-              {!balanse && <Comment />}
+              {!money && <Comment />}
               <button className={css.sum} type="button" onClick={goSummary}>
                 Перейти к отчетам
                 <Diagramma className={css.diagramma} />
@@ -56,10 +77,14 @@ function Home() {
                     type="text"
                     placeholder="0.00 UAH"
                     onChange={checkBalance}
-                    value={balanse}
+                    value={money}
                   />
-                  <button className={css.btnAdd} type="submit">
-                    Подтвердить{" "}
+                  <button
+                    className={css.btnAdd}
+                    type="submit"
+                    onSubmit={handleChangeBalance}
+                  >
+                    Подтвердить
                   </button>
                 </form>
               </div>
@@ -70,9 +95,9 @@ function Home() {
                 <MobileList />
               </div>
               <div className={css.descktop}>
-                <AddForm />
+                <AddForm onSubmit={getFormInfo} />
                 <div className={css.list}>
-                  <List />
+                  <List type={type} />
                 </div>
               </div>
               <div className={css.boxLinkMin}>
@@ -89,10 +114,18 @@ function Home() {
               </div>
 
               <div className={css.boxButton}>
-                <button className={css.btn} type="button">
+                <button
+                  className={css.btn}
+                  type="button"
+                  onClick={() => setType("cost")}
+                >
                   Расходы
                 </button>
-                <button className={css.btn} type="button">
+                <button
+                  className={css.btn}
+                  type="button"
+                  onClick={() => setType("income")}
+                >
                   Доход
                 </button>
               </div>
