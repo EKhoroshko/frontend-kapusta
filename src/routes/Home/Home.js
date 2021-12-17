@@ -140,6 +140,7 @@ function Home() {
               </div>
             </div>
           )}
+          <div className={css.imgBackKapusta}></div>
         </div>
       </div>
     </section>
