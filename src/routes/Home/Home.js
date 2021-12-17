@@ -43,7 +43,7 @@ function Home() {
       type,
     };
     dispatch(addTransaction(transaction));
-    // dispatch(updateBalance(type, price));
+    // dispatch(updateBalance( price));
   };
 
   const checkBalance = (e) => {
@@ -116,14 +116,14 @@ function Home() {
                 <button
                   className={css.btn}
                   type="button"
-                  onClick={() => setType("income")}
+                  onClick={() => setType("cost")}
                 >
                   Расходы
                 </button>
                 <button
                   className={css.btn}
                   type="button"
-                  onClick={() => setType("cost")}
+                  onClick={() => setType("income")}
                 >
                   Доход
                 </button>
