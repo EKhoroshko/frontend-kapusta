@@ -193,7 +193,6 @@ export const changeBalance = (value) => async (dispatch, getState) => {
     },
     body: JSON.stringify({ balance: balance }),
   };
-  console.log(options);
   dispatch(userBalance());
   try {
     const newBalance = await fetch(
@@ -203,7 +202,6 @@ export const changeBalance = (value) => async (dispatch, getState) => {
       .then((response) => response.json())
       .then(({ data }) => ({ ...data }))
       .then(({ result }) => ({ ...result, balance }));
-    console.log(newBalance);
     dispatch(userBalanceResolve(newBalance));
   } catch (error) {
     dispatch(userBalanceReject());
