@@ -24,20 +24,20 @@ function List() {
           <table className={s.table}>
             <thead className={s.headerTable}>
               <tr className={s.tableHeadTr}>
-                <th className={s.tableTh1}>Дата</th>
-                <th className={s.tableTh}>Описание</th>
-                <th className={s.tableTh}>Категория</th>
-                <th className={s.tableTh}>Сумма</th>
-                <th className={s.tableTh}></th>
+                <th className={s.tableThDate}>Дата</th>
+                <th className={s.tableThDesc}>Описание</th>
+                <th className={s.tableThCateg}>Категория</th>
+                <th className={s.tableThAmout}>Сумма</th>
+                <th className={s.tableThDel}></th>
               </tr>
             </thead>
             <tbody className={s.tableBody}>
               <tr className={s.tr}>
-                <td>date</td>
-                <td>description</td>
-                <td>category</td>
-                <td>summa</td>
-                <td>
+                <td className={s.tableDate}>date</td>
+                <td className={s.tableDescription}>description</td>
+                <td className={s.tableCategory}>category</td>
+                <td className={s.tableAmount}>555</td>
+                <td className={s.tableDel}>
                   <button
                     type="button"
                     className={s.deleteBtn}

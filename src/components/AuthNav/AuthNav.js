@@ -64,7 +64,9 @@ export default function AuthNav({ props }) {
       <form className={s.form} onSubmit={handlSubmit} autoComplete="off">
         {isActiv && (
           <label className={s.label}>
-            <p className={s.description}>Имя:</p>
+            <p className={s.description}>
+              <span></span> Имя:
+            </p>
             <input
               className={s.input}
               type="text"
@@ -76,7 +78,9 @@ export default function AuthNav({ props }) {
           </label>
         )}
         <label className={s.label}>
-          <p className={s.description}>Электронная почта:</p>
+          <p className={s.description}>
+            <span></span> Электронная почта:
+          </p>
           <input
             className={s.input}
             type="email"
@@ -87,7 +91,9 @@ export default function AuthNav({ props }) {
           />
         </label>
         <label className={s.label}>
-          <p className={s.description}>Пароль:</p>
+          <p className={s.description}>
+            <span></span> Пароль:
+          </p>
           <input
             className={s.input}
             type="password"
@@ -97,11 +103,14 @@ export default function AuthNav({ props }) {
             onChange={waitPass}
           />
         </label>
-
-        <button type="submit">{isActiv ? "Регистрироваться" : "Войти"}</button>
-        <button onClick={handleChangeForm} type="submit">
-          {isActiv ? "Войти" : "Регистрация "}{" "}
-        </button>
+        <div className={s.formButton}>
+          <button className={s.button} type="submit">
+            {isActiv ? "Регистрация" : "Войти"}
+          </button>
+          <button className={s.button} onClick={handleChangeForm} type="submit">
+            {isActiv ? "Войти" : "Регистрация"}{" "}
+          </button>
+        </div>
       </form>
     </div>
   );
