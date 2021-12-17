@@ -1,5 +1,5 @@
 import React from "react";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // import ArrowGoBack from "../../components/ArrowGoBack/ArrowGoBack";
 // import ReportListByCategory from "../../components/ReportListByCategory";
@@ -13,18 +13,18 @@ import CurrentAmount from "../../components/Report/CurrentAmount/CurrentAmount";
 import style from "./Summary.module.css";
 
 function Summary() {
-  // const history = useHistory();
+  const history = useHistory();
 
-  // const goHome = () => {
-  //   history.push("/home");
-  // };
+  const goHome = () => {
+    history.push("/home");
+  };
 
   return (
     <div className={style.summaryImageBg}>
       <div className={style.containerImgBg}>
         <div className={style.container}>
           <div className={style.menu}>
-            <ReportButtonGoBack />
+            <ReportButtonGoBack onClick={goHome} />
             <Balance />
             <ReportCurrentPeriod />
           </div>

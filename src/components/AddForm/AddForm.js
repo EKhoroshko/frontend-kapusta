@@ -31,7 +31,9 @@ function AddForm({ onSubmit }) {
   };
 
   const clearForm = () => {
-    console.log("я должна чистить формы");
+    setSelect("");
+    setDescription("");
+    setPrice("");
   };
 
   const goBack = () => {
