@@ -20,24 +20,27 @@ function Summary() {
   };
 
   return (
-    <div className={style.summaryImageBg}>
-      <div className={style.containerImgBg}>
-        <div className={style.container}>
-          <div className={style.menu}>
-            <ReportButtonGoBack onClick={goHome} />
-            <Balance />
-            <ReportCurrentPeriod />
-          </div>
-          <div>
-            <CurrentAmount />
-          </div>
+    <section className={style.section}>
+      <div className={style.summaryImageBg}>
+        <div className={style.containerImgBg}>
+          <div className={style.container}>
+            <div className={style.menu}>
+              <ReportButtonGoBack onClick={goHome} />
+              <Balance />
+              <ReportCurrentPeriod />
+            </div>
+            <div>
+              <CurrentAmount />
+            </div>
 
-          {/* <DetailsBalance /> */}
-          {/* <ReportListByCategory />
+            {/* <DetailsBalance /> */}
+            {/* <ReportListByCategory />
       <ReportListChart /> */}
+          </div>
         </div>
       </div>
-    </div>
+      <div className={style.imgBackKapusta}></div>
+    </section>
   );
 }
 
