@@ -55,11 +55,13 @@ function List({ type }) {
                   const incomes = tr.transactionType === "incomes";
                   return (
                     <tr className={s.tr} key={tr.id}>
-                      <td>{tr.date}</td>
-                      <td>{tr.description}</td>
-                      <td>{tr.category}</td>
-                      <td>{incomes ? "+" + tr.sum : "-" + tr.sum}</td>
-                      <td>
+                      <td className={s.td}>{tr.date}</td>
+                      <td className={s.td}>{tr.description}</td>
+                      <td className={s.td}>{tr.category}</td>
+                      <td className={s.td}>
+                        {incomes ? "+" + tr.sum : "-" + tr.sum}
+                      </td>
+                      <td className={s.td}>
                         <button
                           type="button"
                           className={s.deleteBtn}

@@ -176,27 +176,28 @@
   }
 
   .tableThDate {
-    margin-left: 21px;
-    width: 67px;
-    text-align: left;
+    width: 20%;
+    text-align: center;
   }
+
   .tableThDesc {
-    margin-left: 37px;
-    width: 168px;
-    text-align: left;
+    text-align: center;
+    width: 20%;
   }
 
   .tableThCateg {
-    width: 124px;
+    width: 20%;
     text-align: center;
   }
+
   .tableThAmout {
-    width: 104px;
-    text-align: right;
+    width: 20%;
+    text-align: center;
   }
 
   .tableThDel {
-    width: 84px;
+    width: 20%;
+    text-align: center;
   }
 
   .tr {
@@ -205,6 +206,11 @@
     border-bottom: 2px solid #f5f6fb;
     display: inline-table;
     color: #52555f;
+  }
+
+  .td {
+    width: 20%;
+    text-align: center;
   }
 
   .tableBody {
@@ -269,6 +275,7 @@
     border-radius: 50%;
     background-color: transparent;
   }
+
   .deleteBtn:hover {
     background-color: #f5f6fb;
   }
@@ -285,28 +292,28 @@
   }
 
   .tableThDate {
-    margin-left: 20px;
-    width: 84px;
-    text-align: left;
+    width: 20%;
+    text-align: center;
   }
+
   .tableThDesc {
-    margin-left: 20px;
-    width: 124px;
-    text-align: left;
+    width: 20%;
+    text-align: center;
   }
 
   .tableThCateg {
-    margin-left: 80px;
-    width: 172px;
-    text-align: left;
+    width: 20%;
+    text-align: center;
   }
+
   .tableThAmout {
-    width: 104px;
-    text-align: right;
+    width: 20%;
+    text-align: center;
   }
 
   .tableThDel {
-    width: 136px;
+    width: 20%;
+    text-align: center;
   }
 
   .tableDate {
