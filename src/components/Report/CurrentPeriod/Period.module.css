@@ -4,6 +4,13 @@
   /* display: flex; */
   justify-content: space-between;
 }
+@media screen and (max-width: 767px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
+}
 .period {
   display: flex;
   justify-content: space-between;
@@ -31,8 +38,9 @@
   cursor: pointer;
 }
 .CurrentPeriod {
+  width: 96px;
   font-family: "Roboto", sans-serif;
-  width: fit-content;
+  text-transform: uppercase;
   height: 20px;
   color: 000000;
   font-size: 14px;
