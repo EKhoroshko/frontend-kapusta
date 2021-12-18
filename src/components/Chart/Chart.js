@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Bar } from "react-chartjs-2";
+
 //import { Chart as ChartJS } from "chart.js/auto";
 //import { Chart } from "react-chartjs-2";
 //import { getTransactions } from '../../redux/chart-selectors'
@@ -8,7 +9,6 @@ import { getTransactions } from "../../redux/transaction/selectors";
 import style from "./Chart.module.css";
 
 function Chart({ month, year, category, type }) {
-  //const transactions = useSelector(getTransactions);
   const transactions = useSelector(getTransactions);
 
   const filteredByType = transactions.filter(

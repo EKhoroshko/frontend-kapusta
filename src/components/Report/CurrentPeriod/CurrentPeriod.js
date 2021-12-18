@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 //import { getMonth, getYear } from "../../../redux/currentPeriod/selectors";
 import { ReactComponent as VectorLeft } from "../../../assets/images/vector-left.svg";
 import { ReactComponent as VectorRight } from "../../../assets/images/vector-right.svg";
@@ -48,7 +48,7 @@ export default function Period() {
           type="button"
           className={periodStyles.NavButton}
           aria-label="previous"
-          onClick={handlePrevMonthButtonClick}
+          onClick={() => dispatch(handlePrevMonthButtonClick)}
         >
           <VectorLeft width="7" height="12" />
         </button>
@@ -59,7 +59,7 @@ export default function Period() {
           type="button"
           className={periodStyles.NavButton}
           aria-label="next"
-          onClick={handleNextMonthButtonClick}
+          onClick={() => dispatch(handleNextMonthButtonClick)}
         >
           <VectorRight width="7" height="12" />
         </button>
