@@ -22,15 +22,20 @@ import {
 import { getToken, getUserId } from "./selectors";
 
 export const registration =
-  ({ email, password }) =>
+  ({ name, email, password }) =>
   async (dispatch) => {
     const options = await {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({
+        userName: name,
+        email: email,
+        password: password,
+      }),
     };
+    console.log(options);
     try {
       dispatch(userRegister());
       const response = await fetch(
@@ -39,7 +44,7 @@ export const registration =
       ).then((response) => response.json());
       await console.log(response);
       if (response.hasOwnProperty("error")) {
-        return toast.error(response.errors, {
+        return toast.error(response.error.message, {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,

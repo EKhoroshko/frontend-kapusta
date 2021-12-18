@@ -32,10 +32,11 @@ export default function AuthNav({ props }) {
   const handlSubmit = (e) => {
     e.preventDefault();
     const user = {
+      name,
       email,
       password,
-      name,
     };
+    console.log(user);
     submitUser(user);
     setMail("");
     setPass("");
@@ -48,6 +49,8 @@ export default function AuthNav({ props }) {
       email,
       password,
     };
+    console.log(options);
+    console.log(isActiv);
 
     switch (isActiv) {
       case true:
