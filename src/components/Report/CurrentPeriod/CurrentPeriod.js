@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getMonth, getYear } from "../../../redux/current-period/selectors";
+import { getMonth, getYear } from "../../../redux/currentPeriod/selectors";
 import { ReactComponent as VectorLeft } from "../../../assets/images/vector-left.svg";
 import { ReactComponent as VectorRight } from "../../../assets/images/vector-right.svg";
 import monthName from "../../../helpers/Current-period/months.json";
@@ -9,23 +9,22 @@ import periodStyles from "./Period.module.css";
 // я ще над цим працюю
 export default function Period() {
   const dispatch = useDispatch();
+  const [date, setDate] = useState("");
   const month = useSelector(getMonth);
   const year = useSelector(getYear);
 
-  const [date, setDate] = useState(new Date());
   const currentMonth = new Date().getMonth() + 1;
   const currentYear = new Date().getFullYear();
+  const getMonthName = monthName.filter((el) => el.id === String(currentMonth));
 
-  const handlePrevMonthButtonClick = () => {
-    const newDate = new Date(year, month - 1);
+  const handleNextMonthButtonClick = () => {
+    const newDate = new Date(month + 1, year);
 
     setDate({ newDate });
   };
 
-  const getMonthName = monthName.filter((el) => el.id === String(currentMonth));
-  const handleNextMonthButtonClick = () => {
-    const newDate = new Date(year, month + 1);
-
+  const handlePrevMonthButtonClick = () => {
+    const newDate = (month - 1, year);
     setDate({ newDate });
   };
 
@@ -36,7 +35,7 @@ export default function Period() {
         type="button"
         className={periodStyles.NavButton}
         aria-label="previous"
-        onClick={() => dispatch(handlePrevMonthButtonClick)}
+        onClick={handlePrevMonthButtonClick}
       >
         <VectorLeft width="7" height="12" />
       </button>
@@ -49,7 +48,7 @@ export default function Period() {
         type="button"
         className={periodStyles.NavButton}
         aria-label="next"
-        onClick={() => dispatch(handleNextMonthButtonClick)}
+        onClick={handleNextMonthButtonClick}
       >
         <VectorRight width="7" height="12" />
       </button>
