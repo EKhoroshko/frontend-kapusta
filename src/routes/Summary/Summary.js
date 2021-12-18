@@ -7,9 +7,9 @@ import { useHistory } from "react-router-dom";
 // import ReportListChart from "../../components/ReportListChart";
 import ReportButtonGoBack from "../../components/Report/ReportButtonGoBack";
 import Balance from "../../components/Balance";
-import ReportCurrentPeriod from "../../components/Report/ReportCurrentPeriod";
+//import ReportCurrentPeriod from "../../components/Report/ReportCurrentPeriod";
 import CurrentAmount from "../../components/Report/CurrentAmount/CurrentAmount";
-import Chart from "../../components/Chart/Chart";
+import Period from "../../components/Report/CurrentPeriod/CurrentPeriod";
 
 import style from "./Summary.module.css";
 
@@ -28,7 +28,7 @@ function Summary() {
             <div className={style.menu}>
               <ReportButtonGoBack onClick={goHome} />
               <Balance />
-              <ReportCurrentPeriod />
+              {/* <ReportCurrentPeriod /> */}
             </div>
             <div>
               <CurrentAmount />
@@ -37,7 +37,7 @@ function Summary() {
             {/* <DetailsBalance /> */}
             {/* <ReportListByCategory />
       <ReportListChart /> */}
-            <Chart />
+            <Period />
           </div>
         </div>
       </div>
