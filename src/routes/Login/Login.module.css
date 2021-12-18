@@ -1,19 +1,31 @@
 .section {
-  height: 100vh;
-  width: 320px;
-  margin: 0 auto;
   background-image: url("../../assets/images/back2.png");
   background-repeat: no-repeat;
+  background-size: 100% 286px;
+}
+
+.wrapper {
+  width: 320px;
+  height: 100vh;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 768px) {
   .section {
+    background-size: 100% 536px;
+  }
+
+  .wrapper {
     width: 768px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .section {
+    background-size: 100% 586px;
+  }
+
+  .wrapper {
     width: 1280px;
   }
 }

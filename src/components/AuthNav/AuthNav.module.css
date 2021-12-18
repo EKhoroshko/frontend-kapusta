@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: center;
   padding: 0px 6px;
+  font-family: "Roboto";
 }
 
 .label {
@@ -18,13 +19,16 @@
 }
 
 .description {
-  margin: 0px 0px 10px 0px;
-  padding-left: 10px;
+  position: relative;
+  margin: 0px 0px 10px 8px;
+  padding: 4px 0px 0px 10px;
 }
 
-.description span::after {
+.description::before {
   content: "\2217";
-  display: inline-flex;
+  position: absolute;
+  top: 0;
+  left: 0;
   font-size: 1rem;
   font-weight: 400;
   color: #ff751d;
@@ -38,12 +42,12 @@
   border-radius: 30px;
   border: transparent;
   box-shadow: 1px 2px 3px rgba(170, 178, 197, 0.1);
-  background-color: #f6f7fb;
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1rem;
   text-align: left;
+  background-color: #f6f7fb;
   color: #a6abb9;
 }
 
@@ -71,18 +75,18 @@
   align-items: center;
   width: 122px;
   height: 40px;
-  border: transparent;
   border-radius: 30px;
+  border: transparent;
   box-shadow: 1px 2px 3px rgba(170, 178, 197, 0.4);
-  background-color: #f6f7fb;
   font-size: 0.875rem;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1rem;
-  color: #a6abb9;
   cursor: pointer;
   outline: none;
   text-transform: uppercase;
+  background-color: #f6f7fb;
+  color: #52555f;
 }
 
 @media screen and (min-width: 768px) {
@@ -93,10 +97,6 @@
   .label {
     font-size: 0.75rem;
     line-height: 0.875rem;
-  }
-
-  .description {
-    padding-left: 14px;
   }
 
   .input {
