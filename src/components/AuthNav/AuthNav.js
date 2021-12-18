@@ -64,9 +64,7 @@ export default function AuthNav({ props }) {
       <form className={s.form} onSubmit={handlSubmit} autoComplete="off">
         {isActiv && (
           <label className={s.label}>
-            <p className={s.description}>
-              <span></span> Имя:
-            </p>
+            <p className={s.description}>Имя:</p>
             <input
               className={s.input}
               type="text"
@@ -78,9 +76,7 @@ export default function AuthNav({ props }) {
           </label>
         )}
         <label className={s.label}>
-          <p className={s.description}>
-            <span></span> Электронная почта:
-          </p>
+          <p className={s.description}>Электронная почта:</p>
           <input
             className={s.input}
             type="email"
@@ -91,9 +87,7 @@ export default function AuthNav({ props }) {
           />
         </label>
         <label className={s.label}>
-          <p className={s.description}>
-            <span></span> Пароль:
-          </p>
+          <p className={s.description}>Пароль:</p>
           <input
             className={s.input}
             type="password"

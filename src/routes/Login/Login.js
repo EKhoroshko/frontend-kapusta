@@ -21,9 +21,11 @@ function Login() {
 
   return (
     <section className={s.section}>
-      <FormContent>
-        <AuthNav />
-      </FormContent>
+      <div className={s.wrapper}>
+        <FormContent>
+          <AuthNav />
+        </FormContent>
+      </div>
     </section>
   );
 }
