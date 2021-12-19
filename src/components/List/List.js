@@ -4,36 +4,39 @@ import { useState } from "react";
 // import { useDispatch } from "react-redux";
 import MobileList from "./MobileList";
 import Modal from "../Modal/ModalWindow/ModalWindow";
-import { getAllTransactions } from "../../redux/transaction/operationT";
 import {
-  getCosts,
-  getIncomes,
-  getTransactions,
-} from "../../redux/transaction/selectors";
+  getAllTransactions,
+  deleteTransaction,
+} from "../../redux/transaction/operationT";
+import { getTransactions } from "../../redux/transaction/selectors";
 import deleteIcon from "../../assets/images/delete.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import s from "./List.module.css";
 
 function List({ type }) {
-  const incomes = useSelector(getIncomes);
-  const costs = useSelector(getCosts);
   const transactions = useSelector(getTransactions);
   const [isModalOpen, setModalOpen] = useState(false);
-  console.log(transactions);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllTransactions());
   }, [dispatch]);
 
-  const toggleModal = (e) => {
+  const filterAll = (arr, type) => {
+    switch (type) {
+      case "incomes":
+        return arr.filter((tr) => tr.transactionType === type);
+      case "costs":
+        return arr.filter((tr) => tr.transactionType === type);
+      default:
+        return arr;
+    }
+  };
+
+  const toggleModal = (id) => {
     setModalOpen(!isModalOpen);
   };
-  const cost = costs && type === "costs";
-  const income = incomes && type === "incomes";
-
-  const trans = transactions && type === "";
 
   return (
     <>
@@ -50,11 +53,11 @@ function List({ type }) {
               </tr>
             </thead>
             <tbody className={s.tableBody}>
-              {trans &&
-                transactions.map((tr) => {
+              {transactions &&
+                filterAll(transactions, type).map((tr) => {
                   const incomes = tr.transactionType === "incomes";
                   return (
-                    <tr className={s.tr} key={tr.id}>
+                    <tr className={s.tr} key={tr._id}>
                       <td className={s.td}>{tr.date}</td>
                       <td className={s.td}>{tr.description}</td>
                       <td className={s.td}>{tr.category}</td>
@@ -66,7 +69,7 @@ function List({ type }) {
                           type="button"
                           className={s.deleteBtn}
                           onClick={() => {
-                            toggleModal();
+                            toggleModal(tr._id);
                           }}
                         >
                           <img
@@ -79,65 +82,12 @@ function List({ type }) {
                     </tr>
                   );
                 })}
-              {income &&
-                incomes.map((tr) => {
-                  return (
-                    <tr className={s.tr} key={tr.id}>
-                      <td>{tr.date}</td>
-                      <td>{tr.description}</td>
-                      <td>{tr.category}</td>
-                      <td>+{tr.sum}</td>
-                      <td>
-                        <button
-                          type="button"
-                          className={s.deleteBtn}
-                          onClick={() => {
-                            toggleModal();
-                          }}
-                        >
-                          <img
-                            className={s.icon}
-                            src={deleteIcon}
-                            alt="Delete icon"
-                          />
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-              {cost &&
-                costs.map((tr) => {
-                  return (
-                    <tr className={s.tr} key={tr.id}>
-                      <td>{tr.date}</td>
-                      <td>{tr.description}</td>
-                      <td>{tr.category}</td>
-                      <td>-{tr.sum}</td>
-                      <td>
-                        <button
-                          type="button"
-                          className={s.deleteBtn}
-                          onClick={() => {
-                            toggleModal();
-                          }}
-                        >
-                          <img
-                            className={s.icon}
-                            src={deleteIcon}
-                            alt="Delete icon"
-                          />
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-
               {isModalOpen && (
                 <Modal
                   text={"Вы уверены?"}
                   onCancel={toggleModal}
                   onSubmit={() => {
-                    // dispatch(transactionsOperations.deleteTransaction());
+                    dispatch(deleteTransaction());
                   }}
                 />
               )}
