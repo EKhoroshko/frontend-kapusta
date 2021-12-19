@@ -94,10 +94,10 @@ export const loginUser =
             return response.json();
           } else {
             if (response.hasOwnProperty("errors")) {
-              console.log(response);
+              // dispatch(userLoginReject(response.statusText));
+              localStorage.removeItem("token");
+              return toast.error("Повторите ввод email и пароль", toastAction);
             }
-            localStorage.removeItem("token");
-            return toast.error("Повторите ввод email и пароль", toastAction);
           }
         })
         .then(({ data }) => {

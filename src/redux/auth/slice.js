@@ -35,8 +35,6 @@ const authSlice = createSlice({
     }),
     userLoginResolve: (state, { payload }) => ({
       ...state,
-      data: payload,
-      userName: payload.userName,
       isLoading: false,
       token: payload.token,
       isLogin: true,
@@ -44,12 +42,11 @@ const authSlice = createSlice({
       email: payload.email,
       id: payload.id,
       avatarURL: payload.avatarURL,
+      userName: payload.userName,
     }),
-    userLoginReject: (state, action) => ({
-      ...state,
+    userLoginReject: (_, { payload }) => ({
       isLoading: false,
-      data: action,
-      error: action,
+      error: payload,
     }),
 
     userLogOutLoading: (state) => ({

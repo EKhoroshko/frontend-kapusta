@@ -39,7 +39,7 @@ const transactionSlice = createSlice({
     }),
     addTransactionResolve: (state, { payload }) => ({
       ...state,
-      allTransactions: [payload],
+      allTransactions: state.allTransactions.push(payload),
       isLoading: false,
     }),
     addTransactionReject: (_, { payload }) => ({
