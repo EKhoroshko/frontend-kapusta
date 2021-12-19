@@ -68,6 +68,7 @@ function Home() {
   const addBalance = (e) => {
     e.preventDefault();
     dispatch(changeBalance(money));
+    setMoney(balance);
   };
 
   return (
