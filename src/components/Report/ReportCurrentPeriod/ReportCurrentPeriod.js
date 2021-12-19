@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import "moment/locale/ru";
 import styles from "./ReportCurrentPeriod.module.css";
 import { ReactComponent as BtnLeft } from "../../../assets/images/BtnLefl.svg";
 import { ReactComponent as BtnRight } from "../../../assets/images/BtnRight.svg";
@@ -18,7 +19,9 @@ const ReportCurrentPeriod = ({ date, monthChange }) => {
           <BtnLeft />
         </button>
 
-        <p className={styles.cldrMonth}>{moment(date).format("MM YYYY")}</p>
+        <p className={styles.cldrMonth}>
+          {moment(date).locale("ru").format("MMMM YYYY")}
+        </p>
         <button
           type="button"
           onClick={monthChange}
