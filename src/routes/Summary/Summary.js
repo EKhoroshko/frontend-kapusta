@@ -9,7 +9,6 @@ import ReportButtonGoBack from "../../components/Report/ReportButtonGoBack";
 import Balance from "../../components/Balance";
 //import ReportCurrentPeriod from "../../components/Report/ReportCurrentPeriod";
 import CurrentAmount from "../../components/Report/CurrentAmount/CurrentAmount";
-import Period from "../../components/Report/CurrentPeriod/CurrentPeriod";
 
 import style from "./Summary.module.css";
 
@@ -37,7 +36,6 @@ function Summary() {
             {/* <DetailsBalance /> */}
             {/* <ReportListByCategory />
       <ReportListChart /> */}
-            <Period />
           </div>
         </div>
       </div>
