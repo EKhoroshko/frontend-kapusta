@@ -15,7 +15,7 @@ import AddFormMobile from "../../components/AddForm/AddFormMobile";
 import { useDispatch, useSelector } from "react-redux";
 import { getBalance } from "../../redux/auth/selectors";
 import { changeBalance } from "../../redux/auth/operations";
-import { addTransaction } from "../../redux/transaction/operationT";
+import { addTransaction } from "../../redux/transaction/operation";
 import css from "./Home.module.css";
 
 function Home() {
@@ -62,7 +62,6 @@ function Home() {
     };
     dispatch(addTransaction(transaction));
     updateBalance(price, type);
-    // transactions.length(updateBalance( price));
   };
 
   const checkBalance = (e) => {

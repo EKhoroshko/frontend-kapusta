@@ -1,7 +1,5 @@
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+//import { toast } from "react-toastify";
+//import "react-toastify/dist/ReactToastify.css";
 
 import {
   allTransactionLoading,
@@ -10,8 +8,11 @@ import {
   addTransactionLoading,
   addTransactionResolve,
   addTransactionReject,
+  removeTransactionLoading,
+  removeTransactionResolve,
+  removeTransactionReject,
   transactionClearError,
-} from "../transaction/slice";
+} from "./slice";
 
 export const getAllTransactions = () => async (dispatch) => {
   const token = localStorage.getItem("token");
@@ -24,13 +25,12 @@ export const getAllTransactions = () => async (dispatch) => {
   };
   dispatch(allTransactionLoading());
   try {
-    const response = await fetch(
+    return await fetch(
       "https://back-kapusta.herokuapp.com/api/transactions/all",
       options
     )
       .then((response) => response.json())
       .then(({ transaction }) => dispatch(allTransactionResolve(transaction)));
-    console.log(response);
   } catch (error) {
     dispatch(allTransactionReject(error));
     dispatch(transactionClearError());
@@ -57,7 +57,7 @@ export const addTransaction =
 
     dispatch(addTransactionLoading());
     try {
-      const response = await fetch(
+      return await fetch(
         "https://back-kapusta.herokuapp.com/api/transactions",
         options
       )
@@ -65,29 +65,29 @@ export const addTransaction =
         .then(({ newTransaction }) =>
           dispatch(addTransactionResolve(newTransaction))
         );
-      console.log(response);
     } catch (error) {
       dispatch(addTransactionReject(error));
       dispatch(transactionClearError());
     }
   };
 
-export const deleteTransaction = createAsyncThunk(
-  "/deleteTransaction",
-  async (id) => {
-    try {
-      await axios.delete(`/transactions/${id}`);
-      return id;
-    } catch (error) {
-      toast.warning("Something went wrong", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
+export const deleteTransaction = (id) => async (dispatch) => {
+  const token = localStorage.getItem("token");
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  dispatch(removeTransactionLoading());
+  try {
+    await fetch(
+      `https://back-kapusta.herokuapp.com/api/transactions/${id}`,
+      options
+    ).then((response) => response.json());
+    dispatch(removeTransactionResolve(id));
+  } catch (error) {
+    dispatch(removeTransactionReject(error));
   }
-);
+};
