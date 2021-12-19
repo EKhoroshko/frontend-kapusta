@@ -21,6 +21,16 @@ import {
 } from "../auth/slice";
 import { getToken, getUserId } from "./selectors";
 
+const toastAction = {
+  position: "top-right",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+};
+
 export const registration =
   ({ name, email, password }) =>
   async (dispatch) => {
@@ -35,7 +45,6 @@ export const registration =
         password: password,
       }),
     };
-    console.log(options);
     try {
       dispatch(userRegisterLoading());
       const response = await fetch(
@@ -43,28 +52,15 @@ export const registration =
         options
       ).then((response) => response.json());
       await console.log(response);
-      if (response.hasOwnProperty("error")) {
-        return toast.error(response.error.message, {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+      if (response.hasOwnProperty("errors")) {
+        return toast.error(
+          `Пользователь с адресом электронной почты: ${email} уже существует`,
+          toastAction
+        );
       } else {
         toast.success(
-          "Вы успешно зарегистрировались, для подтверждения мы отправили вам письмо",
-          {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          }
+          `${name}, вы успешно зарегистрировались, для подтверждения мы отправили вам на почту письмо`,
+          toastAction
         );
         dispatch(userRegisterResolve(response));
       }
@@ -92,6 +88,8 @@ export const loginUser =
         options
       )
         .then((response) => {
+          console.log(response);
+
           if (response.ok) {
             return response.json();
           } else {
@@ -99,29 +97,16 @@ export const loginUser =
               console.log(response);
             }
             localStorage.removeItem("token");
-            return toast.error("error", {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            return toast.error("Повторите ввод email и пароль", toastAction);
           }
         })
         .then(({ data }) => {
           dispatch(userLoginResolve(data));
           localStorage.setItem("token", data.token);
-          toast.success("Добро пожаловать!!! Мы вас ждали.", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          toast.success(
+            `Добро пожаловать, ${data.userName}! Мы рады Вас приветствовать`,
+            toastAction
+          );
         });
     } catch (error) {
       console.log(error);
@@ -146,15 +131,7 @@ export const logOut = () => async (dispatch, getState) => {
     ).then((response) => response.statusText);
     localStorage.removeItem("token");
     dispatch(userLogOutResolve(response));
-    toast.success("Спасибо за визит, заходите еще!", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    toast.success("Спасибо за визит, заходите еще!", toastAction);
   } catch (error) {
     dispatch(userLogOutReject(error));
     dispatch(userClearError());
