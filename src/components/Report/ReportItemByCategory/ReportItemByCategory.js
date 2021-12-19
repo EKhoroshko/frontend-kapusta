@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styles from "./ReportItemByCategory.module.css";
 
 const ReportItemByCategory = ({ name, amount, icon }) => {
   return (
-    <div>
+    <div className={styles.item}>
       <p>{amount}</p>
       <div>
         <img src={icon} alt={name}></img>

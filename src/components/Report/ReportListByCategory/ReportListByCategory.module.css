@@ -1,0 +1,109 @@
+.list {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 288px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.listItem {
+  width: calc(100% / 3);
+  margin-top: 20px;
+}
+.listItem button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+.listItem:nth-child(3n + 1)::after {
+  width: 282px;
+  display: block;
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid #e0e5eb;
+  margin-top: 20px;
+}
+.listItem:nth-last-child(2)::after {
+  width: 282px;
+  display: block;
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid #e0e5eb;
+  margin-top: 20px;
+  right: 8px;
+}
+.switchWrap {
+  width: 134px;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.calendarBtn {
+  display: block;
+  border: none;
+  background: none;
+  padding: 0;
+}
+.cldrMonth {
+  width: 96px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+}
+@media screen and (max-width: 767px) {
+  .calendarWrap {
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 10px; */
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    margin: 0 auto 30px;
+    width: 615px;
+    padding: 20px 21px 30px 32px;
+    background: #ffffff;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    border-radius: 30px;
+  }
+  .listItem {
+    width: calc(100% / 6);
+    margin: 0;
+  }
+  .listItem button {
+    margin: 0;
+  }
+  .list {
+    width: 100%;
+    margin: 20px 0 0;
+  }
+  .listItem:nth-child(3n + 1)::after {
+    content: none;
+  }
+  .listItem:nth-last-child(2)::after {
+    content: none;
+  }
+  .listItem:nth-last-child(-n + 5) {
+    margin-top: 40px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1060px;
+  }
+  .list {
+    width: 613px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
