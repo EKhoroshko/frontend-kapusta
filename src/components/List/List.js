@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import MobileList from "./MobileList";
 import Modal from "../Modal/ModalWindow/ModalWindow";
+import { filterAll } from "../../helpers/support/FilterList.js";
 import { getAllTransactions } from "../../redux/transaction/operation";
 import { getIdResolve } from "../../redux/transaction/slice";
 import { getTransactions } from "../../redux/transaction/selectors";
@@ -18,17 +19,6 @@ function List({ type }) {
   useEffect(() => {
     dispatch(getAllTransactions());
   }, [dispatch]);
-
-  const filterAll = (arr, type) => {
-    switch (type) {
-      case "incomes":
-        return arr.filter((tr) => tr.transactionType === type);
-      case "costs":
-        return arr.filter((tr) => tr.transactionType === type);
-      default:
-        return arr;
-    }
-  };
 
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
