@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+  align-items: flex-end;
+  width: 160px;
+  text-decoration: none !important;
+  color: rgba(82, 85, 95, 0.7);
+  fill: rgba(82, 85, 95, 0.7);
+  /* &:hover,
+  &:focus {
+    color: rgba(82, 85, 95, 0.7);
+    fill: rgba(82, 85, 95, 0.7);
+  } */
+}
+.text {
+  position: relative;
+  top: 2px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  text-align: right;
+  margin: 0;
+  opacity: 0.7;
+}
+
+.icon {
+  margin-left: 20px;
+  width: 14px;
+  height: 14px;
+}

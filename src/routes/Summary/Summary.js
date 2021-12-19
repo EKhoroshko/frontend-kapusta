@@ -6,7 +6,7 @@ import ReportListByCategory from "../../components/Report/ReportListByCategory";
 // import ReportListChart from "../../components/ReportListChart";
 import ReportButtonGoBack from "../../components/Report/ReportButtonGoBack";
 import Balance from "../../components/Balance";
-import ReportCurrentPeriod from "../../components/Report/ReportCurrentPeriod";
+//import ReportCurrentPeriod from "../../components/Report/ReportCurrentPeriod";
 import CurrentAmount from "../../components/Report/CurrentAmount/CurrentAmount";
 
 import style from "./Summary.module.css";
@@ -40,7 +40,7 @@ function Summary() {
             <div className={style.menu}>
               <ReportButtonGoBack onClick={goHome} />
               <Balance />
-              <ReportCurrentPeriod />
+              {/* <ReportCurrentPeriod /> */}
             </div>
             <div>
               <CurrentAmount />
