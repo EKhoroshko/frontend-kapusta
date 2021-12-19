@@ -3,12 +3,12 @@ import { useSelector } from "react-redux";
 import { Bar } from "react-chartjs-2";
 
 //import { Chart as ChartJS } from "chart.js/auto";
-//import { Chart } from "react-chartjs-2";
-//import { getTransactions } from '../../redux/chart-selectors'
-import { getTransactions } from "../../redux/transaction/selectors";
+import { Chart } from "react-chartjs-2";
+import { getTransactions } from "../../redux/chart-selectors";
+//import { getTransactions } from "../../redux/transaction/selectors";
 import style from "./Chart.module.css";
 
-function Chart({ month, year, category, type }) {
+function ChartMonth({ month, year, category, type }) {
   const transactions = useSelector(getTransactions);
 
   const filteredByType = transactions.filter(
@@ -69,8 +69,6 @@ function Chart({ month, year, category, type }) {
     (data) => data.sum
   );
 
-  const labelName = type === "expense" ? "Расход" : "Доход";
-
   const getNextColor = (color) => {
     const palitraEl = ["#FF751D", "#FFDAC0", "#fcd7bd"];
 
@@ -99,7 +97,6 @@ function Chart({ month, year, category, type }) {
 
     datasets: [
       {
-        label: labelName,
         data: sortedByValue,
         // data: [65, 59, 80, 81, 56, 55, 40],
         backgroundColor: colorsColumn(sortedByValue),
@@ -136,4 +133,4 @@ function Chart({ month, year, category, type }) {
     </div>
   );
 }
-export default Chart;
+export default ChartMonth;
