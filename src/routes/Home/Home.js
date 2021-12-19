@@ -33,6 +33,10 @@ function Home() {
     setActive(path);
   }, [location.pathname]);
 
+  useEffect(() => {
+    setMoney(balance);
+  }, [balance]);
+
   const goSummary = () => {
     history.push("/summary");
   };
@@ -68,7 +72,6 @@ function Home() {
   const addBalance = (e) => {
     e.preventDefault();
     dispatch(changeBalance(money));
-    setMoney(balance);
   };
 
   return (
@@ -79,7 +82,7 @@ function Home() {
             <AddFormMobile />
           ) : (
             <div className={css.box}>
-              {!money && <Comment />}
+              {!balance && <Comment />}
               <button className={css.sum} type="button" onClick={goSummary}>
                 Перейти к отчетам
                 <Diagramma className={css.diagramma} />

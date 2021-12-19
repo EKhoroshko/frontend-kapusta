@@ -1,15 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-/*import {
-  addTransaction,
-  deleteTransaction,
-  getAllTransactions,
-} from "./operations";*/
-/*const initialState = {
-  isLoading: true,
-  allTransactions: [],
-  newTransaction: {},
-  error: null,
-};*/
+import { deleteTransaction } from "./operations";
 
 const transactionSlice = createSlice({
   name: "transactions",
@@ -39,7 +29,7 @@ const transactionSlice = createSlice({
     }),
     addTransactionResolve: (state, { payload }) => ({
       ...state,
-      allTransactions: state.allTransactions.push(payload),
+      allTransactions: [payload, ...state.allTransactions],
       isLoading: false,
     }),
     addTransactionReject: (_, { payload }) => ({
@@ -52,21 +42,15 @@ const transactionSlice = createSlice({
       error: null,
     }),
   },
-  /* extraReducers: {
-     [addTransaction.fulfilled](state, { payload }) {
-       state.allTransactions.push(payload.newTransaction);
-     },
-     [deleteTransaction.fulfilled](state, { payload }) {
-       state.allTransaction = [
-         ...state.allTransactions.filter(
-           (transaction) => transaction.id !== payload
-         ),
-       ];
-     },
-     [getAllTransactions.fulfilled](state, { payload }) {
-       state.allTransactions = [payload];
-     },
-   },*/
+  extraReducers: {
+    [deleteTransaction.fulfilled](state, { payload }) {
+      state.allTransaction = [
+        ...state.allTransactions.filter(
+          (transaction) => transaction.id !== payload
+        ),
+      ];
+    },
+  },
 });
 
 export const {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { createPortal } from "react-dom";
-import ModalBtn from "../../Button/Button"
+import ModalBtn from "../../Button/Button";
 
 import s from "./ModalWindow.module.css";
 
@@ -28,7 +28,7 @@ class Modal extends Component {
   };
 
   render() {
-    const { text, onSubmit, onCancel } = this.props;
+    const { text, onSubmit, onCancel, id } = this.props;
     return createPortal(
       <div className={s.ModalOverlay} onClick={this.handleOverlayClick}>
         <div className={s.ModalWindow}>
@@ -44,7 +44,7 @@ class Modal extends Component {
           </div>
           <div className={s.ModalWindowWrap}>
             <div className={s.btnWrapper}>
-              <ModalBtn text={"Да"} onClick={onSubmit} />
+              <ModalBtn text={"Да"} onClick={onSubmit(id)} />
             </div>
             <div className={s.btnWrapper}>
               <ModalBtn text={"Нет"} key="2" onClick={onCancel} />

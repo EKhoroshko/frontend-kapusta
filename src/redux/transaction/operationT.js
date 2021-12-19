@@ -1,5 +1,7 @@
-//import { toast } from "react-toastify";
-//import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import {
   allTransactionLoading,
@@ -27,8 +29,8 @@ export const getAllTransactions = () => async (dispatch) => {
       options
     )
       .then((response) => response.json())
-      .then(({ transaction }) => ({ transaction }));
-    dispatch(allTransactionResolve(response));
+      .then(({ transaction }) => dispatch(allTransactionResolve(transaction)));
+    console.log(response);
   } catch (error) {
     dispatch(allTransactionReject(error));
     dispatch(transactionClearError());
@@ -60,10 +62,32 @@ export const addTransaction =
         options
       )
         .then((response) => response.json())
-        .then(({ newTransaction }) => newTransaction);
-      dispatch(addTransactionResolve(response));
+        .then(({ newTransaction }) =>
+          dispatch(addTransactionResolve(newTransaction))
+        );
+      console.log(response);
     } catch (error) {
       dispatch(addTransactionReject(error));
       dispatch(transactionClearError());
     }
   };
+
+export const deleteTransaction = createAsyncThunk(
+  "/deleteTransaction",
+  async (id) => {
+    try {
+      await axios.delete(`/transactions/${id}`);
+      return id;
+    } catch (error) {
+      toast.warning("Something went wrong", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }
+);
