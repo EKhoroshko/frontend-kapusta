@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import moment from "moment";
 
-// import ArrowGoBack from "../../components/ArrowGoBack/ArrowGoBack";
 import ReportListByCategory from "../../components/Report/ReportListByCategory";
-// import ReportListChart from "../../components/ReportListChart";
 import ReportButtonGoBack from "../../components/Report/ReportButtonGoBack";
 import Balance from "../../components/Balance";
-//import ReportCurrentPeriod from "../../components/Report/ReportCurrentPeriod";
+import ReportCurrentPeriod from "../../components/Report/ReportCurrentPeriod";
 import CurrentAmount from "../../components/Report/CurrentAmount/CurrentAmount";
 
 import style from "./Summary.module.css";
@@ -31,6 +30,19 @@ function Summary() {
   const goHome = () => {
     history.push("/home");
   };
+  const currentDate = moment().format();
+  const [date, setDate] = useState(currentDate);
+
+  const monthChangeHandler = (e) => {
+    const { name } = e.currentTarget;
+    if (name === "leftBtn") {
+      setDate(moment(date).add(-1, "month").format());
+    }
+
+    if (name === "rightBtn") {
+      setDate(moment(date).add(1, "month").format());
+    }
+  };
 
   return (
     <section className={style.section}>
@@ -40,14 +52,16 @@ function Summary() {
             <div className={style.menu}>
               <ReportButtonGoBack onClick={goHome} />
               <Balance />
-              {/* <ReportCurrentPeriod /> */}
+              <ReportCurrentPeriod
+                date={date}
+                monthChange={monthChangeHandler}
+              />
             </div>
             <div>
               <CurrentAmount />
             </div>
 
             <ReportListByCategory items={category} />
-            {/* <ReportListChart /> */}
           </div>
         </div>
       </div>
