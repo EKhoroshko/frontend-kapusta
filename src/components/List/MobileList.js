@@ -1,13 +1,11 @@
 import styles from "./List.module.css";
-// import transactionsOperations from "../../redux/transaction/operations";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import deleteIcon from "../../assets/images/delete.svg";
+import { filterAll } from "../../helpers/support/FilterList.js";
+import { getIdResolve } from "../../redux/transaction/slice";
 import Modal from "../Modal/ModalWindow/ModalWindow";
-import {
-  getAllTransactions,
-  // deleteTransaction,
-} from "../../redux/transaction/operationT";
+import { getAllTransactions } from "../../redux/transaction/operation";
 import { getTransactions } from "../../redux/transaction/selectors";
 
 const Mobile = ({ type }) => {
@@ -18,17 +16,6 @@ const Mobile = ({ type }) => {
   useEffect(() => {
     dispatch(getAllTransactions());
   }, [dispatch]);
-
-  const filterAll = (arr, type) => {
-    switch (type) {
-      case "incomes":
-        return arr.filter((tr) => tr.transactionType === type);
-      case "costs":
-        return arr.filter((tr) => tr.transactionType === type);
-      default:
-        return arr;
-    }
-  };
 
   const toggleModal = (e) => {
     setModalOpen(!isModalOpen);
@@ -57,6 +44,7 @@ const Mobile = ({ type }) => {
                     className={styles.deleteBtn}
                     onClick={() => {
                       toggleModal(tr._id);
+                      dispatch(getIdResolve(tr._id));
                     }}
                   >
                     <img
@@ -70,15 +58,7 @@ const Mobile = ({ type }) => {
             );
           })}
       </ul>
-      {isModalOpen && (
-        <Modal
-          text={"Вы уверены?"}
-          onCancel={toggleModal}
-          onSubmit={() => {
-            // dispatch(transactionsOperations.deleteTransaction());
-          }}
-        />
-      )}
+      {isModalOpen && <Modal text={"Вы уверены?"} onCancel={toggleModal} />}
     </>
   );
 };
