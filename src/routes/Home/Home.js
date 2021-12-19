@@ -79,7 +79,7 @@ function Home() {
       <div className={css.imgBack}>
         <div className={css.container}>
           {active ? (
-            <AddFormMobile />
+            <AddFormMobile onSubmit={getFormInfo} />
           ) : (
             <div className={css.box}>
               {!balance && <Comment />}
@@ -106,7 +106,7 @@ function Home() {
                 <Calendar />
               </div>
               <div className={css.mobile}>
-                <MobileList />
+                <MobileList type={type} />
               </div>
               <div className={css.descktop}>
                 <AddForm onSubmit={getFormInfo} />
@@ -116,12 +116,20 @@ function Home() {
               </div>
               <div className={css.boxLinkMin}>
                 <NavLink className={css.link} to={`${match.url}/casts`}>
-                  <button className={css.btn} type="button">
+                  <button
+                    className={css.btn}
+                    type="button"
+                    onClick={() => setType("costs")}
+                  >
                     Расходы
                   </button>
                 </NavLink>
                 <NavLink className={css.link} to={`${match.url}/incomes`}>
-                  <button className={css.btn} type="button">
+                  <button
+                    className={css.btn}
+                    type="button"
+                    onClick={() => setType("incomes")}
+                  >
                     Доход
                   </button>
                 </NavLink>
