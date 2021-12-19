@@ -11,7 +11,7 @@ import Svodka from "../Svodka/Svodka";
 
 import css from "./AddForm.module.css";
 
-function AddForm({ onSubmit }) {
+function AddForm({ onSubmit, type }) {
   const history = useHistory();
   const [select, setSelect] = useState(null);
   const [description, setDescription] = useState("");
@@ -91,7 +91,7 @@ function AddForm({ onSubmit }) {
         </div>
       </div>
       <div className={css.position}>
-        <Svodka />
+        <Svodka type={type} />
       </div>
     </div>
   );

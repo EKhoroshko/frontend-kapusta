@@ -108,7 +108,7 @@ function Home() {
                 <MobileList />
               </div>
               <div className={css.descktop}>
-                <AddForm onSubmit={getFormInfo} />
+                <AddForm onSubmit={getFormInfo} type={type} />
                 <div className={css.list}>
                   <List type={type} />
                 </div>
