@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { deleteTransaction } from "./operations";
 
 const transactionSlice = createSlice({
   name: "transactions",
@@ -7,6 +6,7 @@ const transactionSlice = createSlice({
     isLoading: true,
     allTransactions: [],
     error: null,
+    idTransaction: null,
   },
   reducers: {
     allTransactionLoading: (state, _) => ({
@@ -37,19 +37,37 @@ const transactionSlice = createSlice({
       error: payload,
     }),
 
+    removeTransactionLoading: (state, _) => ({
+      ...state,
+      isLoading: true,
+    }),
+    removeTransactionResolve: (state, { payload }) => ({
+      ...state,
+      allTransactions: state.allTransactions.filter(
+        (transaction) => transaction._id !== payload
+      ),
+      isLoading: false,
+    }),
+    removeTransactionReject: (_, { payload }) => ({
+      isLoading: false,
+      error: payload,
+    }),
+
+    getIdResolve: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      idTransaction: payload,
+    }),
+    clearId: (state, _) => ({
+      ...state,
+      isLoading: false,
+      idTransaction: null,
+    }),
+
     transactionClearError: (state) => ({
       ...state,
       error: null,
     }),
-  },
-  extraReducers: {
-    [deleteTransaction.fulfilled](state, { payload }) {
-      state.allTransaction = [
-        ...state.allTransactions.filter(
-          (transaction) => transaction.id !== payload
-        ),
-      ];
-    },
   },
 });
 
@@ -60,7 +78,12 @@ export const {
   addTransactionLoading,
   addTransactionResolve,
   addTransactionReject,
+  removeTransactionLoading,
+  removeTransactionResolve,
+  removeTransactionReject,
   transactionClearError,
+  getIdResolve,
+  clearId,
 } = transactionSlice.actions;
 
 export default transactionSlice.reducer;

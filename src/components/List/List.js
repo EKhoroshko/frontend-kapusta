@@ -1,13 +1,9 @@
 import React from "react";
-// import transactionsOperations from "../../redux/transaction/operations";
 import { useState } from "react";
-// import { useDispatch } from "react-redux";
 import MobileList from "./MobileList";
 import Modal from "../Modal/ModalWindow/ModalWindow";
-import {
-  getAllTransactions,
-  deleteTransaction,
-} from "../../redux/transaction/operationT";
+import { getAllTransactions } from "../../redux/transaction/operation";
+import { getIdResolve } from "../../redux/transaction/slice";
 import { getTransactions } from "../../redux/transaction/selectors";
 import deleteIcon from "../../assets/images/delete.svg";
 import { useSelector, useDispatch } from "react-redux";
@@ -34,7 +30,7 @@ function List({ type }) {
     }
   };
 
-  const toggleModal = (id) => {
+  const toggleModal = () => {
     setModalOpen(!isModalOpen);
   };
 
@@ -69,7 +65,8 @@ function List({ type }) {
                           type="button"
                           className={s.deleteBtn}
                           onClick={() => {
-                            toggleModal(tr._id);
+                            toggleModal();
+                            dispatch(getIdResolve(tr._id));
                           }}
                         >
                           <img
@@ -83,13 +80,7 @@ function List({ type }) {
                   );
                 })}
               {isModalOpen && (
-                <Modal
-                  text={"Вы уверены?"}
-                  onCancel={toggleModal}
-                  onSubmit={() => {
-                    dispatch(deleteTransaction());
-                  }}
-                />
+                <Modal text={"Вы уверены?"} onCancel={toggleModal} />
               )}
             </tbody>
           </table>

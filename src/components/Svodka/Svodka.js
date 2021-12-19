@@ -1,7 +1,29 @@
 import React from "react";
 import s from "./Svodka.module.css";
+import { useSelector } from "react-redux";
+import { getTransactions } from "../../redux/transaction/selectors";
+import period from "../../helpers/SvodkaMonth.js";
 
-export default function Svodka () {
+export default function Svodka({ type }) {
+  const transaction = useSelector(getTransactions);
+
+  const filterAll = (arr, type, id) => {
+    return arr
+      .filter((tr) => tr.transactionType === type)
+      .filter((tr) => tr.month === id)
+      .reduce((allprice, tr) => allprice + tr.sum, 0);
+  };
+
+  const sortMounth = (arr, data) => {
+    const newArr = data.map(({ id }) => filterAll(transaction, type, id));
+    console.log(newArr);
+    return newArr;
+  };
+
+  console.log(sortMounth(transaction, period));
+
+  console.log(filterAll(transaction, type, 12));
+
   return (
     <div className={s.svodka}>
       <table className={s.svodkaHistory}>
