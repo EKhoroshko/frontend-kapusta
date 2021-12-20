@@ -3,12 +3,13 @@ import ReportItemByCategory from "../ReportItemByCategory";
 import { ReactComponent as BtnLeft } from "../../../assets/images/BtnLefl.svg";
 import { ReactComponent as BtnRight } from "../../../assets/images/BtnRight.svg";
 import { findTotalSumForChart } from "../../../helpers/support/FilterState";
-import styles from "./ReportListByCategory.module.css";
+import { iconsArray } from "../../../helpers/support/IconsCosts";
 import {
   getTransactions,
   getCurrentPeriod,
 } from "../../../redux/transaction/selectors";
 import { useSelector } from "react-redux";
+import styles from "./ReportListByCategory.module.css";
 
 const ReportListByCategory = () => {
   const [type, setType] = useState("costs");
@@ -16,16 +17,37 @@ const ReportListByCategory = () => {
   const date = useSelector(getCurrentPeriod);
   const [transaction, setTransaction] = useState([]);
 
+  const map = new Map();
+
+  [...transaction, ...iconsArray].forEach((item) => {
+    if (map.has(item.subCategory)) {
+      Object.assign(map.get(item.subCategory), item);
+    } else {
+      map.set(item.subCategory, item);
+    }
+  });
+
+  const merged = [...map.values()];
+
+  console.log(merged);
+
   useEffect(() => {
-    setTransaction(findTotalSumForChart(tr, type, date));
+    setTransaction(findTotalSumForChart(tr, type, date, iconsArray));
   }, [type, tr, date]);
+  console.log(transaction);
+  const changeType = () => {
+    if (type === "costs") {
+      return setType("incomes");
+    }
+    return setType("costs");
+  };
   return (
     <div className={styles.container}>
       <div className={styles.switchWrap}>
         <button
           type="button"
           name="leftBtn"
-          onClick={() => setType("costs")}
+          onClick={changeType}
           className={styles.calendarBtn}
         >
           <BtnLeft />
@@ -37,7 +59,7 @@ const ReportListByCategory = () => {
           type="button"
           name="rightBtn"
           className={styles.calendarBtn}
-          onClick={() => setType("incomes")}
+          onClick={changeType}
         >
           <BtnRight />
         </button>

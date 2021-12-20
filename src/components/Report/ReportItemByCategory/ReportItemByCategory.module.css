@@ -7,3 +7,20 @@
   text-transform: uppercase;
   color: #52555f;
 }
+.btnIcon {
+  color: black;
+  fill: black;
+  width: 100px;
+  height: 30px;
+}
+.btnIcon:hover .svg,
+.btnIcon:focus .svg {
+  fill: orange;
+  color: orange;
+}
+.svg {
+  width: 100%;
+  height: auto;
+  color: currentColor;
+  fill: currentColor;
+}
