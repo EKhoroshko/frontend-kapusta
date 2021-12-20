@@ -2,17 +2,22 @@ import React from "react";
 import { useState } from "react";
 import MobileList from "./MobileList";
 import Modal from "../Modal/ModalWindow/ModalWindow";
+import {
+  getAllTransactions,
+  deleteTransaction,
+} from "../../redux/transaction/operation";
 import { filterAll } from "../../helpers/support/FilterList.js";
-import { getAllTransactions } from "../../redux/transaction/operation";
-import { getIdResolve } from "../../redux/transaction/slice";
 import { getTransactions } from "../../redux/transaction/selectors";
+import { getLoading } from "../../redux/transaction/selectors";
 import deleteIcon from "../../assets/images/delete.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import s from "./List.module.css";
+import Skeleton from "../Loader/Loader";
 
 function List({ type }) {
   const transactions = useSelector(getTransactions);
+  const trLoad = useSelector(getLoading);
   const [isModalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -20,12 +25,14 @@ function List({ type }) {
     dispatch(getAllTransactions());
   }, [dispatch]);
 
-  const toggleModal = () => {
+  const toggleModal = (id) => {
     setModalOpen(!isModalOpen);
   };
 
   return (
     <>
+      {trLoad && <Skeleton />}
+
       <div className={s.mainContainer}>
         <div className={s.listContainer}>
           <table className={s.table}>
@@ -47,16 +54,17 @@ function List({ type }) {
                       <td className={s.td}>{tr.date}</td>
                       <td className={s.td}>{tr.description}</td>
                       <td className={s.td}>{tr.category}</td>
-                      <td className={s.td}>
-                        {incomes ? "+" + tr.sum : "-" + tr.sum}
-                      </td>
+                      {incomes ? (
+                        <td className={s.td}>+ {tr.sum} :</td>
+                      ) : (
+                        <td className={s.td}>- {tr.sum}</td>
+                      )}
                       <td className={s.td}>
                         <button
                           type="button"
                           className={s.deleteBtn}
                           onClick={() => {
-                            toggleModal();
-                            dispatch(getIdResolve(tr._id));
+                            toggleModal(tr._id);
                           }}
                         >
                           <img
@@ -70,7 +78,13 @@ function List({ type }) {
                   );
                 })}
               {isModalOpen && (
-                <Modal text={"Вы уверены?"} onCancel={toggleModal} />
+                <Modal
+                  text={"Вы уверены?"}
+                  onCancel={toggleModal}
+                  onSubmit={() => {
+                    dispatch(deleteTransaction());
+                  }}
+                />
               )}
             </tbody>
           </table>

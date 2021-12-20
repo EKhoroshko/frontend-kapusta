@@ -3,7 +3,7 @@ import Header from "./components/Header/Header.jsx";
 import Login from "./routes/Login/Login";
 import Home from "./routes/Home/Home";
 import NotFound from "./routes/NotFound/NotFound";
-import Loader from "./components/Loader/Loader";
+import Skeleton from "./components/Loader/Loader";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Summary from "./routes/Summary/Summary";
@@ -22,7 +22,7 @@ function App() {
   return (
     <section>
       <Header />
-      <Switch fallback={<Loader />}>
+      <Switch fallback={<Skeleton />}>
         <Route path="/" exact component={Login} />
         <Route path="/home" component={Home} />
         <Route path="/summary" component={Summary} />

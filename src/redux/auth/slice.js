@@ -4,7 +4,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     avatarURL: "",
-    isLoading: true,
+    isLoading: false,
     isLogin: false,
     token: null,
     id: null,
