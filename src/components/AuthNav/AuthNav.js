@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { registration, loginUser } from "../../redux/auth/operations";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router";
 
 import s from "./AuthNav.module.css";
 
