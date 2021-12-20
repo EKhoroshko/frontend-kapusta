@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Bar } from "react-chartjs-2";
-//import Chart from "chart.js/auto";
+// eslint-disable-next-line no-unused-vars
+import Chart from "chart.js/auto";
 import { getTransactions } from "../../redux/transaction/selectors";
 
 import s from "../Chart/Chart.module.css";
