@@ -29,16 +29,7 @@ ChartJS.register(
 export default function ChartCategory({ month, year, category, type }) {
   const transactions = useSelector(getTransactions);
 
-  const filteredByType = transactions.filter(
-    (transaction) => transaction.type === type
-  );
-
-  const filteredByDate = filteredByType.filter(
-    (transaction) =>
-      transaction.month === String(month) && transaction.year === String(year)
-  );
-
-  const findTotalSumForChart = (data) => {
+  const findTotalSumForChart = (data, type) => {
     if (type) {
       return data
         .filter((transaction) => transaction.transactionType === type)
@@ -74,6 +65,15 @@ export default function ChartCategory({ month, year, category, type }) {
     });
     return result;
   };
+
+  const filteredByType = transactions.filter(
+    (transaction) => transaction.type === type
+  );
+
+  const filteredByDate = filteredByType.filter(
+    (transaction) =>
+      transaction.month === String(month) && transaction.year === String(year)
+  );
 
   const sortedSubCategoryTransactions = [
     ...findTotalSumForChart(filteredByDate),
