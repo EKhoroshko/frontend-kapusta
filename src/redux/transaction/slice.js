@@ -7,6 +7,7 @@ const transactionSlice = createSlice({
     allTransactions: [],
     error: null,
     idTransaction: null,
+    currentPeriod: {},
   },
   reducers: {
     allTransactionLoading: (state, _) => ({
@@ -63,6 +64,11 @@ const transactionSlice = createSlice({
       isLoading: false,
       idTransaction: null,
     }),
+    changeDate: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      currentPeriod: payload,
+    }),
 
     transactionClearError: (state) => ({
       ...state,
@@ -84,6 +90,7 @@ export const {
   transactionClearError,
   getIdResolve,
   clearId,
+  changeDate,
 } = transactionSlice.actions;
 
 export default transactionSlice.reducer;
