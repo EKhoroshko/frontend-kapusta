@@ -10,21 +10,21 @@ export default function Svodka({ type }) {
   const filterAll = (arr, type, id) => {
     return arr
       .filter((tr) => tr.transactionType === type)
-      .filter((tr) => tr.month === id)
+      .filter((tr) => tr.monthString === id)
       .reduce((allprice, tr) => {
-        const { month } = tr;
-        return { ...allprice, [month]: tr.sum };
+        const { monthString } = tr;
+        return { ...allprice, [monthString]: tr.sum };
       }, {});
   };
 
   const sortMounth = (arr, data) => {
-    const newArr = data.map(({ id }) => filterAll(arr, type, id));
+    const newArr = data.map(({ name }) => filterAll(arr, type, name));
     return newArr;
   };
 
   console.log(sortMounth(transaction, period));
 
-  //console.log(filterAll(transaction, type, 12));
+  console.log(filterAll(transaction, type, "Декабрь"));
 
   return (
     <div className={s.svodka}>
