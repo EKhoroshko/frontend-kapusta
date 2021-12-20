@@ -23,7 +23,7 @@ import { getToken, getUserId } from "./selectors";
 
 const toastAction = {
   position: "top-right",
-  autoClose: 5000,
+  autoClose: 3000,
   hideProgressBar: false,
   closeOnClick: true,
   pauseOnHover: true,
@@ -51,7 +51,6 @@ export const registration =
         "https://back-kapusta.herokuapp.com/api/auth/users/register",
         options
       ).then((response) => response.json());
-      await console.log(response);
       if (response.hasOwnProperty("errors")) {
         return toast.error(
           `Пользователь с адресом электронной почты: ${email} уже существует`,
@@ -88,16 +87,15 @@ export const loginUser =
         options
       )
         .then((response) => {
-          console.log(response);
-
           if (response.ok) {
             return response.json();
           } else {
-            if (response.hasOwnProperty("errors")) {
-              // dispatch(userLoginReject(response.statusText));
-              localStorage.removeItem("token");
-              return toast.error("Повторите ввод email и пароль", toastAction);
-            }
+            dispatch(userLoginReject(response.statusText));
+            localStorage.removeItem("token");
+            return toast.error(
+              "Электронная почта или пароль неверный",
+              toastAction
+            );
           }
         })
         .then(({ data }) => {
@@ -109,7 +107,6 @@ export const loginUser =
           );
         });
     } catch (error) {
-      console.log(error);
       dispatch(userLoginReject(error));
       dispatch(userClearError());
     }

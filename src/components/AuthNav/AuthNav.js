@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { registration, loginUser } from "../../redux/auth/operations";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router";
 
 import s from "./AuthNav.module.css";
 
@@ -101,7 +102,7 @@ export default function AuthNav({ props }) {
           />
         </label>
         <div className={s.formButton}>
-          <button className={s.button} type="submit">
+          <button className={s.button + " " + s.buttonActive} type="submit">
             {isActiv ? "Регистрация" : "Войти"}
           </button>
           <button className={s.button} onClick={handleChangeForm} type="submit">
