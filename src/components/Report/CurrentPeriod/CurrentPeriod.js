@@ -1,27 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-//import { getMonth, getYear } from "../../../redux/currentPeriod/selectors";
 import { ReactComponent as VectorLeft } from "../../../assets/images/vector-left.svg";
 import { ReactComponent as VectorRight } from "../../../assets/images/vector-right.svg";
-import monthName from "../../../helpers/Current-period/months.json";
 import periodStyles from "./Period.module.css";
+import { useSelector } from "react-redux";
+import { getCurrentPeriod } from "../../../redux/transaction/selectors";
+import SvodkaMonth from "../../../helpers/SvodkaMonth";
+import { changeDate } from "../../../redux/transaction/slice";
 
-// я ще над цим працюю
 export default function Period() {
   const dispatch = useDispatch();
 
-  //const [date, setDate] = useState("");
   const currentMonth = new Date().getMonth() + 1;
   const currentYear = new Date().getFullYear();
   const [month, setMonth] = useState(currentMonth);
   const [year, setYear] = useState(currentYear);
-  // const month = useSelector(getMonth);
-  // const year = useSelector(getYear);
+  const date = useSelector(getCurrentPeriod);
 
-  const getMonthName = monthName.filter((el) => el.id === String(currentMonth));
+  useEffect(() => {
+    const data = SvodkaMonth.find((tr) => tr.id === month);
+    const name = data.name;
+    dispatch(changeDate({ name, year }));
+  }, [month, year, dispatch]);
 
   const handleNextMonthButtonClick = () => {
-    if (month <= 12) {
+    if (month <= 11) {
       setMonth((prev) => (prev += 1));
     } else {
       setMonth(1);
@@ -30,8 +33,6 @@ export default function Period() {
   };
 
   const handlePrevMonthButtonClick = () => {
-    // const newDate = (month - 1, year);
-    // setDate({ newDate });
     if (month <= 1) {
       setMonth(12);
       setYear((prev) => (prev -= 1));
@@ -48,18 +49,19 @@ export default function Period() {
           type="button"
           className={periodStyles.NavButton}
           aria-label="previous"
-          onClick={() => dispatch(handlePrevMonthButtonClick)}
+          onClick={handlePrevMonthButtonClick}
         >
           <VectorLeft width="7" height="12" />
         </button>
         <p className={periodStyles.CurrentPeriod}>
-          {`${getMonthName[0].name} ${currentYear}`}
+          {date.name}
+          <span>{date.year}</span>
         </p>
         <button
           type="button"
           className={periodStyles.NavButton}
           aria-label="next"
-          onClick={() => dispatch(handleNextMonthButtonClick)}
+          onClick={handleNextMonthButtonClick}
         >
           <VectorRight width="7" height="12" />
         </button>
