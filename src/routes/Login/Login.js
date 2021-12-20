@@ -13,9 +13,7 @@ function Login() {
 
   useEffect(() => {
     if (login) {
-      setTimeout(() => {
-        history.push("/home");
-      }, 2500);
+      history.push("/home");
     }
   }, [history, login]);
 

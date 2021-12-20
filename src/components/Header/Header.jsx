@@ -4,6 +4,7 @@ import UserMenu from "./userMenu";
 import logo from "../../assets/images/logo.svg";
 import { useSelector } from "react-redux";
 import { getIsLoggedIn } from "../../redux/auth/selectors";
+import { Redirect } from "react-router-dom";
 function Header() {
   const isLoggedIn = useSelector(getIsLoggedIn);
   return (
@@ -11,6 +12,7 @@ function Header() {
       <div className={css.container}>
         <img src={logo} alt="" width={90} height={30} />
         {isLoggedIn && <UserMenu />}
+        {!isLoggedIn && <Redirect to="/" />}
       </div>
     </header>
   );
