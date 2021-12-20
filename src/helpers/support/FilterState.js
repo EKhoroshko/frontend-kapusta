@@ -18,21 +18,42 @@ const sortMounth = (arr, type, data, currentYear) => {
   const filterArray = newArr.filter((tr) => Object.keys(tr).length !== 0);
   return filterArray;
 };
-const filterForSummary = (array, type, date) => {
-  const newArray = array
-    .filter((tr) => tr.transactionType === type)
-    .filter((tr) => tr.year === date.year)
-    .filter((tr) => tr.monthString === date.month)
-    .reduce((acc, value) => {
-      console.log(acc);
-      console.log(value);
-      let sum = Number(Object.values(acc)) + value.sum;
-      const { category } = value;
 
-      return { [category]: sum };
-    }, 0);
-  return newArray;
-  // [{Транспорт : 200UA}]
+const findTotalSumForChart = (data, type, date) => {
+  return data
+    .filter((transaction) => transaction.transactionType === type)
+    .filter((tr) => tr.year === date.year)
+    .filter((tr) => tr.monthString === date.name)
+    .reduce((result, subcategorys) => {
+      const subCategory = result.find(
+        (item) => item.subCategory === subcategorys.category
+      );
+      if (!subCategory) {
+        result.push({
+          subCategory: subcategorys.category,
+          sum: subcategorys.sum,
+        });
+      } else {
+        subCategory.sum += subcategorys.sum;
+      }
+      return result;
+    }, []);
+
+  // const result = [];
+  // data.map((transaction) => {
+  //   const category = result.find(
+  //     (item) => item.category === transaction.category,
+  //   );
+  //   if (!category) {
+  //     return result.push({
+  //       category: transaction.category,
+  //       sum: transaction.sum,
+  //     });
+  //   } else {
+  //     return (category.sum += transaction.sum);
+  //   }
+  // });
+  // return result;
 };
 
-export { sortMounth, filterForSummary };
+export { sortMounth, findTotalSumForChart };

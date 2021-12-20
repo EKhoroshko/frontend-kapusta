@@ -2,14 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./ReportItemByCategory.module.css";
 
-const ReportItemByCategory = ({ name, amount, icon }) => {
+const ReportItemByCategory = ({ data }) => {
+  const { subCategory, sum } = data;
   return (
     <div className={styles.item}>
-      <p>{amount}</p>
-      <div>
-        <img src={icon} alt={name}></img>
-      </div>
-      <p>{name}</p>
+      <p>{sum}</p>
+      <div>{/* <img src={icon} alt={category}></img> */}</div>
+      <p>{subCategory}</p>
     </div>
   );
 };

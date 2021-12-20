@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReportItemByCategory from "../ReportItemByCategory";
 import { ReactComponent as BtnLeft } from "../../../assets/images/BtnLefl.svg";
 import { ReactComponent as BtnRight } from "../../../assets/images/BtnRight.svg";
-import { filterForSummary } from "../../../helpers/support/FilterState";
+import { findTotalSumForChart } from "../../../helpers/support/FilterState";
 import styles from "./ReportListByCategory.module.css";
 import {
   getTransactions,
@@ -10,30 +10,47 @@ import {
 } from "../../../redux/transaction/selectors";
 import { useSelector } from "react-redux";
 
-const ReportListByCategory = ({ items }) => {
+const ReportListByCategory = () => {
+  const [type, setType] = useState("costs");
   const tr = useSelector(getTransactions);
   const date = useSelector(getCurrentPeriod);
-  console.log(filterForSummary(tr, "incomes", date));
+  const [transaction, setTransaction] = useState([]);
 
+  useEffect(() => {
+    setTransaction(findTotalSumForChart(tr, type, date));
+  }, [type, tr, date]);
   return (
     <div className={styles.container}>
       <div className={styles.switchWrap}>
-        <button type="button" name="leftBtn" className={styles.calendarBtn}>
+        <button
+          type="button"
+          name="leftBtn"
+          onClick={() => setType("costs")}
+          className={styles.calendarBtn}
+        >
           <BtnLeft />
         </button>
-        <p className={styles.cldrMonth}>Расх/прих</p>
-        <button type="button" name="rightBtn" className={styles.calendarBtn}>
+        <p className={styles.cldrMonth}>
+          {type === "costs" ? "Рассходы" : "Доход"}
+        </p>
+        <button
+          type="button"
+          name="rightBtn"
+          className={styles.calendarBtn}
+          onClick={() => setType("incomes")}
+        >
           <BtnRight />
         </button>
       </div>
       <ul className={styles.list}>
-        {items.map(({ name, amount, icon, id }) => (
-          <li className={styles.listItem} key={id}>
-            <button type="button">
-              <ReportItemByCategory name={name} amount={amount} icon={icon} />
-            </button>
-          </li>
-        ))}
+        {transaction.length > 0 &&
+          transaction.map((transaction) => (
+            <li className={styles.listItem} key={transaction.subCategory}>
+              <button type="button">
+                <ReportItemByCategory data={transaction} />
+              </button>
+            </li>
+          ))}
       </ul>
     </div>
   );
