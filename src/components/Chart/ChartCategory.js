@@ -1,14 +1,31 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Bar } from "react-chartjs-2";
+//import Chart from "chart.js/auto";
+import { getTransactions } from "../../redux/transaction/selectors";
 
-//import { Chart as ChartJS } from "chart.js/auto";
-import { Chart } from "react-chartjs-2";
-import { getTransactions } from "../../redux/chart-selectors";
-//import { getTransactions } from "../../redux/transaction/selectors";
-import style from "./Chart.module.css";
+import s from "../Chart/Chart.module.css";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-function ChartMonth({ month, year, category, type }) {
+export default function ChartCategory({ month, year, category, type }) {
   const transactions = useSelector(getTransactions);
 
   const filteredByType = transactions.filter(
@@ -21,20 +38,20 @@ function ChartMonth({ month, year, category, type }) {
   );
 
   const findTotalSumForChart = (data) => {
-    if (!!category) {
+    if (type) {
       return data
-        .filter((transaction) => transaction.category === category)
-        .reduce((result, currentSub) => {
+        .filter((transaction) => transaction.transactionType === type)
+        .reduce((result, subcategorys) => {
           const subCategory = result.find(
-            (item) => item.subCategory === currentSub.subCategory
+            (item) => item.subCategory === subcategorys.subCategory
           );
           if (!subCategory) {
             result.push({
-              subCategory: currentSub.subCategory,
-              sum: currentSub.sum,
+              subCategory: subcategorys.subCategory,
+              sum: subcategorys.sum,
             });
           } else {
-            subCategory.sum += currentSub.sum;
+            subCategory.sum += subcategorys.sum;
           }
           return result;
         }, []);
@@ -65,9 +82,9 @@ function ChartMonth({ month, year, category, type }) {
     return tr.subCategory ? tr.subCategory : tr.category;
   });
 
-  const sortedByValue = [...sortedSubCategoryTransactions].map(
-    (data) => data.sum
-  );
+  const sortedSum = [...sortedSubCategoryTransactions].map((data) => data.sum);
+
+  const labelName = type === "expense" ? "Расход" : "Доход";
 
   const getNextColor = (color) => {
     const palitraEl = ["#FF751D", "#FFDAC0", "#fcd7bd"];
@@ -80,10 +97,11 @@ function ChartMonth({ month, year, category, type }) {
 
     return palitraEl[colors + 1] ? colors[colors + 1] : palitraEl[0];
   };
+
   const colorsColumn = (array) => {
     let prev = null;
 
-    return sortedByValue.map((item) => {
+    return sortedSum.map((item) => {
       const currentColor = getNextColor(prev);
 
       prev = currentColor;
@@ -92,45 +110,63 @@ function ChartMonth({ month, year, category, type }) {
     });
   };
 
-  const chartData = {
+  const data = {
     labels: sortedLables,
-
     datasets: [
       {
-        data: sortedByValue,
-        // data: [65, 59, 80, 81, 56, 55, 40],
-        backgroundColor: colorsColumn(sortedByValue),
-        //backgroundColor: "rgba(255,99,132,0.2)",
+        label: labelName,
+        data: sortedSum,
+        backgroundColor: colorsColumn(sortedSum),
+        borderColor: colorsColumn(sortedSum),
         borderWidth: 1,
         borderRadius: 10,
+        barThickness: 400,
         barMargin: 20,
-
-        hoverBackgroundColor: "FF751D",
-        hoverBorderColor: "rgba(255,99,132,1)",
       },
     ],
   };
 
-  const options = {
+  const optionsVertical = {
     responsive: true,
-    plugins: {
-      legend: {
-        position: "top",
-      },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
     },
   };
 
+  //   const optionsHorizontal = {
+  //     maintainAspectRatio: false,
+  //     indexAxis: "y",
+  //     elements: {
+  //       bar: {
+  //         borderWidth: 1,
+  //       },
+  //     },
+  //     responsive: true,
+  //     plugins: {
+  //       legend: {
+  //         position: "top",
+  //       },
+  //     },
+  //   };
+
+  // const options = {
+  //     responsive: true,
+  //     plugins: {
+  //         legend: {
+  //             position: "top",
+  //         },
+  //     },
+  // };
+
   return (
-    <div>
-      <Bar
-        options={options}
-        data={chartData}
-        //width={666}
-        //height={422}
-        margin={{ top: 40, right: 15, bottom: 20, left: 15 }}
-        className={style.chartText}
-      />
+    <div className={s.chartContainer}>
+      <Bar data={data} width={320} height={450} options={optionsVertical} />
     </div>
   );
 }
-export default ChartMonth;
