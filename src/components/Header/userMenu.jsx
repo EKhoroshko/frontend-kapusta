@@ -11,10 +11,11 @@ export default function UserMenu() {
   const dispatch = useDispatch();
   return (
     <div className={css.user__menu}>
-      <p className={css.first__letter}>
+      <p className={css.user__avatar}>
         <span className={css.symbol}>
-          <img src={avatarURL} alt="" />
-        </span>
+        <img src={avatarURL} alt="аватар пользователя"/>
+          </span>
+
       </p>
       <MediaQuery minWidth={768}>
         <p className={css.user__name}>{userName}</p>

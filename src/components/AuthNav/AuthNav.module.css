@@ -62,13 +62,6 @@
   padding-top: 10px;
 }
 
-.button:hover,
-.button:focus {
-  color: #f6f7fb;
-  background-color: #ff751d;
-  transition: color 0.2s linear;
-}
-
 .button {
   display: flex;
   justify-content: center;
@@ -87,6 +80,11 @@
   text-transform: uppercase;
   background-color: #f6f7fb;
   color: #52555f;
+}
+
+.buttonActive {
+  color: #f6f7fb;
+  background-color: #ff751d;
 }
 
 @media screen and (min-width: 768px) {
