@@ -139,21 +139,21 @@ export default function ChartCategory({ month, year, category, type }) {
     },
   };
 
-  const optionsHorizontal = {
-    maintainAspectRatio: false,
-    indexAxis: "y",
-    elements: {
-      bar: {
-        borderWidth: 1,
-      },
-    },
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top",
-      },
-    },
-  };
+  //   const optionsHorizontal = {
+  //     maintainAspectRatio: false,
+  //     indexAxis: "y",
+  //     elements: {
+  //       bar: {
+  //         borderWidth: 1,
+  //       },
+  //     },
+  //     responsive: true,
+  //     plugins: {
+  //       legend: {
+  //         position: "top",
+  //       },
+  //     },
+  //   };
 
   // const options = {
   //     responsive: true,
