@@ -28,6 +28,7 @@ const findTotalSumForChart = (data, type, date) => {
       const subCategory = result.find(
         (item) => item.subCategory === subcategorys.category
       );
+
       if (!subCategory) {
         result.push({
           subCategory: subcategorys.category,

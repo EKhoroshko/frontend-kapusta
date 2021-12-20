@@ -18,6 +18,7 @@ import { changeBalance } from "../../redux/auth/operations";
 import { addTransaction } from "../../redux/transaction/operation";
 import css from "./Home.module.css";
 import Skeleton from "../../components/Loader/Loader";
+import { toast } from "react-toastify";
 
 function Home() {
   const balance = useSelector(getBalance);
@@ -62,6 +63,7 @@ function Home() {
       description,
       type,
     };
+    if (type === "") return toast.warning("Выберите тип транзакции");
     dispatch(addTransaction(transaction));
     updateBalance(price, type);
   };
