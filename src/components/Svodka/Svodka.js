@@ -24,7 +24,7 @@ export default function Svodka({ type }) {
 
   console.log(sortMounth(transaction, period));
 
-  console.log(filterAll(transaction, type, "Декабрь"));
+  //console.log(filterAll(transaction, type, "Декабрь"));
 
   return (
     <div className={s.svodka}>
