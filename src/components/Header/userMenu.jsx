@@ -8,7 +8,6 @@ import { useSelector, useDispatch } from "react-redux";
 export default function UserMenu() {
   const userName = useSelector(getUserName);
   const avatarURL = useSelector(getAvatar);
-  console.log(userName);
   const dispatch = useDispatch();
   return (
     <div className={css.user__menu}>
@@ -16,6 +15,7 @@ export default function UserMenu() {
         <span className={css.symbol}>
         <img src={avatarURL} alt="аватар пользователя"/>
           </span>
+
       </p>
       <MediaQuery minWidth={768}>
         <p className={css.user__name}>{userName}</p>

@@ -15,7 +15,7 @@ import AddFormMobile from "../../components/AddForm/AddFormMobile";
 import { useDispatch, useSelector } from "react-redux";
 import { getBalance } from "../../redux/auth/selectors";
 import { changeBalance } from "../../redux/auth/operations";
-import { addTransaction } from "../../redux/transaction/operationT";
+import { addTransaction } from "../../redux/transaction/operation";
 import css from "./Home.module.css";
 
 function Home() {
@@ -32,6 +32,10 @@ function Home() {
     const path = location.pathname !== "/home";
     setActive(path);
   }, [location.pathname]);
+
+  useEffect(() => {
+    setMoney(balance);
+  }, [balance]);
 
   const goSummary = () => {
     history.push("/summary");
@@ -58,7 +62,6 @@ function Home() {
     };
     dispatch(addTransaction(transaction));
     updateBalance(price, type);
-    // transactions.length(updateBalance( price));
   };
 
   const checkBalance = (e) => {
@@ -68,7 +71,6 @@ function Home() {
   const addBalance = (e) => {
     e.preventDefault();
     dispatch(changeBalance(money));
-    setMoney(balance);
   };
 
   return (
@@ -76,10 +78,10 @@ function Home() {
       <div className={css.imgBack}>
         <div className={css.container}>
           {active ? (
-            <AddFormMobile />
+            <AddFormMobile onSubmit={getFormInfo} />
           ) : (
             <div className={css.box}>
-              {!money && <Comment />}
+              {!balance && <Comment />}
               <button className={css.sum} type="button" onClick={goSummary}>
                 Перейти к отчетам
                 <Diagramma className={css.diagramma} />
@@ -103,22 +105,30 @@ function Home() {
                 <Calendar />
               </div>
               <div className={css.mobile}>
-                <MobileList />
+                <MobileList type={type} />
               </div>
               <div className={css.descktop}>
-                <AddForm onSubmit={getFormInfo} />
+                <AddForm onSubmit={getFormInfo} type={type} />
                 <div className={css.list}>
                   <List type={type} />
                 </div>
               </div>
               <div className={css.boxLinkMin}>
                 <NavLink className={css.link} to={`${match.url}/casts`}>
-                  <button className={css.btn} type="button">
+                  <button
+                    className={css.btn}
+                    type="button"
+                    onClick={() => setType("costs")}
+                  >
                     Расходы
                   </button>
                 </NavLink>
                 <NavLink className={css.link} to={`${match.url}/incomes`}>
-                  <button className={css.btn} type="button">
+                  <button
+                    className={css.btn}
+                    type="button"
+                    onClick={() => setType("incomes")}
+                  >
                     Доход
                   </button>
                 </NavLink>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory, NavLink, useRouteMatch } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Select from "react-select";
 import Calendar from "../Calendar/Calendar";
 import customStyles from "../../helpers/Select/SelectOption.js";
@@ -9,18 +9,17 @@ import { ReactComponent as Arrow } from "../../assets/images/arrowLeft.svg";
 import Button from "../Button/Button";
 import css from "./AddFormMobile.module.css";
 
-function AddFormMobile() {
+function AddFormMobile({ onSubmit }) {
   const history = useHistory();
-  const match = useRouteMatch();
+  // const match = useRouteMatch();
   const [select, setSelect] = useState(null);
-  const [descriptoin, setDescriptoin] = useState("");
-  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("0");
 
   const writePrice = (e) => {
     e.preventDefault();
-    console.log(price);
-    console.log(descriptoin);
-    console.log(select);
+    onSubmit({ price, description, select });
+    clearForm();
   };
 
   const checkPrise = (e) => {
@@ -28,11 +27,13 @@ function AddFormMobile() {
   };
 
   const checkDescription = (e) => {
-    setDescriptoin(e.currentTarget.value);
+    setDescription(e.currentTarget.value);
   };
 
   const clearForm = () => {
-    console.log("я должна чистить формы");
+    setSelect("");
+    setDescription("");
+    setPrice("");
   };
 
   const goBack = () => {
@@ -55,7 +56,7 @@ function AddFormMobile() {
                 type="text"
                 className={css.descr}
                 placeholder="Описание товара"
-                value={descriptoin}
+                value={description}
                 onChange={checkDescription}
               />
               <Select
@@ -67,10 +68,10 @@ function AddFormMobile() {
               <div className={css.formPrice}>
                 <input
                   className={css.inputPrice}
-                  type="text"
+                  type="number"
                   autoComplete="off"
                   placeholder="00.00 UAH"
-                  value={price}
+                  // value={price}
                   onChange={checkPrise}
                 />
                 <button className={css.btnPrice}>
@@ -89,7 +90,7 @@ function AddFormMobile() {
           </form>
         </div>
 
-        <div className={css.boxLink}>
+        {/* <div className={css.boxLink}>
           <NavLink className={css.link} to={`${match.url}/casts`}>
             <button className={css.btn} type="button">
               Расходы
@@ -100,7 +101,7 @@ function AddFormMobile() {
               Доход
             </button>
           </NavLink>
-        </div>
+        </div> */}
       </div>
     </div>
   );

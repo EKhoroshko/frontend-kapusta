@@ -8,8 +8,11 @@ import {
   addTransactionLoading,
   addTransactionResolve,
   addTransactionReject,
+  removeTransactionLoading,
+  removeTransactionResolve,
+  removeTransactionReject,
   transactionClearError,
-} from "../transaction/slice";
+} from "./slice";
 
 export const getAllTransactions = () => async (dispatch) => {
   const token = localStorage.getItem("token");
@@ -22,13 +25,12 @@ export const getAllTransactions = () => async (dispatch) => {
   };
   dispatch(allTransactionLoading());
   try {
-    const response = await fetch(
+    return await fetch(
       "https://back-kapusta.herokuapp.com/api/transactions/all",
       options
     )
       .then((response) => response.json())
-      .then(({ transaction }) => ({ transaction }));
-    dispatch(allTransactionResolve(response));
+      .then(({ transaction }) => dispatch(allTransactionResolve(transaction)));
   } catch (error) {
     dispatch(allTransactionReject(error));
     dispatch(transactionClearError());
@@ -55,15 +57,37 @@ export const addTransaction =
 
     dispatch(addTransactionLoading());
     try {
-      const response = await fetch(
+      return await fetch(
         "https://back-kapusta.herokuapp.com/api/transactions",
         options
       )
         .then((response) => response.json())
-        .then(({ newTransaction }) => newTransaction);
-      dispatch(addTransactionResolve(response));
+        .then(({ newTransaction }) =>
+          dispatch(addTransactionResolve(newTransaction))
+        );
     } catch (error) {
       dispatch(addTransactionReject(error));
       dispatch(transactionClearError());
     }
   };
+
+export const deleteTransaction = (id) => async (dispatch) => {
+  const token = localStorage.getItem("token");
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  dispatch(removeTransactionLoading());
+  try {
+    await fetch(
+      `https://back-kapusta.herokuapp.com/api/transactions/${id}`,
+      options
+    ).then((response) => response.json());
+    dispatch(removeTransactionResolve(id));
+  } catch (error) {
+    dispatch(removeTransactionReject(error));
+  }
+};

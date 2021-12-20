@@ -1,54 +1,65 @@
 import styles from "./List.module.css";
-// import transactionsOperations from "../../redux/transaction/operations";
-import { useState } from "react";
-// import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import deleteIcon from "../../assets/images/delete.svg";
+import { filterAll } from "../../helpers/support/FilterList.js";
+import { getIdResolve } from "../../redux/transaction/slice";
 import Modal from "../Modal/ModalWindow/ModalWindow";
+import { getAllTransactions } from "../../redux/transaction/operation";
+import { getTransactions } from "../../redux/transaction/selectors";
 
-const Mobile = () => {
-  // const dispatch = useDispatch();
-
+const Mobile = ({ type }) => {
+  const transactions = useSelector(getTransactions);
   const [isModalOpen, setModalOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllTransactions());
+  }, [dispatch]);
 
   const toggleModal = (e) => {
     setModalOpen(!isModalOpen);
   };
 
   return (
-    <div className={styles.mobileWrap}>
-      <li className={styles.mobileList2}>
-        <div className={styles.mobileListWrap}>
-          <p className={styles.textDescMob}>description</p>
-          <div className={styles.descWrap}>
-            <p className={styles.dateMob}>date</p>
-            <p className={styles.categoryMob}>category</p>
-          </div>
-        </div>
-        <p>3333</p>
+    <>
+      <ul className={styles.mobileWrap}>
+        {transactions &&
+          filterAll(transactions, type).map((tr) => {
+            const incomes = tr.transactionType === "incomes";
+            return (
+              <li className={styles.mobileList2} key={tr._id}>
+                <div className={styles.mobileListWrap}>
+                  <p className={styles.textDescMob}>{tr.description}</p>
+                  <div className={styles.descWrap}>
+                    <p className={styles.dateMob}>{tr.date}</p>
+                    <p className={styles.categoryMob}>{tr.category}</p>
+                  </div>
+                </div>
+                <p> {incomes ? "+" + tr.sum : "-" + tr.sum}</p>
 
-        <div className={styles.btnWrapper}>
-          <button
-            type="button"
-            className={styles.deleteBtn}
-            onClick={() => {
-              toggleModal();
-            }}
-          >
-            <img className={styles.icon} src={deleteIcon} alt="Delete icon" />
-          </button>
-          {isModalOpen && (
-            <Modal
-              text={"Вы уверены?"}
-              onCancel={toggleModal}
-              onSubmit={() => {
-                // dispatch(transactionsOperations.deleteTransaction());
-              }}
-            />
-          )}
-        </div>
-      </li>
-
-    </div>
+                <div className={styles.btnWrapper}>
+                  <button
+                    type="button"
+                    className={styles.deleteBtn}
+                    onClick={() => {
+                      toggleModal(tr._id);
+                      dispatch(getIdResolve(tr._id));
+                    }}
+                  >
+                    <img
+                      className={styles.icon}
+                      src={deleteIcon}
+                      alt="Delete icon"
+                    />
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+      </ul>
+      {isModalOpen && <Modal text={"Вы уверены?"} onCancel={toggleModal} />}
+    </>
   );
 };
 
