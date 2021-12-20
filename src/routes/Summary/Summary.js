@@ -7,6 +7,7 @@ import ReportButtonGoBack from "../../components/Report/ReportButtonGoBack";
 import Balance from "../../components/Balance";
 import ReportCurrentPeriod from "../../components/Report/ReportCurrentPeriod";
 import CurrentAmount from "../../components/Report/CurrentAmount/CurrentAmount";
+import ChartCategory from "../../components/Chart/ChartCategory";
 
 import style from "./Summary.module.css";
 
@@ -60,9 +61,10 @@ function Summary() {
             <div>
               <CurrentAmount />
             </div>
-
             <ReportListByCategory items={category} />
           </div>
+
+          <ChartCategory />
         </div>
       </div>
       <div className={style.imgBackKapusta}></div>
