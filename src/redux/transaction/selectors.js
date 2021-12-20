@@ -4,4 +4,6 @@ export const getNewTransactions = (store) => store.transaction.newTransaction;
 
 export const getLoading = (store) => store.transaction.isLoading;
 
+export const getCurrentPeriod = (store) => store.transaction.currentPeriod;
+
 export const getIdTransaction = (store) => store.transaction.idTransaction;
