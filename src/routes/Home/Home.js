@@ -13,13 +13,15 @@ import AddForm from "../../components/AddForm/AddForm";
 import List from "../../components/List/List";
 import AddFormMobile from "../../components/AddForm/AddFormMobile";
 import { useDispatch, useSelector } from "react-redux";
-import { getBalance } from "../../redux/auth/selectors";
+import { getBalance, getIsLoading } from "../../redux/auth/selectors";
 import { changeBalance } from "../../redux/auth/operations";
 import { addTransaction } from "../../redux/transaction/operation";
 import css from "./Home.module.css";
+import Skeleton from "../../components/Loader/Loader";
 
 function Home() {
   const balance = useSelector(getBalance);
+  const login = useSelector(getIsLoading);
   const [type, setType] = useState("");
   const [active, setActive] = useState(false);
   const [money, setMoney] = useState(balance);
@@ -75,6 +77,7 @@ function Home() {
 
   return (
     <section className={css.section}>
+      {login && <Skeleton />}
       <div className={css.imgBack}>
         <div className={css.container}>
           {active ? (

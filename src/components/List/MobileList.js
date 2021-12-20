@@ -6,10 +6,12 @@ import { filterAll } from "../../helpers/support/FilterList.js";
 import { getIdResolve } from "../../redux/transaction/slice";
 import Modal from "../Modal/ModalWindow/ModalWindow";
 import { getAllTransactions } from "../../redux/transaction/operation";
-import { getTransactions } from "../../redux/transaction/selectors";
+import { getLoading, getTransactions } from "../../redux/transaction/selectors";
+import Skeleton from "../Loader/Loader";
 
 const Mobile = ({ type }) => {
   const transactions = useSelector(getTransactions);
+  const trLoad = useSelector(getLoading);
   const [isModalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -23,6 +25,7 @@ const Mobile = ({ type }) => {
 
   return (
     <>
+      {trLoad && <Skeleton />}
       <ul className={styles.mobileWrap}>
         {transactions &&
           filterAll(transactions, type).map((tr) => {
