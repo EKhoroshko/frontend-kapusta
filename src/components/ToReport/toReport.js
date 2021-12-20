@@ -5,7 +5,7 @@ import style from "../ToReport/toReports.module.css";
 
 function ToReports() {
   return (
-    <NavLink to="/reports" className={style.container}>
+    <NavLink to="/symmary" className={style.container}>
       <p className={style.text}>Перейти к отчётам</p>
       <ToReportsIcon className={style.icon} />
     </NavLink>
