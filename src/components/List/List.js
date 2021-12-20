@@ -8,13 +8,16 @@ import {
 } from "../../redux/transaction/operation";
 import { filterAll } from "../../helpers/support/FilterList.js";
 import { getTransactions } from "../../redux/transaction/selectors";
+import { getLoading } from "../../redux/transaction/selectors";
 import deleteIcon from "../../assets/images/delete.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import s from "./List.module.css";
+import Skeleton from "../Loader/Loader";
 
 function List({ type }) {
   const transactions = useSelector(getTransactions);
+  const trLoad = useSelector(getLoading);
   const [isModalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -28,6 +31,8 @@ function List({ type }) {
 
   return (
     <>
+      {trLoad && <Skeleton />}
+
       <div className={s.mainContainer}>
         <div className={s.listContainer}>
           <table className={s.table}>
