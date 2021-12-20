@@ -6,10 +6,13 @@ import period from "../../helpers/SvodkaMonth.js";
 
 export default function Svodka({ type }) {
   const transaction = useSelector(getTransactions);
+  const date = new Date();
+  const currentYear = date.getFullYear();
 
-  const filterAll = (arr, type, id) => {
+  const filterAll = (arr, type, id, year) => {
     return arr
       .filter((tr) => tr.transactionType === type)
+      .filter((tr) => tr.year === year)
       .filter((tr) => tr.monthString === id)
       .reduce((allprice, tr) => {
         const { monthString } = tr;
@@ -17,14 +20,10 @@ export default function Svodka({ type }) {
       }, {});
   };
 
-  const sortMounth = (arr, data) => {
-    const newArr = data.map(({ name }) => filterAll(arr, type, name));
+  const sortMounth = (arr, data, year) => {
+    const newArr = data.map(({ name }) => filterAll(arr, type, name, year));
     return newArr;
   };
-
-  console.log(sortMounth(transaction, period));
-
-  //console.log(filterAll(transaction, type, "Декабрь"));
 
   return (
     <div className={s.svodka}>

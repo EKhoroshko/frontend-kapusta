@@ -1,5 +1,5 @@
-//import { toast } from "react-toastify";
-//import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   allTransactionLoading,
@@ -13,6 +13,16 @@ import {
   removeTransactionReject,
   transactionClearError,
 } from "./slice";
+
+const toastAction = {
+  position: "top-right",
+  autoClose: 3000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+};
 
 export const getAllTransactions = () => async (dispatch) => {
   const token = localStorage.getItem("token");
@@ -57,14 +67,23 @@ export const addTransaction =
 
     dispatch(addTransactionLoading());
     try {
-      return await fetch(
+      const response = await fetch(
         "https://back-kapusta.herokuapp.com/api/transactions",
         options
-      )
-        .then((response) => response.json())
-        .then(({ newTransaction }) =>
+      ).then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          dispatch(addTransactionReject(response.statusText));
+          return toast.error(
+            "Вы не заполнили все поля, или не выбрали тип транзакции",
+            toastAction
+          );
+        }
+      });
+      /*.then(({ newTransaction }) =>
           dispatch(addTransactionResolve(newTransaction))
-        );
+        );*/
     } catch (error) {
       dispatch(addTransactionReject(error));
       dispatch(transactionClearError());
