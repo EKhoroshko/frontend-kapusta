@@ -36,7 +36,7 @@ const Mobile = ({ type }) => {
                     <p className={styles.categoryMob}>{tr.category}</p>
                   </div>
                 </div>
-                <p> {incomes ? "+" + tr.sum : "-" + tr.sum}</p>
+                {incomes ? <p>+ {tr.sum}</p> : <p>- {tr.sum}</p>}
 
                 <div className={styles.btnWrapper}>
                   <button
