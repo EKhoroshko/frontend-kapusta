@@ -54,14 +54,14 @@ function List({ type }) {
                   return (
                     <tr className={s.tr} key={tr._id}>
                       <td className={s.td}>{tr.date}</td>
-                      <td className={s.td}>{tr.description}</td>
+                      <td className={s.tdDescr}>{tr.description}</td>
                       <td className={s.td}>{tr.category}</td>
                       {incomes ? (
-                        <td className={s.tdIncomes}>+ {tr.sum} </td>
+                        <td className={s.tdIncomes}>+ {tr.sum} грн. </td>
                       ) : (
-                        <td className={s.tdCosts}>- {tr.sum}</td>
+                        <td className={s.tdCosts}>- {tr.sum} грн. </td>
                       )}
-                      <td className={s.td}>
+                      <td className={s.tdDelete}>
                         <button
                           type="button"
                           className={s.deleteBtn}
