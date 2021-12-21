@@ -142,7 +142,7 @@ function Home() {
                     type="button"
                     onClick={() => setType("costs")}
                   >
-                    Расходы
+                    Расход
                   </button>
                 </NavLink>
                 <NavLink className={css.link} to={`${match.url}/incomes`}>
