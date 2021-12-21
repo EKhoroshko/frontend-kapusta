@@ -7,20 +7,6 @@ import CurrentAmount from "../../components/Report/CurrentAmount/CurrentAmount";
 import ChartCategory from "../../components/Chart/ChartCategory";
 import style from "./Summary.module.css";
 
-const category = [
-  { name: "vova1", amount: 100, icon: "q", id: 1 },
-  { name: "vova2", amount: 200, icon: "qw", id: 2 },
-  { name: "vova3", amount: 300, icon: "qe", id: 3 },
-  { name: "vova4", amount: 400, icon: "qr", id: 4 },
-  { name: "vova5", amount: 500, icon: "qt", id: 5 },
-  { name: "vova6", amount: 600, icon: "qt", id: 6 },
-  { name: "vova7", amount: 700, icon: "qt", id: 7 },
-  { name: "vova8", amount: 800, icon: "qt", id: 8 },
-  { name: "vova9", amount: 800, icon: "qt", id: 9 },
-  { name: "vova10", amount: 800, icon: "qt", id: 10 },
-  { name: "vova11", amount: 800, icon: "qt", id: 11 },
-];
-
 function Summary() {
   const history = useHistory();
 
@@ -41,9 +27,8 @@ function Summary() {
             <div>
               <CurrentAmount />
             </div>
-            <ReportListByCategory items={category} />
+            <ReportListByCategory />
           </div>
-
           <ChartCategory />
         </div>
       </div>

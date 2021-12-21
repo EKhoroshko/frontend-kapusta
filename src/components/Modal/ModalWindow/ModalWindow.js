@@ -12,23 +12,25 @@ const modalRoot = document.querySelector("#modal-root");
 function Modal({ onCancel, text }) {
   const dispatch = useDispatch();
   const id = useSelector(getIdTransaction);
+
+  const handleKeyDown = (e) => {
+    if (e.code === "Escape") {
+      onCancel();
+    }
+  };
+
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const removeTransact = (num) => {
     dispatch(deleteTransaction(num));
     dispatch(clearId());
     onCancel();
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.code === "Escape") {
-      this.props.onCancel();
-    }
   };
 
   const handleOverlayClick = (e) => {

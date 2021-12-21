@@ -11,7 +11,8 @@ import {
   getTransactions,
   getCurrentPeriod,
 } from "../../../redux/transaction/selectors";
-import { useSelector } from "react-redux";
+import { diagramData } from "../../../redux/transaction/slice";
+import { useSelector, useDispatch } from "react-redux";
 import styles from "./ReportListByCategory.module.css";
 
 const ReportListByCategory = () => {
@@ -19,6 +20,7 @@ const ReportListByCategory = () => {
   const tr = useSelector(getTransactions);
   const date = useSelector(getCurrentPeriod);
   const [transaction, setTransaction] = useState([]);
+  const dispatch = useDispatch();
 
   const map = new Map();
   [...transaction, ...iconsArray].forEach((item) => {
@@ -30,7 +32,8 @@ const ReportListByCategory = () => {
   });
 
   const renderDiagramma = (category) => {
-    filterDescr(tr, type, date, category);
+    const dia = filterDescr(tr, type, date, category);
+    dispatch(diagramData(dia));
   };
 
   useEffect(() => {
