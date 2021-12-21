@@ -90,12 +90,7 @@ export const loginUser =
           if (response.ok) {
             return response.json();
           } else {
-            dispatch(userLoginReject(response.statusText));
-            localStorage.removeItem("token");
-            return toast.error(
-              "Электронная почта или пароль неверный",
-              toastAction
-            );
+            throw new Error(response.statusText);
           }
         })
         .then(({ data }) => {
@@ -107,8 +102,9 @@ export const loginUser =
           );
         });
     } catch (error) {
-      dispatch(userLoginReject(error));
+      dispatch(userLoginReject(error.statusText));
       dispatch(userClearError());
+      return toast.error("Электронная почта или пароль неверный", toastAction);
     }
   };
 
@@ -125,12 +121,18 @@ export const logOut = () => async (dispatch, getState) => {
     const response = await fetch(
       "https://back-kapusta.herokuapp.com/api/auth/users/logout",
       options
-    ).then((response) => response.statusText);
+    ).then((response) => {
+      if (response.ok) {
+        return response.statusText;
+      } else {
+        throw new Error(response.statusText);
+      }
+    });
     localStorage.removeItem("token");
     dispatch(userLogOutResolve(response));
     toast.success("Спасибо за визит, заходите еще!", toastAction);
   } catch (error) {
-    dispatch(userLogOutReject(error));
+    dispatch(userLogOutReject(error.statusText));
     dispatch(userClearError());
   }
 };
@@ -150,11 +152,17 @@ export const updateUserToken = () => async (dispatch) => {
         "https://back-kapusta.herokuapp.com/api/auth/users/current",
         options
       )
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error(response.statusText);
+          }
+        })
         .then(({ data }) => ({ ...data, token }));
       dispatch(updateUserResolve(user));
     } catch (error) {
-      dispatch(updateUserReject(error));
+      dispatch(updateUserReject(error.statusText));
       dispatch(userClearError());
     }
   }
@@ -178,12 +186,18 @@ export const changeBalance = (value) => async (dispatch, getState) => {
       `https://back-kapusta.herokuapp.com/api/transactions/${id}`,
       options
     )
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error(response.statusText);
+        }
+      })
       .then(({ data }) => ({ ...data }))
       .then(({ result }) => ({ ...result }));
     dispatch(userBalanceResolve(newBalance));
   } catch (error) {
-    dispatch(userBalanceReject());
+    dispatch(userBalanceReject(error.statusText));
     dispatch(userClearError());
   }
 };
