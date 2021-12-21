@@ -49,6 +49,7 @@ const filterDescr = (data, type, date, category) => {
     .filter((tr) => tr.category === category)
     .reduce(
       (acc, tr) => (
+        // eslint-disable-next-line no-sequences
         (acc[tr.description] = (acc[tr.description] || 0) + tr.sum), acc
       ),
       {}
