@@ -42,9 +42,9 @@ const Mobile = ({ type }) => {
                 </div>
 
                 {incomes ? (
-                  <p className={styles.tdIncomes}>+ {tr.sum}</p>
+                  <p className={styles.tdIncomes}>+ {tr.sum} грн.</p>
                 ) : (
-                  <p className={styles.tdCosts}>- {tr.sum}</p>
+                  <p className={styles.tdCosts}>- {tr.sum} грн.</p>
                 )}
 
                 <div className={styles.btnWrapper}>

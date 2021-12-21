@@ -19,23 +19,46 @@
   justify-content: center;
 }
 
-.flex:hover .svg,
-.flex:focus .svg {
-  background: #ff751d;
-  fill: #ff751d;
-}
-
 .sum {
   margin-bottom: 8px;
   color: #52555f;
 }
 
 .svg {
+  position: relative;
+  /* top:50%; */
   height: 56px;
+  width: 56px;
   fill: #071f41;
   margin-bottom: 8px;
+  z-index: 2;
 }
 
 .descr {
   color: #52555f;
+}
+
+.circle {
+  position: absolute;
+  top: 60%;
+  transform: translate(0%, -50%);
+  width: 59px;
+  height: 46px;
+  background: #f5f6fb;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.flex:hover .svg,
+.flex:focus .svg {
+  fill: #ff751d;
+}
+.flex:hover .circle,
+.flex:focus .circle {
+  background: #ffdac0;
+}
+
+.flex:hover .descr,
+.flex:focus .descr {
+  color: black;
 }
