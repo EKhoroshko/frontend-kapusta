@@ -55,9 +55,9 @@ function List({ type }) {
                       <td className={s.td}>{tr.description}</td>
                       <td className={s.td}>{tr.category}</td>
                       {incomes ? (
-                        <td className={s.td}>+ {tr.sum} :</td>
+                        <td className={s.tdIncomes}>+ {tr.sum} </td>
                       ) : (
-                        <td className={s.td}>- {tr.sum}</td>
+                        <td className={s.tdCosts}>- {tr.sum}</td>
                       )}
                       <td className={s.td}>
                         <button

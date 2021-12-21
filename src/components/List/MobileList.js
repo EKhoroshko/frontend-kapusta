@@ -39,7 +39,12 @@ const Mobile = ({ type }) => {
                     <p className={styles.categoryMob}>{tr.category}</p>
                   </div>
                 </div>
-                {incomes ? <p>+ {tr.sum}</p> : <p>- {tr.sum}</p>}
+
+                {incomes ? (
+                  <p className={styles.tdIncomes}>+ {tr.sum}</p>
+                ) : (
+                  <p className={styles.tdCosts}>- {tr.sum}</p>
+                )}
 
                 <div className={styles.btnWrapper}>
                   <button
