@@ -81,6 +81,7 @@ export const {
   allTransactionLoading,
   allTransactionResolve,
   allTransactionReject,
+
   addTransactionLoading,
   addTransactionResolve,
   addTransactionReject,
