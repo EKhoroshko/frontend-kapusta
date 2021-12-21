@@ -46,8 +46,6 @@ export default function ChartCategory({ category, type }) {
         const categoryList = data.filter(
           (item) => item.category === tr.category
         );
-        let map = new Map();
-        map.set();
         arr.push({ ...categoryList });
         return (setCategory = arr);
       }, 0);
