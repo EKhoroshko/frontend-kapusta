@@ -81,6 +81,7 @@ function AddForm({ onSubmit, type }) {
                 <input
                   className={css.inputPrice}
                   type="number"
+                  min="1"
                   autoComplete="off"
                   placeholder="00.00 UAH"
                   value={price}

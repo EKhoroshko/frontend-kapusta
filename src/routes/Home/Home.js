@@ -123,7 +123,8 @@ function Home() {
                 <form className={css.wraper} onSubmit={addBalance}>
                   <input
                     className={css.add}
-                    type="text"
+                    type="number"
+                    min="1"
                     placeholder="0.00 UAH"
                     onChange={checkBalance}
                     value={money}

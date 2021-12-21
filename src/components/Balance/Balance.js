@@ -25,7 +25,8 @@ const Balance = () => {
       <form className={css.wraper} onSubmit={updateBalance}>
         <input
           className={css.add}
-          type="text"
+          type="number"
+          min="1"
           placeholder="0.00 UAH"
           onChange={checkBalance}
           value={balance}
