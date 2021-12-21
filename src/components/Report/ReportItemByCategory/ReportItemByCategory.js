@@ -11,6 +11,7 @@ const ReportItemByCategory = ({ data }) => {
       <button className={styles.flex}>
         <svg
           width="56"
+          height="64"
           className={styles.svg}
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -18,6 +19,7 @@ const ReportItemByCategory = ({ data }) => {
           {icon.pathTwo && <path d={icon.pathTwo} />}
           {icon.pathThree && <path d={icon.pathThree} />}
         </svg>
+        <div className={styles.circle}></div>
       </button>
       <p className={styles.descr}>{subCategory}</p>
     </div>
