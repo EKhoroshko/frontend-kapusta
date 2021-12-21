@@ -6,6 +6,7 @@ import {
   getAllTransactions,
   deleteTransaction,
 } from "../../redux/transaction/operation";
+import { getIdResolve } from "../../redux/transaction/slice";
 import { filterAll } from "../../helpers/support/FilterList.js";
 import { getTransactions } from "../../redux/transaction/selectors";
 import { getLoading } from "../../redux/transaction/selectors";
@@ -27,6 +28,7 @@ function List({ type }) {
 
   const toggleModal = (id) => {
     setModalOpen(!isModalOpen);
+    dispatch(getIdResolve(id));
   };
 
   return (

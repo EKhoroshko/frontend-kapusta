@@ -25,7 +25,7 @@ const CurrentAmount = () => {
   return (
     <div className={s.userAmount}>
       <div className={s.expensesWrap}>
-        <p className={s.expenseText}>Расходы :</p>
+        <p className={s.expenseText}>Расход :</p>
         {costs.length > 0 ? (
           costs.map((tr) => (
             <span className={s.expensesTotal} key={Object.keys(tr)}>
@@ -38,7 +38,7 @@ const CurrentAmount = () => {
       </div>
       <img className={s.Line} src={Line} alt="line" width="2" height="32" />
       <div className={s.incomeWrap}>
-        <p className={s.incomeText}>Доходы :</p>
+        <p className={s.incomeText}>Доход :</p>
         {incomes.length > 0 ? (
           incomes.map((tr) => (
             <span className={s.incomeTotal} key={Object.keys(tr)}>

@@ -77,7 +77,12 @@ function Home() {
       description,
       type,
     };
-    if (type === "" || price === "" || select === "" || description === "") {
+    if (
+      type === "" ||
+      price === "" ||
+      select === "Выберите категорию" ||
+      description === ""
+    ) {
       return toast.warning("Заполните всю форму и выберите тип транзакции");
     } else {
       dispatch(addTransaction(transaction));
@@ -161,13 +166,21 @@ function Home() {
                   className={css.btn}
                   type="button"
                   onClick={() => setType("costs")}
+                  style={
+                    type === "costs" ? { color: "orange" } : { color: "black" }
+                  }
                 >
-                  Расходы
+                  Расход
                 </button>
                 <button
                   className={css.btn}
                   type="button"
                   onClick={() => setType("incomes")}
+                  style={
+                    type === "incomes"
+                      ? { color: "orange" }
+                      : { color: "black" }
+                  }
                 >
                   Доход
                 </button>
