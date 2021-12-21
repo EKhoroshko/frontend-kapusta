@@ -29,12 +29,10 @@ const ReportListByCategory = () => {
 
   const merged = [...map.values()];
 
-  console.log(merged);
-
   useEffect(() => {
     setTransaction(findTotalSumForChart(tr, type, date, iconsArray));
   }, [type, tr, date]);
-  console.log(transaction);
+
   const changeType = () => {
     if (type === "costs") {
       return setType("incomes");

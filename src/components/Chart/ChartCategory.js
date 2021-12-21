@@ -3,7 +3,11 @@ import { useSelector } from "react-redux";
 import { Bar } from "react-chartjs-2";
 // eslint-disable-next-line no-unused-vars
 import Chart from "chart.js/auto";
-import { getTransactions } from "../../redux/transaction/selectors";
+import {
+  getTransactions,
+  getCurrentPeriod,
+} from "../../redux/transaction/selectors";
+import { selectList } from "../../helpers/Select/SelectList";
 
 import s from "../Chart/Chart.module.css";
 import {
@@ -26,27 +30,49 @@ ChartJS.register(
   Legend
 );
 
-export default function ChartCategory({ month, year, category, type }) {
+export default function ChartCategory({ category, type }) {
   const transactions = useSelector(getTransactions);
+  const date = useSelector(getCurrentPeriod);
 
-  const findTotalSumForChart = (data, type) => {
-    if (type) {
+  const findTotalSumForChart = (data) => {
+    if (!!category) {
       return data
-        .filter((transaction) => transaction.transactionType === type)
-        .reduce((result, subcategorys) => {
+        .filter((transaction) => transaction.category === category)
+        .reduce((result, currentSub) => {
           const subCategory = result.find(
-            (item) => item.subCategory === subcategorys.subCategory
+            (item) => item.subCategory === currentSub.subCategory
           );
           if (!subCategory) {
             result.push({
-              subCategory: subcategorys.subCategory,
-              sum: subcategorys.sum,
+              subCategory: currentSub.subCategory,
+              sum: currentSub.sum,
             });
           } else {
-            subCategory.sum += subcategorys.sum;
+            subCategory.sum += currentSub.sum;
           }
           return result;
         }, []);
+
+      // if (type) {
+      //   return data
+      //     .filter((transaction) => transaction.transactionType === type)
+      //     .filter((tr) => tr.year === date.year)
+      //     .filter((tr) => tr.monthString === date.name)
+      //     .filter((tr) => tr.category === category)
+      //     .reduce((result, subcategorys) => {
+      //       const subCategory = result.find(
+      //         (item) => item.subCategory === subcategorys.description
+      //       );
+      //       if (!subCategory) {
+      //         result.push({
+      //           subCategory: subcategorys.category,
+      //           sum: subcategorys.sum,
+      //         });
+      //       } else {
+      //         subCategory.sum += subcategorys.sum;
+      //       }
+      //       return result;
+      //     }, []);
     }
 
     const result = [];
@@ -66,14 +92,41 @@ export default function ChartCategory({ month, year, category, type }) {
     return result;
   };
 
+  let map = new Map();
+
+  // const arrMap = (arr, list) => {
+  //   return arrMap.forEach(item => {
+  //     map.get(list)
+  //   });
+  // }
+  // console.log(arrMap);
+
+  //console.log(findTotalSumForChart(transactions, "incomes"));
+
   const filteredByType = transactions.filter(
     (transaction) => transaction.type === type
   );
+  console.log(filteredByType); // не фільтрує на cost
 
-  const filteredByDate = filteredByType.filter(
-    (transaction) =>
-      transaction.month === String(month) && transaction.year === String(year)
-  );
+  const filteredByDate = filteredByType
+    .filter((tr) => tr.year === date.year)
+    .filter((tr) => tr.monthString === date.name);
+  //console.log(filteredByDate)
+
+  const getTransactionByType = (type) => {
+    const filteredByType = transactions.filter(
+      (transaction) => transaction.type === type
+    );
+    return filteredByType;
+  };
+  const findTotalSumByCategory = (type, category) => {
+    let totalExpense = 0;
+    getTransactionByType(type)
+      .filter((tr) => tr.category === category)
+      .map((el) => (totalExpense += el.sum));
+    return totalExpense;
+  };
+  console.log(findTotalSumByCategory());
 
   const sortedSubCategoryTransactions = [
     ...findTotalSumForChart(filteredByDate),
@@ -82,6 +135,8 @@ export default function ChartCategory({ month, year, category, type }) {
   const sortedLables = [...sortedSubCategoryTransactions].map((tr) => {
     return tr.subCategory ? tr.subCategory : tr.category;
   });
+
+  //console.log(sortedLables)
 
   const sortedSum = [...sortedSubCategoryTransactions].map((data) => data.sum);
 
