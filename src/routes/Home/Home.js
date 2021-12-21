@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import React, { useEffect, useState } from "react";
 import {
   NavLink,
@@ -5,6 +6,7 @@ import {
   useHistory,
   useLocation,
 } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 import { ReactComponent as Diagramma } from "../../assets/images/summary.svg";
 import Calendar from "../../components/Calendar/Calendar";
 import Comment from "../../components/Modal/Comment/Comment";
@@ -18,7 +20,16 @@ import { changeBalance } from "../../redux/auth/operations";
 import { addTransaction } from "../../redux/transaction/operation";
 import css from "./Home.module.css";
 import Skeleton from "../../components/Loader/Loader";
-import { toast } from "react-toastify";
+
+const toastAction = {
+  position: "top-right",
+  autoClose: 3000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+};
 
 function Home() {
   const balance = useSelector(getBalance);
@@ -47,6 +58,9 @@ function Home() {
   const updateBalance = (price, type) => {
     if (type === "costs") {
       const newBalanceCost = balance - Number(price);
+      if (newBalanceCost < 0) {
+        return toast.warning("Не достаточно средст на счету", toastAction);
+      }
       setMoney(newBalanceCost);
       return dispatch(changeBalance(newBalanceCost));
     } else {
@@ -63,9 +77,12 @@ function Home() {
       description,
       type,
     };
-    if (type === "") return toast.warning("Выберите тип транзакции");
-    dispatch(addTransaction(transaction));
-    updateBalance(price, type);
+    if (type === "" || price === "" || select === "" || description === "") {
+      return toast.warning("Заполните всю форму и выберите тип транзакции");
+    } else {
+      dispatch(addTransaction(transaction));
+      updateBalance(price, type);
+    }
   };
 
   const checkBalance = (e) => {

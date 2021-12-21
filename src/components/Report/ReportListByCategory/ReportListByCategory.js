@@ -4,7 +4,6 @@ import { ReactComponent as BtnLeft } from "../../../assets/images/BtnLefl.svg";
 import { ReactComponent as BtnRight } from "../../../assets/images/BtnRight.svg";
 import { findTotalSumForChart } from "../../../helpers/support/FilterState";
 import { iconsArray } from "../../../helpers/support/IconsCosts";
-import { iconsIncomes } from "../../../helpers/support/IconsIncomes";
 import {
   getTransactions,
   getCurrentPeriod,
@@ -19,18 +18,13 @@ const ReportListByCategory = () => {
   const [transaction, setTransaction] = useState([]);
 
   const map = new Map();
-
-  [...transaction, ...iconsArray, ...iconsIncomes].forEach((item) => {
+  [...transaction, ...iconsArray].forEach((item) => {
     if (map.has(item.subCategory)) {
       Object.assign(map.get(item.subCategory), item);
     } else {
       map.set(item.subCategory, item);
     }
   });
-
-  const merged = [...map.values()];
-
-  console.log(merged);
 
   useEffect(() => {
     setTransaction(findTotalSumForChart(tr, type, date, iconsArray));
@@ -42,6 +36,7 @@ const ReportListByCategory = () => {
     }
     return setType("costs");
   };
+
   return (
     <div className={styles.container}>
       <div className={styles.switchWrap}>
