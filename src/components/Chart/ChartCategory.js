@@ -137,7 +137,7 @@ export default function ChartCategory({ type, category }) {
   };
   console.log(colorsColumn(sortedSum));
 
-  const barWidth = width < 768 ? 15 : 38;
+  const barThickness = width < 768 ? 15 : 38;
 
   const dataSets = {
     labels: sortedLables,
@@ -147,7 +147,7 @@ export default function ChartCategory({ type, category }) {
         data: sortedSum,
         backgroundColor: colorsColumn(sortedSum),
         borderColor: colorsColumn(sortedSum),
-        barThickness: barWidth,
+        barThickness: barThickness,
         borderRadius: 10,
         barMargin: 20,
       },
@@ -191,12 +191,12 @@ export default function ChartCategory({ type, category }) {
   //         },
   //     },
   // };
-  const height = width < 425 ? 200 : 422;
+  const height = width < 425 ? 422 : 200;
   const options = width < 425 ? optionsHorizontal : optionsVertical;
 
   return (
     <div className={s.chartContainer}>
-      <Bar data={dataSets} width={320} height={height} options={options} />
+      <Bar data={dataSets} height={height} width={320} options={options} />
     </div>
   );
 }
