@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import ReportItemByCategory from "../ReportItemByCategory";
 import { ReactComponent as BtnLeft } from "../../../assets/images/BtnLefl.svg";
 import { ReactComponent as BtnRight } from "../../../assets/images/BtnRight.svg";
-import { findTotalSumForChart } from "../../../helpers/support/FilterState";
+import {
+  findTotalSumForChart,
+  filterDescr,
+} from "../../../helpers/support/FilterState";
 import { iconsArray } from "../../../helpers/support/IconsCosts";
 import {
   getTransactions,
@@ -25,6 +28,10 @@ const ReportListByCategory = () => {
       map.set(item.subCategory, item);
     }
   });
+
+  const renderDiagramma = (category) => {
+    filterDescr(tr, type, date, category);
+  };
 
   useEffect(() => {
     setTransaction(findTotalSumForChart(tr, type, date, iconsArray));
@@ -64,7 +71,10 @@ const ReportListByCategory = () => {
         {transaction.length > 0 &&
           transaction.map((transaction) => (
             <li className={styles.listItem} key={transaction.subCategory}>
-              <button type="button">
+              <button
+                type="button"
+                onClick={() => renderDiagramma(transaction.subCategory)}
+              >
                 <ReportItemByCategory data={transaction} />
               </button>
             </li>

@@ -10,6 +10,7 @@ import Summary from "./routes/Summary/Summary";
 import { useDispatch } from "react-redux";
 import { updateUserToken } from "./redux/auth/operations";
 import { useEffect } from "react";
+//import PrivateRoutes from './components/PrivateRoutes/PrivateRoutes';
 import "./App.css";
 
 function App() {
