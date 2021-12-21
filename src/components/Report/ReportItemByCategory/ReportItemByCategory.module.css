@@ -21,7 +21,6 @@
 
 .flex:hover .svg,
 .flex:focus .svg {
-  background: #ff751d;
   fill: #ff751d;
 }
 
