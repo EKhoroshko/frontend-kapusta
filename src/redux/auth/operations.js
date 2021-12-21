@@ -22,7 +22,7 @@ import {
 import { getToken, getUserId } from "./selectors";
 
 const toastAction = {
-  position: "top-right",
+  position: "top-center",
   autoClose: 3000,
   hideProgressBar: false,
   closeOnClick: true,
@@ -196,6 +196,7 @@ export const changeBalance = (value) => async (dispatch, getState) => {
       .then(({ data }) => ({ ...data }))
       .then(({ result }) => ({ ...result }));
     dispatch(userBalanceResolve(newBalance));
+    toast.success(`Ваш баланс: ${balance} грн.`);
   } catch (error) {
     dispatch(userBalanceReject(error.statusText));
     dispatch(userClearError());

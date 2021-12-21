@@ -93,7 +93,12 @@ function AddForm({ onSubmit, type }) {
             </div>
             <ul className={css.list}>
               <li className={css.item}>
-                <Button type="submit" text="ввод" onSubmit={writePrice} />
+                <Button
+                  type="submit"
+                  text="ввод"
+                  onSubmit={writePrice}
+                  active={{ backgroundColor: "#ff751d", color: "white" }}
+                />
               </li>
               <li>
                 <Button type="button" text="очистить" onClick={clearForm} />

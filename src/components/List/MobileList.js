@@ -19,8 +19,9 @@ const Mobile = ({ type }) => {
     dispatch(getAllTransactions());
   }, [dispatch]);
 
-  const toggleModal = (e) => {
+  const toggleModal = (id) => {
     setModalOpen(!isModalOpen);
+    dispatch(getIdResolve(id));
   };
 
   return (
@@ -52,7 +53,6 @@ const Mobile = ({ type }) => {
                     className={styles.deleteBtn}
                     onClick={() => {
                       toggleModal(tr._id);
-                      dispatch(getIdResolve(tr._id));
                     }}
                   >
                     <img

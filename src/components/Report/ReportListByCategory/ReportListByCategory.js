@@ -49,7 +49,7 @@ const ReportListByCategory = () => {
           <BtnLeft />
         </button>
         <p className={styles.cldrMonth}>
-          {type === "costs" ? "Расходы" : "Доход"}
+          {type === "costs" ? "Расход" : "Доход"}
         </p>
         <button
           type="button"
