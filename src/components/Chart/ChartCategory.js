@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Bar } from "react-chartjs-2";
+//import { Bar } from "react-chartjs-2";
 // eslint-disable-next-line no-unused-vars
 import Chart from "chart.js/auto";
 import {
@@ -35,7 +35,6 @@ export default function ChartCategory({ category, type }) {
   const period = useSelector(getCurrentPeriod);
 
   let arr = [];
-  let obj = {};
 
   const findTotalSumForChart = (data, type, period, list) => {
     return data
