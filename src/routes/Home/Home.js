@@ -83,7 +83,7 @@ function Home() {
       <div className={css.imgBack}>
         <div className={css.container}>
           {active ? (
-            <AddFormMobile onSubmit={getFormInfo} />
+            <AddFormMobile onSubmit={getFormInfo} type={type} />
           ) : (
             <div className={css.box}>
               {!balance && <Comment />}

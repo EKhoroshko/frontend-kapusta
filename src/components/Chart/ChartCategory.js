@@ -7,7 +7,7 @@ import {
   getTransactions,
   getCurrentPeriod,
 } from "../../redux/transaction/selectors";
-import list from "../../helpers/Select/SelectList";
+import { options } from "../../helpers/Select/SelectList";
 
 import s from "../Chart/Chart.module.css";
 import {
@@ -35,6 +35,7 @@ export default function ChartCategory({ category, type }) {
   const period = useSelector(getCurrentPeriod);
 
   let arr = [];
+  let obj = {};
 
   const findTotalSumForChart = (data, type, period, list) => {
     return data
@@ -45,15 +46,15 @@ export default function ChartCategory({ category, type }) {
         const categoryList = data.filter(
           (item) => item.category === tr.category
         );
-        const val = list.filter((item) => item.value === tr.category);
-        console.log(val);
+        let map = new Map();
+        map.set();
         arr.push({ ...categoryList });
         return (setCategory = arr);
       }, 0);
   };
 
   useEffect(() => {
-    console.log(findTotalSumForChart(transactions, "costs", period, list));
+    console.log(findTotalSumForChart(transactions, "costs", period, options));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [period, transactions]);
   /*.reduce((result, subcategorys) => {
@@ -71,7 +72,7 @@ export default function ChartCategory({ category, type }) {
     return result;
   }, []);
   }
-  
+   
   const result = [];
   data.map((transaction) => {
   const category = result.find(
@@ -91,48 +92,48 @@ export default function ChartCategory({ category, type }) {
   /*const filteredByType = transactions.filter(
     (transaction) => transaction.type === type
   );
-  
+   
   const filteredByDate = filteredByType.filter(
     (transaction) =>
       transaction.month === String(month) && transaction.year === String(year)
   );
-  
+   
   const sortedSubCategoryTransactions = [
     ...findTotalSumForChart(filteredByDate),
   ].sort((a, b) => b.sum - a.sum);
-  
+   
   const sortedLables = [...sortedSubCategoryTransactions].map((tr) => {
     return tr.subCategory ? tr.subCategory : tr.category;
   });
-  
+   
   const sortedSum = [...sortedSubCategoryTransactions].map((data) => data.sum);
-  
+   
   const labelName = type === "expense" ? "Расход" : "Доход";
-  
+   
   const getNextColor = (color) => {
     const palitraEl = ["#FF751D", "#FFDAC0", "#fcd7bd"];
-  
+   
     if (!color) {
       return palitraEl[0];
     }
-  
+   
     const colors = palitraEl.findIndex((el) => color === el);
-  
+   
     return palitraEl[colors + 1] ? colors[colors + 1] : palitraEl[0];
   };
-  
+   
   const colorsColumn = (array) => {
     let prev = null;
-  
+   
     return sortedSum.map((item) => {
       const currentColor = getNextColor(prev);
-  
+   
       prev = currentColor;
-  
+   
       return currentColor;
     });
   };
-  
+   
   const data = {
     labels: sortedLables,
     datasets: [
@@ -148,7 +149,7 @@ export default function ChartCategory({ category, type }) {
       },
     ],
   };
-  
+   
   const optionsVertical = {
     responsive: true,
     scales: {

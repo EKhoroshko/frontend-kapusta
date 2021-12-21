@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Select from "react-select";
 import Calendar from "../Calendar/Calendar";
 import customStyles from "../../helpers/Select/SelectOption.js";
-import options from "../../helpers/Select/SelectList.js";
+import { options, optionsIncoms } from "../../helpers/Select/SelectList.js";
 import { ReactComponent as Calculator } from "../../assets/images/calculator.svg";
 import { ReactComponent as Arrow } from "../../assets/images/arrowLeft.svg";
 import Button from "../Button/Button";
@@ -20,6 +20,7 @@ function AddForm({ onSubmit, type }) {
   const writePrice = (e) => {
     e.preventDefault();
     onSubmit({ price, description, select });
+    clearForm();
   };
 
   const checkPrise = (e) => {
@@ -59,16 +60,27 @@ function AddForm({ onSubmit, type }) {
                 value={description}
                 onChange={checkDescription}
               />
-              <Select
-                styles={customStyles}
-                options={options}
-                className={css.select}
-                onChange={(options) => setSelect(options.label)}
-              />
+              {type && type === "costs" ? (
+                <Select
+                  styles={customStyles}
+                  options={options}
+                  className={css.select}
+                  placeholder={"Категория товара"}
+                  onChange={(options) => setSelect(options.label)}
+                />
+              ) : (
+                <Select
+                  styles={customStyles}
+                  options={optionsIncoms}
+                  className={css.select}
+                  placeholder={"Категория товара"}
+                  onChange={(optionsIncoms) => setSelect(optionsIncoms.label)}
+                />
+              )}
               <div className={css.formPrice}>
                 <input
                   className={css.inputPrice}
-                  type="text"
+                  type="number"
                   autoComplete="off"
                   placeholder="00.00 UAH"
                   value={price}

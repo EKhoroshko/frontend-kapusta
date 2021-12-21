@@ -4,15 +4,15 @@ import styles from "./ReportItemByCategory.module.css";
 
 const ReportItemByCategory = ({ data }) => {
   const { subCategory, sum, icon } = data;
+  console.log(icon);
 
   return (
     <div className={styles.item}>
       <p>{sum}</p>
       <div>
-        {/* <img src={icon} /> */}
         <button type="button" className={styles.btnIcon}>
           <svg className={styles.svg} xmlns="http://www.w3.org/2000/svg">
-            <path d={icon.pathOne} />{" "}
+            <path d={icon.pathOne} />
             {icon.pathTwo && <path d={icon.pathTwo} />}
             {icon.pathThree && <path d={icon.pathThree} />}
           </svg>

@@ -1,4 +1,4 @@
-const options = [
+export const options = [
   { value: "Транспорт", label: "Транспорт" },
   { value: "Продукты", label: "Продукты" },
   { value: "Здоровье", label: "Здоровье" },
@@ -12,4 +12,7 @@ const options = [
   { value: "Прочее", label: "Прочее" },
 ];
 
-export default options;
+export const optionsIncoms = [
+  { value: "ЗП", label: "ЗП" },
+  { value: "Доп.доход", label: "Доп. доход" },
+];
