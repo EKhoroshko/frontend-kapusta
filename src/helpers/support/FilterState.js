@@ -39,22 +39,20 @@ const findTotalSumForChart = (data, type, date) => {
       }
       return result;
     }, []);
-
-  // const result = [];
-  // data.map((transaction) => {
-  //   const category = result.find(
-  //     (item) => item.category === transaction.category,
-  //   );
-  //   if (!category) {
-  //     return result.push({
-  //       category: transaction.category,
-  //       sum: transaction.sum,
-  //     });
-  //   } else {
-  //     return (category.sum += transaction.sum);
-  //   }
-  // });
-  // return result;
 };
 
-export { sortMounth, findTotalSumForChart };
+const filterDescr = (data, type, date, category) => {
+  return data
+    .filter((transaction) => transaction.transactionType === type)
+    .filter((tr) => tr.year === date.year)
+    .filter((tr) => tr.monthString === date.name)
+    .filter((tr) => tr.category === category)
+    .reduce(
+      (acc, tr) => (
+        (acc[tr.description] = (acc[tr.description] || 0) + tr.sum), acc
+      ),
+      {}
+    );
+};
+
+export { sortMounth, findTotalSumForChart, filterDescr };

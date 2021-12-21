@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 //import { Bar } from "react-chartjs-2";
 // eslint-disable-next-line no-unused-vars
@@ -7,7 +7,6 @@ import {
   getTransactions,
   getCurrentPeriod,
 } from "../../redux/transaction/selectors";
-import { options } from "../../helpers/Select/SelectList";
 
 import s from "../Chart/Chart.module.css";
 import {
@@ -31,29 +30,12 @@ ChartJS.register(
 );
 
 export default function ChartCategory({ category, type }) {
-  const transactions = useSelector(getTransactions);
+  const transaction = useSelector(getTransactions);
   const period = useSelector(getCurrentPeriod);
 
-  let arr = [];
+  console.log(transaction);
+  console.log(period);
 
-  const findTotalSumForChart = (data, type, period, list) => {
-    return data
-      .filter((transaction) => transaction.transactionType === type)
-      .filter((tr) => tr.year === period.year)
-      .filter((tr) => tr.monthString === period.name)
-      .reduce((setCategory, tr) => {
-        const categoryList = data.filter(
-          (item) => item.category === tr.category
-        );
-        arr.push({ ...categoryList });
-        return (setCategory = arr);
-      }, 0);
-  };
-
-  useEffect(() => {
-    console.log(findTotalSumForChart(transactions, "costs", period, options));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [period, transactions]);
   /*.reduce((result, subcategorys) => {
     const subCategory = result.find(
       (item) => item.subCategory === subcategorys.subCategory

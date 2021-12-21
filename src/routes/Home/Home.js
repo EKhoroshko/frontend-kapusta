@@ -59,10 +59,11 @@ function Home() {
     if (type === "costs") {
       const newBalanceCost = balance - Number(price);
       if (newBalanceCost < 0) {
-        return toast.warning("Не достаточно средст на счету", toastAction);
+        return;
+      } else {
+        setMoney(newBalanceCost);
+        dispatch(changeBalance(newBalanceCost));
       }
-      setMoney(newBalanceCost);
-      return dispatch(changeBalance(newBalanceCost));
     } else {
       const newBalanceIncoms = balance + Number(price);
       setMoney(newBalanceIncoms);
@@ -85,8 +86,12 @@ function Home() {
     ) {
       return toast.warning("Заполните всю форму и выберите тип транзакции");
     } else {
-      dispatch(addTransaction(transaction));
-      updateBalance(price, type);
+      if (balance < price) {
+        return toast.warning("Не достаточно средст на счету", toastAction);
+      } else {
+        dispatch(addTransaction(transaction));
+        updateBalance(price, type, description, select);
+      }
     }
   };
 
