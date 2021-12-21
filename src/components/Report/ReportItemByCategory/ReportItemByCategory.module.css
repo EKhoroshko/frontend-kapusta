@@ -1,4 +1,9 @@
 .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
   font-family: Roboto;
   font-weight: 400;
   font-size: 12px;
@@ -7,20 +12,30 @@
   text-transform: uppercase;
   color: #52555f;
 }
-.btnIcon {
-  color: black;
-  fill: black;
-  width: 100px;
-  height: 30px;
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.btnIcon:hover .svg,
-.btnIcon:focus .svg {
-  fill: orange;
-  color: orange;
+
+.flex:hover .svg,
+.flex:focus .svg {
+  background: #ff751d;
+  fill: #ff751d;
 }
+
+.sum {
+  margin-bottom: 8px;
+  color: #52555f;
+}
+
 .svg {
-  width: 100%;
-  height: auto;
-  color: currentColor;
-  fill: currentColor;
+  height: 56px;
+  fill: #071f41;
+  margin-bottom: 8px;
+}
+
+.descr {
+  color: #52555f;
 }

@@ -3,18 +3,17 @@ import { useHistory } from "react-router-dom";
 import Select from "react-select";
 import Calendar from "../Calendar/Calendar";
 import customStyles from "../../helpers/Select/SelectOption.js";
-import options from "../../helpers/Select/SelectList.js";
+import { options, optionsIncoms } from "../../helpers/Select/SelectList.js";
 import { ReactComponent as Calculator } from "../../assets/images/calculator.svg";
 import { ReactComponent as Arrow } from "../../assets/images/arrowLeft.svg";
 import Button from "../Button/Button";
 import css from "./AddFormMobile.module.css";
 
-function AddFormMobile({ onSubmit }) {
+function AddFormMobile({ onSubmit, type }) {
   const history = useHistory();
-  // const match = useRouteMatch();
   const [select, setSelect] = useState(null);
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("0");
+  const [price, setPrice] = useState("");
 
   const writePrice = (e) => {
     e.preventDefault();
@@ -59,19 +58,30 @@ function AddFormMobile({ onSubmit }) {
                 value={description}
                 onChange={checkDescription}
               />
-              <Select
-                styles={customStyles}
-                options={options}
-                className={css.select}
-                onChange={(options) => setSelect(options.label)}
-              />
+              {type && type === "costs" ? (
+                <Select
+                  styles={customStyles}
+                  options={options}
+                  className={css.select}
+                  placeholder={"Категория товара"}
+                  onChange={(options) => setSelect(options.label)}
+                />
+              ) : (
+                <Select
+                  styles={customStyles}
+                  options={optionsIncoms}
+                  className={css.select}
+                  placeholder={"Категория товара"}
+                  onChange={(options) => setSelect(options.label)}
+                />
+              )}
               <div className={css.formPrice}>
                 <input
                   className={css.inputPrice}
                   type="number"
                   autoComplete="off"
                   placeholder="00.00 UAH"
-                  // value={price}
+                  value={price}
                   onChange={checkPrise}
                 />
                 <button className={css.btnPrice}>

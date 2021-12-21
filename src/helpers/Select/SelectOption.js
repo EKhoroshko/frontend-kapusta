@@ -27,7 +27,7 @@ const customStyles = {
   }),
   placeholder: (provided) => ({
     ...provided,
-    paddingLeft: "20px",
+    paddingLeft: "10px",
     fontSize: "12px",
     lineHeight: "14px",
     letterSpacing: "0.02em",

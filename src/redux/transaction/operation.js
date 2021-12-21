@@ -61,7 +61,13 @@ export const addTransaction =
         "https://back-kapusta.herokuapp.com/api/transactions",
         options
       )
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error(response.statusText);
+          }
+        })
         .then(({ newTransaction }) =>
           dispatch(addTransactionResolve(newTransaction))
         );

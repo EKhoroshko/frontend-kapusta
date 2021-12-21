@@ -18,7 +18,6 @@ const ReportListByCategory = () => {
   const [transaction, setTransaction] = useState([]);
 
   const map = new Map();
-
   [...transaction, ...iconsArray].forEach((item) => {
     if (map.has(item.subCategory)) {
       Object.assign(map.get(item.subCategory), item);
@@ -27,20 +26,17 @@ const ReportListByCategory = () => {
     }
   });
 
-  const merged = [...map.values()];
-
-  console.log(merged);
-
   useEffect(() => {
     setTransaction(findTotalSumForChart(tr, type, date, iconsArray));
   }, [type, tr, date]);
-  console.log(transaction);
+
   const changeType = () => {
     if (type === "costs") {
       return setType("incomes");
     }
     return setType("costs");
   };
+
   return (
     <div className={styles.container}>
       <div className={styles.switchWrap}>
@@ -53,7 +49,7 @@ const ReportListByCategory = () => {
           <BtnLeft />
         </button>
         <p className={styles.cldrMonth}>
-          {type === "costs" ? "Рассходы" : "Доход"}
+          {type === "costs" ? "Расходы" : "Доход"}
         </p>
         <button
           type="button"
