@@ -1,37 +1,40 @@
 .list {
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 288px;
+  width: 282px;
   margin-right: auto;
   margin-left: auto;
 }
 .listItem {
+  position: relative;
   width: calc(100% / 3);
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 .listItem button {
   padding: 0;
   border: none;
   background-color: transparent;
 }
-.listItem:nth-child(3n + 1)::after {
+
+.listItem:nth-child(3n + 3)::after {
   width: 282px;
   display: block;
   content: "";
   position: absolute;
   border-bottom: 1px solid #e0e5eb;
   margin-top: 20px;
+  right: 6px;
 }
-.listItem:nth-last-child(2)::after {
-  width: 282px;
+.listItem:last-child:after {
   display: block;
+  width: 254px;
   content: "";
   position: absolute;
   border-bottom: 1px solid #e0e5eb;
   margin-top: 20px;
-  right: 8px;
+  right: -36px;
 }
 .switchWrap {
   width: 134px;
@@ -64,7 +67,6 @@
   .calendarWrap {
     margin-left: auto;
     margin-right: auto;
-    /* margin-top: 10px; */
   }
 }
 @media screen and (min-width: 768px) {
@@ -87,18 +89,16 @@
     width: 100%;
     margin: 20px 0 0;
   }
-  .listItem:nth-child(3n + 1)::after {
+  .listItem:nth-child(3n + 3)::after {
     content: none;
   }
-  .listItem:nth-last-child(2)::after {
+  .listItem:last-child:after {
     content: none;
-  }
-  .listItem:nth-last-child(-n + 5) {
-    margin-top: 40px;
   }
 }
 @media screen and (min-width: 1280px) {
   .container {
+    box-sizing: border-box;
     width: 1060px;
   }
   .list {
