@@ -6,8 +6,11 @@ import logo from "../../assets/images/logo.svg";
 import { useSelector } from "react-redux";
 import { getIsLoggedIn } from "../../redux/auth/selectors";
 import { Redirect } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 function Header() {
   const isLoggedIn = useSelector(getIsLoggedIn);
+  const location = useLocation()
+  console.log(location.pathname === '/team');
   return (
     <header className={css.header}>
       <div className={css.container}>
@@ -17,9 +20,10 @@ function Header() {
             <p className={css.text}>Показать команду</p>
           </NavLink>
         </div>
-        <NavLink to="/home" className={css.container}>
-          <p className={css.text}>На главную</p>
-        </NavLink>
+        {location.pathname === '/team' &&
+          <NavLink to="/home" className={css.container}>
+            <p className={css.text}>На главную</p>
+          </NavLink>}
         {isLoggedIn && <UserMenu />}
         {!isLoggedIn && <Redirect to="/" />}
       </div>

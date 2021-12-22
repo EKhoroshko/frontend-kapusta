@@ -2,9 +2,11 @@ import React from "react";
 import Mikhail from './pictures/Mikhail.jpg';
 import Kate from './pictures/Kate.jpg';
 import Dima from './pictures/Dima.jpg';
+import DimaB from './pictures/DimaB.jpg';
 import Ira from './pictures/Ira.jpg';
 import Evgenii from './pictures/Evgenii.jpg';
 import Masha from './pictures/Masha.jpg';
+import Anna from './pictures/Anna.png';
 import Andrey from './pictures/Andrey.jpg';
 import Vova from './pictures/Vova.jpg';
 import Vlad from './pictures/Vlad.jpg';
@@ -56,7 +58,7 @@ function Team() {
         </a>
       </li>
       <li className={styles.item}>
-        <img src={Vova} alt="Mikhail" className={styles.picture} />
+        <img src={Vova} alt="Vova" className={styles.picture} />
         <p className={styles.name}>Full Stack</p>
         <p className={styles.name}>Volodymyr Oliinyk</p>
         <a href="https://github.com/volodymyr-oliinyk8" className={styles.link}>
@@ -84,6 +86,22 @@ function Team() {
         <p className={styles.name}>Full Stack</p>
         <p className={styles.name}>Ira Logvina</p>
         <a href="https://github.com/IraLogvina" className={styles.link}>
+          <img src={github} alt="github link" className={styles.github} />
+        </a>
+      </li>
+      <li className={styles.item}>
+        <img src={Anna} alt="Anna" className={styles.picture} />
+        <p className={styles.name}>Full Stack</p>
+        <p className={styles.name}>Anna Chebrova</p>
+        <a href="https://github.com/AnnaChebrova" className={styles.link}>
+          <img src={github} alt="github link" className={styles.github} />
+        </a>
+      </li>
+      <li className={styles.item}>
+        <img src={DimaB} alt="DimaB" className={styles.picture} />
+        <p className={styles.name}>Full Stack</p>
+        <p className={styles.name}>Dmytro Bykanov</p>
+        <a href="https://github.com/DimByl" className={styles.link}>
           <img src={github} alt="github link" className={styles.github} />
         </a>
       </li>
