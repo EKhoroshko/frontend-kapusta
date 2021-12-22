@@ -102,8 +102,10 @@ export default function ChartCategory() {
       {Object.keys(info).length !== 0 ? (
         <Bar data={data} width={320} height={height} options={options} />
       ) : (
-        <div>
-          <p>Хотите создать диаграмму?</p>
+        <div className={s.altBlock}>
+          <span className={s.altText1}>Если хотите создать диаграмму</span>
+          <span className={s.altText2}> Кликайте на иконку</span>
+          <p></p>
         </div>
       )}
     </div>

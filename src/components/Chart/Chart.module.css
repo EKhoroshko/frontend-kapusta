@@ -6,10 +6,16 @@
 
 @media screen and (min-width: 320px) {
   .chartContainer {
-    width: 100%;
-    max-width: 320px;
-    padding: 0;
+    /* max-width: 320px; */
+    padding-left: 19px;
+    padding-right: 19px;
     margin-bottom: 51px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .chartContainer {
+    max-height: 422px;
   }
 }
 
@@ -18,8 +24,10 @@
     max-height: 422px;
     /* width: 100%; */
     max-width: 615px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     margin-bottom: 76px;
     background: #ffffff;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
@@ -31,9 +39,110 @@
   .chartContainer {
     display: flex;
     max-height: 422px;
+    box-sizing: border-box;
     max-width: 1060px;
-    /* padding-left: 110px;
-    padding-right: 110px; */
-    margin-bottom: 79px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 50;
+  }
+}
+span {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  text-align: center;
+  text-transform: uppercase;
+}
+.altBlock span {
+  display: block;
+}
+@media screen and (min-width: 320px) {
+  .altBlock {
+    margin: auto;
+    width: 50em;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .altText1 {
+    font-size: 17px;
+    font-weight: 700;
+    height: 20px;
+    color: #ff751d;
+    letter-spacing: 2px;
+    position: relative;
+    animation: text 5s 1;
+  }
+}
+@media screen and (min-width: 768px) {
+  .altText1 {
+    font-size: 14px;
+    font-weight: 700;
+    height: 14px;
+    color: #ff751d;
+    letter-spacing: 2px;
+    position: relative;
+    animation: text 5s 1;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .altText2 {
+    font-size: 1px;
+    font-weight: 700;
+    height: 20px;
+    color: #ff751d;
+    letter-spacing: 2px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .altText2 {
+    font-size: 14px;
+    font-weight: 700;
+    height: 14px;
+    color: #ff751d;
+    letter-spacing: 2px;
+  }
+}
+@media screen and (min-width: 320px) {
+  .altText1 {
+    font-size: 14px;
+    font-weight: 700;
+    height: 14px;
+    color: #ff751d;
+    letter-spacing: 2px;
+    position: relative;
+    animation: text 5s 1;
+  }
+}
+@media screen and (min-width: 320px) {
+  .altText2 {
+    font-size: 14px;
+    font-weight: 700;
+    height: 20px;
+    color: #ff751d;
+    letter-spacing: 2px;
+  }
+}
+
+@keyframes text {
+  0% {
+    color: tomato;
+    margin-bottom: -40px;
+  }
+  30% {
+    letter-spacing: 6px;
+    margin-bottom: -40px;
+  }
+  75% {
+    letter-spacing: 2px;
+    margin-bottom: -40px;
   }
 }
