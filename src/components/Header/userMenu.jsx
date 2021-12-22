@@ -38,6 +38,7 @@ export default function UserMenu() {
         </MediaQuery>
         <MediaQuery minWidth={768}>
           <p className={css.logout__text}>Выйти</p>
+        </MediaQuery>
           {isModalOpen && (
                 <LogoutModal
                   text={"Вы уверены что хотите выйти?"}
@@ -45,7 +46,6 @@ export default function UserMenu() {
                   onSubmit={isLogOut}
                 />
               )}
-        </MediaQuery>
       </button>
     </div>
   );

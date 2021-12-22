@@ -11,11 +11,11 @@ function LogoutModal({ onCancel, text }) {
   const dispatch = useDispatch();
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
 
   const isLogOut = () => {
     dispatch(logOut());
