@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { getIDiagramInfo } from "../../redux/transaction/selectors";
 import WindowDementions from "../../helpers/WindowDementions";
 import { Bar } from "react-chartjs-2";
-import { bounce } from "react-animations";
+
 // eslint-disable-next-line no-unused-vars
 import Chart from "chart.js/auto";
 import s from "../Chart/Chart.module.css";
@@ -54,13 +54,14 @@ export default function ChartCategory() {
         borderWidth: 1,
         borderRadius: 10,
         barThickness: barThickness,
-        barMargin: 20,
+        barMargin: 50,
       },
     ],
   };
 
   const optionsVertical = {
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       yAxes: [
         {

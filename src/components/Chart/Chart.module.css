@@ -13,6 +13,7 @@
 
 @media screen and (min-width: 768px) {
   .chartContainer {
+    max-height: 422px;
     padding: 19px;
     margin-bottom: 76px;
     background: #ffffff;
@@ -24,12 +25,9 @@
 @media screen and (min-width: 1280px) {
   .chartContainer {
     display: flex;
+    max-height: 422px;
     padding-left: 150px;
     padding-right: 150px;
     margin-bottom: 79px;
   }
-}
-.videoTeg {
-  width: 750px;
-  height: 500px;
 }
