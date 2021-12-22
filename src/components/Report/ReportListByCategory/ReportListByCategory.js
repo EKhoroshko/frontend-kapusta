@@ -11,7 +11,10 @@ import {
   getTransactions,
   getCurrentPeriod,
 } from "../../../redux/transaction/selectors";
-import { diagramData } from "../../../redux/transaction/slice";
+import {
+  diagramData,
+  diagramDataClear,
+} from "../../../redux/transaction/slice";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./ReportListByCategory.module.css";
 
@@ -46,14 +49,17 @@ const ReportListByCategory = () => {
     }
     return setType("costs");
   };
-
+  const clear = () => {
+    dispatch(diagramDataClear());
+    changeType();
+  };
   return (
     <div className={styles.container}>
       <div className={styles.switchWrap}>
         <button
           type="button"
           name="leftBtn"
-          onClick={changeType}
+          onClick={() => clear()}
           className={styles.calendarBtn}
         >
           <BtnLeft />
@@ -65,7 +71,7 @@ const ReportListByCategory = () => {
           type="button"
           name="rightBtn"
           className={styles.calendarBtn}
-          onClick={changeType}
+          onClick={() => clear()}
         >
           <BtnRight />
         </button>
