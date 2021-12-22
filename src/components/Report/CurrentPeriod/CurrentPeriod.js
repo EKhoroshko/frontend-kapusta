@@ -41,14 +41,6 @@ export default function Period() {
     }
   };
 
-  // function handleClickRight() {
-  //   handlePrevMonthButtonClick()
-  //   disp();
-  // }
-  // function handleClickLeft() {
-  //   return handleNextMonthButtonClick
-  //   disp();
-  // }
   const clearPrev = () => {
     dispatch(diagramDataClear());
     handlePrevMonthButtonClick();
