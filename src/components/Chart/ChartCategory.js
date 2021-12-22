@@ -43,7 +43,7 @@ export default function ChartCategory() {
     return palitraEl[colors + 1] ? colors[colors + 1] : palitraEl[0];
   };
 
-  const barThickness = width < 768 ? 15 : 38;
+  const barThickness = width < 425 ? 15 : 38;
   const data = {
     labels: Object.keys(info),
     datasets: [
@@ -97,7 +97,7 @@ export default function ChartCategory() {
   };
 
   const height = width < 425 ? 422 : 200;
-  const options = width < 768 ? optionsHorizontal : optionsVertical;
+  const options = width < 425 ? optionsHorizontal : optionsVertical;
 
   return (
     <div className={s.chartContainer}>
