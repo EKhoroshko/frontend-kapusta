@@ -16,7 +16,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 380px;
+  width: 280px;
   height: 194px;
   background: #ffffff;
   box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
@@ -31,7 +31,7 @@
   margin: 0;
   width: 20px;
   top: -25px;
-  right: -335px;
+  right: -245px;
 }
 
 .CloseModalBtn {
@@ -50,7 +50,7 @@
 }
 
 .ModalWindowWrap:not(:last-child) {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .btnWrapper:not(:last-child) {
@@ -68,4 +68,19 @@
   text-align: center;
   letter-spacing: 0.02em;
   color: #52555f;
+}
+
+@media screen and (min-width: 768px) {
+  .ModalWindow {
+    width: 380px;
+  }
+
+  .CloseModalBtnWrap {
+    top: -25px;
+    right: -335px;
+  }
+
+  .ModalWindowWrap:not(:last-child) {
+    margin-bottom: 20px;
+  }
 }
