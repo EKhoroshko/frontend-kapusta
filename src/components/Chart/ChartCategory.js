@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { getIDiagramInfo } from "../../redux/transaction/selectors";
 import WindowDementions from "../../helpers/WindowDementions";
 import { Bar } from "react-chartjs-2";
+
 // eslint-disable-next-line no-unused-vars
 import Chart from "chart.js/auto";
 import s from "../Chart/Chart.module.css";
@@ -53,13 +54,14 @@ export default function ChartCategory() {
         borderWidth: 1,
         borderRadius: 10,
         barThickness: barThickness,
-        barMargin: 20,
+        barMargin: 50,
       },
     ],
   };
 
   const optionsVertical = {
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       yAxes: [
         {
@@ -68,6 +70,11 @@ export default function ChartCategory() {
           },
         },
       ],
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
     },
   };
 
@@ -82,7 +89,7 @@ export default function ChartCategory() {
     responsive: true,
     plugins: {
       legend: {
-        position: "top",
+        display: false,
       },
     },
   };
@@ -95,7 +102,9 @@ export default function ChartCategory() {
       {Object.keys(info).length !== 0 ? (
         <Bar data={data} width={320} height={height} options={options} />
       ) : (
-        <div>тут что естсь</div>
+        <div>
+          <p>Хотите создать диаграмму?</p>
+        </div>
       )}
     </div>
   );
