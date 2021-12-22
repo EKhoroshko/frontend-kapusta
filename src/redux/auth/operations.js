@@ -45,26 +45,41 @@ export const registration =
         password: password,
       }),
     };
+    dispatch(userRegisterLoading());
     try {
       dispatch(userRegisterLoading());
       const response = await fetch(
         "https://back-kapusta.herokuapp.com/api/auth/users/register",
         options
-      ).then((response) => response.json());
-      if (response.hasOwnProperty("errors")) {
-        return toast.error(
-          `Пользователь с адресом электронной почты: ${email} уже существует`,
-          toastAction
-        );
-      } else {
-        toast.success(
-          `${name}, вы успешно зарегистрировались, для подтверждения мы отправили вам на почту письмо`,
-          toastAction
-        );
-        dispatch(userRegisterResolve(response));
-      }
+      ).then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          switch (response.status) {
+            case 409:
+              throw new Error(
+                toast.error(
+                  `Пользователь с адресом электронной почты: ${email} уже существует`,
+                  toastAction
+                )
+              );
+            default:
+              throw new Error(
+                toast.error(
+                  "Необходимо правильно заполнить поля регистрации",
+                  toastAction
+                )
+              );
+          }
+        }
+      });
+      dispatch(userRegisterResolve(response));
+      toast.success(
+        `${name}, вы успешно зарегистрировались, для подтверждения мы отправили вам на почту письмо`,
+        toastAction
+      );
     } catch (error) {
-      dispatch(userRegisterReject(error));
+      dispatch(userRegisterReject(error.statusText));
       dispatch(userClearError());
     }
   };
