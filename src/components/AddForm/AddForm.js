@@ -32,7 +32,7 @@ function AddForm({ onSubmit, type }) {
   };
 
   const clearForm = () => {
-    setSelect("");
+    setSelect(null);
     setDescription("");
     setPrice("");
   };
