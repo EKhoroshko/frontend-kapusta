@@ -59,6 +59,8 @@ export default function ChartCategory() {
     ],
   };
 
+  console.log(Object.keys(info));
+
   const optionsVertical = {
     responsive: true,
     maintainAspectRatio: false,
@@ -95,7 +97,7 @@ export default function ChartCategory() {
   };
 
   const height = width < 425 ? 422 : 200;
-  const options = width < 425 ? optionsHorizontal : optionsVertical;
+  const options = width < 768 ? optionsHorizontal : optionsVertical;
 
   return (
     <div className={s.chartContainer}>

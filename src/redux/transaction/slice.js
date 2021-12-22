@@ -77,6 +77,12 @@ const transactionSlice = createSlice({
       diagramma: payload,
     }),
 
+    diagramDataClear: (state, _) => ({
+      ...state,
+      isLoading: false,
+      diagramma: {},
+    }),
+
     transactionClearError: (state) => ({
       ...state,
       error: null,
@@ -99,6 +105,7 @@ export const {
   getIdResolve,
   clearId,
   changeDate,
+  diagramDataClear,
 } = transactionSlice.actions;
 
 export default transactionSlice.reducer;

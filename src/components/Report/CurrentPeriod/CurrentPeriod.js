@@ -6,7 +6,7 @@ import periodStyles from "./Period.module.css";
 import { useSelector } from "react-redux";
 import { getCurrentPeriod } from "../../../redux/transaction/selectors";
 import SvodkaMonth from "../../../helpers/SvodkaMonth";
-import { changeDate } from "../../../redux/transaction/slice";
+import { changeDate, diagramDataClear } from "../../../redux/transaction/slice";
 
 export default function Period() {
   const dispatch = useDispatch();
@@ -41,6 +41,14 @@ export default function Period() {
     }
   };
 
+  const clearPrev = () => {
+    dispatch(diagramDataClear());
+    handlePrevMonthButtonClick();
+  };
+  const clearnNext = () => {
+    dispatch(diagramDataClear());
+    handleNextMonthButtonClick();
+  };
   return (
     <div className={periodStyles.container}>
       <p className={periodStyles.text}>Текущий период:</p>
@@ -49,7 +57,7 @@ export default function Period() {
           type="button"
           className={periodStyles.NavButton}
           aria-label="previous"
-          onClick={handlePrevMonthButtonClick}
+          onClick={() => clearPrev()}
         >
           <VectorLeft width="7" height="12" />
         </button>
@@ -61,7 +69,7 @@ export default function Period() {
           type="button"
           className={periodStyles.NavButton}
           aria-label="next"
-          onClick={handleNextMonthButtonClick}
+          onClick={() => clearnNext()}
         >
           <VectorRight width="7" height="12" />
         </button>
