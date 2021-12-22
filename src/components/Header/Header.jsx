@@ -10,7 +10,6 @@ import { useLocation } from "react-router-dom";
 function Header() {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const location = useLocation()
-  console.log(location.pathname === '/team');
   return (
     <header className={css.header}>
       <div className={css.container}>
