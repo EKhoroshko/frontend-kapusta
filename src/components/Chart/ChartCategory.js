@@ -103,7 +103,7 @@ export default function ChartCategory() {
         <Bar data={data} width={320} height={height} options={options} />
       ) : (
         <div>
-          <p>xnjnj</p>
+          <p>Хотите создать диаграмму?</p>
         </div>
       )}
     </div>
