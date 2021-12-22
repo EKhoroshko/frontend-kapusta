@@ -1,5 +1,4 @@
 export const options = [
-  { value: "Выберите категорию", label: "Выберите категорию" },
   { value: "Транспорт", label: "Транспорт" },
   { value: "Продукты", label: "Продукты" },
   { value: "Здоровье", label: "Здоровье" },
@@ -14,7 +13,6 @@ export const options = [
 ];
 
 export const optionsIncoms = [
-  { value: "Выберите категорию", label: "Выберите категорию" },
   { value: "ЗП", label: "ЗП" },
   { value: "Доп.доход", label: "Доп. доход" },
 ];
