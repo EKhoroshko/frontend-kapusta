@@ -17,3 +17,5 @@ export const getBalance = (store) => store.auth.balance;
 export const getAvatar = (store) => store.auth.avatarURL;
 
 export const getVerifyTokenRedax = (store) => store.auth.verifyToken;
+
+export const getVerify = (store) => store.auth.verify;

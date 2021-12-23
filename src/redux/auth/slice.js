@@ -14,6 +14,7 @@ const authSlice = createSlice({
     email: "",
     data: {},
     verifyToken: "",
+    verify: false,
   },
   reducers: {
     userRegisterLoading: (state, _) => ({
@@ -58,7 +59,6 @@ const authSlice = createSlice({
       ...state,
       isLoading: false,
       token: null,
-      data: {},
       isLogin: false,
       error: payload,
     }),
@@ -102,12 +102,12 @@ const authSlice = createSlice({
     getVerifyTokenResolve: (state, { payload }) => ({
       ...state,
       verifyToken: payload,
+      verify: true,
     }),
-    getVerifyTokenReject: (state, action) => ({
+    getVerifyTokenReject: (state, { payload }) => ({
       ...state,
       isLoading: false,
-      data: {},
-      error: action.payload,
+      error: payload,
     }),
 
     userBalanceLoading: (state, _) => ({
