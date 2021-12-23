@@ -14,7 +14,7 @@ const authSlice = createSlice({
     email: "",
     data: {},
     verifyToken: "",
-    verify: false,
+    verify: true,
   },
   reducers: {
     userRegisterLoading: (state, _) => ({

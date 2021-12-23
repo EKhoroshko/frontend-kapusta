@@ -1,5 +1,18 @@
+import { useLocation } from "react-router-dom";
 import s from "./FormContent.module.css";
+import { userGoogle } from "../../redux/auth/operations";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 const FormContent = ({ children }) => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const token = location.search.slice(7);
+
+  useEffect(() => {
+    dispatch(userGoogle(token));
+  }, [dispatch, token]);
+
   return (
     <div className={s.container}>
       <div className={s.kapImg}></div>
@@ -15,10 +28,13 @@ const FormContent = ({ children }) => {
           <p className={s.descriptionA}>
             Вы можете авторизоваться с помощью Google Account:
           </p>
-          <button className={s.button} type="button">
+          <a
+            className={s.button}
+            href="https://back-kapusta.herokuapp.com/api/auth/google"
+          >
             <span></span>
             Google
-          </button>
+          </a>
           <p className={s.descriptionB}>
             Или зайти с помощью e-mail и пароля, предварительно
             зарегистрировавшись:

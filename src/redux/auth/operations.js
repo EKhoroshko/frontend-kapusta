@@ -244,3 +244,34 @@ export const veryfication = () => async (dispatch, getState) => {
     dispatch(userClearError());
   }
 };
+
+export const userGoogle = (token) => async (dispatch) => {
+  localStorage.setItem("token", token);
+  if (token) {
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    dispatch(updateUserLoading());
+    try {
+      const user = await fetch(
+        "https://back-kapusta.herokuapp.com/api/auth/users/current",
+        options
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error(response.statusText);
+          }
+        })
+        .then(({ data }) => ({ ...data, token }));
+      dispatch(updateUserResolve(user));
+    } catch (error) {
+      dispatch(updateUserReject(error.statusText));
+      dispatch(userClearError());
+    }
+  }
+};
