@@ -13,6 +13,7 @@ const authSlice = createSlice({
     balance: 0,
     email: "",
     data: {},
+    verifyToken: "",
   },
   reducers: {
     userRegisterLoading: (state, _) => ({
@@ -90,6 +91,25 @@ const authSlice = createSlice({
       error: action.payload,
     }),
 
+    getVerifyToken: (state) => ({
+      ...state,
+      isLoading: true,
+    }),
+    sliceToken: (state, { payload }) => ({
+      ...state,
+      verifyToken: payload,
+    }),
+    getVerifyTokenResolve: (state, { payload }) => ({
+      ...state,
+      verifyToken: payload,
+    }),
+    getVerifyTokenReject: (state, action) => ({
+      ...state,
+      isLoading: false,
+      data: {},
+      error: action.payload,
+    }),
+
     userBalanceLoading: (state, _) => ({
       ...state,
       isLoading: true,
@@ -128,6 +148,10 @@ export const {
   userBalanceLoading,
   userBalanceResolve,
   userBalanceReject,
+  getVerifyToken,
+  sliceToken,
+  getVerifyTokenResolve,
+  getVerifyTokenReject,
 } = authSlice.actions;
 
 export default authSlice.reducer;

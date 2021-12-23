@@ -18,8 +18,11 @@ import {
   userBalanceLoading,
   userBalanceResolve,
   userBalanceReject,
+  getVerifyToken,
+  getVerifyTokenReject,
+  // getVerifyTokenResolve,
 } from "../auth/slice";
-import { getToken, getUserId } from "./selectors";
+import { getToken, getUserId, getVerifyTokenRedax } from "./selectors";
 
 const toastAction = {
   position: "top-center",
@@ -214,6 +217,23 @@ export const changeBalance = (value) => async (dispatch, getState) => {
     toast.success(`Ваш баланс: ${balance} грн.`);
   } catch (error) {
     dispatch(userBalanceReject(error.statusText));
+    dispatch(userClearError());
+  }
+};
+
+export const veryfication = () => async (dispatch, getState) => {
+  const verifyToken = getVerifyTokenRedax(getState());
+  const options = { method: "GET" };
+  dispatch(getVerifyToken);
+  try {
+    const verify = await fetch(
+      `https://back-kapusta.herokuapp.com/api/auth/users/verify/${verifyToken}`,
+      options
+    ).then((response) => response.json());
+    console.log(verify);
+    //dispatch(getVerifyTokenResolve());
+  } catch (error) {
+    dispatch(getVerifyTokenReject(error.statusText));
     dispatch(userClearError());
   }
 };
