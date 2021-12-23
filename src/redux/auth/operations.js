@@ -20,7 +20,7 @@ import {
   userBalanceReject,
   getVerifyToken,
   getVerifyTokenReject,
-  getVerifyTokenResolve,
+  // getVerifyTokenResolve,
 } from "../auth/slice";
 import { getToken, getUserId, getVerifyTokenRedax } from "./selectors";
 
