@@ -28,14 +28,13 @@ const FormContent = ({ children }) => {
           <p className={s.descriptionA}>
             Вы можете авторизоваться с помощью Google Account:
           </p>
-          <a className={s.button} href="http://localhost:3000/api/auth/google">
+          <a
+            className={s.button}
+            href="https://back-kapusta.herokuapp.com/api/auth/google"
+          >
             <span></span>
             Google
           </a>
-          {/*<button className={s.button} type="button">
-            <span></span>
-            Google
-  </button>*/}
           <p className={s.descriptionB}>
             Или зайти с помощью e-mail и пароля, предварительно
             зарегистрировавшись:
