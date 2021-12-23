@@ -5,6 +5,9 @@ import { sliceToken } from "../../redux/auth/slice";
 import { useLocation } from "react-router-dom";
 import { veryfication } from "../../redux/auth/operations";
 import { getVerify } from "../../redux/auth/selectors";
+import { Component } from "react";
+import styled, { keyframes } from "styled-components";
+import { bounce, tada } from "react-animations";
 import s from "./Veryfy.module.css";
 
 function Veryfy() {
@@ -23,18 +26,27 @@ function Veryfy() {
     dispatch(veryfication());
   }, [dispatch]);
 
-  // const Bounce = styled.div`animation: 2s ${keyframes`${bounce}`} infinite`;
+  const Bounce = styled.div`
+    animation: 2s ${keyframes`${bounce}`} infinite;
+  `;
+  const Tada = styled.div`
+    animation: 2s ${keyframes`${tada}`};
+  `;
   return (
-    <div className={s.Veryfy}>
-      {varify ? (
-        <h3 className={s.text}>Вы успешно прошли верификацию</h3>
-      ) : (
-        <h3 className={s.text}>Мы проверяем ваш email подождите...</h3>
-      )}
-      <Link to={"/"} className={s.link}>
-        Перейти к логинизации
-      </Link>
-    </div>
+    <Tada>
+      <div className={s.Veryfy}>
+        <Bounce>
+          {varify ? (
+            <h3 className={s.text}>Вы успешно прошли верификацию</h3>
+          ) : (
+            <h3 className={s.text}>Мы проверяем ваш email подождите...</h3>
+          )}
+        </Bounce>
+        <Link to={"/"} className={s.link}>
+          Перейти к логинизации
+        </Link>
+      </div>
+    </Tada>
   );
 }
 
