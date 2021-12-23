@@ -43,7 +43,7 @@ export default function ChartCategory() {
     return palitraEl[colors + 1] ? colors[colors + 1] : palitraEl[0];
   };
 
-  const barThickness = width < 768 ? 15 : 38;
+  const barThickness = width < 425 ? 15 : 38;
   const data = {
     labels: Object.keys(info),
     datasets: [
@@ -58,6 +58,8 @@ export default function ChartCategory() {
       },
     ],
   };
+
+  console.log(Object.keys(info));
 
   const optionsVertical = {
     responsive: true,

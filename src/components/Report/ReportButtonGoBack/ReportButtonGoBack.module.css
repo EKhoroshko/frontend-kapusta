@@ -13,6 +13,11 @@
   letter-spacing: 0.04em;
   transition: all 0.2s linear;
 }
+
+.title {
+  text-transform: none;
+}
+
 .link {
   width: 170px;
   padding: 6px 3px;

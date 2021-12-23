@@ -1,0 +1,70 @@
+.list {
+  max-width: 728px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  /* padding-left: 15px; */
+  padding: 0 15px;
+  /* background-image: url('./pictures/teamcall.png');
+  background-color: #cccccc;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+}
+.name {
+  font-size: 15px;
+}
+.github {
+  max-width: 30px;
+  margin: 10px;
+  border-radius: 10px;
+}
+.item {
+  width: 150px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5px 0 5px;
+}
+.picture {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 25%;
+  object-fit: cover;
+}
+
+.link:hover .github,
+.link:focus .github {
+  background: #ffdac0;
+  -webkit-box-shadow: 0px 0px 10px 6px #ffdac0;
+  box-shadow: 0px 0px 10px 6px #ffdac0;
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .container {
+    flex-direction: column;
+    max-width: 768px;
+    padding: 0;
+    justify-content: space-between;
+  }
+  /* .item:nth-child(odd) {
+    margin-right: 30px;
+  } */
+}
+
+@media screen and (min-width: 1200px) {
+  .item {
+    margin-bottom: 0;
+  }
+}

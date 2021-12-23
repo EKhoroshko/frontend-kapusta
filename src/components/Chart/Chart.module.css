@@ -6,16 +6,10 @@
 
 @media screen and (min-width: 320px) {
   .chartContainer {
-    /* max-width: 320px; */
+    max-height: 422px;
     padding-left: 19px;
     padding-right: 19px;
     margin-bottom: 51px;
-  }
-}
-
-@media screen and (max-width: 425px) {
-  .chartContainer {
-    max-height: 422px;
   }
 }
 

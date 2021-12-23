@@ -18,8 +18,11 @@ import {
   userBalanceLoading,
   userBalanceResolve,
   userBalanceReject,
+  getVerifyToken,
+  getVerifyTokenReject,
+  getVerifyTokenResolve,
 } from "../auth/slice";
-import { getToken, getUserId } from "./selectors";
+import { getToken, getUserId, getVerifyTokenRedax } from "./selectors";
 
 const toastAction = {
   position: "top-center",
@@ -215,5 +218,60 @@ export const changeBalance = (value) => async (dispatch, getState) => {
   } catch (error) {
     dispatch(userBalanceReject(error.statusText));
     dispatch(userClearError());
+  }
+};
+
+export const veryfication = () => async (dispatch, getState) => {
+  const verifyToken = getVerifyTokenRedax(getState());
+  const options = { method: "GET" };
+  dispatch(getVerifyToken());
+  try {
+    const verify = await fetch(
+      `https://back-kapusta.herokuapp.com/api/auth/users/verify/${verifyToken}`,
+      options
+    ).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error(response.statusText);
+      }
+    });
+    console.log(verify);
+    dispatch(getVerifyTokenResolve(verify));
+  } catch (error) {
+    dispatch(getVerifyTokenReject(error.message));
+    toast.warning("Вы уже прошли верификацию");
+    dispatch(userClearError());
+  }
+};
+
+export const userGoogle = (token) => async (dispatch) => {
+  localStorage.setItem("token", token);
+  if (token) {
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    dispatch(updateUserLoading());
+    try {
+      const user = await fetch(
+        "https://back-kapusta.herokuapp.com/api/auth/users/current",
+        options
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error(response.statusText);
+          }
+        })
+        .then(({ data }) => ({ ...data, token }));
+      dispatch(updateUserResolve(user));
+    } catch (error) {
+      dispatch(updateUserReject(error.statusText));
+      dispatch(userClearError());
+    }
   }
 };

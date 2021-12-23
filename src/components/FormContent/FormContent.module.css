@@ -8,7 +8,8 @@
   position: absolute;
   top: 100px;
   left: 265px;
-  width: 83px;
+  right: 0px;
+  width: 53px;
   height: 89px;
   background-image: url("../../assets/images/iconKap1.svg");
   z-index: 1;
@@ -126,6 +127,11 @@
   line-height: 0.7325rem;
   letter-spacing: 0.04em;
   color: #52555f;
+}
+@media screen and (min-width: 355px) {
+  .kapImg2 {
+    width: 83px;
+  }
 }
 
 @media screen and (min-width: 768px) {

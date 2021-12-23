@@ -16,23 +16,21 @@ function Summary() {
 
   return (
     <section className={style.section}>
-      <div className={style.summaryImageBg}>
-        <div className={style.containerImgBg}>
-          <div className={style.container}>
-            <div className={style.menu}>
-              <ReportButtonGoBack onClick={goHome} />
-              <Balance />
-              <CurrentPeriod />
-            </div>
-            <div>
-              <CurrentAmount />
-            </div>
-            <ReportListByCategory />
+      <div className={style.container}>
+        <div className={style.content}>
+          <div className={style.menu}>
+            <ReportButtonGoBack onClick={goHome} />
+            <Balance />
+            <CurrentPeriod />
           </div>
+          <div>
+            <CurrentAmount />
+          </div>
+          <ReportListByCategory />
           <ChartCategory />
         </div>
+        <div className={style.imgBackKapusta}></div>
       </div>
-      <div className={style.imgBackKapusta}></div>
     </section>
   );
 }
