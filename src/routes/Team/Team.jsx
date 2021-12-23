@@ -53,7 +53,7 @@ function Team() {
         <img src={Andrey} alt="Andrey" className={styles.picture} />
         <p className={styles.name}>Full Stack</p>
         <p className={styles.name}>Andrey Kasyan</p>
-        <a href="https://github.com/MikhailKolomoitsev" className={styles.link}>
+        <a href="https://github.com/KasyanAndrey" className={styles.link}>
           <img src={github} alt="github link" className={styles.github} />
         </a>
       </li>
