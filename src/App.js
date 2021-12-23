@@ -1,4 +1,4 @@
-import { Route, Switch, Redirect, useLocation } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/Header/Header.jsx";
 import Login from "./routes/Login/Login";
 import Home from "./routes/Home/Home";
@@ -14,14 +14,9 @@ import { updateUserToken } from "./redux/auth/operations";
 import { useEffect } from "react";
 import PrivateRoutes from "./components/PrivateRoutes/PrivateRoutes";
 import "./App.css";
-import { useRouteMatch } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
-  const match = useRouteMatch();
-  const location = useLocation();
-  console.log(match);
-  console.log(location);
 
   useEffect(() => {
     dispatch(updateUserToken());

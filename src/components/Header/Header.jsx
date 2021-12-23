@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import { useSelector } from "react-redux";
 import { getIsLoggedIn } from "../../redux/auth/selectors";
-import { Redirect } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 function Header() {
   const isLoggedIn = useSelector(getIsLoggedIn);
