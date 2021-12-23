@@ -16,12 +16,9 @@ function Header() {
         <Link to={isLoggedIn ? "/home" : "/"}>
           <img src={logo} alt="" width={90} height={30} />
         </Link>
-        <div className={css.header}>
-          <img src={logo} alt="" width={90} height={30} />
           {isLoggedIn && <NavLink to="/team" className={css.container}>
             <p className={css.text}>Показать команду</p>
           </NavLink>}
-        </div>
         {location.pathname === '/team' &&
           <NavLink to="/home" className={css.container}>
             <p className={css.text}>На главную</p>
