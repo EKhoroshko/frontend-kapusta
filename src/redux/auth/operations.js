@@ -20,7 +20,7 @@ import {
   userBalanceReject,
   getVerifyToken,
   getVerifyTokenReject,
-  // getVerifyTokenResolve,
+  getVerifyTokenResolve,
 } from "../auth/slice";
 import { getToken, getUserId, getVerifyTokenRedax } from "./selectors";
 
@@ -224,16 +224,23 @@ export const changeBalance = (value) => async (dispatch, getState) => {
 export const veryfication = () => async (dispatch, getState) => {
   const verifyToken = getVerifyTokenRedax(getState());
   const options = { method: "GET" };
-  dispatch(getVerifyToken);
+  dispatch(getVerifyToken());
   try {
     const verify = await fetch(
       `https://back-kapusta.herokuapp.com/api/auth/users/verify/${verifyToken}`,
       options
-    ).then((response) => response.json());
+    ).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error(response.statusText);
+      }
+    });
     console.log(verify);
-    //dispatch(getVerifyTokenResolve());
+    dispatch(getVerifyTokenResolve(verify));
   } catch (error) {
-    dispatch(getVerifyTokenReject(error.statusText));
+    dispatch(getVerifyTokenReject(error.message));
+    toast.warning("Вы уже прошли верификацию");
     dispatch(userClearError());
   }
 };
