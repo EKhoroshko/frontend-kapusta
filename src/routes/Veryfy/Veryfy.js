@@ -5,7 +5,7 @@ import { sliceToken } from "../../redux/auth/slice";
 import { useLocation } from "react-router-dom";
 import { veryfication } from "../../redux/auth/operations";
 import { getVerify } from "../../redux/auth/selectors";
-import { Component } from "react";
+
 import styled, { keyframes } from "styled-components";
 import { bounce, tada } from "react-animations";
 import s from "./Veryfy.module.css";
