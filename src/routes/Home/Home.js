@@ -6,7 +6,7 @@ import {
   useHistory,
   useLocation,
 } from "react-router-dom";
-import "react-toastify/dist/ReactToastify.css";
+import { useDispatch, useSelector } from "react-redux";
 import { ReactComponent as Diagramma } from "../../assets/images/summary.svg";
 import Calendar from "../../components/Calendar/Calendar";
 import Comment from "../../components/Modal/Comment/Comment";
@@ -14,12 +14,12 @@ import MobileList from "../../components/List/MobileList";
 import AddForm from "../../components/AddForm/AddForm";
 import List from "../../components/List/List";
 import AddFormMobile from "../../components/AddForm/AddFormMobile";
-import { useDispatch, useSelector } from "react-redux";
+import Skeleton from "../../components/Loader/Loader";
 import { getBalance, getIsLoading } from "../../redux/auth/selectors";
 import { changeBalance } from "../../redux/auth/operations";
 import { addTransaction } from "../../redux/transaction/operation";
+import "react-toastify/dist/ReactToastify.css";
 import css from "./Home.module.css";
-import Skeleton from "../../components/Loader/Loader";
 
 const toastAction = {
   position: "top-right",
@@ -57,7 +57,7 @@ function Home() {
 
   const updateBalance = (price, type) => {
     if (type === "costs") {
-      const newBalanceCost = balance - Number(price);
+      let newBalanceCost = balance - Number(price);
       if (newBalanceCost < 0) {
         return;
       } else {
@@ -65,7 +65,7 @@ function Home() {
         dispatch(changeBalance(newBalanceCost));
       }
     } else {
-      const newBalanceIncoms = balance + Number(price);
+      let newBalanceIncoms = balance + Number(price);
       setMoney(newBalanceIncoms);
       dispatch(changeBalance(newBalanceIncoms));
     }
