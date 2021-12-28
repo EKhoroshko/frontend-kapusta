@@ -1,11 +1,12 @@
 import logout from "../../assets/images/logout.svg";
-import css from "./Header.module.css";
 import MediaQuery from "react-responsive";
 import { getUserName, getAvatar } from "../../redux/auth/selectors";
 import { logOut } from "../../redux/auth/operations";
 import { useSelector, useDispatch } from "react-redux";
 import LogoutModal from "./LogoutModal";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import css from "./Header.module.css";
 
 
 
@@ -30,7 +31,9 @@ export default function UserMenu() {
         </span>
       </p>
       <MediaQuery minWidth={768}>
-        <p className={css.user__name}>{userName}</p>
+        <NavLink to="/user">
+          <p className={css.user__name}>{userName}</p>
+        </NavLink>
       </MediaQuery>
       <button type="button" className={css.logout} onClick={toggleModal}>
         <MediaQuery maxWidth={767}>
@@ -39,13 +42,13 @@ export default function UserMenu() {
         <MediaQuery minWidth={768}>
           <p className={css.logout__text}>Выйти</p>
         </MediaQuery>
-          {isModalOpen && (
-                <LogoutModal
-                  text={"Вы уверены что хотите выйти?"}
-                  onCancel={toggleModal}
-                  onSubmit={isLogOut}
-                />
-              )}
+        {isModalOpen && (
+          <LogoutModal
+            text={"Вы уверены что хотите выйти?"}
+            onCancel={toggleModal}
+            onSubmit={isLogOut}
+          />
+        )}
       </button>
     </div>
   );

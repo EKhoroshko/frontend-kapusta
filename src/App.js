@@ -15,6 +15,7 @@ const Team = lazy(() => import("./routes/Team/Team.jsx"));
 const Summary = lazy(() => import("./routes/Summary/Summary"));
 const Veryfy = lazy(() => import("./routes/Veryfy/Veryfy"));
 const NotFound = lazy(() => import("./routes/NotFound/NotFound"));
+const UserPage = lazy(() => import("./routes/UserPage/UserPage"));
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
           <PrivateRoutes path="/home" exact component={Home} />
           <PrivateRoutes path="/summary" component={Summary} />
           <PrivateRoutes path="/team" component={Team} />
+          <PrivateRoutes path="/user" component={UserPage} />
           <Route path="/:verificationToken" exact component={Veryfy} />
           <Route path="/404" component={NotFound} />
           <Redirect to="/404" />
