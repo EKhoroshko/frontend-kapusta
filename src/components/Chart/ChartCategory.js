@@ -59,8 +59,6 @@ export default function ChartCategory() {
     ],
   };
 
-  console.log(Object.keys(info));
-
   const optionsVertical = {
     responsive: true,
     maintainAspectRatio: false,

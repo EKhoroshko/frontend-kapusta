@@ -1,11 +1,12 @@
 import logout from "../../assets/images/logout.svg";
-import css from "./Header.module.css";
 import MediaQuery from "react-responsive";
 import { getUserName, getAvatar } from "../../redux/auth/selectors";
 import { logOut } from "../../redux/auth/operations";
 import { useSelector, useDispatch } from "react-redux";
 import LogoutModal from "./LogoutModal";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import css from "./Header.module.css";
 
 
 
@@ -24,14 +25,16 @@ export default function UserMenu() {
   };
   return (
     <div className={css.user__menu}>
-      <p className={css.user__avatar}>
-        <span className={css.symbol}>
-          <img src={avatarURL} alt="аватар пользователя" />
-        </span>
-      </p>
-      <MediaQuery minWidth={768}>
-        <p className={css.user__name}>{userName}</p>
-      </MediaQuery>
+      <NavLink to="/user" className={css.link}>
+        <p className={css.user__avatar}>
+          <span className={css.symbol}>
+            <img src={avatarURL} alt="аватар пользователя" />
+          </span>
+        </p>
+        <MediaQuery minWidth={768}>
+          <p className={css.user__name}>{userName}</p>
+        </MediaQuery>
+      </NavLink>
       <button type="button" className={css.logout} onClick={toggleModal}>
         <MediaQuery maxWidth={767}>
           <img src={logout} alt="" width={16} height={16} />
@@ -39,13 +42,13 @@ export default function UserMenu() {
         <MediaQuery minWidth={768}>
           <p className={css.logout__text}>Выйти</p>
         </MediaQuery>
-          {isModalOpen && (
-                <LogoutModal
-                  text={"Вы уверены что хотите выйти?"}
-                  onCancel={toggleModal}
-                  onSubmit={isLogOut}
-                />
-              )}
+        {isModalOpen && (
+          <LogoutModal
+            text={"Вы уверены что хотите выйти?"}
+            onCancel={toggleModal}
+            onSubmit={isLogOut}
+          />
+        )}
       </button>
     </div>
   );

@@ -236,7 +236,6 @@ export const veryfication = () => async (dispatch, getState) => {
         throw new Error(response.statusText);
       }
     });
-    console.log(verify);
     dispatch(getVerifyTokenResolve(verify));
   } catch (error) {
     dispatch(getVerifyTokenReject(error.message));
@@ -246,7 +245,7 @@ export const veryfication = () => async (dispatch, getState) => {
 };
 
 export const userGoogle = (token) => async (dispatch) => {
-  localStorage.setItem("token", token);
+  localStorage.setItem("tokenGogle", token);
   if (token) {
     const options = {
       method: "GET",
