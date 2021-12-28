@@ -82,3 +82,7 @@
   color: #ff751d;
   transition: color 0.2s linear;
 }
+
+.link {
+  display: flex;
+}

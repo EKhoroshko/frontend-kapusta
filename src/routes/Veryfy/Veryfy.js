@@ -40,7 +40,7 @@ function Veryfy() {
             <h3 className={s.text}>Мы проверяем ваш email подождите...</h3>
           )}
         </Bounce>
-        <Link to={"/"} className={s.link}>
+        <Link to="/" className={s.link}>
           Перейти к логинизации
         </Link>
       </div>

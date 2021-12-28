@@ -25,16 +25,16 @@ export default function UserMenu() {
   };
   return (
     <div className={css.user__menu}>
-      <p className={css.user__avatar}>
-        <span className={css.symbol}>
-          <img src={avatarURL} alt="аватар пользователя" />
-        </span>
-      </p>
-      <MediaQuery minWidth={768}>
-        <NavLink to="/user">
+      <NavLink to="/user" className={css.link}>
+        <p className={css.user__avatar}>
+          <span className={css.symbol}>
+            <img src={avatarURL} alt="аватар пользователя" />
+          </span>
+        </p>
+        <MediaQuery minWidth={768}>
           <p className={css.user__name}>{userName}</p>
-        </NavLink>
-      </MediaQuery>
+        </MediaQuery>
+      </NavLink>
       <button type="button" className={css.logout} onClick={toggleModal}>
         <MediaQuery maxWidth={767}>
           <img src={logout} alt="" width={16} height={16} />
