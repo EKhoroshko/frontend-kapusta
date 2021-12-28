@@ -16,8 +16,6 @@ function Veryfy() {
   const location = useLocation();
   const str = location.pathname.slice(1);
 
-  console.log(varify);
-
   useEffect(() => {
     dispatch(sliceToken(str));
   }, [dispatch, str]);

@@ -236,7 +236,6 @@ export const veryfication = () => async (dispatch, getState) => {
         throw new Error(response.statusText);
       }
     });
-    console.log(verify);
     dispatch(getVerifyTokenResolve(verify));
   } catch (error) {
     dispatch(getVerifyTokenReject(error.message));
