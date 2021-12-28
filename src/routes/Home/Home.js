@@ -130,7 +130,7 @@ function Home() {
                     onChange={checkBalance}
                     value={money}
                   />
-                  {balance < 0 && (
+                  {balance <= 0 && (
                     <button className={css.btnAdd} type="submit">
                       Подтвердить
                     </button>
@@ -150,7 +150,7 @@ function Home() {
                 </div>
               </div>
               <div className={css.boxLinkMin}>
-                <NavLink className={css.link} to={`${match.url}/casts`}>
+                <NavLink className={css.link} to={`${match.url}/costs`}>
                   <button
                     className={css.btn}
                     type="button"

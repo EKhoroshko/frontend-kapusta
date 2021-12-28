@@ -31,7 +31,7 @@ const Balance = () => {
           onChange={checkBalance}
           value={balance}
         />
-        {balance < 0 && (
+        {balance <= 0 && (
           <button className={css.btnAdd} type="submit">
             Подтвердить
           </button>
