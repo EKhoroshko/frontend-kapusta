@@ -13,8 +13,8 @@ import { getLoading } from "../../redux/transaction/selectors";
 import deleteIcon from "../../assets/images/delete.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import s from "./List.module.css";
 import Skeleton from "../Loader/Loader";
+import s from "./List.module.css";
 
 function List({ type }) {
   const transactions = useSelector(getTransactions);

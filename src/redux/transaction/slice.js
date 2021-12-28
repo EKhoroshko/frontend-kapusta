@@ -9,6 +9,7 @@ const transactionSlice = createSlice({
     idTransaction: null,
     currentPeriod: {},
     diagramma: {},
+    date: "",
   },
   reducers: {
     allTransactionLoading: (state, _) => ({
@@ -31,7 +32,7 @@ const transactionSlice = createSlice({
     }),
     addTransactionResolve: (state, { payload }) => ({
       ...state,
-      allTransactions: [payload, ...state.allTransactions],
+      allTransactions: [...state.allTransactions, payload],
       isLoading: false,
     }),
     addTransactionReject: (_, { payload }) => ({
@@ -83,6 +84,11 @@ const transactionSlice = createSlice({
       diagramma: {},
     }),
 
+    dateTransaction: (state, { payload }) => ({
+      ...state,
+      date: payload,
+    }),
+
     transactionClearError: (state) => ({
       ...state,
       error: null,
@@ -105,6 +111,7 @@ export const {
   getIdResolve,
   clearId,
   changeDate,
+  dateTransaction,
   diagramDataClear,
 } = transactionSlice.actions;
 
