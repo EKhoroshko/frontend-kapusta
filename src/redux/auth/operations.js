@@ -50,7 +50,6 @@ export const registration =
     };
     dispatch(userRegisterLoading());
     try {
-      dispatch(userRegisterLoading());
       const response = await fetch(
         "https://back-kapusta.herokuapp.com/api/auth/users/register",
         options

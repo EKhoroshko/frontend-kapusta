@@ -18,6 +18,7 @@ import Skeleton from "../../components/Loader/Loader";
 import { getBalance, getIsLoading } from "../../redux/auth/selectors";
 import { changeBalance } from "../../redux/auth/operations";
 import { addTransaction } from "../../redux/transaction/operation";
+import { getDateTransaction } from "../../redux/transaction/selectors";
 import "react-toastify/dist/ReactToastify.css";
 import css from "./Home.module.css";
 
@@ -34,6 +35,7 @@ const toastAction = {
 function Home() {
   const balance = useSelector(getBalance);
   const login = useSelector(getIsLoading);
+  const dateTransaction = useSelector(getDateTransaction);
   const [type, setType] = useState("");
   const [active, setActive] = useState(false);
   const [money, setMoney] = useState(balance);
@@ -55,43 +57,42 @@ function Home() {
     history.push("/summary");
   };
 
-  const updateBalance = (price, type) => {
+  const updateBalance = ({ date, sum, type, category, description }) => {
     if (type === "costs") {
-      let newBalanceCost = balance - Number(price);
+      let newBalanceCost = balance - Number(sum);
       if (newBalanceCost < 0) {
-        return;
+        return toast.warning("Не достаточно средст на счету", toastAction);
       } else {
         setMoney(newBalanceCost);
         dispatch(changeBalance(newBalanceCost));
+        dispatch(addTransaction({ date, sum, type, category, description }));
       }
     } else {
-      let newBalanceIncoms = balance + Number(price);
+      let newBalanceIncoms = balance + Number(sum);
       setMoney(newBalanceIncoms);
       dispatch(changeBalance(newBalanceIncoms));
+      dispatch(addTransaction({ date, sum, type, category, description }));
     }
   };
 
   const getFormInfo = ({ price, description, select }) => {
     const transaction = {
+      date: dateTransaction,
       sum: Number(price),
       category: select,
       description,
       type,
     };
     if (
+      dateTransaction === "" ||
       type === "" ||
       price === "" ||
-      select === "Выберите категорию" ||
+      select === "Категория товара" ||
       description === ""
     ) {
       return toast.warning("Заполните всю форму и выберите тип транзакции");
     } else {
-      if (balance < price) {
-        return toast.warning("Не достаточно средст на счету", toastAction);
-      } else {
-        dispatch(addTransaction(transaction));
-        updateBalance(price, type, description, select);
-      }
+      updateBalance(transaction);
     }
   };
 
@@ -129,9 +130,11 @@ function Home() {
                     onChange={checkBalance}
                     value={money}
                   />
-                  <button className={css.btnAdd} type="submit">
-                    Подтвердить
-                  </button>
+                  {balance <= 0 && (
+                    <button className={css.btnAdd} type="submit">
+                      Подтвердить
+                    </button>
+                  )}
                 </form>
               </div>
               <div className={css.flex}>
@@ -147,7 +150,7 @@ function Home() {
                 </div>
               </div>
               <div className={css.boxLinkMin}>
-                <NavLink className={css.link} to={`${match.url}/casts`}>
+                <NavLink className={css.link} to={`${match.url}/costs`}>
                   <button
                     className={css.btn}
                     type="button"

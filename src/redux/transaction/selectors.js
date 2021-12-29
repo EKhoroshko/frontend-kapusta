@@ -9,3 +9,5 @@ export const getCurrentPeriod = (store) => store.transaction.currentPeriod;
 export const getIdTransaction = (store) => store.transaction.idTransaction;
 
 export const getIDiagramInfo = (store) => store.transaction.diagramma;
+
+export const getDateTransaction = (store) => store.transaction.date;
