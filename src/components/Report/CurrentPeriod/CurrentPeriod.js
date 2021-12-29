@@ -10,7 +10,6 @@ import { changeDate, diagramDataClear } from "../../../redux/transaction/slice";
 
 export default function Period() {
   const dispatch = useDispatch();
-
   const currentMonth = new Date().getMonth() + 1;
   const currentYear = new Date().getFullYear();
   const [month, setMonth] = useState(currentMonth);

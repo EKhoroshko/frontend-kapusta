@@ -19,7 +19,7 @@ function Calendar() {
     <div className={css.flex}>
       <CalendarIcon className={css.date} />
       <DatePicker
-        dateFormat="MM/dd/yyyy"
+        dateFormat="dd/MM/yyyy"
         selected={startDate}
         onChange={(date) => setStartDate(date)}
         className={css.red}
