@@ -5,12 +5,13 @@ import { sliceToken } from "../../redux/auth/slice";
 import { useLocation } from "react-router-dom";
 import { veryfication } from "../../redux/auth/operations";
 import { getVerify } from "../../redux/auth/selectors";
-
+import { useTranslation } from "react-i18next";
 import styled, { keyframes } from "styled-components";
 import { bounce, tada } from "react-animations";
 import s from "./Veryfy.module.css";
 
 function Veryfy() {
+  const { t } = useTranslation();
   const varify = useSelector(getVerify);
   const dispatch = useDispatch();
   const location = useLocation();
@@ -35,13 +36,13 @@ function Veryfy() {
       <div className={s.Veryfy}>
         <Bounce>
           {varify ? (
-            <h3 className={s.text}>Вы успешно прошли верификацию</h3>
+            <h3 className={s.text}>{t("verify.title1")}</h3>
           ) : (
-            <h3 className={s.text}>Мы проверяем ваш email подождите...</h3>
+            <h3 className={s.text}>{t("verify.title2")}</h3>
           )}
         </Bounce>
         <Link to="/" className={s.link}>
-          Перейти к логинизации
+          {t("verify.link")}
         </Link>
       </div>
     </Tada>

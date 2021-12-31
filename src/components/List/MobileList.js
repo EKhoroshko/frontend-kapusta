@@ -1,4 +1,3 @@
-import styles from "./List.module.css";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import deleteIcon from "../../assets/images/delete.svg";
@@ -8,12 +7,15 @@ import Modal from "../Modal/ModalWindow/ModalWindow";
 import { getAllTransactions } from "../../redux/transaction/operation";
 import { getLoading, getTransactions } from "../../redux/transaction/selectors";
 import Skeleton from "../Loader/Loader";
+import { useTranslation } from "react-i18next";
+import styles from "./List.module.css";
 
 const Mobile = ({ type }) => {
   const transactions = useSelector(getTransactions);
   const trLoad = useSelector(getLoading);
   const [isModalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getAllTransactions());
@@ -42,9 +44,13 @@ const Mobile = ({ type }) => {
                 </div>
 
                 {incomes ? (
-                  <p className={styles.tdIncomes}>+ {tr.sum} грн.</p>
+                  <p className={styles.tdIncomes}>
+                    + {tr.sum} {t("money.uah")}.
+                  </p>
                 ) : (
-                  <p className={styles.tdCosts}>- {tr.sum} грн.</p>
+                  <p className={styles.tdCosts}>
+                    - {tr.sum} {t("money.uah")}.
+                  </p>
                 )}
 
                 <div className={styles.btnWrapper}>
@@ -66,7 +72,7 @@ const Mobile = ({ type }) => {
             );
           })}
       </ul>
-      {isModalOpen && <Modal text={"Вы уверены?"} onCancel={toggleModal} />}
+      {isModalOpen && <Modal text={t("modal.text2")} onCancel={toggleModal} />}
     </>
   );
 };

@@ -42,7 +42,7 @@ export default function UserMenu() {
           <img src={logout} alt="" width={16} height={16} />
         </MediaQuery>
         <MediaQuery minWidth={768}>
-          <p className={css.logout__text}>Выйти</p>
+          <p className={css.logout__text}>{t("logOut")}</p>
         </MediaQuery>
         {isModalOpen && (
           <LogoutModal

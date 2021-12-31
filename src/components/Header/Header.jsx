@@ -14,12 +14,22 @@ function Header() {
   const location = useLocation()
   const { t } = useTranslation();
 
+  const { i18n } = useTranslation();
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+  };
+
   return (
     <header className={css.header}>
       <div className={css.container}>
         <Link to={isLoggedIn ? "/home" : "/"}>
           <img src={logo} alt="" width={90} height={30} />
         </Link>
+        <div>
+          <button onClick={() => changeLanguage("en")}>EN</button>
+          <button onClick={() => changeLanguage("ru")}>RU</button>
+        </div>
         {isLoggedIn && <NavLink to="/team" className={css.container}>
           <p className={css.text}>{t("team")}</p>
         </NavLink>}

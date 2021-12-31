@@ -8,7 +8,7 @@ import { ReactComponent as Calculator } from "../../assets/images/calculator.svg
 import { ReactComponent as Arrow } from "../../assets/images/arrowLeft.svg";
 import Button from "../Button/Button";
 import Svodka from "../Svodka/Svodka";
-
+import { useTranslation } from "react-i18next";
 import css from "./AddForm.module.css";
 
 function AddForm({ onSubmit, type }) {
@@ -16,6 +16,7 @@ function AddForm({ onSubmit, type }) {
   const [select, setSelect] = useState(null);
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const { t } = useTranslation();
 
   const writePrice = (e) => {
     e.preventDefault();
@@ -96,13 +97,17 @@ function AddForm({ onSubmit, type }) {
               <li className={css.item}>
                 <Button
                   type="submit"
-                  text="ввод"
+                  text={t("btnEnt")}
                   onSubmit={writePrice}
                   active={{ backgroundColor: "#ff751d", color: "white" }}
                 />
               </li>
               <li>
-                <Button type="button" text="очистить" onClick={clearForm} />
+                <Button
+                  type="button"
+                  text={t("btnClear")}
+                  onClick={clearForm}
+                />
               </li>
             </ul>
           </form>

@@ -7,9 +7,11 @@ import { options, optionsIncoms } from "../../helpers/Select/SelectList.js";
 import { ReactComponent as Calculator } from "../../assets/images/calculator.svg";
 import { ReactComponent as Arrow } from "../../assets/images/arrowLeft.svg";
 import Button from "../Button/Button";
+import { useTranslation } from "react-i18next";
 import css from "./AddFormMobile.module.css";
 
 function AddFormMobile({ onSubmit, type }) {
+  const { t } = useTranslation();
   const history = useHistory();
   const [select, setSelect] = useState(null);
   const [description, setDescription] = useState("");
@@ -79,6 +81,7 @@ function AddFormMobile({ onSubmit, type }) {
                 <input
                   className={css.inputPrice}
                   type="number"
+                  min="1"
                   autoComplete="off"
                   placeholder="00.00 UAH"
                   value={price}
@@ -91,27 +94,22 @@ function AddFormMobile({ onSubmit, type }) {
             </div>
             <ul className={css.list}>
               <li className={css.item}>
-                <Button type="submit" text="ввод" onSubmit={writePrice} />
+                <Button
+                  type="submit"
+                  text={t("btnEnt")}
+                  onSubmit={writePrice}
+                />
               </li>
               <li>
-                <Button type="button" text="очистить" onClick={clearForm} />
+                <Button
+                  type="button"
+                  text={t("btnClear")}
+                  onClick={clearForm}
+                />
               </li>
             </ul>
           </form>
         </div>
-
-        {/* <div className={css.boxLink}>
-          <NavLink className={css.link} to={`${match.url}/casts`}>
-            <button className={css.btn} type="button">
-              Расходы
-            </button>
-          </NavLink>
-          <NavLink className={css.link} to={`${match.url}/incomes`}>
-            <button className={css.btn} type="button">
-              Доход
-            </button>
-          </NavLink>
-        </div> */}
       </div>
     </div>
   );

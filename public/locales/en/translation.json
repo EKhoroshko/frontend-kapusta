@@ -8,6 +8,16 @@
   "incomes": "Incomes",
   "summary": "Summary",
   "toReport": "Go to reports",
+  "pass": "Password",
+  "mail": "Email",
+  "name": "Name",
+  "reg": "Registration",
+  "log": "Login",
+  "logOut": "Log out",
+  "logdescr1": "You can log in with your Google account:",
+  "logdescr2": "Or login using your email address and password after registration:",
+  "btnEnt": "add",
+  "btnClear": "clear",
 
   "modal": {
     "text1": "Are you sure you want to log out?",
@@ -25,5 +35,18 @@
 
   "money": {
     "uah": "uah"
+  },
+
+  "verify": {
+    "title1": "You have successfully passed the verification",
+    "title2": "We are checking your email please wait ...",
+    "link": "Go to login"
+  },
+
+  "list": {
+    "date": "Date",
+    "descr": "Description",
+    "category": "Category",
+    "sum": "Sum"
   }
 }
