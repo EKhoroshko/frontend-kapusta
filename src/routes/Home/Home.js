@@ -19,6 +19,7 @@ import { getBalance, getIsLoading } from "../../redux/auth/selectors";
 import { changeBalance } from "../../redux/auth/operations";
 import { addTransaction } from "../../redux/transaction/operation";
 import { getDateTransaction } from "../../redux/transaction/selectors";
+import { useTranslation } from "react-i18next";
 import "react-toastify/dist/ReactToastify.css";
 import css from "./Home.module.css";
 
@@ -33,6 +34,7 @@ const toastAction = {
 };
 
 function Home() {
+  const { t } = useTranslation();
   const balance = useSelector(getBalance);
   const login = useSelector(getIsLoading);
   const dateTransaction = useSelector(getDateTransaction);
@@ -118,11 +120,11 @@ function Home() {
             <div className={css.box}>
               {!balance && <Comment />}
               <button className={css.sum} type="button" onClick={goSummary}>
-                Перейти к отчетам
+                {t("toReport")}
                 <Diagramma className={css.diagramma} />
               </button>
               <div className={css.balance}>
-                <p className={css.text}>Баланс:</p>
+                <p className={css.text}>{t("balance")}:</p>
                 <form className={css.wraper} onSubmit={addBalance}>
                   <input
                     className={css.add}
@@ -134,7 +136,7 @@ function Home() {
                   />
                   {balance <= 0 && (
                     <button className={css.btnAdd} type="submit">
-                      Подтвердить
+                      {t("confirm")}
                     </button>
                   )}
                 </form>
@@ -158,7 +160,7 @@ function Home() {
                     type="button"
                     onClick={() => setType("costs")}
                   >
-                    Расход
+                    {t("costs")}
                   </button>
                 </NavLink>
                 <NavLink className={css.link} to={`${match.url}/incomes`}>
@@ -167,7 +169,7 @@ function Home() {
                     type="button"
                     onClick={() => setType("incomes")}
                   >
-                    Доход
+                    {t("incomes")}
                   </button>
                 </NavLink>
               </div>
@@ -181,7 +183,7 @@ function Home() {
                     type === "costs" ? { color: "orange" } : { color: "black" }
                   }
                 >
-                  Расход
+                  {t("costs")}
                 </button>
                 <button
                   className={css.btn}
@@ -193,7 +195,7 @@ function Home() {
                       : { color: "black" }
                   }
                 >
-                  Доход
+                  {t("incomes")}
                 </button>
               </div>
             </div>

@@ -1,0 +1,29 @@
+{
+  "balance": "Balance:",
+  "team": "wathc team",
+  "home": "To main",
+  "confirm": "Confirm",
+  "arrowGoBack": "Go back to main",
+  "costs": "Costs",
+  "incomes": "Incomes",
+  "summary": "Summary",
+  "toReport": "Go to reports",
+
+  "modal": {
+    "text1": "Are you sure you want to log out?",
+    "text2": "Are you sure?",
+    "btnYes": "yes",
+    "btnNo": "no",
+    "comment1": "Hey! To get started, enter the current balance of your account!",
+    "comment2": "You cannot spend money until you have it!"
+  },
+
+  "chart": {
+    "text1": "If you want to see the diagram",
+    "text2": "Click on the icon"
+  },
+
+  "money": {
+    "uah": "uah"
+  }
+}

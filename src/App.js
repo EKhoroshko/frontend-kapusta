@@ -7,6 +7,7 @@ import Skeleton from "./components/Loader/Loader";
 import PrivateRoutes from "./components/PrivateRoutes/PrivateRoutes";
 import { updateUserToken } from "./redux/auth/operations";
 import { getVerify } from "./redux/auth/selectors";
+import { useTranslation } from "react-i18next";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -26,9 +27,19 @@ function App() {
     dispatch(updateUserToken());
   }, [dispatch]);
 
+  const { i18n } = useTranslation();
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+  };
+
   return (
     <section>
       <Header />
+      <div>
+        <button onClick={() => changeLanguage("en")}>EN</button>
+        <button onClick={() => changeLanguage("ru")}>RU</button>
+      </div>
       <Suspense fallback={<Skeleton />}>
         <Switch>
           <Route path="/" exact component={Login} />

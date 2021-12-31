@@ -5,12 +5,14 @@ import ModalBtn from "../../Button/Button";
 import { clearId } from "../../../redux/transaction/slice";
 import { deleteTransaction } from "../../../redux/transaction/operation";
 import { getIdTransaction } from "../../../redux/transaction/selectors";
+import { useTranslation } from "react-i18next";
 import s from "./ModalWindow.module.css";
 
 const modalRoot = document.querySelector("#modal-root");
 
 function Modal({ onCancel, text }) {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const id = useSelector(getIdTransaction);
 
   const handleKeyDown = (e) => {
@@ -53,10 +55,13 @@ function Modal({ onCancel, text }) {
         </div>
         <div className={s.ModalWindowWrap}>
           <div className={s.btnWrapper}>
-            <ModalBtn text={"Да"} onClick={() => removeTransact(id)} />
+            <ModalBtn
+              text={t("modal.btnYes")}
+              onClick={() => removeTransact(id)}
+            />
           </div>
           <div className={s.btnWrapper}>
-            <ModalBtn text={"Нет"} key="2" onClick={onCancel} />
+            <ModalBtn text={t("modal.btnNo")} key="2" onClick={onCancel} />
           </div>
         </div>
       </div>

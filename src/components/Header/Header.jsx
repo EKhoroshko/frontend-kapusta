@@ -7,21 +7,25 @@ import { useSelector } from "react-redux";
 import { getIsLoggedIn } from "../../redux/auth/selectors";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 function Header() {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const location = useLocation()
+  const { t } = useTranslation();
+
   return (
     <header className={css.header}>
       <div className={css.container}>
         <Link to={isLoggedIn ? "/home" : "/"}>
           <img src={logo} alt="" width={90} height={30} />
         </Link>
-          {isLoggedIn && <NavLink to="/team" className={css.container}>
-            <p className={css.text}>Показать команду</p>
-          </NavLink>}
+        {isLoggedIn && <NavLink to="/team" className={css.container}>
+          <p className={css.text}>{t("team")}</p>
+        </NavLink>}
         {location.pathname === '/team' &&
           <NavLink to="/home" className={css.container}>
-            <p className={css.text}>На главную</p>
+            <p className={css.text}>{t("home")}</p>
           </NavLink>}
         {isLoggedIn && <UserMenu />}
       </div>
