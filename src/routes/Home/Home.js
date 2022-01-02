@@ -92,8 +92,6 @@ function Home() {
       description,
       type,
     };
-
-    console.log(transaction);
     if (
       dateTransaction === "" ||
       type === "" ||

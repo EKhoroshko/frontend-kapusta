@@ -27,8 +27,8 @@ export default function Svodka({ type }) {
           {sortMounth(transaction, type, period, currentYear).map((tr) => {
             return (
               <tr className={s.tr} key={Object.keys(tr)}>
-                <td className={s.month}>{[Object.keys(tr)]}</td>
-                <td className={s.sum}>{[Object.values(tr)]}</td>
+                <td className={s.month}>{Object.keys(tr)}</td>
+                <td className={s.sum}>{Object.values(tr)}</td>
               </tr>
             );
           })}

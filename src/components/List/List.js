@@ -28,7 +28,6 @@ function List({ type }) {
   return (
     <>
       {trLoad && <Skeleton />}
-
       <div className={s.mainContainer}>
         <div className={s.listContainer}>
           <table className={s.table}>
