@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import deleteIcon from "../../assets/images/delete.svg";
 import { filterAll } from "../../helpers/support/FilterList.js";
 import { getIdResolve } from "../../redux/transaction/slice";
 import Modal from "../Modal/ModalWindow/ModalWindow";
-import { getAllTransactions } from "../../redux/transaction/operation";
 import { getLoading, getTransactions } from "../../redux/transaction/selectors";
 import Skeleton from "../Loader/Loader";
 import { useTranslation } from "react-i18next";
@@ -16,10 +15,6 @@ const Mobile = ({ type }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
   const { t } = useTranslation();
-
-  useEffect(() => {
-    dispatch(getAllTransactions());
-  }, [dispatch]);
 
   const toggleModal = (id) => {
     setModalOpen(!isModalOpen);

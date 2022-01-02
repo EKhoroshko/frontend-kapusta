@@ -17,7 +17,10 @@ import AddFormMobile from "../../components/AddForm/AddFormMobile";
 import Skeleton from "../../components/Loader/Loader";
 import { getBalance, getIsLoading } from "../../redux/auth/selectors";
 import { changeBalance } from "../../redux/auth/operations";
-import { addTransaction } from "../../redux/transaction/operation";
+import {
+  addTransaction,
+  getAllTransactions,
+} from "../../redux/transaction/operation";
 import { getDateTransaction } from "../../redux/transaction/selectors";
 import { useTranslation } from "react-i18next";
 import "react-toastify/dist/ReactToastify.css";
@@ -45,6 +48,10 @@ function Home() {
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllTransactions());
+  }, [dispatch]);
 
   useEffect(() => {
     const path = location.pathname !== "/home";

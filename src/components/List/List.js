@@ -2,17 +2,13 @@ import React from "react";
 import { useState } from "react";
 import MobileList from "./MobileList";
 import Modal from "../Modal/ModalWindow/ModalWindow";
-import {
-  getAllTransactions,
-  deleteTransaction,
-} from "../../redux/transaction/operation";
+import { deleteTransaction } from "../../redux/transaction/operation";
 import { getIdResolve } from "../../redux/transaction/slice";
 import { filterAll } from "../../helpers/support/FilterList.js";
 import { getTransactions } from "../../redux/transaction/selectors";
 import { getLoading } from "../../redux/transaction/selectors";
 import deleteIcon from "../../assets/images/delete.svg";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
 import Skeleton from "../Loader/Loader";
 import { useTranslation } from "react-i18next";
 import s from "./List.module.css";
@@ -23,10 +19,6 @@ function List({ type }) {
   const [isModalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
   const { t } = useTranslation();
-
-  useEffect(() => {
-    dispatch(getAllTransactions());
-  }, [dispatch]);
 
   const toggleModal = (id) => {
     setModalOpen(!isModalOpen);
