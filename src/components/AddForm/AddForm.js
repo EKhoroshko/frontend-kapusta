@@ -24,6 +24,10 @@ function AddForm({ onSubmit, type }) {
     clearForm();
   };
 
+  const handleChange = (value) => {
+    setSelect(value);
+  };
+
   const checkPrise = (e) => {
     setPrice(e.currentTarget.value);
   };
@@ -57,25 +61,27 @@ function AddForm({ onSubmit, type }) {
               <input
                 type="text"
                 className={css.descr}
-                placeholder="Описание товара"
+                placeholder={t("plhDescr")}
                 value={description}
                 onChange={checkDescription}
               />
               {type && type === "costs" ? (
                 <Select
                   styles={customStyles}
+                  value={select}
                   options={options}
                   className={css.select}
-                  placeholder={"Категория товара"}
-                  onChange={(options) => setSelect(options.label)}
+                  placeholder={t("list.category")}
+                  onChange={handleChange}
                 />
               ) : (
                 <Select
                   styles={customStyles}
                   options={optionsIncoms}
+                  value={select}
                   className={css.select}
-                  placeholder={"Категория товара"}
-                  onChange={(optionsIncoms) => setSelect(optionsIncoms.label)}
+                  placeholder={t("list.category")}
+                  onChange={handleChange}
                 />
               )}
               <div className={css.formPrice}>

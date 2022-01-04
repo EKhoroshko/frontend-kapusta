@@ -23,6 +23,10 @@ function AddFormMobile({ onSubmit, type }) {
     clearForm();
   };
 
+  const handleChange = (value) => {
+    setSelect(value);
+  };
+
   const checkPrise = (e) => {
     setPrice(e.currentTarget.value);
   };
@@ -56,25 +60,27 @@ function AddFormMobile({ onSubmit, type }) {
               <input
                 type="text"
                 className={css.descr}
-                placeholder="Описание товара"
+                placeholder={t("plhDescr")}
                 value={description}
                 onChange={checkDescription}
               />
               {type && type === "costs" ? (
                 <Select
                   styles={customStyles}
+                  value={select}
                   options={options}
                   className={css.select}
-                  placeholder={"Категория товара"}
-                  onChange={(options) => setSelect(options.label)}
+                  placeholder={t("list.category")}
+                  onChange={handleChange}
                 />
               ) : (
                 <Select
                   styles={customStyles}
+                  value={select}
                   options={optionsIncoms}
                   className={css.select}
-                  placeholder={"Категория товара"}
-                  onChange={(options) => setSelect(options.label)}
+                  placeholder={t("list.category")}
+                  onChange={handleChange}
                 />
               )}
               <div className={css.formPrice}>

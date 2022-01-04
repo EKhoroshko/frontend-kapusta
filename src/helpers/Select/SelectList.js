@@ -14,5 +14,5 @@ export const options = [
 
 export const optionsIncoms = [
   { value: "ЗП", label: "ЗП" },
-  { value: "Доп.доход", label: "Доп. доход" },
+  { value: "Доп.доход", label: "Доп.доход" },
 ];
