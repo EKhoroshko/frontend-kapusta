@@ -23,7 +23,7 @@ const findTotalSumForChart = (data, type, date) => {
   return data
     .filter((transaction) => transaction.transactionType === type)
     .filter((tr) => tr.year === date.year)
-    .filter((tr) => tr.monthString === date.name)
+    .filter((tr) => tr.monthString === date.name && date.name)
     .reduce((result, subcategorys) => {
       const subCategory = result.find(
         (item) => item.subCategory === subcategorys.category
