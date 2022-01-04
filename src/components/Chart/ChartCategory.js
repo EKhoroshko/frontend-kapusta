@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { getIDiagramInfo } from "../../redux/transaction/selectors";
 import WindowDementions from "../../helpers/WindowDementions";
 import { Bar } from "react-chartjs-2";
+import { useTranslation } from "react-i18next";
 
 // eslint-disable-next-line no-unused-vars
 import Chart from "chart.js/auto";
@@ -28,6 +29,7 @@ ChartJS.register(
 );
 
 export default function ChartCategory() {
+  const { t } = useTranslation();
   const { width } = WindowDementions();
   const info = useSelector(getIDiagramInfo);
 
@@ -103,8 +105,8 @@ export default function ChartCategory() {
         <Bar data={data} width={320} height={height} options={options} />
       ) : (
         <div className={s.altBlock}>
-          <span className={s.altText1}>Если хотите создать диаграмму</span>
-          <span className={s.altText2}> Кликайте на иконку</span>
+          <span className={s.altText1}>{t("chart.text1")}</span>
+          <span className={s.altText2}> {t("chart.text2")}</span>
           <p></p>
         </div>
       )}

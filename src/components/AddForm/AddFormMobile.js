@@ -7,9 +7,11 @@ import { options, optionsIncoms } from "../../helpers/Select/SelectList.js";
 import { ReactComponent as Calculator } from "../../assets/images/calculator.svg";
 import { ReactComponent as Arrow } from "../../assets/images/arrowLeft.svg";
 import Button from "../Button/Button";
+import { useTranslation } from "react-i18next";
 import css from "./AddFormMobile.module.css";
 
 function AddFormMobile({ onSubmit, type }) {
+  const { t } = useTranslation();
   const history = useHistory();
   const [select, setSelect] = useState(null);
   const [description, setDescription] = useState("");
@@ -19,6 +21,10 @@ function AddFormMobile({ onSubmit, type }) {
     e.preventDefault();
     onSubmit({ price, description, select });
     clearForm();
+  };
+
+  const handleChange = (value) => {
+    setSelect(value);
   };
 
   const checkPrise = (e) => {
@@ -54,31 +60,34 @@ function AddFormMobile({ onSubmit, type }) {
               <input
                 type="text"
                 className={css.descr}
-                placeholder="Описание товара"
+                placeholder={t("plhDescr")}
                 value={description}
                 onChange={checkDescription}
               />
               {type && type === "costs" ? (
                 <Select
                   styles={customStyles}
+                  value={select}
                   options={options}
                   className={css.select}
-                  placeholder={"Категория товара"}
-                  onChange={(options) => setSelect(options.label)}
+                  placeholder={t("list.category")}
+                  onChange={handleChange}
                 />
               ) : (
                 <Select
                   styles={customStyles}
+                  value={select}
                   options={optionsIncoms}
                   className={css.select}
-                  placeholder={"Категория товара"}
-                  onChange={(options) => setSelect(options.label)}
+                  placeholder={t("list.category")}
+                  onChange={handleChange}
                 />
               )}
               <div className={css.formPrice}>
                 <input
                   className={css.inputPrice}
                   type="number"
+                  min="1"
                   autoComplete="off"
                   placeholder="00.00 UAH"
                   value={price}
@@ -91,27 +100,22 @@ function AddFormMobile({ onSubmit, type }) {
             </div>
             <ul className={css.list}>
               <li className={css.item}>
-                <Button type="submit" text="ввод" onSubmit={writePrice} />
+                <Button
+                  type="submit"
+                  text={t("btnEnt")}
+                  onSubmit={writePrice}
+                />
               </li>
               <li>
-                <Button type="button" text="очистить" onClick={clearForm} />
+                <Button
+                  type="button"
+                  text={t("btnClear")}
+                  onClick={clearForm}
+                />
               </li>
             </ul>
           </form>
         </div>
-
-        {/* <div className={css.boxLink}>
-          <NavLink className={css.link} to={`${match.url}/casts`}>
-            <button className={css.btn} type="button">
-              Расходы
-            </button>
-          </NavLink>
-          <NavLink className={css.link} to={`${match.url}/incomes`}>
-            <button className={css.btn} type="button">
-              Доход
-            </button>
-          </NavLink>
-        </div> */}
       </div>
     </div>
   );

@@ -1,0 +1,53 @@
+{
+  "balance": "Balance:",
+  "team": "wathc team",
+  "home": "To main",
+  "confirm": "Confirm",
+  "arrowGoBack": "Go back to main",
+  "costs": "Costs",
+  "incomes": "Incomes",
+  "summary": "Summary",
+  "toReport": "Go to reports",
+  "pass": "Password",
+  "mail": "Email",
+  "name": "Name",
+  "reg": "Registration",
+  "log": "Login",
+  "logOut": "Log out",
+  "logdescr1": "You can log in with your Google account:",
+  "logdescr2": "Or login using your email address and password after registration:",
+  "btnEnt": "add",
+  "btnClear": "clear",
+  "plhDescr": "Product description",
+
+  "modal": {
+    "text1": "Are you sure you want to log out?",
+    "text2": "Are you sure?",
+    "btnYes": "yes",
+    "btnNo": "no",
+    "comment1": "Hey! To get started, enter the current balance of your account!",
+    "comment2": "You cannot spend money until you have it!"
+  },
+
+  "chart": {
+    "text1": "If you want to see the diagram",
+    "text2": "Click on the icon"
+  },
+
+  "money": {
+    "uah": "uah"
+  },
+
+  "verify": {
+    "title1": "You have successfully passed the verification",
+    "title2": "We are checking your email please wait ...",
+    "link": "Go to login"
+  },
+
+  "list": {
+    "date": "Date",
+    "descr": "Description",
+    "category": "Category",
+    "sum": "Sum"
+  }
+}

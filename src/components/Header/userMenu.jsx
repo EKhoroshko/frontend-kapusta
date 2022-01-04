@@ -6,12 +6,14 @@ import { useSelector, useDispatch } from "react-redux";
 import LogoutModal from "./LogoutModal";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import css from "./Header.module.css";
 
 
 
 export default function UserMenu() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const userName = useSelector(getUserName);
   const avatarURL = useSelector(getAvatar);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -40,11 +42,11 @@ export default function UserMenu() {
           <img src={logout} alt="" width={16} height={16} />
         </MediaQuery>
         <MediaQuery minWidth={768}>
-          <p className={css.logout__text}>Выйти</p>
+          <p className={css.logout__text}>{t("logOut")}</p>
         </MediaQuery>
         {isModalOpen && (
           <LogoutModal
-            text={"Вы уверены что хотите выйти?"}
+            text={t("modal.text1")}
             onCancel={toggleModal}
             onSubmit={isLogOut}
           />

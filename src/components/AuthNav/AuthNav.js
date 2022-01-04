@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { registration, loginUser } from "../../redux/auth/operations";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 import s from "./AuthNav.module.css";
 
 export default function AuthNav({ props }) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [email, setMail] = useState("");
   const [password, setPass] = useState("");
@@ -64,7 +66,7 @@ export default function AuthNav({ props }) {
       <form className={s.form} onSubmit={handlSubmit} autoComplete="off">
         {isActiv && (
           <label className={s.label}>
-            <p className={s.description}>Имя:</p>
+            <p className={s.description}>{t("name")}:</p>
             <input
               className={s.input}
               type="text"
@@ -76,7 +78,7 @@ export default function AuthNav({ props }) {
           </label>
         )}
         <label className={s.label}>
-          <p className={s.description}>Электронная почта:</p>
+          <p className={s.description}>{t("mail")}:</p>
           <input
             className={s.input}
             type="email"
@@ -87,7 +89,7 @@ export default function AuthNav({ props }) {
           />
         </label>
         <label className={s.label}>
-          <p className={s.description}>Пароль:</p>
+          <p className={s.description}>{t("pass")}:</p>
           <input
             className={s.input}
             type="password"
@@ -102,7 +104,7 @@ export default function AuthNav({ props }) {
             {isActiv ? "Регистрация" : "Войти"}
           </button>
           <button className={s.button} onClick={handleChangeForm} type="submit">
-            {isActiv ? "Войти" : "Регистрация"}{" "}
+            {isActiv ? "Войти" : "Регистрация"}
           </button>
         </div>
       </form>

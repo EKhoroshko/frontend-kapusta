@@ -12,7 +12,6 @@ import Vova from './pictures/Vova.jpg';
 import Vlad from './pictures/Vlad.jpg';
 import github from './pictures/github.svg';
 import styles from './Team.module.css'
-//import css from "./NotFound.module.css";
 
 function Team() {
   return <div className={styles.container}>
@@ -22,7 +21,7 @@ function Team() {
         <p className={styles.name}>Scrum Master</p>
         <p className={styles.name}>Mikhail Kolomoitsev</p>
         <a href="https://github.com/MikhailKolomoitsev" className={styles.link}>
-          <img src={github} alt="github link" className={styles.github}/>
+          <img src={github} alt="github link" className={styles.github} />
         </a>
       </li>
       <li className={styles.item}>
@@ -106,7 +105,7 @@ function Team() {
         </a>
       </li>
     </ul>
-    
+
   </div>;
 }
 
