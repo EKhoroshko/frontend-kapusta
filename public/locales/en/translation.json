@@ -19,6 +19,7 @@
   "btnEnt": "add",
   "btnClear": "clear",
   "plhDescr": "Product description",
+  "period": " Current period:",
 
   "modal": {
     "text1": "Are you sure you want to log out?",

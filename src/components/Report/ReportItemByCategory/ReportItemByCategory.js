@@ -5,6 +5,8 @@ import styles from "./ReportItemByCategory.module.css";
 const ReportItemByCategory = ({ data }) => {
   const { subCategory, sum, icon } = data;
 
+  console.log(data);
+
   return (
     <div className={styles.item}>
       <p className={styles.sum}>{sum}</p>
