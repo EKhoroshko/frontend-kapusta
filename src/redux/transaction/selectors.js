@@ -11,3 +11,5 @@ export const getIdTransaction = (store) => store.transaction.idTransaction;
 export const getIDiagramInfo = (store) => store.transaction.diagramma;
 
 export const getDateTransaction = (store) => store.transaction.date;
+
+export const getLang = (store) => store.transaction.language;

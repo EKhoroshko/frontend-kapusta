@@ -3,15 +3,24 @@ import { useHistory } from "react-router-dom";
 import Select from "react-select";
 import Calendar from "../Calendar/Calendar";
 import customStyles from "../../helpers/Select/SelectOption.js";
-import { options, optionsIncoms } from "../../helpers/Select/SelectList.js";
+import {
+  options,
+  optionsIncoms,
+  optionsIncomsEn,
+  optionsEn,
+} from "../../helpers/Select/SelectList.js";
 import { ReactComponent as Calculator } from "../../assets/images/calculator.svg";
 import { ReactComponent as Arrow } from "../../assets/images/arrowLeft.svg";
 import Button from "../Button/Button";
 import Svodka from "../Svodka/Svodka";
 import { useTranslation } from "react-i18next";
 import css from "./AddForm.module.css";
+import { useSelector } from "react-redux";
+import { getLang } from "../../redux/transaction/selectors";
+import { waitLang } from "../../helpers/Language/lang";
 
 function AddForm({ onSubmit, type }) {
+  const lang = useSelector(getLang);
   const history = useHistory();
   const [select, setSelect] = useState(null);
   const [description, setDescription] = useState("");
@@ -69,7 +78,7 @@ function AddForm({ onSubmit, type }) {
                 <Select
                   styles={customStyles}
                   value={select}
-                  options={options}
+                  options={waitLang(lang, options, optionsEn)}
                   className={css.select}
                   placeholder={t("list.category")}
                   onChange={handleChange}
@@ -77,7 +86,7 @@ function AddForm({ onSubmit, type }) {
               ) : (
                 <Select
                   styles={customStyles}
-                  options={optionsIncoms}
+                  options={waitLang(lang, optionsIncoms, optionsIncomsEn)}
                   value={select}
                   className={css.select}
                   placeholder={t("list.category")}

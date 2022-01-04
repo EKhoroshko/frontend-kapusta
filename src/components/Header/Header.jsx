@@ -1,20 +1,26 @@
-import React from "react";
-import css from "./Header.module.css";
+import React, { useEffect } from "react";
 import UserMenu from "./userMenu";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getIsLoggedIn } from "../../redux/auth/selectors";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { checkLang } from '../../redux/transaction/slice';
+import css from "./Header.module.css";
 
 function Header() {
+  const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
   const location = useLocation()
   const { t } = useTranslation();
 
   const { i18n } = useTranslation();
+
+  useEffect(() => {
+    dispatch(checkLang(i18n.language))
+  }, [dispatch, i18n.language])
 
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);

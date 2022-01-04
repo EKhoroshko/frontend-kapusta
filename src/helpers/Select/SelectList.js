@@ -12,7 +12,26 @@ export const options = [
   { value: "Прочее", label: "Прочее" },
 ];
 
+export const optionsEn = [
+  { value: "Transport", label: "Transport" },
+  { value: "Products", label: "Products" },
+  { value: "Health", label: "Health" },
+  { value: "Alcohol", label: "Alcohol" },
+  { value: "Entertainment", label: "Entertainment" },
+  { value: "Housing", label: "Housing" },
+  { value: "Technics", label: "Technics" },
+  { value: "Bills, communication", label: "Bills, communication" },
+  { value: "Sports, hobbies ", label: "Sports, hobbies" },
+  { value: "Education", label: "Education" },
+  { value: "Other", label: "Other" },
+];
+
 export const optionsIncoms = [
   { value: "ЗП", label: "ЗП" },
   { value: "Доп.доход", label: "Доп.доход" },
+];
+
+export const optionsIncomsEn = [
+  { value: "Salary", label: "Salary" },
+  { value: "Additional income", label: "Additional income" },
 ];
