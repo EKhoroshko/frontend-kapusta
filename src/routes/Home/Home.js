@@ -102,7 +102,6 @@ function Home() {
       return toast.warning("Заполните всю форму и выберите тип транзакции");
     } else {
       updateBalance(transaction);
-      console.log(transaction);
     }
   };
 
