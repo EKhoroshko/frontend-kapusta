@@ -34,7 +34,7 @@ const Mobile = ({ type }) => {
                   <p className={styles.textDescMob}>{tr.description}</p>
                   <div className={styles.descWrap}>
                     <p className={styles.dateMob}>{tr.date}</p>
-                    <p className={styles.categoryMob}>{tr.category}</p>
+                    <p className={styles.categoryMob}>{tr.label}</p>
                   </div>
                 </div>
 

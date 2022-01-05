@@ -9,7 +9,7 @@ const ReportItemByCategory = ({ data }) => {
     <div className={styles.item}>
       <p className={styles.sum}>{sum}</p>
       <div className={styles.flex}>
-        {/* <svg
+        <svg
           width="56"
           height="64"
           className={styles.svg}
@@ -18,7 +18,7 @@ const ReportItemByCategory = ({ data }) => {
           {icon.pathOne && <path d={icon.pathOne} />}
           {icon.pathTwo && <path d={icon.pathTwo} />}
           {icon.pathThree && <path d={icon.pathThree} />}
-       </svg>*/}
+        </svg>
         <div className={styles.circle}></div>
       </div>
       <p className={styles.descr}>{subCategory}</p>

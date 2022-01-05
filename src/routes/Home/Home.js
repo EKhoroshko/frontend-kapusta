@@ -97,7 +97,6 @@ function Home() {
       label: select.label,
       type,
     };
-    console.log(transaction);
     if (
       dateTransaction === "" ||
       type === "" ||

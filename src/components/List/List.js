@@ -24,7 +24,7 @@ function List({ type }) {
     setModalOpen(!isModalOpen);
     dispatch(getIdResolve(id));
   };
-  console.log(transactions);
+
   return (
     <>
       {trLoad && <Skeleton />}
@@ -48,7 +48,7 @@ function List({ type }) {
                     <tr className={s.tr} key={tr._id}>
                       <td className={s.td}>{tr.date}</td>
                       <td className={s.tdDescr}>{tr.description}</td>
-                      <td className={s.td}>{tr.category}</td>
+                      <td className={s.td}>{tr.label}</td>
                       {incomes ? (
                         <td className={s.tdIncomes}>
                           + {tr.sum} {t("money.uah")}.{" "}
