@@ -39,7 +39,7 @@ export const getAllTransactions = () => async (dispatch) => {
 };
 
 export const addTransaction =
-  ({ date, type, sum, description, category }) =>
+  ({ date, type, sum, description, category, label }) =>
   async (dispatch) => {
     const token = localStorage.getItem("token");
     const options = {
@@ -54,6 +54,7 @@ export const addTransaction =
         description: description,
         category: category,
         date: date,
+        label: label,
       }),
     };
 

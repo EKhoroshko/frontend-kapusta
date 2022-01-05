@@ -16,6 +16,7 @@ import {
   diagramDataClear,
 } from "../../../redux/transaction/slice";
 import { useSelector, useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import styles from "./ReportListByCategory.module.css";
 
 const ReportListByCategory = () => {
@@ -24,6 +25,9 @@ const ReportListByCategory = () => {
   const date = useSelector(getCurrentPeriod);
   const [transaction, setTransaction] = useState([]);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+
+  console.log(transaction);
 
   const map = new Map();
   [...transaction, ...iconsArray].forEach((item) => {
@@ -64,9 +68,11 @@ const ReportListByCategory = () => {
         >
           <BtnLeft />
         </button>
-        <p className={styles.cldrMonth}>
-          {type === "costs" ? "Расход" : "Доход"}
-        </p>
+        {type === "costs" ? (
+          <p className={styles.cldrMonth}>{t("costs")}</p>
+        ) : (
+          <p className={styles.cldrMonth}>{t("incomes")}</p>
+        )}
         <button
           type="button"
           name="rightBtn"

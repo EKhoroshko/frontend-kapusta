@@ -18,6 +18,7 @@ export default function Svodka({ type }) {
   const list = sortMounth(transaction, type, period, currentYear);
   const svodkaInfo = (arr, arr2) => {
     return arr.forEach((tr) => {
+      // eslint-disable-next-line array-callback-return
       arr2.find((element) => {
         if (Object.keys(tr).toString() === element.name) {
           tr.nameEn = element.nameEn;

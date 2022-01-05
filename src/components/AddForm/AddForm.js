@@ -14,10 +14,10 @@ import { ReactComponent as Arrow } from "../../assets/images/arrowLeft.svg";
 import Button from "../Button/Button";
 import Svodka from "../Svodka/Svodka";
 import { useTranslation } from "react-i18next";
-import css from "./AddForm.module.css";
 import { useSelector } from "react-redux";
 import { getLang } from "../../redux/transaction/selectors";
 import { waitLang } from "../../helpers/Language/lang";
+import css from "./AddForm.module.css";
 
 function AddForm({ onSubmit, type }) {
   const lang = useSelector(getLang);

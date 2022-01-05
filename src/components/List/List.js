@@ -24,7 +24,7 @@ function List({ type }) {
     setModalOpen(!isModalOpen);
     dispatch(getIdResolve(id));
   };
-
+  console.log(transactions);
   return (
     <>
       {trLoad && <Skeleton />}

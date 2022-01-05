@@ -66,7 +66,7 @@ function Home() {
     history.push("/summary");
   };
 
-  const updateBalance = ({ date, sum, type, category, description }) => {
+  const updateBalance = ({ date, sum, type, category, description, label }) => {
     if (type === "costs") {
       let newBalanceCost = balance - Number(sum);
       if (newBalanceCost < 0) {
@@ -74,13 +74,17 @@ function Home() {
       } else {
         setMoney(newBalanceCost);
         dispatch(changeBalance(newBalanceCost));
-        dispatch(addTransaction({ date, sum, type, category, description }));
+        dispatch(
+          addTransaction({ date, sum, type, category, description, label })
+        );
       }
     } else {
       let newBalanceIncoms = balance + Number(sum);
       setMoney(newBalanceIncoms);
       dispatch(changeBalance(newBalanceIncoms));
-      dispatch(addTransaction({ date, sum, type, category, description }));
+      dispatch(
+        addTransaction({ date, sum, type, category, description, label })
+      );
     }
   };
 
@@ -90,8 +94,10 @@ function Home() {
       description,
       category: select.value,
       date: dateTransaction,
+      label: select.label,
       type,
     };
+    console.log(transaction);
     if (
       dateTransaction === "" ||
       type === "" ||
