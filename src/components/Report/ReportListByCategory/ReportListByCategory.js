@@ -17,6 +17,7 @@ import {
 } from "../../../redux/transaction/slice";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { forChart } from "../../../helpers/Select/SelectList";
 import styles from "./ReportListByCategory.module.css";
 
 const ReportListByCategory = () => {
@@ -30,7 +31,7 @@ const ReportListByCategory = () => {
   console.log(transaction);
 
   const map = new Map();
-  [...transaction, ...iconsArray].forEach((item) => {
+  [...transaction, ...iconsArray, ...forChart].forEach((item) => {
     if (map.has(item.subCategory)) {
       Object.assign(map.get(item.subCategory), item);
     } else {

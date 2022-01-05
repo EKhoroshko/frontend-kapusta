@@ -35,3 +35,19 @@ export const optionsIncomsEn = [
   { value: "ЗП", label: "Salary" },
   { value: "Доп.доход", label: "Additional income" },
 ];
+
+export const forChart = [
+  { subCategory: "Транспорт", label: "Transport" },
+  { subCategory: "Продукты", label: "Products" },
+  { subCategory: "Здоровье", label: "Health" },
+  { subCategory: "Алкоголь", label: "Alcohol" },
+  { subCategory: "Развлечения", label: "Entertainment" },
+  { subCategory: "Все для дома", label: "Housing" },
+  { subCategory: "Техника", label: "Technics" },
+  { subCategory: "Коммуналка, связь", label: "Bills, communication" },
+  { subCategory: "Спорт, хобби", label: "Sports, hobbies" },
+  { subCategory: "Образование", label: "Education" },
+  { subCategory: "Прочее", label: "Other" },
+  { subCategory: "ЗП", label: "Salary" },
+  { subCategory: "Доп.доход", label: "Additional income" },
+];

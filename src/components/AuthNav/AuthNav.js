@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { registration, loginUser } from "../../redux/auth/operations";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { getLang } from "../../redux/transaction/selectors";
 
 import s from "./AuthNav.module.css";
 
-export default function AuthNav({ props }) {
+export default function AuthNav() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const lang = useSelector(getLang);
   const [email, setMail] = useState("");
   const [password, setPass] = useState("");
   const [name, setName] = useState("");
@@ -99,14 +101,33 @@ export default function AuthNav({ props }) {
             onChange={waitPass}
           />
         </label>
-        <div className={s.formButton}>
-          <button className={s.button + " " + s.buttonActive} type="submit">
-            {isActiv ? "Регистрация" : "Войти"}
-          </button>
-          <button className={s.button} onClick={handleChangeForm} type="submit">
-            {isActiv ? "Войти" : "Регистрация"}
-          </button>
-        </div>
+        {lang === "ru" ? (
+          <div className={s.formButton}>
+            <button className={s.button + " " + s.buttonActive} type="submit">
+              {isActiv ? "Регистрация" : "Войти"}
+            </button>
+            <button
+              className={s.button}
+              onClick={handleChangeForm}
+              type="submit"
+            >
+              {isActiv ? "Войти" : "Регистрация"}
+            </button>
+          </div>
+        ) : (
+          <div className={s.formButton}>
+            <button className={s.button + " " + s.buttonActive} type="submit">
+              {isActiv ? "Registration" : "Login"}
+            </button>
+            <button
+              className={s.button}
+              onClick={handleChangeForm}
+              type="submit"
+            >
+              {isActiv ? "Login" : "Registration"}
+            </button>
+          </div>
+        )}
       </form>
     </div>
   );

@@ -21,6 +21,11 @@ function Modal({ onCancel, text }) {
     }
   };
 
+  const clickNo = () => {
+    dispatch(clearId());
+    onCancel();
+  };
+
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
     return () => {
@@ -40,6 +45,7 @@ function Modal({ onCancel, text }) {
       onCancel();
     }
   };
+
   return createPortal(
     <div className={s.ModalOverlay} onClick={handleOverlayClick}>
       <div className={s.ModalWindow}>
@@ -61,7 +67,11 @@ function Modal({ onCancel, text }) {
             />
           </div>
           <div className={s.btnWrapper}>
-            <ModalBtn text={t("modal.btnNo")} key="2" onClick={onCancel} />
+            <ModalBtn
+              text={t("modal.btnNo")}
+              key="2"
+              onClick={() => clickNo()}
+            />
           </div>
         </div>
       </div>
