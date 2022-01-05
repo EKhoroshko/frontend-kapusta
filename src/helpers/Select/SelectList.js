@@ -13,17 +13,17 @@ export const options = [
 ];
 
 export const optionsEn = [
-  { value: "Transport", label: "Transport" },
-  { value: "Products", label: "Products" },
-  { value: "Health", label: "Health" },
-  { value: "Alcohol", label: "Alcohol" },
-  { value: "Entertainment", label: "Entertainment" },
-  { value: "Housing", label: "Housing" },
-  { value: "Technics", label: "Technics" },
-  { value: "Bills, communication", label: "Bills, communication" },
-  { value: "Sports, hobbies ", label: "Sports, hobbies" },
-  { value: "Education", label: "Education" },
-  { value: "Other", label: "Other" },
+  { value: "Транспорт", label: "Transport" },
+  { value: "Продукты", label: "Products" },
+  { value: "Здоровье", label: "Health" },
+  { value: "Алкоголь", label: "Alcohol" },
+  { value: "Развлечения", label: "Entertainment" },
+  { value: "Все для дома", label: "Housing" },
+  { value: "Техника", label: "Technics" },
+  { value: "Коммуналка, связь", label: "Bills, communication" },
+  { value: "Спорт, хобби", label: "Sports, hobbies" },
+  { value: "Образование", label: "Education" },
+  { value: "Прочее", label: "Other" },
 ];
 
 export const optionsIncoms = [
@@ -32,6 +32,22 @@ export const optionsIncoms = [
 ];
 
 export const optionsIncomsEn = [
-  { value: "Salary", label: "Salary" },
-  { value: "Additional income", label: "Additional income" },
+  { value: "ЗП", label: "Salary" },
+  { value: "Доп.доход", label: "Additional income" },
+];
+
+export const forChart = [
+  { subCategory: "Транспорт", label: "Transport" },
+  { subCategory: "Продукты", label: "Products" },
+  { subCategory: "Здоровье", label: "Health" },
+  { subCategory: "Алкоголь", label: "Alcohol" },
+  { subCategory: "Развлечения", label: "Entertainment" },
+  { subCategory: "Все для дома", label: "Housing" },
+  { subCategory: "Техника", label: "Technics" },
+  { subCategory: "Коммуналка, связь", label: "Bills, communication" },
+  { subCategory: "Спорт, хобби", label: "Sports, hobbies" },
+  { subCategory: "Образование", label: "Education" },
+  { subCategory: "Прочее", label: "Other" },
+  { subCategory: "ЗП", label: "Salary" },
+  { subCategory: "Доп.доход", label: "Additional income" },
 ];

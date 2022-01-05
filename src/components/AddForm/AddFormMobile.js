@@ -3,14 +3,23 @@ import { useHistory } from "react-router-dom";
 import Select from "react-select";
 import Calendar from "../Calendar/Calendar";
 import customStyles from "../../helpers/Select/SelectOption.js";
-import { options, optionsIncoms } from "../../helpers/Select/SelectList.js";
+import {
+  options,
+  optionsIncoms,
+  optionsIncomsEn,
+  optionsEn,
+} from "../../helpers/Select/SelectList.js";
 import { ReactComponent as Calculator } from "../../assets/images/calculator.svg";
 import { ReactComponent as Arrow } from "../../assets/images/arrowLeft.svg";
 import Button from "../Button/Button";
 import { useTranslation } from "react-i18next";
+import { waitLang } from "../../helpers/Language/lang";
+import { getLang } from "../../redux/transaction/selectors";
+import { useSelector } from "react-redux";
 import css from "./AddFormMobile.module.css";
 
 function AddFormMobile({ onSubmit, type }) {
+  const lang = useSelector(getLang);
   const { t } = useTranslation();
   const history = useHistory();
   const [select, setSelect] = useState(null);
@@ -68,7 +77,7 @@ function AddFormMobile({ onSubmit, type }) {
                 <Select
                   styles={customStyles}
                   value={select}
-                  options={options}
+                  options={waitLang(lang, options, optionsEn)}
                   className={css.select}
                   placeholder={t("list.category")}
                   onChange={handleChange}
@@ -77,7 +86,7 @@ function AddFormMobile({ onSubmit, type }) {
                 <Select
                   styles={customStyles}
                   value={select}
-                  options={optionsIncoms}
+                  options={waitLang(lang, optionsIncoms, optionsIncomsEn)}
                   className={css.select}
                   placeholder={t("list.category")}
                   onChange={handleChange}

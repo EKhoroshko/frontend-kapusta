@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { getLang } from "../../../redux/transaction/selectors";
+import { useSelector } from "react-redux";
 import styles from "./ReportItemByCategory.module.css";
 
 const ReportItemByCategory = ({ data }) => {
-  const { subCategory, sum, icon } = data;
+  const { subCategory, sum, icon, label } = data;
+  const lang = useSelector(getLang);
 
   return (
     <div className={styles.item}>
@@ -21,7 +24,11 @@ const ReportItemByCategory = ({ data }) => {
         </svg>
         <div className={styles.circle}></div>
       </div>
-      <p className={styles.descr}>{subCategory}</p>
+      {lang === "ru" ? (
+        <p className={styles.descr}>{subCategory}</p>
+      ) : (
+        <p className={styles.descr}>{label}</p>
+      )}
     </div>
   );
 };
