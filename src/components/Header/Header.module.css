@@ -86,3 +86,27 @@
 .link {
   display: flex;
 }
+
+.box {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.btnLang {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.btn {
+  padding: 0px;
+  border: none;
+  cursor: pointer;
+}
+
+.picture {
+  display: block;
+  width: 20px;
+  height: 18px;
+}

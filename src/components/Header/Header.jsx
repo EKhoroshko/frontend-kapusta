@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { checkLang } from '../../redux/transaction/slice';
+import en from '../../assets/lang/en.jpg';
+import ru from '../../assets/lang/ru.jpg'
 import css from "./Header.module.css";
 
 function Header() {
@@ -29,16 +31,23 @@ function Header() {
   return (
     <header className={css.header}>
       <div className={css.container}>
-        <Link to={isLoggedIn ? "/home" : "/"}>
-          <img src={logo} alt="" width={90} height={30} />
-        </Link>
-        <div>
-          <button onClick={() => changeLanguage("en")}>EN</button>
-          <button onClick={() => changeLanguage("ru")}>RU</button>
+        <div className={css.box}>
+          <Link to={isLoggedIn ? "/home" : "/"}>
+            <img src={logo} alt="" width={90} height={30} />
+          </Link>
+          <div className={css.btnLang}>
+            <button
+              className={css.btn}
+              onClick={() => changeLanguage("en")}>
+              <img src={en} alt="Mikhail" className={css.picture} />
+            </button>
+            <button
+              className={css.btn}
+              onClick={() => changeLanguage("ru")}>
+              <img src={ru} alt="Mikhail" className={css.picture} />
+            </button>
+          </div>
         </div>
-        {isLoggedIn && <NavLink to="/team" className={css.container}>
-          <p className={css.text}>{t("team")}</p>
-        </NavLink>}
         {location.pathname === '/team' &&
           <NavLink to="/home" className={css.container}>
             <p className={css.text}>{t("home")}</p>
