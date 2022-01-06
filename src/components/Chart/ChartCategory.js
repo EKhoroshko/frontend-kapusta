@@ -105,9 +105,8 @@ export default function ChartCategory() {
         <Bar data={data} width={320} height={height} options={options} />
       ) : (
         <div className={s.altBlock}>
-          <span className={s.altText1}>{t("chart.text1")}</span>
-          <span className={s.altText2}> {t("chart.text2")}</span>
-          <p></p>
+          <p className={s.altText1}>{t("chart.text1")}</p>
+          <p className={s.altText2}> {t("chart.text2")}</p>
         </div>
       )}
     </div>
