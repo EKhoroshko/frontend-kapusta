@@ -66,13 +66,11 @@ export default function Period() {
         </button>
         {lang === "ru" ? (
           <p className={periodStyles.CurrentPeriod}>
-            {date.name}&nbsp;
-            <span>{date.year}</span>
+            {date.name} {date.year}
           </p>
         ) : (
           <p className={periodStyles.CurrentPeriod}>
-            {date.nameEn}&nbsp;
-            <span>{date.year}</span>
+            {date.nameEn} {date.year}
           </p>
         )}
         <button
