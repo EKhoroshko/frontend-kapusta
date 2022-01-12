@@ -89,14 +89,6 @@ function Home() {
   };
 
   const getFormInfo = ({ price, description, select }) => {
-    const transaction = {
-      sum: Number(price),
-      description,
-      category: select.value,
-      date: dateTransaction,
-      label: select.label,
-      type,
-    };
     if (
       dateTransaction === "" ||
       type === "" ||
@@ -106,6 +98,14 @@ function Home() {
     ) {
       return toast.warning("Заполните всю форму и выберите тип транзакции");
     } else {
+      const transaction = {
+        sum: Number(price),
+        description,
+        category: select.value,
+        date: dateTransaction,
+        label: select.label,
+        type,
+      };
       updateBalance(transaction);
     }
   };
