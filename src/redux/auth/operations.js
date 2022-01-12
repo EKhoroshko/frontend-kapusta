@@ -244,8 +244,8 @@ export const veryfication = () => async (dispatch, getState) => {
 };
 
 export const userGoogle = (token) => async (dispatch) => {
-  localStorage.setItem("token", token);
-  if (token) {
+  if (token && token.length > 1) {
+    localStorage.setItem("token", token);
     const options = {
       method: "GET",
       headers: {
