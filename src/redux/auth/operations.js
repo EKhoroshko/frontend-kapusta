@@ -265,12 +265,7 @@ export const userGoogle = (token) => async (dispatch) => {
             throw new Error(response.statusText);
           }
         })
-        .then(({ data }) => ({
-          ...data,
-          token,
-          isLogin: true,
-          verify: true,
-        }));
+        .then(({ data }) => ({ ...data, token }));
       dispatch(updateUserResolve(user));
     } catch (error) {
       dispatch(updateUserReject(error.statusText));
