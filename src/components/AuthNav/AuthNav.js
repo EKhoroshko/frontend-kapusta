@@ -94,6 +94,7 @@ export default function AuthNav() {
           <p className={s.description}>{t("pass")}:</p>
           <input
             className={s.input}
+            placeholder={t("plPass")}
             type="password"
             name="password"
             required
