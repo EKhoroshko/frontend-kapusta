@@ -246,30 +246,31 @@ export const veryfication = () => async (dispatch, getState) => {
 export const userGoogle = (token) => async (dispatch) => {
   if (token && token.length > 1) {
     localStorage.setItem("token", token);
-    const options = {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    dispatch(updateUserLoading());
-    try {
-      const user = await fetch(
-        "https://back-kapusta.herokuapp.com/api/auth/users/current",
-        options
-      )
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error(response.statusText);
-          }
-        })
-        .then(({ data }) => ({ ...data, token }));
-      dispatch(updateUserResolve(user));
-    } catch (error) {
-      dispatch(updateUserReject(error.statusText));
-      dispatch(userClearError());
-    }
+  }
+  const tokenGogle = localStorage.getItem("token");
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  dispatch(updateUserLoading());
+  try {
+    const user = await fetch(
+      "https://back-kapusta.herokuapp.com/api/auth/users/current",
+      options
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error(response.statusText);
+        }
+      })
+      .then(({ data }) => ({ ...data, token: tokenGogle }));
+    dispatch(updateUserResolve(user));
+  } catch (error) {
+    dispatch(updateUserReject(error.statusText));
+    dispatch(userClearError());
   }
 };
