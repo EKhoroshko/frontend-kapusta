@@ -19,6 +19,7 @@
   "btnEnt": "add",
   "btnClear": "clear",
   "plhDescr": "Product description",
+  "plPass": "more 8 characters",
   "period": " Current period:",
 
   "modal": {
@@ -50,5 +51,9 @@
     "descr": "Description",
     "category": "Category",
     "sum": "Sum"
+  },
+
+  "toast": {
+    "warnBalance": "Insufficient funds on the account"
   }
 }
