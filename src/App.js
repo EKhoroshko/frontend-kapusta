@@ -1,12 +1,12 @@
 import React, { Suspense, lazy, useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch /*useSelector*/ } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import Header from "./components/Header/Header.jsx";
 import Skeleton from "./components/Loader/Loader";
 import PrivateRoutes from "./components/PrivateRoutes/PrivateRoutes";
 import { updateUserToken } from "./redux/auth/operations";
-import { getVerify } from "./redux/auth/selectors";
+//import { getVerify } from "./redux/auth/selectors";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -19,7 +19,7 @@ const NotFound = lazy(() => import("./routes/NotFound/NotFound"));
 const UserPage = lazy(() => import("./routes/UserPage/UserPage"));
 
 function App() {
-  const ver = useSelector(getVerify);
+  //const ver = useSelector(getVerify);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,9 +36,7 @@ function App() {
           <PrivateRoutes path="/summary" component={Summary} />
           <PrivateRoutes path="/team" component={Team} />
           <PrivateRoutes path="/user" component={UserPage} />
-          {!ver && (
-            <Route path="/:verificationToken" exact component={Veryfy} />
-          )}
+          <Route path="/:verificationToken" exact component={Veryfy} />
           <Route path="/404" component={NotFound} />
           <Redirect to="/404" />
         </Switch>
