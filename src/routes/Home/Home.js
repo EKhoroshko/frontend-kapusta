@@ -134,7 +134,7 @@ function Home() {
                 <Diagramma className={css.diagramma} />
               </button>
               <div className={css.balance}>
-                <p className={css.text}>{t("balance")}:</p>
+                <p className={css.text}>{t("balance")}</p>
                 <form className={css.wraper} onSubmit={addBalance}>
                   <input
                     className={css.add}
