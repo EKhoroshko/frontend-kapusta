@@ -61,7 +61,7 @@
 .wraper {
   width: 248px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 40px;
 }
 

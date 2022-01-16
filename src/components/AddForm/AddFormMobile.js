@@ -14,7 +14,7 @@ import { ReactComponent as Arrow } from "../../assets/images/arrowLeft.svg";
 import Button from "../Button/Button";
 import { useTranslation } from "react-i18next";
 import { waitLang } from "../../helpers/Language/lang";
-import { getLang } from "../../redux/transaction/selectors";
+import { getLang } from "../../redux/languag/selectors";
 import { useSelector } from "react-redux";
 import css from "./AddFormMobile.module.css";
 

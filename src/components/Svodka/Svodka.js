@@ -4,7 +4,7 @@ import { getTransactions } from "../../redux/transaction/selectors";
 import period from "../../helpers/SvodkaMonth.js";
 import { sortMounth } from "../../helpers/support/FilterState";
 import { useTranslation } from "react-i18next";
-import { getLang } from "../../redux/transaction/selectors";
+import { getLang } from "../../redux/languag/selectors";
 import s from "./Svodka.module.css";
 
 export default function Svodka({ type }) {

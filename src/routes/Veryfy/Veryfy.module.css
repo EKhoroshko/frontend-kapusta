@@ -6,12 +6,11 @@
 }
 
 .Veryfy {
-  display: inline-block;
   box-sizing: border-box;
   flex-direction: column;
   text-align: center;
   top: 50%;
-  min-width: 300px;
+  min-width: 280px;
   margin: auto;
   padding: 70px 30px 50px;
   border-radius: 10px;
@@ -21,27 +20,17 @@
 }
 @media screen and (min-width: 320px) {
   .Veryfy {
-    /* min-width: 300px; */
+    width: 280px;
     height: 250px;
     margin-top: 50px;
-    margin-left: 17%;
-    margin-right: 17%;
   }
 }
 @media screen and (min-width: 768px) {
   .Veryfy {
-    margin-left: 25%;
-    margin-right: 25%;
+    width: 400px;
   }
 }
 
-@media screen and (min-width: 1280px) {
-  .Veryfy {
-    box-sizing: border-box;
-    margin-left: 33%;
-    margin-right: 33%;
-  }
-}
 .link {
   display: block;
   display: block;

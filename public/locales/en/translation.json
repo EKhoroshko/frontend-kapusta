@@ -54,6 +54,7 @@
   },
 
   "toast": {
-    "warnBalance": "Insufficient funds on the account"
+    "warnBalance": "Insufficient funds on the account",
+    "warnForm": "Fill out the entire form and select the type of transaction"
   }
 }

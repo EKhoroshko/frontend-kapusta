@@ -10,6 +10,13 @@ import styled, { keyframes } from "styled-components";
 import { bounce, tada } from "react-animations";
 import s from "./Veryfy.module.css";
 
+const Bounce = styled.div`
+  animation: 2s ${keyframes`${bounce}`} infinite;
+`;
+const Tada = styled.div`
+  animation: 2s ${keyframes`${tada}`};
+`;
+
 function Veryfy() {
   const { t } = useTranslation();
   const varify = useSelector(getVerify);
@@ -25,12 +32,6 @@ function Veryfy() {
     dispatch(veryfication());
   }, [dispatch]);
 
-  const Bounce = styled.div`
-    animation: 2s ${keyframes`${bounce}`} infinite;
-  `;
-  const Tada = styled.div`
-    animation: 2s ${keyframes`${tada}`};
-  `;
   return (
     <Tada>
       <div className={s.Veryfy}>

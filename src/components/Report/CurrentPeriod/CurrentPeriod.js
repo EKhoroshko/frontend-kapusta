@@ -6,7 +6,7 @@ import { getCurrentPeriod } from "../../../redux/transaction/selectors";
 import SvodkaMonth from "../../../helpers/SvodkaMonth";
 import { changeDate, diagramDataClear } from "../../../redux/transaction/slice";
 import { useTranslation } from "react-i18next";
-import { getLang } from "../../../redux/transaction/selectors";
+import { getLang } from "../../../redux/languag/selectors";
 import periodStyles from "./Period.module.css";
 
 export default function Period() {

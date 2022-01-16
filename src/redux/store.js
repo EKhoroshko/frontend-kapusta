@@ -12,6 +12,7 @@ import storage from "redux-persist/lib/storage";
 import logger from "redux-logger";
 import authReducer from "./auth/slice";
 import transactionReducer from "./transaction/slice";
+import languageSlice from "./languag/slice";
 import { configureStore } from "@reduxjs/toolkit";
 
 const persistConfig = {
@@ -25,6 +26,7 @@ const store = configureStore({
   reducer: {
     auth: persistedReducer,
     transaction: transactionReducer,
+    language: languageSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

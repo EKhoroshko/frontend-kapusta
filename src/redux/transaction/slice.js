@@ -10,7 +10,6 @@ const transactionSlice = createSlice({
     currentPeriod: {},
     diagramma: {},
     date: "",
-    language: "",
   },
   reducers: {
     allTransactionLoading: (state, _) => ({
@@ -90,11 +89,6 @@ const transactionSlice = createSlice({
       date: payload,
     }),
 
-    checkLang: (state, { payload }) => ({
-      ...state,
-      language: payload,
-    }),
-
     transactionClearError: (state) => ({
       ...state,
       error: null,
@@ -117,7 +111,6 @@ export const {
   getIdResolve,
   clearId,
   changeDate,
-  checkLang,
   dateTransaction,
   diagramDataClear,
 } = transactionSlice.actions;
