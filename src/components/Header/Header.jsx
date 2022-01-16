@@ -7,7 +7,7 @@ import { getIsLoggedIn } from "../../redux/auth/selectors";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { checkLang } from '../../redux/transaction/slice';
+import { checkLang } from '../../redux/languag/slice';
 import en from '../../assets/lang/en.jpg';
 import ru from '../../assets/lang/ru.jpg'
 import css from "./Header.module.css";

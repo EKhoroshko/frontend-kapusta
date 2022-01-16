@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class ErrorBoundary extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       hasError: false,
       error: null,
@@ -20,7 +20,11 @@ class ErrorBoundary extends Component {
 
   render() {
     if (this.state.hasError) {
-      return <p>Что-то пошло не так...</p>
+      if (this.props.lang === "ru") {
+        return <p>Что-то пошло не так... Перезагрузите страницу и попробуйте еще раз</p>
+      } else {
+        return <p>Something went wrong... Please reload the page and try again</p>
+      }
     }
     return this.props.children;
   }

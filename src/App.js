@@ -1,12 +1,13 @@
 import React, { Suspense, lazy, useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import Header from "./components/Header/Header.jsx";
 import Skeleton from "./components/Loader/Loader";
 import PrivateRoutes from "./components/PrivateRoutes/PrivateRoutes";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary.jsx";
 import { updateUserToken } from "./redux/auth/operations";
+import { getLang } from "./redux/languag/selectors";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -19,6 +20,7 @@ const NotFound = lazy(() => import("./routes/NotFound/NotFound"));
 const UserPage = lazy(() => import("./routes/UserPage/UserPage"));
 
 function App() {
+  const lang = useSelector(getLang);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,7 +29,7 @@ function App() {
 
   return (
     <section>
-      <ErrorBoundary>
+      <ErrorBoundary lang={lang}>
         <Header />
         <Suspense fallback={<Skeleton />}>
           <Switch>

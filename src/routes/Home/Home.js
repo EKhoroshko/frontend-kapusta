@@ -91,7 +91,7 @@ function Home() {
   const getFormInfo = ({ price, description, select }) => {
     if (
       dateTransaction === "" ||
-      type === "" ||
+      //type === "" ||
       price === "" ||
       select === "" ||
       description === ""

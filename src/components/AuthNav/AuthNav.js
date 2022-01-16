@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { registration, loginUser } from "../../redux/auth/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { getLang } from "../../redux/transaction/selectors";
+import { getLang } from "../../redux/languag/selectors";
 
 import s from "./AuthNav.module.css";
 
