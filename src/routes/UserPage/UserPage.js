@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { getUserName, getAvatar } from "../../redux/auth/selectors";
 import { ReactComponent as BtnGoBack } from "../../assets/images/BtnGoBack.svg";
+import AvatarUpload from "../../components/AvatarUpload/AvatarUpload";
 import css from "./UserPage.module.css";
 
 const UserPage = () => {
@@ -26,14 +27,10 @@ const UserPage = () => {
           </button>
           <div className={css.content}>
             <div className={css.name}>{userName}</div>
-            <NavLink to="/avatar" className={css.box}>
-              <div className={css.avatar}>
-                <img src={avatarURL} alt="аватар пользователя" />
-              </div>
-              <form /* onSubmit={handleSubmit} */>
-                <input type="file" name="file" />
-                <button type="submit">Загрузить</button>
-              </form>
+            <img src={avatarURL} alt="аватар пользователя" />
+            <AvatarUpload />
+            <NavLink to="/team" className={css.box}>
+              <p>{t("team")}</p>
             </NavLink>
           </div>
         </div>
