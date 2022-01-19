@@ -285,6 +285,7 @@ export const UpdateAvatar = (file) => async (dispatch) => {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${token}`,
     },
+    body: JSON.stringify({ avatarURL: file }),
   };
   dispatch(updateAvatarLoading());
   try {

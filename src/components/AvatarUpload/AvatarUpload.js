@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateAvatarResolve } from "../../redux/auth/slice";
+import { UpdateAvatar } from "../../redux/auth/operations";
 
 export default function AvatarUpload() {
   const dispatch = useDispatch();
@@ -14,12 +14,14 @@ export default function AvatarUpload() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", file);
-    dispatch(updateAvatarResolve(formData));
+    console.log(formData);
+
+    dispatch(UpdateAvatar(formData));
   };
 
   return (
     <Fragment>
-      <form onSubmit={onSubmit}>
+      <form enctype="multipart/form-data" method="post" onSubmit={onSubmit}>
         <input type="file" name="file" id="input" onChange={onChange} />
         <button type="submit" value="Загрузить" />
       </form>
