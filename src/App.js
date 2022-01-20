@@ -5,8 +5,9 @@ import { ToastContainer } from "react-toastify";
 import Header from "./components/Header/Header.jsx";
 import Skeleton from "./components/Loader/Loader";
 import PrivateRoutes from "./components/PrivateRoutes/PrivateRoutes";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary.jsx";
 import { updateUserToken } from "./redux/auth/operations";
-import { getVerify } from "./redux/auth/selectors";
+import { getLang } from "./redux/languag/selectors";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -19,7 +20,7 @@ const NotFound = lazy(() => import("./routes/NotFound/NotFound"));
 const UserPage = lazy(() => import("./routes/UserPage/UserPage"));
 
 function App() {
-  const ver = useSelector(getVerify);
+  const lang = useSelector(getLang);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,32 +29,32 @@ function App() {
 
   return (
     <section>
-      <Header />
-      <Suspense fallback={<Skeleton />}>
-        <Switch>
-          <Route path="/" exact component={Login} />
-          <PrivateRoutes path="/home" component={Home} />
-          <PrivateRoutes path="/summary" component={Summary} />
-          <PrivateRoutes path="/team" component={Team} />
-          <PrivateRoutes path="/user" component={UserPage} />
-          {!ver && (
+      <ErrorBoundary lang={lang}>
+        <Header />
+        <Suspense fallback={<Skeleton />}>
+          <Switch>
+            <Route path="/" exact component={Login} />
+            <PrivateRoutes path="/home" component={Home} />
+            <PrivateRoutes path="/summary" component={Summary} />
+            <PrivateRoutes path="/team" component={Team} />
+            <PrivateRoutes path="/user" component={UserPage} />
             <Route path="/:verificationToken" exact component={Veryfy} />
-          )}
-          <Route path="/404" component={NotFound} />
-          <Redirect to="/404" />
-        </Switch>
-        <ToastContainer
-          position="top-center"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-      </Suspense>
+            <Route path="/404" component={NotFound} />
+            <Redirect to="/404" />
+          </Switch>
+          <ToastContainer
+            position="top-center"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+        </Suspense>
+      </ErrorBoundary>
     </section>
   );
 }

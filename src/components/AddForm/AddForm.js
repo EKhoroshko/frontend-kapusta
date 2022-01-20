@@ -15,7 +15,7 @@ import Button from "../Button/Button";
 import Svodka from "../Svodka/Svodka";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { getLang } from "../../redux/transaction/selectors";
+import { getLang } from "../../redux/languag/selectors";
 import { waitLang } from "../../helpers/Language/lang";
 import css from "./AddForm.module.css";
 

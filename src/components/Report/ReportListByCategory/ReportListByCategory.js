@@ -28,8 +28,6 @@ const ReportListByCategory = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  console.log(transaction);
-
   const map = new Map();
   [...transaction, ...iconsArray, ...forChart].forEach((item) => {
     if (map.has(item.subCategory)) {

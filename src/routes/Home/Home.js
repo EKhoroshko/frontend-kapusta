@@ -26,16 +26,6 @@ import { useTranslation } from "react-i18next";
 import "react-toastify/dist/ReactToastify.css";
 import css from "./Home.module.css";
 
-const toastAction = {
-  position: "top-right",
-  autoClose: 3000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-};
-
 function Home() {
   const { t } = useTranslation();
   const balance = useSelector(getBalance);
@@ -70,7 +60,7 @@ function Home() {
     if (type === "costs") {
       let newBalanceCost = balance - Number(sum);
       if (newBalanceCost < 0) {
-        return toast.warning("Не достаточно средст на счету", toastAction);
+        return toast.warning(t("toast.warnBalance"));
       } else {
         setMoney(newBalanceCost);
         dispatch(changeBalance(newBalanceCost));
@@ -89,14 +79,6 @@ function Home() {
   };
 
   const getFormInfo = ({ price, description, select }) => {
-    const transaction = {
-      sum: Number(price),
-      description,
-      category: select.value,
-      date: dateTransaction,
-      label: select.label,
-      type,
-    };
     if (
       dateTransaction === "" ||
       type === "" ||
@@ -104,8 +86,16 @@ function Home() {
       select === "" ||
       description === ""
     ) {
-      return toast.warning("Заполните всю форму и выберите тип транзакции");
+      return toast.warning(t("toast.warnForm"));
     } else {
+      const transaction = {
+        sum: Number(price),
+        description,
+        category: select.value,
+        date: dateTransaction,
+        label: select.label,
+        type,
+      };
       updateBalance(transaction);
     }
   };
@@ -134,7 +124,7 @@ function Home() {
                 <Diagramma className={css.diagramma} />
               </button>
               <div className={css.balance}>
-                <p className={css.text}>{t("balance")}:</p>
+                <p className={css.text}>{t("balance")}</p>
                 <form className={css.wraper} onSubmit={addBalance}>
                   <input
                     className={css.add}

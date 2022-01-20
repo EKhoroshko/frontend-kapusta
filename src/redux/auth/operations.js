@@ -26,6 +26,7 @@ import {
   updateAvatarReject,
 } from "../auth/slice";
 import { getToken, getUserId, getVerifyTokenRedax } from "./selectors";
+import { getLang } from "../languag/selectors";
 
 const toastAction = {
   position: "top-center",
@@ -39,7 +40,8 @@ const toastAction = {
 
 export const registration =
   ({ name, email, password }) =>
-  async (dispatch) => {
+  async (dispatch, getState) => {
+    const lang = getLang(getState());
     const options = await {
       method: "POST",
       headers: {
@@ -60,29 +62,55 @@ export const registration =
         if (response.ok) {
           return response.json();
         } else {
-          switch (response.status) {
-            case 409:
-              throw new Error(
-                toast.error(
-                  `Пользователь с адресом электронной почты: ${email} уже существует`,
-                  toastAction
-                )
-              );
-            default:
-              throw new Error(
-                toast.error(
-                  "Необходимо правильно заполнить поля регистрации",
-                  toastAction
-                )
-              );
+          if (lang === "ru") {
+            switch (response.status) {
+              case 409:
+                throw new Error(
+                  toast.error(
+                    `Пользователь с адресом электронной почты: ${email} уже существует`,
+                    toastAction
+                  )
+                );
+              default:
+                throw new Error(
+                  toast.error(
+                    "Необходимо правильно заполнить поля регистрации",
+                    toastAction
+                  )
+                );
+            }
+          } else {
+            switch (response.status) {
+              case 409:
+                throw new Error(
+                  toast.error(
+                    `User with email address: ${email} already exists`,
+                    toastAction
+                  )
+                );
+              default:
+                throw new Error(
+                  toast.error(
+                    "It is necessary to fill in the registration fields correctly",
+                    toastAction
+                  )
+                );
+            }
           }
         }
       });
       dispatch(userRegisterResolve(response));
-      toast.success(
-        `${name}, вы успешно зарегистрировались, для подтверждения мы отправили вам на почту письмо`,
-        toastAction
-      );
+      if (lang === "ru") {
+        return toast.success(
+          `${name}, вы успешно зарегистрировались, для подтверждения мы отправили вам на почту письмо`,
+          toastAction
+        );
+      } else {
+        toast.success(
+          `${name}, you have successfully registered, we have sent you a confirmation email`,
+          toastAction
+        );
+      }
     } catch (error) {
       dispatch(userRegisterReject(error.statusText));
       dispatch(userClearError());
@@ -91,7 +119,8 @@ export const registration =
 
 export const loginUser =
   ({ email, password }) =>
-  async (dispatch) => {
+  async (dispatch, getState) => {
+    const lang = getLang(getState());
     const options = {
       method: "POST",
       headers: {
@@ -116,20 +145,35 @@ export const loginUser =
         .then(({ data }) => {
           dispatch(userLoginResolve(data));
           localStorage.setItem("token", data.token);
-          toast.success(
-            `Добро пожаловать, ${data.userName}! Мы рады Вас приветствовать`,
-            toastAction
-          );
+          if (lang === "ru") {
+            return toast.success(
+              `Добро пожаловать, ${data.userName}! Мы рады Вас приветствовать`,
+              toastAction
+            );
+          } else {
+            return toast.success(
+              `Welcome ${data.userName}! We are happy to greet you`,
+              toastAction
+            );
+          }
         });
     } catch (error) {
       dispatch(userLoginReject(error.statusText));
+      if (lang === "ru") {
+        return toast.error(
+          "Электронная почта или пароль неверный",
+          toastAction
+        );
+      } else {
+        toast.error("Email or password is incorrect", toastAction);
+      }
       dispatch(userClearError());
-      return toast.error("Электронная почта или пароль неверный", toastAction);
     }
   };
 
 export const logOut = () => async (dispatch, getState) => {
   const token = getToken(getState());
+  const lang = getLang(getState());
   const options = {
     method: "GET",
     headers: {
@@ -150,7 +194,11 @@ export const logOut = () => async (dispatch, getState) => {
     });
     localStorage.removeItem("token");
     dispatch(userLogOutResolve(response));
-    toast.success("Спасибо за визит, заходите еще!", toastAction);
+    if (lang === "ru") {
+      return toast.success("Спасибо за визит, заходите еще!", toastAction);
+    } else {
+      return toast.success("Thanks for stopping by, come back!", toastAction);
+    }
   } catch (error) {
     dispatch(userLogOutReject(error.statusText));
     dispatch(userClearError());
@@ -190,6 +238,7 @@ export const updateUserToken = () => async (dispatch) => {
 
 export const changeBalance = (value) => async (dispatch, getState) => {
   const token = localStorage.getItem("token");
+  const lang = getLang(getState());
   const id = getUserId(getState());
   const balance = Number(value);
   const options = {
@@ -216,7 +265,11 @@ export const changeBalance = (value) => async (dispatch, getState) => {
       .then(({ data }) => ({ ...data }))
       .then(({ result }) => ({ ...result }));
     dispatch(userBalanceResolve(newBalance));
-    toast.success(`Ваш баланс: ${balance} грн.`);
+    if (lang === "ru") {
+      return toast.success(`Ваш баланс: ${balance} грн.`);
+    } else {
+      return toast.success(`Your balance: ${balance} UAH.`);
+    }
   } catch (error) {
     dispatch(userBalanceReject(error.statusText));
     dispatch(userClearError());
@@ -225,6 +278,7 @@ export const changeBalance = (value) => async (dispatch, getState) => {
 
 export const veryfication = () => async (dispatch, getState) => {
   const verifyToken = getVerifyTokenRedax(getState());
+  const lang = getLang(getState());
   const options = { method: "GET" };
   dispatch(getVerifyToken());
   try {
@@ -241,14 +295,18 @@ export const veryfication = () => async (dispatch, getState) => {
     dispatch(getVerifyTokenResolve(verify));
   } catch (error) {
     dispatch(getVerifyTokenReject(error.message));
-    toast.warning("Вы уже прошли верификацию");
+    if (lang === "ru") {
+      return toast.warning("Вы уже прошли верификацию");
+    } else {
+      toast.warning("You have already been verified");
+    }
     dispatch(userClearError());
   }
 };
 
 export const userGoogle = (token) => async (dispatch) => {
-  localStorage.setItem("tokenGogle", token);
-  if (token) {
+  if (token && token.length > 1) {
+    localStorage.setItem("token", token);
     const options = {
       method: "GET",
       headers: {

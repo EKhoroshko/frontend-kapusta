@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { getLang } from "../../../redux/transaction/selectors";
+import { getLang } from "../../../redux/languag/selectors";
 import { useSelector } from "react-redux";
 import styles from "./ReportItemByCategory.module.css";
 
