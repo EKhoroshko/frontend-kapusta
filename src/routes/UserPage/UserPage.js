@@ -27,7 +27,10 @@ const UserPage = () => {
           </button>
           <div className={css.content}>
             <div className={css.name}>{userName}</div>
-            <img src={avatarURL} alt="аватар пользователя" />
+            <img
+              src={`https://hungry-montalcini-771fc2.netlify.app/public${avatarURL}`}
+              alt="аватар пользователя"
+            />
             <AvatarUpload />
             <NavLink to="/team" className={css.box}>
               <p>{t("team")}</p>
