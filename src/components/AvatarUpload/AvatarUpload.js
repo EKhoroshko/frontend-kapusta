@@ -21,7 +21,7 @@ export default function AvatarUpload() {
 
   return (
     <Fragment>
-      <form enctype="multipart/form-data" method="post" onSubmit={onSubmit}>
+      <form encType="multipart/form-data" onSubmit={onSubmit}>
         <input type="file" name="file" id="input" onChange={onChange} />
         <button type="submit" value="Загрузить" />
       </form>

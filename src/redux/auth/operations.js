@@ -343,7 +343,6 @@ export const UpdateAvatar = (file) => async (dispatch) => {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ avatarURL: file }),
   };
   dispatch(updateAvatarLoading());
   try {
@@ -362,7 +361,7 @@ export const UpdateAvatar = (file) => async (dispatch) => {
       .then(({ result }) => ({ ...result }));
     dispatch(updateAvatarResolve(newUserAvatar));
   } catch (error) {
-    dispatch(updateAvatarReject(error));
+    dispatch(updateAvatarReject(error.statusText));
     dispatch(userClearError());
   }
 };

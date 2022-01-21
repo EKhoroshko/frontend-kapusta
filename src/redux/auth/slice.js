@@ -119,7 +119,8 @@ const authSlice = createSlice({
       balance: payload.balance,
       isLoading: false,
     }),
-    userBalanceReject: (_, actions) => ({
+    userBalanceReject: (state, actions) => ({
+      ...state,
       isLoading: false,
       error: actions.payload,
     }),
@@ -138,7 +139,8 @@ const authSlice = createSlice({
       avatarURL: payload.avatarURL,
       isLoading: false,
     }),
-    updateAvatarReject: (_, actions) => ({
+    updateAvatarReject: (state, actions) => ({
+      ...state,
       isLoading: false,
       error: actions.payload,
     }),
