@@ -1,15 +1,131 @@
+.section {
+  background-image: url("../../assets/images/back2.png");
+  background-repeat: no-repeat;
+  background-size: 100% 286px;
+}
+
 .container {
+  position: relative;
+  width: 320px;
+  height: 100vh;
   margin: 0 auto;
-  max-width: 1300px;
-  padding: 0 20px;
+}
+
+.wrapper {
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.GoBackButton {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  padding: 0;
+  margin-bottom: 30px;
+  font-size: 12px;
   font-family: "Roboto", sans-serif;
+  line-height: 1.2;
   font-weight: 400;
-  font-size: 0.75rem;
-  line-height: 0.875rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
   letter-spacing: 0.04em;
-  color: #52555f;
+  transition: all 0.2s linear;
+}
+
+.goBackIcon {
+  margin-right: 15px;
+}
+
+.title {
+  display: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 30px 20px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 6px;
+  border-radius: 30px;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.2);
+}
+
+.avatar {
+  margin-bottom: 30px;
+}
+
+.name {
+  margin-bottom: 30px;
+  font-size: 2.25rem;
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    background-size: 100% 536px;
+  }
+
+  .container {
+    width: 768px;
+  }
+
+  .wrapper {
+    padding: 40px 20px;
+  }
+
+  .GoBackButton {
+    width: max-content;
+    margin-top: 0px;
+  }
+
+  .title {
+    display: flex;
+    text-transform: none;
+  }
+
+  .content {
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 60px 40px;
+  }
+
+  .avatar {
+    margin-right: 50px;
+  }
+
+  img {
+    width: 120px;
+    border-radius: 6px;
+  }
+
+  .imgBackKapusta {
+    background-image: url("../../assets/images/iconKap2.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 690px;
+    left: 480px;
+    width: 200px;
+    height: 142px;
+    z-index: -1;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1280px;
+  }
+
+  .wrapper {
+    padding: 60px 80px;
+  }
+
+  .imgBackKapusta {
+    background-image: url("../../assets/images/imgKap.png");
+    top: 720px;
+    width: 100%;
+    left: 0px;
+  }
 }

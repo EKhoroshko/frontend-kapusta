@@ -119,7 +119,8 @@ const authSlice = createSlice({
       balance: payload.balance,
       isLoading: false,
     }),
-    userBalanceReject: (_, actions) => ({
+    userBalanceReject: (state, actions) => ({
+      ...state,
       isLoading: false,
       error: actions.payload,
     }),
@@ -127,6 +128,21 @@ const authSlice = createSlice({
     userClearError: (state) => ({
       ...state,
       error: null,
+    }),
+
+    updateAvatarLoading: (state, _) => ({
+      ...state,
+      isLoading: true,
+    }),
+    updateAvatarResolve: (state, { payload }) => ({
+      ...state,
+      avatarURL: payload.avatarURL,
+      isLoading: false,
+    }),
+    updateAvatarReject: (state, actions) => ({
+      ...state,
+      isLoading: false,
+      error: actions.payload,
     }),
   },
 });
@@ -152,6 +168,9 @@ export const {
   sliceToken,
   getVerifyTokenResolve,
   getVerifyTokenReject,
+  updateAvatarLoading,
+  updateAvatarResolve,
+  updateAvatarReject,
 } = authSlice.actions;
 
 export default authSlice.reducer;

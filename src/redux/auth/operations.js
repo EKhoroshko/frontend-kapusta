@@ -21,6 +21,9 @@ import {
   getVerifyToken,
   getVerifyTokenReject,
   getVerifyTokenResolve,
+  updateAvatarLoading,
+  updateAvatarResolve,
+  updateAvatarReject,
 } from "../auth/slice";
 import { getToken, getUserId, getVerifyTokenRedax } from "./selectors";
 import { getLang } from "../languag/selectors";
@@ -329,5 +332,36 @@ export const userGoogle = (token) => async (dispatch) => {
       dispatch(updateUserReject(error.statusText));
       dispatch(userClearError());
     }
+  }
+};
+
+export const UpdateAvatar = (file) => async (dispatch) => {
+  const token = localStorage.getItem("token");
+  const options = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  dispatch(updateAvatarLoading());
+  try {
+    const newUserAvatar = await fetch(
+      `https://back-kapusta.herokuapp.com/api/users/avatars`,
+      options
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error(response.statusText);
+        }
+      })
+      .then(({ data }) => ({ ...data }))
+      .then(({ result }) => ({ ...result }));
+    dispatch(updateAvatarResolve(newUserAvatar));
+  } catch (error) {
+    dispatch(updateAvatarReject(error.statusText));
+    dispatch(userClearError());
   }
 };
