@@ -45,6 +45,7 @@ const authSlice = createSlice({
       id: payload.id,
       avatarURL: payload.avatarURL,
       userName: payload.userName,
+      verify: payload.verify,
     }),
     userLoginReject: (_, { payload }) => ({
       isLoading: false,
@@ -82,6 +83,7 @@ const authSlice = createSlice({
       email: payload.email,
       id: payload.id,
       balance: payload.balance,
+      verify: payload.verify,
       isLogin: true,
     }),
     updateUserReject: (state, action) => ({

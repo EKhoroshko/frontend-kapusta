@@ -22,7 +22,7 @@ function Veryfy() {
   const varify = useSelector(getVerify);
   const dispatch = useDispatch();
   const location = useLocation();
-  const str = location.pathname.slice(1);
+  const str = location.pathname.slice(8);
 
   useEffect(() => {
     dispatch(sliceToken(str));

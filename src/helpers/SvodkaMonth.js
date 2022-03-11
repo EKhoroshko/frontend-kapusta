@@ -1,7 +1,7 @@
 const period = [
   { id: 1, name: "Январь", nameEn: "January" },
   { id: 2, name: "Февраль", nameEn: "February" },
-  { id: 3, name: "Март ", nameEn: "March" },
+  { id: 3, name: "Март", nameEn: "March" },
   { id: 4, name: "Апрель", nameEn: "April" },
   { id: 5, name: "Май", nameEn: "May" },
   { id: 6, name: "Июнь", nameEn: "June" },
