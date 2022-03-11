@@ -38,7 +38,7 @@ function App() {
             <PrivateRoutes path="/summary" component={Summary} />
             <PrivateRoutes path="/team" component={Team} />
             <PrivateRoutes path="/user" component={UserPage} />
-            <Route path="/:verificationToken" exact component={Veryfy} />
+            <Route path="/verify/:verificationToken" component={Veryfy} />
             <Route path="/404" component={NotFound} />
             <Redirect to="/404" />
           </Switch>
