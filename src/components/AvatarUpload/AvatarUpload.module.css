@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.input {
+  margin-bottom: 15px;
+}
+
+.inputUpload {
+  margin-bottom: 50px;
+}

@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import { uploadImg } from "../../firebase/firebase";
 import "react-toastify/dist/ReactToastify.css";
 
 import {
@@ -22,7 +23,6 @@ import {
   getVerifyTokenReject,
   getVerifyTokenResolve,
   updateAvatarLoading,
-  updateAvatarResolve,
   updateAvatarReject,
 } from "../auth/slice";
 import { getToken, getUserId, getVerifyTokenRedax } from "./selectors";
@@ -335,31 +335,10 @@ export const userGoogle = (token) => async (dispatch) => {
   }
 };
 
-export const UpdateAvatar = (file) => async (dispatch) => {
-  const token = localStorage.getItem("token");
-  const options = {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "multipart/form-data",
-      Authorization: `Bearer ${token}`,
-    },
-  };
+export const UpdateAvatar = (file, name) => async (dispatch) => {
   dispatch(updateAvatarLoading());
   try {
-    const newUserAvatar = await fetch(
-      `https://back-kapusta.herokuapp.com/api/users/avatars`,
-      options
-    )
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then(({ data }) => ({ ...data }))
-      .then(({ result }) => ({ ...result }));
-    dispatch(updateAvatarResolve(newUserAvatar));
+    await uploadImg(file, name, dispatch);
   } catch (error) {
     dispatch(updateAvatarReject(error.statusText));
     dispatch(userClearError());

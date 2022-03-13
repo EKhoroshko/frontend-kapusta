@@ -26,12 +26,15 @@ const UserPage = () => {
             <span className={css.title}>{t("arrowGoBack")}</span>
           </button>
           <div className={css.content}>
-            <div className={css.name}>{userName}</div>
-            <img
-              src={`https://hungry-montalcini-771fc2.netlify.app/public${avatarURL}`}
-              alt="аватар пользователя"
-            />
-            <AvatarUpload />
+            <div className={css.contentAva}>
+              <p className={css.name}>{userName}</p>
+              <img
+                className={css.avatar}
+                src={avatarURL}
+                alt="аватар пользователя"
+              />
+              <AvatarUpload />
+            </div>
             <NavLink to="/team" className={css.box}>
               <p>{t("team")}</p>
             </NavLink>
