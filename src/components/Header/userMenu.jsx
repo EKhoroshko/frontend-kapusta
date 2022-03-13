@@ -29,9 +29,7 @@ export default function UserMenu() {
     <div className={css.user__menu}>
       <NavLink to="/user" className={css.link}>
         <p className={css.user__avatar}>
-          <span className={css.symbol}>
-            <img src={avatarURL} alt="аватар пользователя" />
-          </span>
+          <img src={avatarURL} alt="аватар пользователя" />
         </p>
         <MediaQuery minWidth={768}>
           <p className={css.user__name}>{userName}</p>

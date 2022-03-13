@@ -46,20 +46,29 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  padding: 30px 20px;
   height: 500px;
   background-color: #fff;
-  border-radius: 6px;
   border-radius: 30px;
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.2);
 }
 
+.contentAva {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
 .avatar {
-  margin-bottom: 30px;
+  display: block;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 10px;
 }
 
 .name {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   font-size: 2.25rem;
 }
 
@@ -92,8 +101,11 @@
     padding: 60px 40px;
   }
 
-  .avatar {
-    margin-right: 50px;
+  .contentAva {
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0px;
+    padding: 0px;
   }
 
   img {
@@ -116,6 +128,11 @@
 @media screen and (min-width: 1280px) {
   .container {
     width: 1280px;
+  }
+
+  .content {
+    padding-right: 60px;
+    padding-left: 60px;
   }
 
   .wrapper {

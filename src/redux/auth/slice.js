@@ -138,7 +138,7 @@ const authSlice = createSlice({
     }),
     updateAvatarResolve: (state, { payload }) => ({
       ...state,
-      avatarURL: payload.avatarURL,
+      avatarURL: payload,
       isLoading: false,
     }),
     updateAvatarReject: (state, actions) => ({
