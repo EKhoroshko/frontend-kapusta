@@ -7,21 +7,11 @@ import styles from "./ReportItemByCategory.module.css";
 const ReportItemByCategory = ({ data }) => {
   const { subCategory, sum, icon, label } = data;
   const lang = useSelector(getLang);
-
   return (
     <div className={styles.item}>
       <p className={styles.sum}>{sum}</p>
       <div className={styles.flex}>
-        <svg
-          width="56"
-          height="64"
-          className={styles.svg}
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {icon.pathOne && <path d={icon.pathOne} />}
-          {icon.pathTwo && <path d={icon.pathTwo} />}
-          {icon.pathThree && <path d={icon.pathThree} />}
-        </svg>
+        <img className={styles.svg} src={icon} alt="icon" />
         <div className={styles.circle}></div>
       </div>
       {lang === "ru" ? (
