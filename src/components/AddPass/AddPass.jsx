@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import css from './AddPass.module.css'
 
 function AddPass() {
@@ -18,10 +20,10 @@ function AddPass() {
 
   const handlSubmit = (e) => {
     e.preventDefault()
-    if (password === newPass && password.length >= 8) {
-      console.log('eqial');
+    if (password.toLowerCase() === newPass.toLowerCase() && password.length >= 8) {
+      return toast.success('eqial');
     } else {
-      console.log('russian ship');
+      return toast.warning('russian ship');
     }
   }
 

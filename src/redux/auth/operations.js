@@ -344,3 +344,27 @@ export const UpdateAvatar = (file, name) => async (dispatch) => {
     dispatch(userClearError());
   }
 };
+
+export const UpdatePass = async (value) => {
+  const token = localStorage.getItem("token");
+  const options = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ password: value }),
+  };
+  try {
+    await fetch(
+      "https://back-kapusta.herokuapp.com/api/auth/users/password",
+      options
+    ).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error(response.statusText);
+      }
+    });
+  } catch (error) {}
+};
