@@ -86,9 +86,12 @@
 }
 
 @media screen and (min-width: 768px) {
+  .boxPass {
+    margin-left: 60px;
+  }
+
   .form {
     padding: 0px 12px;
-    margin-left: 60px;
   }
 
   .label {

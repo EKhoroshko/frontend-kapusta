@@ -5,28 +5,35 @@ function AddPass() {
   const [password, setPassword] = useState('');
   const [newPass, setNewPass] = useState('');
 
-  const waitPass = () => {
+  console.log('password', password)
+  console.log(newPass);
 
+  const waitPass = (e) => {
+    setPassword(e.target.value)
   }
 
-  const waitCheck = () => {
-
+  const waitCheck = (e) => {
+    setNewPass(e.target.value)
   }
 
   const handlSubmit = (e) => {
     e.preventDefault()
-
+    if (password === newPass && password.length >= 8) {
+      console.log('eqial');
+    } else {
+      console.log('russian ship');
+    }
   }
 
   return (
-    <div>
+    <div className={css.boxPass}>
       <form className={css.form} onSubmit={handlSubmit} autoComplete="off">
         <h3 className={css.title}>Изменить пароль</h3>
         <label className={css.label}>
-          <p className={css.description}>Изменить, добавить пароль</p>
+          <p className={css.description}>Введите новый пароль</p>
           <input
             className={css.input}
-            placeholder="Ведите новый пароль, не менее 8 знаков"
+            placeholder="Не менее 8 символов"
             type="password"
             name="password"
             required
@@ -35,11 +42,11 @@ function AddPass() {
           />
         </label>
         <label className={css.label}>
-          <p className={css.description}>dfsdg:</p>
+          <p className={css.description}>Повторите пароль</p>
           <input
             className={css.input}
-            type="email"
-            name="email"
+            type="password"
+            name="password"
             value={newPass}
             required
             onChange={waitCheck}
