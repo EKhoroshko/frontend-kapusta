@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { toast } from "react-toastify";
+import { UpdatePass } from '../../redux/auth/operations';
+import { useTranslation } from "react-i18next";
 import "react-toastify/dist/ReactToastify.css";
 import css from './AddPass.module.css'
 
 function AddPass() {
+  const dispatch = useDispatch();
   const [password, setPassword] = useState('');
   const [newPass, setNewPass] = useState('');
-
-  console.log('password', password)
-  console.log(newPass);
+  const { t } = useTranslation();
 
   const waitPass = (e) => {
     setPassword(e.target.value)
@@ -21,21 +23,27 @@ function AddPass() {
   const handlSubmit = (e) => {
     e.preventDefault()
     if (password.toLowerCase() === newPass.toLowerCase() && password.length >= 8) {
-      return toast.success('eqial');
+      dispatch(UpdatePass(password));
+      clearForm();
     } else {
       return toast.warning('russian ship');
     }
   }
 
+  const clearForm = () => {
+    setPassword('')
+    setNewPass('')
+  }
+
   return (
     <div className={css.boxPass}>
       <form className={css.form} onSubmit={handlSubmit} autoComplete="off">
-        <h3 className={css.title}>Изменить пароль</h3>
+        <h3 className={css.title}>{t("Chpass")}</h3>
         <label className={css.label}>
-          <p className={css.description}>Введите новый пароль</p>
+          <p className={css.description}>{t("newPass")}</p>
           <input
             className={css.input}
-            placeholder="Не менее 8 символов"
+            placeholder={t("plPass")}
             type="password"
             name="password"
             required
@@ -44,7 +52,7 @@ function AddPass() {
           />
         </label>
         <label className={css.label}>
-          <p className={css.description}>Повторите пароль</p>
+          <p className={css.description}>{t("repetPass")}</p>
           <input
             className={css.input}
             type="password"
@@ -55,7 +63,7 @@ function AddPass() {
           />
         </label>
         <button className={css.button} type="submit">
-          Отправить
+          {t("confirm")}
         </button>
       </form>
     </div>

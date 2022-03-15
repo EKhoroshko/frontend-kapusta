@@ -24,6 +24,9 @@ import {
   getVerifyTokenResolve,
   updateAvatarLoading,
   updateAvatarReject,
+  updatePassLoading,
+  updatePassResolve,
+  updatePassReject,
 } from "../auth/slice";
 import { getToken, getUserId, getVerifyTokenRedax } from "./selectors";
 import { getLang } from "../languag/selectors";
@@ -345,8 +348,9 @@ export const UpdateAvatar = (file, name) => async (dispatch) => {
   }
 };
 
-export const UpdatePass = async (value) => {
+export const UpdatePass = (value) => async (dispatch, getState) => {
   const token = localStorage.getItem("token");
+  const lang = getLang(getState());
   const options = {
     method: "PATCH",
     headers: {
@@ -355,8 +359,9 @@ export const UpdatePass = async (value) => {
     },
     body: JSON.stringify({ password: value }),
   };
+  dispatch(updatePassLoading());
   try {
-    await fetch(
+    const result = await fetch(
       "https://back-kapusta.herokuapp.com/api/auth/users/password",
       options
     ).then((response) => {
@@ -366,5 +371,14 @@ export const UpdatePass = async (value) => {
         throw new Error(response.statusText);
       }
     });
-  } catch (error) {}
+    dispatch(updatePassResolve(result));
+    if (lang === "ru") {
+      return toast.success(`Ваш пароль изменен`);
+    } else {
+      return toast.success(`Your password has been changed`);
+    }
+  } catch (error) {
+    dispatch(updatePassReject(error.statusText));
+    dispatch(userClearError());
+  }
 };

@@ -1,11 +1,13 @@
 import React, { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
 import { UpdateAvatar } from "../../redux/auth/operations";
+import { useTranslation } from "react-i18next";
 import css from "./AvatarUpload.module.css";
 
 export default function AvatarUpload() {
   const dispatch = useDispatch();
   const [file, setFile] = useState("");
+  const { t } = useTranslation();
   const date = new Date().getTime();
 
   const onChange = (e) => {
@@ -20,7 +22,7 @@ export default function AvatarUpload() {
 
   return (
     <Fragment>
-      <h3 className={css.title}>Сменить аватар</h3>
+      <h3 className={css.title}>{t("avatar")}</h3>
       <form
         className={css.form}
         encType="multipart/form-data"
@@ -33,7 +35,7 @@ export default function AvatarUpload() {
           id="input"
           onChange={onChange}
         />
-        <input className={css.inputUpload} type="submit" value="Загрузить" />
+        <input className={css.inputUpload} type="submit" value={t("upload")} />
       </form>
     </Fragment>
   );
