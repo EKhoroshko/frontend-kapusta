@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { getLang } from "../../../redux/languag/selectors";
 import { useSelector } from "react-redux";
 import styles from "./ReportItemByCategory.module.css";
+import svg from "../../../assets/images/svgSummorry/sprite.svg";
 
 const ReportItemByCategory = ({ data }) => {
   const { subCategory, sum, icon, label } = data;
@@ -11,7 +12,9 @@ const ReportItemByCategory = ({ data }) => {
     <div className={styles.item}>
       <p className={styles.sum}>{sum}</p>
       <div className={styles.flex}>
-        <img className={styles.svg} src={icon} alt="icon" />
+        <svg className={styles.svg}>
+          <use href={svg + `#${icon}`}></use>
+        </svg>
         <div className={styles.circle}></div>
       </div>
       {lang === "ru" ? (

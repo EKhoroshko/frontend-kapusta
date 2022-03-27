@@ -1,68 +1,54 @@
-import AddCost from "../../assets/images/svgSummorry/доп.доход.svg";
-import Salary from "../../assets/images/svgSummorry/ЗП.svg";
-import Alcohol from "../../assets/images/svgSummorry/Алкоголь.svg";
-import Housing from "../../assets/images/svgSummorry/все для дома.svg";
-import Health from "../../assets/images/svgSummorry/здоровье.svg";
-import Home from "../../assets/images/svgSummorry/Коммуналка,связь.svg";
-import Education from "../../assets/images/svgSummorry/образование.svg";
-import Products from "../../assets/images/svgSummorry/Продукты.svg";
-import Other from "../../assets/images/svgSummorry/прочее.svg";
-import Entertainment from "../../assets/images/svgSummorry/Развлечения.svg";
-import Sports from "../../assets/images/svgSummorry/Спорт,хобби.svg";
-import Technics from "../../assets/images/svgSummorry/Техника.svg";
-import Transport from "../../assets/images/svgSummorry/транспорт.svg";
-
 export const iconsArray = [
   {
     subCategory: "Продукты",
-    icon: Products,
+    icon: "icon-Products",
   },
   {
     subCategory: "Транспорт",
-    icon: Transport,
+    icon: "icon-Transport",
   },
   {
     subCategory: "Здоровье",
-    icon: Health,
+    icon: "icon-Health",
   },
   {
     subCategory: "Алкоголь",
-    icon: Alcohol,
+    icon: "icon-Alcohol",
   },
   {
     subCategory: "Развлечения",
-    icon: Entertainment,
+    icon: "icon-Entertainment",
   },
   {
     subCategory: "Все для дома",
-    icon: Housing,
+    icon: "icon-Housing",
   },
   {
     subCategory: "Техника",
-    icon: Technics,
+    icon: "icon-Technics",
   },
   {
     subCategory: "Коммуналка, связь",
-    icon: Home,
+    icon: "icon-communication",
   },
   {
     subCategory: "Спорт, хобби",
-    icon: Sports,
+    icon: "icon-Sports",
   },
   {
     subCategory: "Образование",
-    icon: Education,
+    icon: "icon-Education",
   },
   {
     subCategory: "Прочее",
-    icon: Other,
+    icon: "icon-Other",
   },
   {
     subCategory: "ЗП",
-    icon: Salary,
+    icon: "icon-Salary",
   },
   {
     subCategory: "Доп.доход",
-    icon: AddCost,
+    icon: "icon-addIncoms",
   },
 ];
