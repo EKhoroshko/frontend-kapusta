@@ -63,7 +63,8 @@
   }
   .listItem {
     width: calc(100% / 6);
-    margin: 0;
+    margin-bottom: 10px;
+    margin-top: 0px;
   }
   .listItem button {
     margin: 0;

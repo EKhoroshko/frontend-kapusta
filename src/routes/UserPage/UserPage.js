@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { getUserName, getAvatar } from "../../redux/auth/selectors";
 import { ReactComponent as BtnGoBack } from "../../assets/images/BtnGoBack.svg";
 import AvatarUpload from "../../components/AvatarUpload/AvatarUpload";
+import AddPass from "../../components/AddPass/AddPass";
 import css from "./UserPage.module.css";
 
 const UserPage = () => {
@@ -26,14 +27,17 @@ const UserPage = () => {
             <span className={css.title}>{t("arrowGoBack")}</span>
           </button>
           <div className={css.content}>
-            <div className={css.contentAva}>
-              <p className={css.name}>{userName}</p>
-              <img
-                className={css.avatar}
-                src={avatarURL}
-                alt="аватар пользователя"
-              />
-              <AvatarUpload />
+            <div className={css.contetnForm}>
+              <div className={css.contentAva}>
+                <p className={css.name}>{userName}</p>
+                <img
+                  className={css.avatar}
+                  src={avatarURL}
+                  alt="аватар пользователя"
+                />
+                <AvatarUpload />
+              </div>
+              <AddPass />
             </div>
             <NavLink to="/team" className={css.box}>
               <p>{t("team")}</p>

@@ -12,9 +12,9 @@ const authSlice = createSlice({
     userName: "",
     balance: 0,
     email: "",
-    data: {},
     verifyToken: "",
     verify: false,
+    pas: "",
   },
   reducers: {
     userRegisterLoading: (state, _) => ({
@@ -23,7 +23,6 @@ const authSlice = createSlice({
     }),
     userRegisterResolve: (state, { payload }) => ({
       ...state,
-      data: payload,
       isLoading: false,
     }),
     userRegisterReject: (_, actions) => ({
@@ -66,7 +65,6 @@ const authSlice = createSlice({
     userLogOutReject: (state, action) => ({
       ...state,
       isLoading: false,
-      data: {},
       error: action,
     }),
 
@@ -89,7 +87,6 @@ const authSlice = createSlice({
     updateUserReject: (state, action) => ({
       ...state,
       isLoading: false,
-      data: {},
       error: action.payload,
     }),
 
@@ -146,6 +143,20 @@ const authSlice = createSlice({
       isLoading: false,
       error: actions.payload,
     }),
+    updatePassLoading: (state, _) => ({
+      ...state,
+      isLoading: true,
+    }),
+    updatePassResolve: (state, { payload }) => ({
+      ...state,
+      pas: payload,
+      isLoading: false,
+    }),
+    updatePassReject: (state, actions) => ({
+      ...state,
+      isLoading: false,
+      error: actions.payload,
+    }),
   },
 });
 
@@ -173,6 +184,9 @@ export const {
   updateAvatarLoading,
   updateAvatarResolve,
   updateAvatarReject,
+  updatePassLoading,
+  updatePassResolve,
+  updatePassReject,
 } = authSlice.actions;
 
 export default authSlice.reducer;
