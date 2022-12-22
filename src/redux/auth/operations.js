@@ -67,19 +67,19 @@ export const registration =
         if (response.ok) {
           return response.json();
         } else {
-          if (lang === "ru") {
+          if (lang === "ua") {
             switch (response.status) {
               case 409:
                 throw new Error(
                   toast.error(
-                    `Пользователь с адресом электронной почты: ${email} уже существует`,
+                    `Користувач з адресою електронної пошти: ${email} вже існує`,
                     toastAction
                   )
                 );
               default:
                 throw new Error(
                   toast.error(
-                    "Необходимо правильно заполнить поля регистрации",
+                    "Необхідно правильно заповнити форму реєстрації",
                     toastAction
                   )
                 );
@@ -105,9 +105,9 @@ export const registration =
         }
       });
       dispatch(userRegisterResolve(response));
-      if (lang === "ru") {
+      if (lang === "ua") {
         return toast.success(
-          `${name}, вы успешно зарегистрировались, для подтверждения мы отправили вам на почту письмо`,
+          `${name}, ви успішно зареєструвалися, для підтвердження ми надіслали вам на пошту листа`,
           toastAction
         );
       } else {
@@ -147,9 +147,9 @@ export const loginUser =
         .then(({ data }) => {
           dispatch(userLoginResolve(data));
           localStorage.setItem("token", data.token);
-          if (lang === "ru") {
+          if (lang === "ua") {
             return toast.success(
-              `Добро пожаловать, ${data.userName}! Мы рады Вас приветствовать`,
+              `Ласкаво просимо, ${data.userName}! Ми раді Вас вітати`,
               toastAction
             );
           } else {
@@ -161,9 +161,9 @@ export const loginUser =
         });
     } catch (error) {
       dispatch(userLoginReject(error.statusText));
-      if (lang === "ru") {
+      if (lang === "ua") {
         return toast.error(
-          "Электронная почта или пароль неверный",
+          "Електронна пошта або пароль неправильний",
           toastAction
         );
       } else {
@@ -196,8 +196,8 @@ export const logOut = () => async (dispatch, getState) => {
     });
     localStorage.removeItem("token");
     dispatch(userLogOutResolve(response));
-    if (lang === "ru") {
-      return toast.success("Спасибо за визит, заходите еще!", toastAction);
+    if (lang === "ua") {
+      return toast.success("Дякую за візит, заходьте ще!", toastAction);
     } else {
       return toast.success("Thanks for stopping by, come back!", toastAction);
     }
@@ -264,7 +264,7 @@ export const changeBalance = (value) => async (dispatch, getState) => {
       .then(({ data }) => ({ ...data }))
       .then(({ result }) => ({ ...result }));
     dispatch(userBalanceResolve(newBalance));
-    if (lang === "ru") {
+    if (lang === "ua") {
       return toast.success(`Ваш баланс: ${balance} грн.`);
     } else {
       return toast.success(`Your balance: ${balance} UAH.`);
@@ -294,8 +294,8 @@ export const veryfication = () => async (dispatch, getState) => {
     dispatch(getVerifyTokenResolve(verify));
   } catch (error) {
     dispatch(getVerifyTokenReject(error.message));
-    if (lang === "ru") {
-      return toast.warning("Вы уже прошли верификацию");
+    if (lang === "ua") {
+      return toast.warning("Ви вже пройшли верифікацію");
     } else {
       toast.warning("You have already been verified");
     }
@@ -365,8 +365,8 @@ export const UpdatePass = (value) => async (dispatch, getState) => {
       }
     });
     dispatch(updatePassResolve(result));
-    if (lang === "ru") {
-      return toast.success(`Ваш пароль изменен`);
+    if (lang === "ua") {
+      return toast.success(`Ваш пароль змінено`);
     } else {
       return toast.success(`Your password has been changed`);
     }

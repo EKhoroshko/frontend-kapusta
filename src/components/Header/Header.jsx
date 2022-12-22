@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { checkLang } from '../../redux/languag/slice';
 import en from '../../assets/lang/en.jpg';
-import ru from '../../assets/lang/ru.jpg'
+import ua from '../../assets/lang/ua.webp';
 import css from "./Header.module.css";
 
 function Header() {
@@ -39,12 +39,12 @@ function Header() {
             <button
               className={css.btn}
               onClick={() => changeLanguage("en")}>
-              <img src={en} alt="Mikhail" className={css.picture} />
+              <img src={en} alt="English" className={css.picture} />
             </button>
             <button
               className={css.btn}
-              onClick={() => changeLanguage("ru")}>
-              <img src={ru} alt="Mikhail" className={css.picture} />
+              onClick={() => changeLanguage("ua")}>
+              <img src={ua} alt="Ukranian" className={css.picture} />
             </button>
           </div>
         </div>

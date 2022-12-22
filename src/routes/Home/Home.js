@@ -109,6 +109,13 @@ function Home() {
     dispatch(changeBalance(money));
   };
 
+  let style = "add";
+  if (balance > 0) {
+    style += " arrow";
+  }
+
+  console.log(style);
+
   return (
     <section className={css.section}>
       {login && <Skeleton />}
@@ -127,7 +134,7 @@ function Home() {
                 <p className={css.text}>{t("balance")}</p>
                 <form className={css.wraper} onSubmit={addBalance}>
                   <input
-                    className={css.add}
+                    className={style}
                     type="number"
                     min="1"
                     placeholder="0.00 UAH"

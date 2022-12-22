@@ -17,7 +17,7 @@ const ReportItemByCategory = ({ data }) => {
         </svg>
         <div className={styles.circle}></div>
       </div>
-      {lang === "ru" ? (
+      {lang === "ua" ? (
         <p className={styles.descr}>{subCategory}</p>
       ) : (
         <p className={styles.descr}>{label}</p>

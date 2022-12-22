@@ -64,7 +64,7 @@ export default function Period() {
         >
           <VectorLeft width="7" height="12" />
         </button>
-        {lang === "ru" ? (
+        {lang === "ua" ? (
           <p className={periodStyles.CurrentPeriod}>
             {date.name} {date.year}
           </p>

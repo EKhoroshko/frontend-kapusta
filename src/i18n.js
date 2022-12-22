@@ -12,7 +12,7 @@ i18n
   .use(initReactI18next)
   .init({
     // Стандартный язык
-    fallbackLng: "ru",
+    fallbackLng: "ua",
     debug: true,
     // Распознавание и кэширование языковых кук
     detection: {

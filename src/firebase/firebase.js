@@ -2,6 +2,8 @@ import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { updateAvatarResolve } from "../redux/auth/slice";
 
+const BASE_URL = "https://back-kapusta.onrender.com";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCN3xqiNVUz28gEfzABeVw5cHet6Tdo5lg",
   authDomain: "store-kapusta.firebaseapp.com",
@@ -29,10 +31,7 @@ export const uploadImg = async (file, name, dispatch) => {
         },
         body: JSON.stringify({ avatarURL: url }),
       };
-      fetch(
-        `https://back-kapusta.herokuapp.com/api/auth/users/avatars`,
-        options
-      ).then((response) => {
+      fetch(`${BASE_URL}/api/auth/users/avatars`, options).then((response) => {
         if (response.ok) {
           return response.json();
         } else {
