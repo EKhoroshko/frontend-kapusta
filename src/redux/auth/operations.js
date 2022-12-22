@@ -31,6 +31,8 @@ import {
 import { getToken, getUserId, getVerifyTokenRedax } from "./selectors";
 import { getLang } from "../languag/selectors";
 
+const BASE_URL = "https://back-kapusta.onrender.com";
+
 const toastAction = {
   position: "top-center",
   autoClose: 3000,
@@ -59,7 +61,7 @@ export const registration =
     dispatch(userRegisterLoading());
     try {
       const response = await fetch(
-        "https://back-kapusta.herokuapp.com/api/auth/users/register",
+        `${BASE_URL}/api/auth/users/register`,
         options
       ).then((response) => {
         if (response.ok) {
@@ -134,10 +136,7 @@ export const loginUser =
 
     dispatch(userLoginLoading());
     try {
-      return await fetch(
-        "https://back-kapusta.herokuapp.com/api/auth/users/login",
-        options
-      )
+      return await fetch(`${BASE_URL}/api/auth/users/login`, options)
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -186,7 +185,7 @@ export const logOut = () => async (dispatch, getState) => {
   dispatch(userLogOutLoading());
   try {
     const response = await fetch(
-      "https://back-kapusta.herokuapp.com/api/auth/users/logout",
+      `${BASE_URL}/api/auth/users/logout`,
       options
     ).then((response) => {
       if (response.ok) {
@@ -219,10 +218,7 @@ export const updateUserToken = () => async (dispatch) => {
     };
     dispatch(updateUserLoading());
     try {
-      const user = await fetch(
-        "https://back-kapusta.herokuapp.com/api/auth/users/current",
-        options
-      )
+      const user = await fetch(`${BASE_URL}/api/auth/users/current`, options)
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -255,7 +251,7 @@ export const changeBalance = (value) => async (dispatch, getState) => {
   dispatch(userBalanceLoading());
   try {
     const newBalance = await fetch(
-      `https://back-kapusta.herokuapp.com/api/transactions/${id}`,
+      `${BASE_URL}/api/transactions/${id}`,
       options
     )
       .then((response) => {
@@ -286,7 +282,7 @@ export const veryfication = () => async (dispatch, getState) => {
   dispatch(getVerifyToken());
   try {
     const verify = await fetch(
-      `https://back-kapusta.herokuapp.com/api/auth/users/verify/${verifyToken}`,
+      `${BASE_URL}/api/auth/users/verify/${verifyToken}`,
       options
     ).then((response) => {
       if (response.ok) {
@@ -318,10 +314,7 @@ export const userGoogle = (token) => async (dispatch) => {
     };
     dispatch(updateUserLoading());
     try {
-      const user = await fetch(
-        "https://back-kapusta.herokuapp.com/api/auth/users/current",
-        options
-      )
+      const user = await fetch(`${BASE_URL}/api/auth/users/current`, options)
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -362,7 +355,7 @@ export const UpdatePass = (value) => async (dispatch, getState) => {
   dispatch(updatePassLoading());
   try {
     const result = await fetch(
-      "https://back-kapusta.herokuapp.com/api/auth/users/password",
+      `${BASE_URL}/api/auth/users/password`,
       options
     ).then((response) => {
       if (response.ok) {
