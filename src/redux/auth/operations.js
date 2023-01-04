@@ -31,7 +31,7 @@ import {
 import { getToken, getUserId, getVerifyTokenRedax } from "./selectors";
 import { getLang } from "../languag/selectors";
 
-const BASE_URL = "https://back-kapusta.onrender.com";
+const { REACT_APP_BASE_URL } = process.env;
 
 const toastAction = {
   position: "top-center",
@@ -61,7 +61,7 @@ export const registration =
     dispatch(userRegisterLoading());
     try {
       const response = await fetch(
-        `${BASE_URL}/api/auth/users/register`,
+        `${REACT_APP_BASE_URL}/api/auth/users/register`,
         options
       ).then((response) => {
         if (response.ok) {
@@ -136,7 +136,7 @@ export const loginUser =
 
     dispatch(userLoginLoading());
     try {
-      return await fetch(`${BASE_URL}/api/auth/users/login`, options)
+      return await fetch(`${REACT_APP_BASE_URL}/api/auth/users/login`, options)
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -185,7 +185,7 @@ export const logOut = () => async (dispatch, getState) => {
   dispatch(userLogOutLoading());
   try {
     const response = await fetch(
-      `${BASE_URL}/api/auth/users/logout`,
+      `${REACT_APP_BASE_URL}/api/auth/users/logout`,
       options
     ).then((response) => {
       if (response.ok) {
@@ -218,7 +218,10 @@ export const updateUserToken = () => async (dispatch) => {
     };
     dispatch(updateUserLoading());
     try {
-      const user = await fetch(`${BASE_URL}/api/auth/users/current`, options)
+      const user = await fetch(
+        `${REACT_APP_BASE_URL}/api/auth/users/current`,
+        options
+      )
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -251,7 +254,7 @@ export const changeBalance = (value) => async (dispatch, getState) => {
   dispatch(userBalanceLoading());
   try {
     const newBalance = await fetch(
-      `${BASE_URL}/api/transactions/${id}`,
+      `${REACT_APP_BASE_URL}/api/transactions/${id}`,
       options
     )
       .then((response) => {
@@ -282,7 +285,7 @@ export const veryfication = () => async (dispatch, getState) => {
   dispatch(getVerifyToken());
   try {
     const verify = await fetch(
-      `${BASE_URL}/api/auth/users/verify/${verifyToken}`,
+      `${REACT_APP_BASE_URL}/api/auth/users/verify/${verifyToken}`,
       options
     ).then((response) => {
       if (response.ok) {
@@ -314,7 +317,10 @@ export const userGoogle = (token) => async (dispatch) => {
     };
     dispatch(updateUserLoading());
     try {
-      const user = await fetch(`${BASE_URL}/api/auth/users/current`, options)
+      const user = await fetch(
+        `${REACT_APP_BASE_URL}/api/auth/users/current`,
+        options
+      )
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -355,7 +361,7 @@ export const UpdatePass = (value) => async (dispatch, getState) => {
   dispatch(updatePassLoading());
   try {
     const result = await fetch(
-      `${BASE_URL}/api/auth/users/password`,
+      `${REACT_APP_BASE_URL}/api/auth/users/password`,
       options
     ).then((response) => {
       if (response.ok) {

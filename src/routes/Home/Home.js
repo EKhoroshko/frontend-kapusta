@@ -114,8 +114,6 @@ function Home() {
     style += " arrow";
   }
 
-  console.log(style);
-
   return (
     <section className={css.section}>
       {login && <Skeleton />}

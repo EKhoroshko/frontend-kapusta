@@ -11,7 +11,7 @@ import {
   transactionClearError,
 } from "./slice";
 
-const BASE_URL = "https://back-kapusta.onrender.com";
+const { REACT_APP_BASE_URL } = process.env;
 
 export const getAllTransactions = () => async (dispatch) => {
   const token = localStorage.getItem("token");
@@ -24,7 +24,7 @@ export const getAllTransactions = () => async (dispatch) => {
   };
   dispatch(allTransactionLoading());
   try {
-    return await fetch(`${BASE_URL}/api/transactions/all`, options)
+    return await fetch(`${REACT_APP_BASE_URL}/api/transactions/all`, options)
       .then((response) => response.json())
       .then(({ transaction }) => dispatch(allTransactionResolve(transaction)));
   } catch (error) {
@@ -55,7 +55,7 @@ export const addTransaction =
 
     dispatch(addTransactionLoading());
     try {
-      return await fetch(`${BASE_URL}/api/transactions`, options)
+      return await fetch(`${REACT_APP_BASE_URL}/api/transactions`, options)
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -83,7 +83,7 @@ export const deleteTransaction = (id) => async (dispatch) => {
   };
   dispatch(removeTransactionLoading());
   try {
-    await fetch(`${BASE_URL}/api/transactions/${id}`, options).then(
+    await fetch(`${REACT_APP_BASE_URL}/api/transactions/${id}`, options).then(
       (response) => response.json()
     );
     dispatch(removeTransactionResolve(id));
