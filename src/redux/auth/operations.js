@@ -31,8 +31,6 @@ import {
 import { getToken, getUserId, getVerifyTokenRedax } from "./selectors";
 import { getLang } from "../languag/selectors";
 
-const { REACT_APP_BASE_URL } = process.env;
-
 const toastAction = {
   position: "top-center",
   autoClose: 3000,

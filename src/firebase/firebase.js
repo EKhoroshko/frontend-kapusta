@@ -3,7 +3,6 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { updateAvatarResolve } from "../redux/auth/slice";
 
 const {
-  REACT_APP_BASE_URL,
   REACT_APP_APIKEY_FIRE,
   REACT_APP_AUTHDOMAIN,
   REACT_APP_PROJECTID,

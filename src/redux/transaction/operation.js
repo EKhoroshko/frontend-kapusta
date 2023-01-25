@@ -11,8 +11,6 @@ import {
   transactionClearError,
 } from "./slice";
 
-const { REACT_APP_BASE_URL } = process.env;
-
 export const getAllTransactions = () => async (dispatch) => {
   const token = localStorage.getItem("token");
   const options = {
