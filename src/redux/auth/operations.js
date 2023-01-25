@@ -136,7 +136,10 @@ export const loginUser =
 
     dispatch(userLoginLoading());
     try {
-      return await fetch(`${REACT_APP_BASE_URL}/api/auth/users/login`, options)
+      return await fetch(
+        `https://back-kapusta.onrender.com/api/auth/users/login`,
+        options
+      )
         .then((response) => {
           if (response.ok) {
             return response.json();
