@@ -40,15 +40,16 @@ export const uploadImg = async (file, name, dispatch) => {
         },
         body: JSON.stringify({ avatarURL: url }),
       };
-      fetch(`${REACT_APP_BASE_URL}/api/auth/users/avatars`, options).then(
-        (response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error(response.statusText);
-          }
+      fetch(
+        `https://back-kapusta.onrender.com/api/auth/users/avatars`,
+        options
+      ).then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error(response.statusText);
         }
-      );
+      });
       dispatch(updateAvatarResolve(url));
     });
   });

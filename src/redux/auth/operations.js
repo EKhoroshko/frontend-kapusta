@@ -61,7 +61,7 @@ export const registration =
     dispatch(userRegisterLoading());
     try {
       const response = await fetch(
-        `${REACT_APP_BASE_URL}/api/auth/users/register`,
+        `https://back-kapusta.onrender.com/api/auth/users/register`,
         options
       ).then((response) => {
         if (response.ok) {
@@ -188,7 +188,7 @@ export const logOut = () => async (dispatch, getState) => {
   dispatch(userLogOutLoading());
   try {
     const response = await fetch(
-      `${REACT_APP_BASE_URL}/api/auth/users/logout`,
+      `https://back-kapusta.onrender.com/api/auth/users/logout`,
       options
     ).then((response) => {
       if (response.ok) {
@@ -222,7 +222,7 @@ export const updateUserToken = () => async (dispatch) => {
     dispatch(updateUserLoading());
     try {
       const user = await fetch(
-        `${REACT_APP_BASE_URL}/api/auth/users/current`,
+        `https://back-kapusta.onrender.com/api/auth/users/current`,
         options
       )
         .then((response) => {
@@ -257,7 +257,7 @@ export const changeBalance = (value) => async (dispatch, getState) => {
   dispatch(userBalanceLoading());
   try {
     const newBalance = await fetch(
-      `${REACT_APP_BASE_URL}/api/transactions/${id}`,
+      `https://back-kapusta.onrender.com/api/transactions/${id}`,
       options
     )
       .then((response) => {
@@ -288,7 +288,7 @@ export const veryfication = () => async (dispatch, getState) => {
   dispatch(getVerifyToken());
   try {
     const verify = await fetch(
-      `${REACT_APP_BASE_URL}/api/auth/users/verify/${verifyToken}`,
+      `https://back-kapusta.onrender.com/api/auth/users/verify/${verifyToken}`,
       options
     ).then((response) => {
       if (response.ok) {
@@ -321,7 +321,7 @@ export const userGoogle = (token) => async (dispatch) => {
     dispatch(updateUserLoading());
     try {
       const user = await fetch(
-        `${REACT_APP_BASE_URL}/api/auth/users/current`,
+        `https://back-kapusta.onrender.com/api/auth/users/current`,
         options
       )
         .then((response) => {
@@ -364,7 +364,7 @@ export const UpdatePass = (value) => async (dispatch, getState) => {
   dispatch(updatePassLoading());
   try {
     const result = await fetch(
-      `${REACT_APP_BASE_URL}/api/auth/users/password`,
+      `https://back-kapusta.onrender.com/api/auth/users/password`,
       options
     ).then((response) => {
       if (response.ok) {

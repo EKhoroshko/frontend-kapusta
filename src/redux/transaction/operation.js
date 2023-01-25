@@ -24,7 +24,10 @@ export const getAllTransactions = () => async (dispatch) => {
   };
   dispatch(allTransactionLoading());
   try {
-    return await fetch(`${REACT_APP_BASE_URL}/api/transactions/all`, options)
+    return await fetch(
+      `https://back-kapusta.onrender.com/api/transactions/all`,
+      options
+    )
       .then((response) => response.json())
       .then(({ transaction }) => dispatch(allTransactionResolve(transaction)));
   } catch (error) {
@@ -55,7 +58,10 @@ export const addTransaction =
 
     dispatch(addTransactionLoading());
     try {
-      return await fetch(`${REACT_APP_BASE_URL}/api/transactions`, options)
+      return await fetch(
+        `https://back-kapusta.onrender.com/api/transactions`,
+        options
+      )
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -83,9 +89,10 @@ export const deleteTransaction = (id) => async (dispatch) => {
   };
   dispatch(removeTransactionLoading());
   try {
-    await fetch(`${REACT_APP_BASE_URL}/api/transactions/${id}`, options).then(
-      (response) => response.json()
-    );
+    await fetch(
+      `https://back-kapusta.onrender.com/api/transactions/${id}`,
+      options
+    ).then((response) => response.json());
     dispatch(removeTransactionResolve(id));
   } catch (error) {
     dispatch(removeTransactionReject(error));
