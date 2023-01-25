@@ -31,6 +31,8 @@ import {
 import { getToken, getUserId, getVerifyTokenRedax } from "./selectors";
 import { getLang } from "../languag/selectors";
 
+const { REACT_APP_BASE_URL } = process.env;
+
 const toastAction = {
   position: "top-center",
   autoClose: 3000,
@@ -59,25 +61,25 @@ export const registration =
     dispatch(userRegisterLoading());
     try {
       const response = await fetch(
-        "https://back-kapusta.herokuapp.com/api/auth/users/register",
+        `${REACT_APP_BASE_URL}/api/auth/users/register`,
         options
       ).then((response) => {
         if (response.ok) {
           return response.json();
         } else {
-          if (lang === "ru") {
+          if (lang === "ua") {
             switch (response.status) {
               case 409:
                 throw new Error(
                   toast.error(
-                    `Пользователь с адресом электронной почты: ${email} уже существует`,
+                    `Користувач з адресою електронної пошти: ${email} вже існує`,
                     toastAction
                   )
                 );
               default:
                 throw new Error(
                   toast.error(
-                    "Необходимо правильно заполнить поля регистрации",
+                    "Необхідно правильно заповнити форму реєстрації",
                     toastAction
                   )
                 );
@@ -103,9 +105,9 @@ export const registration =
         }
       });
       dispatch(userRegisterResolve(response));
-      if (lang === "ru") {
+      if (lang === "ua") {
         return toast.success(
-          `${name}, вы успешно зарегистрировались, для подтверждения мы отправили вам на почту письмо`,
+          `${name}, ви успішно зареєструвалися, для підтвердження ми надіслали вам на пошту листа`,
           toastAction
         );
       } else {
@@ -134,10 +136,7 @@ export const loginUser =
 
     dispatch(userLoginLoading());
     try {
-      return await fetch(
-        "https://back-kapusta.herokuapp.com/api/auth/users/login",
-        options
-      )
+      return await fetch(`${REACT_APP_BASE_URL}/api/auth/users/login`, options)
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -148,9 +147,9 @@ export const loginUser =
         .then(({ data }) => {
           dispatch(userLoginResolve(data));
           localStorage.setItem("token", data.token);
-          if (lang === "ru") {
+          if (lang === "ua") {
             return toast.success(
-              `Добро пожаловать, ${data.userName}! Мы рады Вас приветствовать`,
+              `Ласкаво просимо, ${data.userName}! Ми раді Вас вітати`,
               toastAction
             );
           } else {
@@ -162,9 +161,9 @@ export const loginUser =
         });
     } catch (error) {
       dispatch(userLoginReject(error.statusText));
-      if (lang === "ru") {
+      if (lang === "ua") {
         return toast.error(
-          "Электронная почта или пароль неверный",
+          "Електронна пошта або пароль неправильний",
           toastAction
         );
       } else {
@@ -186,7 +185,7 @@ export const logOut = () => async (dispatch, getState) => {
   dispatch(userLogOutLoading());
   try {
     const response = await fetch(
-      "https://back-kapusta.herokuapp.com/api/auth/users/logout",
+      `${REACT_APP_BASE_URL}/api/auth/users/logout`,
       options
     ).then((response) => {
       if (response.ok) {
@@ -197,8 +196,8 @@ export const logOut = () => async (dispatch, getState) => {
     });
     localStorage.removeItem("token");
     dispatch(userLogOutResolve(response));
-    if (lang === "ru") {
-      return toast.success("Спасибо за визит, заходите еще!", toastAction);
+    if (lang === "ua") {
+      return toast.success("Дякую за візит, заходьте ще!", toastAction);
     } else {
       return toast.success("Thanks for stopping by, come back!", toastAction);
     }
@@ -220,7 +219,7 @@ export const updateUserToken = () => async (dispatch) => {
     dispatch(updateUserLoading());
     try {
       const user = await fetch(
-        "https://back-kapusta.herokuapp.com/api/auth/users/current",
+        `${REACT_APP_BASE_URL}/api/auth/users/current`,
         options
       )
         .then((response) => {
@@ -255,7 +254,7 @@ export const changeBalance = (value) => async (dispatch, getState) => {
   dispatch(userBalanceLoading());
   try {
     const newBalance = await fetch(
-      `https://back-kapusta.herokuapp.com/api/transactions/${id}`,
+      `${REACT_APP_BASE_URL}/api/transactions/${id}`,
       options
     )
       .then((response) => {
@@ -268,7 +267,7 @@ export const changeBalance = (value) => async (dispatch, getState) => {
       .then(({ data }) => ({ ...data }))
       .then(({ result }) => ({ ...result }));
     dispatch(userBalanceResolve(newBalance));
-    if (lang === "ru") {
+    if (lang === "ua") {
       return toast.success(`Ваш баланс: ${balance} грн.`);
     } else {
       return toast.success(`Your balance: ${balance} UAH.`);
@@ -286,7 +285,7 @@ export const veryfication = () => async (dispatch, getState) => {
   dispatch(getVerifyToken());
   try {
     const verify = await fetch(
-      `https://back-kapusta.herokuapp.com/api/auth/users/verify/${verifyToken}`,
+      `${REACT_APP_BASE_URL}/api/auth/users/verify/${verifyToken}`,
       options
     ).then((response) => {
       if (response.ok) {
@@ -298,8 +297,8 @@ export const veryfication = () => async (dispatch, getState) => {
     dispatch(getVerifyTokenResolve(verify));
   } catch (error) {
     dispatch(getVerifyTokenReject(error.message));
-    if (lang === "ru") {
-      return toast.warning("Вы уже прошли верификацию");
+    if (lang === "ua") {
+      return toast.warning("Ви вже пройшли верифікацію");
     } else {
       toast.warning("You have already been verified");
     }
@@ -319,7 +318,7 @@ export const userGoogle = (token) => async (dispatch) => {
     dispatch(updateUserLoading());
     try {
       const user = await fetch(
-        "https://back-kapusta.herokuapp.com/api/auth/users/current",
+        `${REACT_APP_BASE_URL}/api/auth/users/current`,
         options
       )
         .then((response) => {
@@ -362,7 +361,7 @@ export const UpdatePass = (value) => async (dispatch, getState) => {
   dispatch(updatePassLoading());
   try {
     const result = await fetch(
-      "https://back-kapusta.herokuapp.com/api/auth/users/password",
+      `${REACT_APP_BASE_URL}/api/auth/users/password`,
       options
     ).then((response) => {
       if (response.ok) {
@@ -372,8 +371,8 @@ export const UpdatePass = (value) => async (dispatch, getState) => {
       }
     });
     dispatch(updatePassResolve(result));
-    if (lang === "ru") {
-      return toast.success(`Ваш пароль изменен`);
+    if (lang === "ua") {
+      return toast.success(`Ваш пароль змінено`);
     } else {
       return toast.success(`Your password has been changed`);
     }

@@ -39,7 +39,7 @@ export default function Svodka({ type }) {
           </tr>
         </thead>
         <tbody>
-          {lang === "ru" && list
+          {lang === "ua" && list
             ? list.map((tr) => {
                 return (
                   <tr className={s.tr} key={Object.keys(tr)[0]}>

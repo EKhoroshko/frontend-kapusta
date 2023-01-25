@@ -1,6 +1,6 @@
 export const iconsArray = [
   {
-    subCategory: "Продукты",
+    subCategory: "Продукти",
     icon: "icon-Products",
   },
   {
@@ -8,7 +8,7 @@ export const iconsArray = [
     icon: "icon-Transport",
   },
   {
-    subCategory: "Здоровье",
+    subCategory: "Здоров'я",
     icon: "icon-Health",
   },
   {
@@ -16,31 +16,31 @@ export const iconsArray = [
     icon: "icon-Alcohol",
   },
   {
-    subCategory: "Развлечения",
+    subCategory: "Розваги",
     icon: "icon-Entertainment",
   },
   {
-    subCategory: "Все для дома",
+    subCategory: "Все для дому",
     icon: "icon-Housing",
   },
   {
-    subCategory: "Техника",
+    subCategory: "Техніка",
     icon: "icon-Technics",
   },
   {
-    subCategory: "Коммуналка, связь",
+    subCategory: "Комуналка, зв'язок",
     icon: "icon-communication",
   },
   {
-    subCategory: "Спорт, хобби",
+    subCategory: "Спорт, хобі",
     icon: "icon-Sports",
   },
   {
-    subCategory: "Образование",
+    subCategory: "Навчання",
     icon: "icon-Education",
   },
   {
-    subCategory: "Прочее",
+    subCategory: "Інше",
     icon: "icon-Other",
   },
   {
@@ -48,7 +48,7 @@ export const iconsArray = [
     icon: "icon-Salary",
   },
   {
-    subCategory: "Доп.доход",
+    subCategory: "Дод.дохід",
     icon: "icon-addIncoms",
   },
 ];

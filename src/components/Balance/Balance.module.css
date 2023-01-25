@@ -39,6 +39,11 @@
   outline-color: #ff751d;
 }
 
+.add::-webkit-inner-spin-button,
+.add::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
 .btnAdd {
   width: 124px;
   padding: 12px 20px 12px 17px;

@@ -30,7 +30,7 @@ const FormContent = ({ children }) => {
           <p className={s.descriptionA}>{t("logdescr1")}</p>
           <a
             className={s.button}
-            href="https://back-kapusta.herokuapp.com/api/auth/google"
+            href="https://back-kapusta.onrender.com/api/auth/google"
           >
             <span></span>
             Google

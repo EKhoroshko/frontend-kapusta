@@ -11,6 +11,8 @@ import {
   transactionClearError,
 } from "./slice";
 
+const { REACT_APP_BASE_URL } = process.env;
+
 export const getAllTransactions = () => async (dispatch) => {
   const token = localStorage.getItem("token");
   const options = {
@@ -22,10 +24,7 @@ export const getAllTransactions = () => async (dispatch) => {
   };
   dispatch(allTransactionLoading());
   try {
-    return await fetch(
-      "https://back-kapusta.herokuapp.com/api/transactions/all",
-      options
-    )
+    return await fetch(`${REACT_APP_BASE_URL}/api/transactions/all`, options)
       .then((response) => response.json())
       .then(({ transaction }) => dispatch(allTransactionResolve(transaction)));
   } catch (error) {
@@ -56,10 +55,7 @@ export const addTransaction =
 
     dispatch(addTransactionLoading());
     try {
-      return await fetch(
-        "https://back-kapusta.herokuapp.com/api/transactions",
-        options
-      )
+      return await fetch(`${REACT_APP_BASE_URL}/api/transactions`, options)
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -87,10 +83,9 @@ export const deleteTransaction = (id) => async (dispatch) => {
   };
   dispatch(removeTransactionLoading());
   try {
-    await fetch(
-      `https://back-kapusta.herokuapp.com/api/transactions/${id}`,
-      options
-    ).then((response) => response.json());
+    await fetch(`${REACT_APP_BASE_URL}/api/transactions/${id}`, options).then(
+      (response) => response.json()
+    );
     dispatch(removeTransactionResolve(id));
   } catch (error) {
     dispatch(removeTransactionReject(error));

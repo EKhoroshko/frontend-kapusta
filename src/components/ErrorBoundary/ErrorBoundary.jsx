@@ -21,8 +21,8 @@ class ErrorBoundary extends Component {
 
   render() {
     if (this.state.hasError) {
-      if (this.props.lang === "ru") {
-        return <p className={css.text}>Что-то пошло не так... Перезагрузите страницу и попробуйте еще раз</p>
+      if (this.props.lang === "ua") {
+        return <p className={css.text}>Щось пішло не так... Перезавантажте сторінку і спробуйте ще раз</p>
       } else {
         return <p className={css.text}>Something went wrong... Please reload the page and try again</p>
       }

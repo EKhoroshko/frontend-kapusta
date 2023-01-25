@@ -65,25 +65,7 @@
   margin-bottom: 40px;
 }
 
-.add {
-  max-width: 124px;
-  padding: 12px 17px 12px 3px;
-  background-color: transparent;
-  border: 2px solid #ffffff;
-  box-sizing: border-box;
-  border-radius: 22px 0px 0px 22px;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 14px;
-  text-align: right;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: #000000;
-}
-
-.add:focus {
-  outline-color: #ff751d;
-}
+/*style input balance in index.css*/
 
 .btnAdd {
   width: 124px;

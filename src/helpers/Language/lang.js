@@ -1,5 +1,5 @@
 const waitLang = (lang, arrRu, arrEn) => {
-  if (lang === "ru") {
+  if (lang === "ua") {
     return arrRu;
   } else {
     return arrEn;
